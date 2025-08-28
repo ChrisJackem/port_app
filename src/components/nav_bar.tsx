@@ -6,6 +6,7 @@ import { DM_Sans } from "next/font/google";
 import './nav_bar.css'
 
 const blk = DM_Sans({
+    subsets:['latin'],
     style: "normal",    
     weight: '900'
 });
