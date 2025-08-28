@@ -22,6 +22,7 @@ export default function Home() {
       </div>
       <p className="box chip-tl-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus deleniti accusantium porro et quia ipsa suscipit? Commodi inventore maxime temporibus nam, laboriosam nobis vitae, animi adipisci excepturi veniam quas dolorum.</p>
     <div className="divider-1"></div>
+    <h1>Header</h1>
     <div className="divider-1"></div>
     <p>OK</p>
     <div className="divider-1"></div>
