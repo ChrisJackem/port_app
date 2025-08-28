@@ -24,11 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fnt.className}`}>
-        <div id="main-container">
+        <main id="main-container">
           <NavBar />
-          <main id="main">{children}</main>
-          <footer id="footer" className="lip-tr-lg">Footer</footer>
-        </div>
+          <div id="child-container">{children}</div>
+          <footer id="footer" >Footer</footer>
+        </main>
       </body>
     </html>
   );

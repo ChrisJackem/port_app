@@ -2,22 +2,23 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-//import { DM_Sans } from "next/font/google";
+import { Tilt_Warp } from "next/font/google";
 import './nav_bar.css'
 
-/* const blk = DM_Sans({
+const blk = Tilt_Warp({
     subsets:['latin'],
     style: "normal",    
-    weight: '900'
-}); */
+    weight: '400'
+});
 
 const NavBar = () => {
   return (
     <nav id="nav-bar" className='chip-tl-lg'>
-        <ul className='flex'>
-            <NavLink name="Home" href="/home" />
-            <NavLink name="About" href="/about" />           
-        </ul>
+      <p>LOGO</p>
+      <ul className='flex'>
+          <NavLink name="Home" href="/home" />
+          <NavLink name="About" href="/about" />           
+      </ul>
     </nav>
   )
 }
@@ -29,7 +30,7 @@ export function NavLink({ name, href }: {name: string, href: string}){
   return <li>
     <Link 
       href={href}
-      className={`link ${pathName === href ? 'active' : ''} ${'blk.className'} chip-tl-br`}
+      className={`link ${pathName === href ? 'active' : ''} ${blk.className}`}
     >{name}
     </Link>
   </li>

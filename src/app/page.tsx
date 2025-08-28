@@ -1,31 +1,72 @@
 
-import styles from "./page.module.css";
-
+import "./page.module.css";
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div id='test'>
-      <h1>I make Websites | Games | Apps | Utilities 3d Models</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas temporibus consequuntur sapiente corrupti assumenda, vero facere sed. Praesentium eaque error facere eius odit iure, quaerat dolor dolorem, a, id quasi!</p>
+    <div className="home-container">
+      {/* <button className="chipped-button">Button</button> */}
+      
+      <section className="page-double">
+        <div>
+          <h1 className='heavy'>I make things for the web</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus, expedita!</p>
+        </div>
+
+        <Image         
+          width={300}
+          height={300}
+          alt="portrait drawing" 
+          src="./portrait_02.svg"
+        />
+      </section>
+
+      {/* <div className="divider-1"></div> */}
+
+      <section className="page-double">
+        
+
+        <div id='test' className="shield bubble" style={{ flex: 1,  background: "#515151ff" }}>
+          <h1>Programming</h1>
+          <p>Self taught and formally accredited programmer</p>
+          <br/>
+          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+        </div>
+
+        <div id='test' className="shield bubble" style={{ flex: 1, background: "#515151ff" }}>
+          <h1>Web Design</h1>
+          <p>Strong artistic background</p>
+          <br/>
+          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+        </div>
+        
+        <div id='test' className="shield bubble" style={{ flex: 1, background: "#515151ff" }}>
+          <h1>Games</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
+          <br/>
+          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+        </div>
+
+        
+      </section>
+
+
+      <div className="divider-2"></div>
+
+      <section className="page-double">
+        <h2>Test</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur possimus repellendus pariatur enim tenetur quibusdam expedita, ducimus aperiam voluptatem excepturi culpa harum itaque! Maxime accusamus obcaecati voluptates est, animi atque, eos, voluptatibus nemo asperiores dignissimos quidem porro magni blanditiis praesentium rerum id. Numquam aperiam eligendi accusantium minima cumque soluta non.</p>
+      </section>
       <div className="divider-1"></div>
-      <span>Here is some span</span>
-      <span>Here is some span</span>
-      <br/> <br/>
-      <p className="box chip-tl-md screened">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus deleniti accusantium porro et quia ipsa suscipit? Commodi inventore maxime temporibus nam, laboriosam nobis vitae, animi adipisci excepturi veniam quas dolorum.</p>
-      <div className="divider-1"></div>
-      <h3>Something!</h3>
-      <p>Something Brief</p>
-      <div className="divider-1"></div>
-      <h2>Something else</h2>
-      <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur quidem vel obcaecati deleniti saepe veniam eveniet enim fugit voluptates perferendis eum quia minus ut, consequuntur iusto vitae maxime totam corporis.</p>
-      </div>
-      <p className="box chip-tl-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus deleniti accusantium porro et quia ipsa suscipit? Commodi inventore maxime temporibus nam, laboriosam nobis vitae, animi adipisci excepturi veniam quas dolorum.</p>
-    <div className="divider-1"></div>
-    <h1>Header</h1>
-    <div className="divider-1"></div>
-    <p>OK</p>
-    <div className="divider-1"></div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      {/* <div id='test' className="shield">
+        <h1>Header</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
+        <span>SPAN</span>
+      </div> */}
     </div>
   );
 }

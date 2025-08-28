@@ -1,0 +1,7 @@
+.bubble{
+    background-color: red !important;
+}
+
+#test > *{
+    padding: 0.5rem;
+}

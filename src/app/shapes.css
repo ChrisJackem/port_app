@@ -1,30 +1,41 @@
 
-
+/************ Divider *************************/
 .divider-1{
-   /*  --fill: lime;    
-    height: 60px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1125 101'%3E%3Cpolygon style='backroundColor: var(--fill);' points='1125 101 801.47 101 727.94 68.15 0 68.15 0 0 50 0 98.56 27.59 1125 25.5 1125 101'/%3E%3C/svg%3E"); */
-    margin: 1rem 0;
-    height: 40px;
+    /* background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1125 101'%3E%3Cpolygon style='backroundColor: var(--fill);' points='1125 101 801.47 101 727.94 68.15 0 68.15 0 0 50 0 98.56 27.59 1125 25.5 1125 101'/%3E%3C/svg%3E");  */
+    height: 30px;
     width: 100%;
     background: var(--background);
-    clip-path: polygon( 0 0, 30px 0, 50px 10px, 100% 10px, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 30px, 0px 30px);
+    /* clip-path: polygon( 0 0, 30px 0, 50px 10px, 100% 10px, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 30px, 0px 30px); */
+    clip-path: polygon( 0 0, 30px 0, 50px 30%, 100% 30%, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 70%, 0px 70%);
 }
-.divider-1:nth-child(even) {
+.divider-2{
+    height: 15px;
+    width: 100%;
+    background: var(--background);
+    clip-path: polygon(0 0, 20px 0, 40px 0, 60px 30%, 100% 30%, 100% 100%, 0 100%);
+}
+.divider-1:nth-child(even), .divider-2:nth-child(even){
     transform: scaleY(-1);
 }
-
-.divider-1:nth-child(3) {
+.divider-1:nth-child(3), .divider-2:nth-child(3) {
     transform: scaleX(-1);
 }
 
+/************ Containers *************************/
+.shield{
+    /* min-width: 200px; */
+    padding: 30px;
+    /* background-color: #2b2b2b; */
+    color: white;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
+}
 
-
-
+.chipped-button{
+    font-weight: bold;
+    font-size: 18px;
+    padding: 3px 8px;
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
+}
 
 .chip-tl-md{
     --offset: 20px;
@@ -39,9 +50,9 @@
 }
 
 .chip-tl-lg{
-    --offset: 100px;
+    --offset: 60px;
     position: relative;
-    padding: 100px 5px 5px 5px;
+    padding: 60px 5px 5px 5px;
     clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px);
 }
 

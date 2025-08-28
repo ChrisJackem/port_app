@@ -3,21 +3,32 @@
 #nav-bar{
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: var(--midground);
+    color: black;
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+    /* border-bottom: 5px solid lime; */
 }
 
 #nav-bar ul{
     list-style-type: none;
-    margin: 0;
+    margin-left: auto;
     padding: 5px 25px;
-    background-color: white;
+    
     /* width: 100%; */
 }
+
+.link.active{
+    color: var(--accent);
+}
+
 .link{
-    color: #dbf227;
     color: black;
     font-size: 30px;
-    letter-spacing: -3px;
+    letter-spacing: -0.06rem;
+    font-weight: 400;
     /* background-color: black; */
-    background-color: rgba(0,0,0, 0.215);
+    /* background-color: rgba(0,0,0, 0.215); */
     
 }
