@@ -2,14 +2,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { DM_Sans } from "next/font/google";
+//import { DM_Sans } from "next/font/google";
 import './nav_bar.css'
 
-const blk = DM_Sans({
+/* const blk = DM_Sans({
     subsets:['latin'],
     style: "normal",    
     weight: '900'
-});
+}); */
 
 const NavBar = () => {
   return (
@@ -29,7 +29,7 @@ export function NavLink({ name, href }: {name: string, href: string}){
   return <li>
     <Link 
       href={href}
-      className={`link ${pathName === href ? 'active' : ''} ${blk.className} chip-tl-br`}
+      className={`link ${pathName === href ? 'active' : ''} ${'blk.className'} chip-tl-br`}
     >{name}
     </Link>
   </li>
