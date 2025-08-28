@@ -1,0 +1,59 @@
+
+
+.divider-1{
+   /*  --fill: lime;    
+    height: 60px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1125 101'%3E%3Cpolygon style='backroundColor: var(--fill);' points='1125 101 801.47 101 727.94 68.15 0 68.15 0 0 50 0 98.56 27.59 1125 25.5 1125 101'/%3E%3C/svg%3E"); */
+    margin: 1rem 0;
+    height: 40px;
+    width: 100%;
+    background: var(--background);
+    clip-path: polygon( 0 0, 30px 0, 50px 10px, 100% 10px, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 30px, 0px 30px);
+}
+.divider-1:nth-child(odd) {
+    transform: scaleY(-1);
+}
+
+
+
+
+
+.chip-tl-md{
+    --offset: 20px;
+    position: relative;
+    padding: 25px 5px 5px 5px;
+    clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
+}
+
+.chip-tl-br{
+    padding: 10px;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.chip-tl-lg{
+    --offset: 100px;
+    position: relative;
+    padding: 100px 5px 5px 5px;
+    clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px);
+}
+
+.lip-tr-lg{
+    position: relative;
+    padding: 25px 5px 5px 5px;
+    clip-path: polygon(0 20px, 80% 20px, 90% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.screened::after{
+    content: '';
+    position: absolute;
+    inset: var(--offset) 0px;
+    width: 100%; height: 100%;
+    z-index: -2;
+    background-color: var(--backg);
+    /* clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px); */
+    clip-path: padding-box;
+}

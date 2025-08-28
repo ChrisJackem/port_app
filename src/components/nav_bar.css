@@ -1,0 +1,23 @@
+
+
+#nav-bar{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#nav-bar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 25px;
+    background-color: white;
+    /* width: 100%; */
+}
+.link{
+    color: #dbf227;
+    color: black;
+    font-size: 30px;
+    letter-spacing: -3px;
+    /* background-color: black; */
+    background-color: rgba(0,0,0, 0.215);
+    
+}

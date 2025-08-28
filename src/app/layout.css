@@ -1,0 +1,33 @@
+
+#main-container{
+    padding-top: 15px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-areas:
+        ". nav"
+        ". main"
+        ". footer";
+}
+#main-container > nav{    
+    grid-area: nav;
+    background-color: #999999;
+    color: black;
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+}
+#main{
+    grid-area: main;
+    background-color: white;
+}
+#footer{
+    grid-area: footer;
+    padding: 1rem;
+    background-color: #999999;
+}
+
+#test > *{
+    padding: 0.5rem;
+}
