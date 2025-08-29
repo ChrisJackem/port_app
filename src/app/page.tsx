@@ -12,6 +12,11 @@ const WORDS = [
   "Scripts"
 ]
 
+/* type word = {
+
+} */
+
+
 export default function Home() {
   const timeout = useRef<NodeJS.Timeout | null>(null);
   //const [word, setWord] = useState<string | null>(null);
@@ -48,12 +53,14 @@ export default function Home() {
 
   return (
     <div className="home-container">
+      <div className="divider-3"></div>
       {/* <button className="chipped-button">Button</button> */}
       
       <section className="page-double">
         <div>
-          <h1 className='heavy'>I make {action===null ? 'Things' : action }</h1>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus, expedita!</p>
+          <h1 className='heavy'>I make</h1>
+          <p className='heavy'>{action===null ? 'Things' : action }</p>
+          <h3>If I had to explain myself, it gets complicated.</h3>
         </div>
 
         <Image         

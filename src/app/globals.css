@@ -71,6 +71,7 @@ button{
 .heavy{
   font-weight: bold;
   font-size: 52px;
+  line-height: 3rem;
 }
 
 .page-double{
