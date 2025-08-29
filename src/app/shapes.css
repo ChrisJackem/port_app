@@ -31,9 +31,7 @@
 
 /************ Containers *************************/
 .shield{
-    /* min-width: 200px; */
     padding: 30px;
-    /* background-color: #2b2b2b; */
     color: white;
     clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
 }

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
-import "./page.module.css";
+import "./page.css";
 import Image from 'next/image'
 
 const DELAY = 300;
@@ -56,7 +56,7 @@ export default function Home() {
       <div className="divider-3"></div>
       {/* <button className="chipped-button">Button</button> */}
       
-      <section className="page-double">
+      <section className="page-flex">
         <div>
           <h1 className='heavy'>I make</h1>
           <p className='heavy'>{action===null ? 'Things' : action }</p>
@@ -73,28 +73,27 @@ export default function Home() {
 
       {/* <div className="divider-1"></div> */}
 
-      <section className="page-double">
-        
+      <section className="page-flex" >
 
-        <div id='test' className="shield bubble" style={{ flex: 1,  background: "#515151ff" }}>
+        <div className="shield bubble">
           <h1>Programming</h1>
           <p>Self taught and formally accredited programmer</p>
           <br/>
-          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+          <button className="accent-bg" >Button</button>
         </div>
 
-        <div id='test' className="shield bubble" style={{ flex: 1, background: "#515151ff" }}>
+        <div className="shield bubble" >
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
-          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+          <button className="accent-bg" >Button</button>
         </div>
         
-        <div id='test' className="shield bubble" style={{ flex: 1, background: "#515151ff" }}>
+        <div className="shield bubble" >
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
           <br/>
-          <button className="accent-bg" style={{ alignSelf: 'center'}}>Button</button>
+          <button className="accent-bg" >Button</button>
         </div>
 
         

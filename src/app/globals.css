@@ -74,7 +74,9 @@ button{
   line-height: 3rem;
 }
 
-.page-double{
+.page-flex{
+  max-width: 1000px;
+  margin: 0 auto;
   gap: 1rem;
   padding: 2rem;
   display: flex;

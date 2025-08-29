@@ -1,0 +1,9 @@
+.bubble{
+    flex: 1;
+    background: #515151;
+    max-width: 350px;
+}
+
+#test > *{
+    padding: 0.5rem;
+}
