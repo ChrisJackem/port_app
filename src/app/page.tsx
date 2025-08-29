@@ -1,15 +1,58 @@
-
+'use client'
+import { useEffect, useRef, useState } from "react";
 import "./page.module.css";
 import Image from 'next/image'
 
+const DELAY = 300;
+const WORDS = [
+  "Games",
+  "Websites",
+  "Social Media",
+  "Utilities",
+  "Scripts"
+]
+
 export default function Home() {
+  const timeout = useRef<NodeJS.Timeout | null>(null);
+  //const [word, setWord] = useState<string | null>(null);
+  const word = useRef<string | null>("Things");
+  const [action, setAction] = useState<null | string>(null);
+  useEffect(()=>{
+    if (!timeout.current){
+      timeout.current = setInterval(()=>{
+       
+        if (word.current === null){
+          //word.current = `${Math.floor( Math.random() * WORDS.length)}`
+          word.current = `${WORDS[Math.floor(Math.random() * WORDS.length)]}...`;
+          setAction(word.current)
+        }else{
+           console.log('tick', word.current, word.current.length)
+          if (word.current.length > 1) {
+            const sliced = word.current.slice(0, -1);
+            word.current = sliced;
+            console.log(sliced)
+            setAction(sliced)
+          } else {
+            word.current = null;
+          }
+        }
+      }, DELAY)
+    }
+    return ()=>{
+      console.log('Timeout cleared')
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+    }
+  }, [word]);
+
   return (
     <div className="home-container">
       {/* <button className="chipped-button">Button</button> */}
       
       <section className="page-double">
         <div>
-          <h1 className='heavy'>I make things for the web</h1>
+          <h1 className='heavy'>I make {action===null ? 'Things' : action }</h1>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus, expedita!</p>
         </div>
 
