@@ -65,7 +65,7 @@ const HomePage = () => {
         layout 
         className="home-container"
     >
-      <div className="divider-3"></div>
+      {/* <div className="divider-3"></div> */}
       {/* <button className="chipped-button">Button</button> */}
       
       <section className="page-flex">

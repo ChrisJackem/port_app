@@ -20,7 +20,7 @@ const NavBar = () => {
           <NavLink name="About" href="/about" />           
       </ul>
     </nav>
-  )
+  );
 }
 
 export default NavBar

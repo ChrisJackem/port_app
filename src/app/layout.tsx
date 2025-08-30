@@ -28,6 +28,7 @@ export default function RootLayout({
         <main id="main-container">
           <NavBar />
           <div className="child-container">
+            <div className="divider-3"></div>
             <AnimatePresence >{children}</AnimatePresence>          
           </div>
           <footer id="footer" >Footer</footer>
