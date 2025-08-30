@@ -4,6 +4,7 @@ import "./globals.css";
 import "./shapes.css";
 import "./layout.css";
 import NavBar from "@/components/nav_bar";
+import { AnimatePresence } from "motion/react";
 
 const fnt = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,9 @@ export default function RootLayout({
       <body className={`${fnt.className}`}>
         <main id="main-container">
           <NavBar />
-          <div id="child-container">{children}</div>
+          <div className="child-container">
+            <AnimatePresence >{children}</AnimatePresence>          
+          </div>
           <footer id="footer" >Footer</footer>
         </main>
       </body>
