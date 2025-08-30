@@ -75,6 +75,10 @@ button{
   line-height: 3rem;
 }
 
+.page-container{
+ 
+}
+
 .page-flex{
   max-width: 1000px;
   margin: 0 auto;
