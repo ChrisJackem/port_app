@@ -1,82 +1,17 @@
 'use client'
-import { useEffect, useRef, useState, useReducer } from "react";
+//import { useEffect, useRef, useState, useReducer } from "react";
 import "./page.css";
 import Image from 'next/image'
 import { useInView } from "react-intersection-observer";
 import { motion } from "motion/react";
+import Typewriter from "@/components/typewriter/typewriter";
 
 
-
-////////////////////////// Typewriter Effect ////////////////////////////////////
-const DELAY = 200;
-
-const WORDS = [
-  "Games",
-  "Websites",
-  "Social Media",
-  "Utilities",
-  "Scripts",
-  "Mistakes",
-  "Web Apps",
-  "Maquettes",
-  "Layouts",
-  "Websites",
-  "Bots",
-  "Modals",
-  "Trades"
-]
-
-type TypedState = {
-  index: number;
-  word: string;
-  direction: number;
-};
-
-function typedReducer(state: TypedState, action: { type: string }): TypedState {
-
-    function getNewState():TypedState{
-        let i: number = -1;
-        // Do not pick the same one twice
-        while ( i < 0  || (state.index !== undefined && i === state.index) ){
-          i = Math.floor(Math.random() * WORDS.length);
-        }
-        return {
-          direction: 1,
-          index: i,
-          word: `${WORDS[i][0]}`
-        }
-    }
-
-    switch(action.type){      
-      case "INIT"://////////////////////////////
-        return getNewState();        
-
-      case "TYPE"://////////////////////////////        
-        if (state.direction===1){ // Forwards
-          const WORD = WORDS[state.index]
-          const _word = WORD.slice(0, state.word.length + 1);
-          if ( _word.length >= WORD.length ){ // Switch directions
-            return { ...state, word: _word, direction: -1 };
-          }else{
-            return { ...state, word: _word };
-          }
-        }else{// Backwards
-          const _word = state.word.slice(0, -1);          
-          if (_word.length < 2){ // No more string left
-            return getNewState()
-          }
-          return { ...state, word: _word }
-        }
-
-      default: return state;
-    }
-  }
-
-  // Animation
-  const variants = {
-    hidden: { opacity: 0, x: 0, y: 10 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: 10 },
+// Animation
+const variants = {
+  hidden: { opacity: 0, x: 0, y: 10 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 0, y: 10 },
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -85,24 +20,6 @@ const HomePage = () => {
     threshold: 0.6,
     delay: 1000,
   }); 
-
-  const [typed, dispatchTyped] = useReducer(typedReducer, {
-    index: 0,
-    word: "",
-    direction: 1
-  });
-
-  useEffect(()=>{
-    dispatchTyped({type:"INIT"});
-      const timeout = setInterval(() => {       
-        dispatchTyped({type: "TYPE"});        
-      }, DELAY);
-    
-    return ()=> {
-      console.log('cleared timeout')
-      clearTimeout(timeout);
-    };
-  }, []); 
 
   return (    
     <motion.div
@@ -114,16 +31,10 @@ const HomePage = () => {
         transition={{ type: 'tween' }}
         className="home-container page-container"
     >
-      {/* <div className="divider-3"></div> */}
-      {/* <button className="chipped-button">Button</button> */}
-      
       <section className="page-flex">
         <div>
           <h1 className='heavy'>I make</h1>
-          {/* <p className='heavy'>{typed.word===null ? 'Things' : typed.word }</p>
-          <p className='heavy'>{typed.index===null ? 'Things' : typed.index }</p> */}
-          {/* <p className="heavy">{renderWord || 'Things'}</p> */}
-          <p className="heavy">{typed.word}</p>
+          <Typewriter />
           <h3>If I had to explain myself, it gets complicated.</h3>
         </div>
 

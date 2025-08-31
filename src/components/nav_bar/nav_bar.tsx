@@ -19,8 +19,8 @@ const NavBar = () => {
       <nav id="nav-bar" className='chip-tl-lg'>
         <p>LOGO</p>
         <ul className='flex'>
-            <NavLink name="Home" href="/home" />
-            <NavLink name="About" href="/about" />           
+            <NavLink name="Home" href="/home" pathname={pathName} />
+            <NavLink name="About" href="/about" pathname={pathName}/>
         </ul>        
       </nav>
       <div className='blade-1 nav-url'>{pathName}</div>
@@ -30,12 +30,12 @@ const NavBar = () => {
 
 export default NavBar
 
-export function NavLink({ name, href }: {name: string, href: string}){  
-  const pathName = usePathname();
+export function NavLink({ name, href, pathname }: {name: string, href: string, pathname: string}){  
+  //const pathName = usePathname();
   return <li>
     <Link 
       href={href}
-      className={`link ${pathName === href ? 'active' : ''} ${blk.className}`}
+      className={`link ${pathname === href ? 'active' : ''} ${blk.className}`}
     >{name}
     </Link>
   </li>
