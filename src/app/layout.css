@@ -10,6 +10,7 @@
 .child-container{
     color: black;
     background-color: var(--foreground);
+    padding-top: 20px;
 }
 
 #footer{

@@ -2,8 +2,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { Tilt_Warp } from "next/font/google";
+import { Poppins, Tilt_Warp } from "next/font/google";
 import './nav_bar.css'
+import { motion } from 'motion/react';
 
 const blk = Tilt_Warp({
     subsets:['latin'],
@@ -12,14 +13,18 @@ const blk = Tilt_Warp({
 });
 
 const NavBar = () => {
+  const pathName = usePathname();
   return (
-    <nav id="nav-bar" className='chip-tl-lg'>
-      <p>LOGO</p>
-      <ul className='flex'>
-          <NavLink name="Home" href="/home" />
-          <NavLink name="About" href="/about" />           
-      </ul>
-    </nav>
+    <div id="nav-container">
+      <nav id="nav-bar" className='chip-tl-lg'>
+        <p>LOGO</p>
+        <ul className='flex'>
+            <NavLink name="Home" href="/home" />
+            <NavLink name="About" href="/about" />           
+        </ul>        
+      </nav>
+      <div className='blade-1 nav-url'>{pathName}</div>
+    </div>
   );
 }
 

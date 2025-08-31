@@ -1,0 +1,80 @@
+/* Reset box-sizing for all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin and padding for body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure nav-bar uses flexbox in all browsers */
+#nav-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: right;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/* Add vendor prefixes for text-shadow and font-size */
+.link.active {
+    text-shadow: 0px 0px 6px black;
+    -webkit-text-shadow: 0px 0px 6px black;
+    -moz-text-shadow: 0px 0px 6px black;
+}
+
+.link {
+    font-size: 30px;
+    -webkit-font-size: 30px;
+    -moz-font-size: 30px;
+}
+#nav-container{
+    position: relative;
+}
+#nav-bar{    
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--midground);
+    color: black;
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+    position: relative;
+    border-bottom: 2px solid var(--accent);
+    z-index: 9999;
+}
+
+.nav-url{
+    color: var(--accent);
+    text-align: right;
+    font-size: 10px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 100%;
+}
+
+#nav-bar ul{
+    list-style-type: none;
+    margin-left: auto;
+    padding: 5px 25px;
+}
+
+.link.active{
+    color: var(--accent);
+    text-shadow: 0px 0px 6px black;
+}
+
+.link{
+    color: black;
+    font-size: 30px;
+    letter-spacing: -0.06rem;
+    font-weight: 400;    
+}
