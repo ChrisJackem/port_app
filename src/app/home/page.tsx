@@ -1,75 +1,117 @@
 'use client'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useReducer } from "react";
 import "./page.css";
 import Image from 'next/image'
 import { useInView } from "react-intersection-observer";
 import { motion } from "motion/react";
 
-const DELAY = 300;
+
+
+////////////////////////// Typewriter Effect ////////////////////////////////////
+const DELAY = 200;
+
 const WORDS = [
   "Games",
   "Websites",
   "Social Media",
   "Utilities",
-  "Scripts"
+  "Scripts",
+  "Mistakes",
+  "Web Apps",
+  "Maquettes",
+  "Layouts",
+  "Websites",
+  "Bots",
+  "Modals",
+  "Trades"
 ]
-const HomePage = () => {
 
+type TypedState = {
+  index: number;
+  word: string;
+  direction: number;
+};
 
-  const { ref, inView } = useInView({
-    threshold: 0.6,
-    delay: 1000,
-  });
+function typedReducer(state: TypedState, action: { type: string }): TypedState {
 
-
-  // TODO:: Simplify this
-  const timeout = useRef<NodeJS.Timeout | null>(null);
-  const word = useRef<string | null>("Things");
-  const [action, setAction] = useState<null | string>(null);
-
-  useEffect(()=>{
-    if (false && !timeout.current){
-      timeout.current = setInterval(()=>{
-       
-        if (word.current === null){
-          //word.current = `${Math.floor( Math.random() * WORDS.length)}`
-          word.current = `${WORDS[Math.floor(Math.random() * WORDS.length)]}...`;
-          setAction(word.current)
-        }else{
-           console.log('tick', word.current, word.current.length)
-          if (word.current.length > 1) {
-            const sliced = word.current.slice(0, -1);
-            word.current = sliced;
-            console.log(sliced)
-            setAction(sliced)
-          } else {
-            word.current = null;
-          }
+    function getNewState():TypedState{
+        let i: number = -1;
+        // Do not pick the same one twice
+        while ( i < 0  || (state.index !== undefined && i === state.index) ){
+          i = Math.floor(Math.random() * WORDS.length);
         }
-      }, DELAY)
+        return {
+          direction: 1,
+          index: i,
+          word: `${WORDS[i][0]}`
+        }
     }
-    return ()=>{
-      console.log('Timeout cleared')
-      if (timeout.current) {
-        clearTimeout(timeout.current);
-      }
-    }
-  }, [word]);
 
+    switch(action.type){      
+      case "INIT"://////////////////////////////
+        return getNewState();        
+
+      case "TYPE"://////////////////////////////        
+        if (state.direction===1){ // Forwards
+          const WORD = WORDS[state.index]
+          const _word = WORD.slice(0, state.word.length + 1);
+          if ( _word.length >= WORD.length ){ // Switch directions
+            return { ...state, word: _word, direction: -1 };
+          }else{
+            return { ...state, word: _word };
+          }
+        }else{// Backwards
+          const _word = state.word.slice(0, -1);          
+          if (_word.length < 2){ // No more string left
+            return getNewState()
+          }
+          return { ...state, word: _word }
+        }
+
+      default: return state;
+    }
+  }
+
+  // Animation
   const variants = {
-    hidden: { opacity: 0, x: 0, y: -10 },
+    hidden: { opacity: 0, x: 0, y: 10 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: 10 },
 }
 
-  return (
+//////////////////////////////////////////////////////////////////////////////
+const HomePage = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.6,
+    delay: 1000,
+  }); 
+
+  const [typed, dispatchTyped] = useReducer(typedReducer, {
+    index: 0,
+    word: "",
+    direction: 1
+  });
+
+  useEffect(()=>{
+    dispatchTyped({type:"INIT"});
+      const timeout = setInterval(() => {       
+        dispatchTyped({type: "TYPE"});        
+      }, DELAY);
+    
+    return ()=> {
+      console.log('cleared timeout')
+      clearTimeout(timeout);
+    };
+  }, []); 
+
+  return (    
     <motion.div
         key="home"
         variants={variants}
         initial="hidden"
-        animate="enter" // Animated state to variants.enter
-        exit="exit" // Exit state (used later) to variants.exit
-        transition={{ type: 'tween' }} // Set the transition to linear
+        animate="enter" 
+        exit="exit"
+        transition={{ type: 'tween' }}
         className="home-container page-container"
     >
       {/* <div className="divider-3"></div> */}
@@ -78,7 +120,10 @@ const HomePage = () => {
       <section className="page-flex">
         <div>
           <h1 className='heavy'>I make</h1>
-          <p className='heavy'>{action===null ? 'Things' : action }</p>
+          {/* <p className='heavy'>{typed.word===null ? 'Things' : typed.word }</p>
+          <p className='heavy'>{typed.index===null ? 'Things' : typed.index }</p> */}
+          {/* <p className="heavy">{renderWord || 'Things'}</p> */}
+          <p className="heavy">{typed.word}</p>
           <h3>If I had to explain myself, it gets complicated.</h3>
         </div>
 
@@ -119,10 +164,7 @@ const HomePage = () => {
           <br/>
           <button className="accent-bg" >Button</button>
         </div>
-
-        
       </section>
-
 
       <div className="divider-2"></div>
 
@@ -142,6 +184,7 @@ const HomePage = () => {
         <span>SPAN</span>
       </div> */}
     </motion.div>
+    
   );
 }
 

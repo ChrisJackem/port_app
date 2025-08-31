@@ -29,11 +29,12 @@ export default function RootLayout({
         <main id="main-container">
           <NavBar />
           <div className="child-container">
-            {/* {children} */}
-            <AnimatePresence
+            {children}
+            {/* <AnimatePresence
+            
               mode="wait"
-            >{children}</AnimatePresence>      
-            {/* <div >{children}</div> */}   
+            >{children}</AnimatePresence>   */}
+            {/* <div >{children}</div> */}
             {/* <motion.div
               variants={variants} // Pass the variant object into Framer Motion 
               initial="hidden" // Set the initial state to variants.hidden

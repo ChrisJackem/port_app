@@ -1,8 +1,9 @@
 'use client'
+import { animate } from 'motion'
 import { motion } from 'motion/react'
 
-  const variants = {
-    hidden: { opacity: 0, x: 0, y: -10 },
+const variants = {
+    hidden: { opacity: 0, x: 0, y: 10 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: 10 },
 }
@@ -14,9 +15,9 @@ const AboutPage = () => {
         key="about"
         variants={variants}
         initial="hidden"
-        animate="enter" // Animated state to variants.enter
-        exit="exit" // Exit state (used later) to variants.exit
-        transition={{ type: 'tween' }} // Set the transition to linear
+        animate="enter" 
+        exit="exit"
+        transition={{ duration: 2, type: 'tween' }}
         className="about-container"
     >
         <div className="page-flex">
