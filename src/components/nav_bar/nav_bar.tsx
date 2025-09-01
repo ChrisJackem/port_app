@@ -2,9 +2,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { Poppins, Tilt_Warp } from "next/font/google";
+import { /* Poppins, */ Tilt_Warp } from "next/font/google";
 import './nav_bar.css'
-import { motion } from 'motion/react';
 import PathButton from '../path_button/pathButton';
 
 const blk = Tilt_Warp({

@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import './pathButton.css';
 
 
-function debounce<T extends (...args: any[]) => void>(fn: T, delay: number): T {
+function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): T {
     let timer: ReturnType<typeof setTimeout> | null = null;
-    return function(this: any, ...args: any[]) {
+    return function(this: unknown, ...args: Parameters<T>) {
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => fn.apply(this, args), delay);
     } as T;
@@ -38,7 +38,7 @@ const PathButton = () => {
         return () => { window.removeEventListener("scroll", scrollHandler); }
     }, []);
 
-    function handleClick(e: React.MouseEvent<HTMLDivElement>){
+    function handleClick(){
         window.scrollTo({
             top: 0,
             behavior: 'smooth'

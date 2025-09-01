@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
-import { useInView } from 'react-intersection-observer';
+
 
 ////////////////////////// Typewriter Effect ////////////////////////////////////
 const DELAY = 200;

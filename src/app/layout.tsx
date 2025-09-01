@@ -4,7 +4,7 @@ import "./globals.css";
 import "./shapes.css";
 import "./layout.css";
 import NavBar from "@/components/nav_bar/nav_bar";
-import PathButton from "@/components/path_button/pathButton";
+
 
 const fnt = Poppins({
   subsets: ["latin"],

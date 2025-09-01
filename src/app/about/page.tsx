@@ -1,5 +1,5 @@
 'use client'
-import { animate } from 'motion'
+
 import { motion } from 'motion/react'
 
 const variants = {
