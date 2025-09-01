@@ -66,7 +66,7 @@ const HomePage = () => {
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
-          <button className="accent-bg" >Button</button>
+          <button className="chip-btn-a" >Button</button>
         </div>
         
         <div className="shield bubble" >

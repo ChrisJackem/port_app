@@ -36,6 +36,40 @@
     transform: scaleX(-1);
 }
 
+/************** Chip Button **********************************/
+.chip-a{
+    color: black;
+    --chip-size: 15px;    
+    background-color: transparent;
+    position: relative;
+}
+/* active chip button */
+.chip-a:has(a.active)::after{
+    border-top: 2px solid var(--accent);; /* var(--accent); */    
+}
+.chip-a:hover::after{
+    background-color: rgba(0,0,0, 7);
+}
+.chip-a::after{
+    transition: all 500ms ease-out;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    border-top: 2px solid black;
+    background: rgba(0,0,0, 0.4);
+    clip-path: polygon(
+        var(--chip-size) 0,
+        100% 0,
+        100% calc(100% - var(--chip-size)),
+        calc(100% - var(--chip-size)) 100%,
+        0 100%,
+        0 var(--chip-size)
+    );
+}
+
+
 /************ Containers *************************/
 .shield{
     padding: 30px;
@@ -65,8 +99,8 @@
 .chip-tl-lg{
     --offset: 60px;
     position: relative;
-    padding: 60px 5px 5px 5px;
-    clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%, 0 60px);
+    padding: 50px 5px 5px 5px;
+    clip-path: polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px);
 }
 
 .lip-tr-lg{

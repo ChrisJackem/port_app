@@ -47,16 +47,16 @@ a {
   background-color: var(--accent);
 }
 
-button{
+/* button{
   padding: 10px 20px;
   border: none;
   color: black;
-  background-color: #CCC;/* var(--accent); */
+  background-color: #CCC;
   font-weight: bold;
   font-size: 18px;
   padding: 3px 8px;
   clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
-}
+} */
 
 .box{
   background-color: #999999;
@@ -67,6 +67,7 @@ button{
 .flex{
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .heavy{

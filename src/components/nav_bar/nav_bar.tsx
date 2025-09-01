@@ -18,7 +18,7 @@ const NavBar = () => {
     <div id="nav-container">
       <nav id="nav-bar" className='chip-tl-lg'>
         <p>LOGO</p>
-        <ul className='flex'>
+        <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home" pathname={pathName} />
             <NavLink name="About" href="/about" pathname={pathName}/>
         </ul>        
@@ -34,10 +34,12 @@ export default NavBar
 export function NavLink({ name, href, pathname }: {name: string, href: string, pathname: string}){  
   //const pathName = usePathname();
   return <li>
+    <div className='chip-a'>
     <Link 
       href={href}
       className={`link ${pathname === href ? 'active' : ''} ${blk.className}`}
     >{name}
     </Link>
+    </div>
   </li>
 }

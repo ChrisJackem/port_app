@@ -35,9 +35,10 @@ const AboutPage = () => {
             <section>
                 <h1>About</h1>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
+                <a href="#foo">FOO</a>
             </section>
 
-            <section>
+            <section id="foo">
                 <h3>More</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
             </section>
