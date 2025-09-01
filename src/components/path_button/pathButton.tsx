@@ -2,7 +2,7 @@
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import './pathButton.css';
-import { motion } from 'motion/react';
+import { motion, useAnimate } from 'motion/react';
 
 
 function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): T {
@@ -16,6 +16,7 @@ function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number):
 const PathButton = () => {
     const pathName = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    //const [scope, animate] = useAnimate()
     const elementRef = useRef(null);
 
     useEffect(() => {        
@@ -24,6 +25,7 @@ const PathButton = () => {
                 const scrollYed = window.scrollY > 100;
                 if (scrolled !== scrollYed){
                     console.log('changed')
+
                 }
                 setScrolled(scrollYed);
             }
@@ -45,9 +47,11 @@ const PathButton = () => {
         <motion.div
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1}}
+            transition={{ duration: .25 }}
             ref={elementRef}
             onClick={handleClick}
-            className={`blade-1 nav-url${scrolled ? ' scrolled' : ''}`}
+            className={`nav-url${scrolled ? ' scrolled' : ''}`}
+            layout
         >{pathName}</motion.div>
     )
 }
