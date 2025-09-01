@@ -11,7 +11,7 @@
     -ms-flex-align: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: #804fcf !important;
+    /* background-color: #804fcf !important; */
 }
 
 /* Add vendor prefixes for text-shadow and font-size */
