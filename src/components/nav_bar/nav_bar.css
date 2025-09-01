@@ -52,14 +52,14 @@ html, body {
     z-index: 9999;
 }
 
-.nav-url{
+/* .nav-url{
     color: var(--accent);
     text-align: right;
     font-size: 10px;
     padding: 2px 5px;
     position: absolute;
-    top: 100%;
-}
+    top: 100%;    
+} */
 
 #nav-bar ul{
     list-style-type: none;

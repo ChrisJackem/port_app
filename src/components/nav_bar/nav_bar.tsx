@@ -5,6 +5,7 @@ import React from 'react';
 import { Poppins, Tilt_Warp } from "next/font/google";
 import './nav_bar.css'
 import { motion } from 'motion/react';
+import PathButton from '../path_button/pathButton';
 
 const blk = Tilt_Warp({
     subsets:['latin'],
@@ -23,7 +24,8 @@ const NavBar = () => {
             <NavLink name="About" href="/about" pathname={pathName}/>
         </ul>        
       </nav>
-      <div className='blade-1 nav-url'>{pathName}</div>
+      {/* <div className='blade-1 nav-url'>{pathName}</div> */}
+      <PathButton />
     </div>
   );
 }

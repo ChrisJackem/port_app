@@ -5,12 +5,13 @@
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     background-color: var(--background);
+    position: relative;
 }
 
 .child-container{
     color: black;
     background-color: var(--foreground);
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 #footer{
