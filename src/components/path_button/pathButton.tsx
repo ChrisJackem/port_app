@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import './pathButton.css';
+import { motion } from 'motion/react';
 
 
 function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): T {
@@ -13,23 +14,17 @@ function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number):
 }
 
 const PathButton = () => {
-    const elementRef = useRef(null);
-    //const [rect, setRect] = useState<DOMRect | null>(null);
-    const [scrolled, setScrolled] = useState(false);
     const pathName = usePathname();
+    const [scrolled, setScrolled] = useState(false);
+    const elementRef = useRef(null);
 
-    useEffect(() => {
-        
-        //setRect((elementRef?.current as unknown as HTMLElement).getBoundingClientRect());
-        
-        const scrollHandler = debounce(() => {
-            if (elementRef.current) {
-                //const rect = (elementRef.current as HTMLElement).getBoundingClientRect();
-                //console.log(rect.y)
-                //const btm = rect.y + rect.height;
+    useEffect(() => {        
+        const scrollHandler = debounce((scrolled) => {
+            if (elementRef.current) {                            
                 const scrollYed = window.scrollY > 100;
-                //if (!scrollYed) return;                
-                //const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
+                if (scrolled !== scrollYed){
+                    console.log('changed')
+                }
                 setScrolled(scrollYed);
             }
         }, 1000);
@@ -47,11 +42,13 @@ const PathButton = () => {
     }
 
     return (        
-        <div
+        <motion.div
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1}}
             ref={elementRef}
             onClick={handleClick}
             className={`blade-1 nav-url${scrolled ? ' scrolled' : ''}`}
-        >{pathName}</div>
+        >{pathName}</motion.div>
     )
 }
 
