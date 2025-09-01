@@ -21,7 +21,7 @@ const PathButton = () => {
     useEffect(() => {        
         const scrollHandler = () => {//debounce((scrolled) => {
             if (elementRef.current) {                            
-                const scrollYed = window.scrollY > 130;
+                const scrollYed = window.scrollY > 160;
                 setScrolled(scrollYed);
             }
         }

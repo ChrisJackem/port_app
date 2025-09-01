@@ -34,12 +34,12 @@ export default NavBar
 export function NavLink({ name, href, pathname }: {name: string, href: string, pathname: string}){  
   //const pathName = usePathname();
   return <li>
-    <div className='chip-a'>
+    {/* <div className='chip-a'> */}
     <Link 
       href={href}
-      className={`link ${pathname === href ? 'active' : ''} ${blk.className}`}
+      className={`link chip-a ${pathname === href ? 'active' : ''} ${blk.className}`}
     >{name}
     </Link>
-    </div>
+    {/* </div> */}
   </li>
 }
