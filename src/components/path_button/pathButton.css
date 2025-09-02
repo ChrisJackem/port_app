@@ -2,7 +2,7 @@
     /* background: linear-gradient(to right, rgba(0,0,0, 0), rgba(0,0,0,1)); */
     /* background: black; */
     background: transparent;
-    color:  var(--accent);
+    color:  var(--accent, #FFF);
     text-align: right;
     font-size: 12px;
     padding: 2px 20px;
@@ -16,7 +16,7 @@
 }
 .nav-url::before{
     content: '';
-    background: black;
+    background: var(--darkest, #000);
     position: absolute;
     z-index: -1;
     top: 0; left: 0;

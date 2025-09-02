@@ -1,43 +1,53 @@
-import React from 'react'
-
+import React from 'react';
+import './themeBtns.css';
 
 const ThemeBtns = () => {
     return (
         <div id='btn-container' className="flex ">
             <ThemeBtn 
-                name="Default" 
+                name="Default"
+                text='#000'
+                darkest='#000' 
                 background='#3d3d3d'
                 midground='#999999'
                 foreground='#FFF'
                 accent='#dbf227'
             />
             <ThemeBtn 
-                name="Ocean" 
-                background='#1e3a5c'
-                midground='#3a6ea5'
-                foreground='#e0f7fa'
-                accent='#00bcd4'
+                name="Ocean"
+                text='#fff'
+                darkest='#022c43'
+                background='#115173'
+                midground='#ffd700'
+                foreground='#e1e1e1'
+                accent='#21e6c1'
             />
             <ThemeBtn 
-                name="Sunset" 
+                name="Sunset"
+                text='#fff'
+                darkest='#2d0633'
                 background='#ff6e40'
-                midground='#ffb74d'
-                foreground='#fff3e0'
-                accent='#d84315'
+                midground='#ffb86b'
+                foreground='#fff'
+                accent='#ff206e'
             />
             <ThemeBtn 
-                name="Forest" 
-                background='#2e7d32'
-                midground='#81c784'
-                foreground='#e8f5e9'
-                accent='#388e3c'
+                name="Forest"
+                text='#fff'
+                darkest='#184d47'
+                background='#96bb7c'
+                midground='#f3e9dd'
+                foreground='#fff'
+                accent='#b5cda3'
             />
             <ThemeBtn 
-                name="Lavender" 
-                background='#6a1b9a'
-                midground='#b39ddb'
-                foreground='#f3e5f5'
-                accent='#ab47bc'
+                name="Candy"
+                text='#fff'
+                darkest='#ff61a6'
+                background='#ffb3c6'
+                midground='#faffd8'
+                foreground='#fff'
+                accent='#f7cac9'
             />
         </div>
     )
@@ -46,22 +56,26 @@ const ThemeBtns = () => {
 
 type ThemeBtnProps = {
   name: string;
+  text: string;
+  darkest: string;
   background: string;
   foreground: string;
   midground:string;
   accent:string;
 };
 
-const ThemeBtn = ({ name, background, foreground, midground, accent}: ThemeBtnProps) => {
+const ThemeBtn = ({ name, text, darkest, background, foreground, midground, accent}: ThemeBtnProps) => {
   return (
     <div>
         <button
             className='chip-a theme-btn'
             onClick={() => {
+            document.documentElement.style.setProperty('--darkest', darkest);
             document.documentElement.style.setProperty('--background', background);
             document.documentElement.style.setProperty('--midground', midground);
             document.documentElement.style.setProperty('--foreground', foreground);
             document.documentElement.style.setProperty('--accent', accent);
+            document.documentElement.style.setProperty('--text', text);
             }}
         >{name}</button>
     </div>

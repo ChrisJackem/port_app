@@ -24,13 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${fnt.className}`}>
-        <main id="main-container">
-          <NavBar/>
-          
+        <main id="main-container" className="anim-bg">
+          <NavBar/>          
           <div className="child-container">
             {children}           
           </div>
-          <footer id="footer" >Footer</footer>
+          <footer id="footer" className="anim-bg">Footer</footer>
         </main>
       </body>
     </html>

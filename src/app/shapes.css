@@ -1,11 +1,23 @@
 
 /************ Divider *************************/
-.divider-1{
-    /* background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1125 101'%3E%3Cpolygon style='backroundColor: var(--fill);' points='1125 101 801.47 101 727.94 68.15 0 68.15 0 0 50 0 98.56 27.59 1125 25.5 1125 101'/%3E%3C/svg%3E");  */
+.divider-1,
+.divider-2,
+.divider-3,
+.blade-1,
+.chip-a,
+.shield,
+.chipped-button,
+.chip-tl-md,
+.chip-tl-br,
+.chip-tl-lg,
+.lip-tr-lg,
+.screened {
+transition: background-color 500ms ease-out;
+}
+.divider-1{    
     height: 30px;
     width: 100%;
     background: var(--background);
-    /* clip-path: polygon( 0 0, 30px 0, 50px 10px, 100% 10px, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 30px, 0px 30px); */
     clip-path: polygon( 0 0, 30px 0, 50px 30%, 100% 30%, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 70%, 0px 70%);
 }
 .divider-2{
@@ -44,10 +56,8 @@
     position: relative;
 }
 /* active chip button */
-.chip-a.active::after{
-    border-top: 2px solid white; /* var(--accent); */    
-    border-top: 2px solid var(--accent); /* var(--accent); */    
-    
+.chip-a.active::after{  
+    border-top: 2px solid var(--accent, #FFF);
 }
 .chip-a:hover::after{
     background-color: #3a3a3a;
@@ -64,21 +74,47 @@
     background: #606060;
     background: rgba(0,0,0, 0.6);
     clip-path: polygon(
-        var(--chip-size) 0,
+        var(--chip-size, 25px) 0,
         100% 0,
-        100% calc(100% - var(--chip-size)),
-        calc(100% - var(--chip-size)) 100%,
+        100% calc(100% - var(--chip-size, 25px)),
+        calc(100% - var(--chip-size,25px)) 100%,
         0 100%,
-        0 var(--chip-size)
+        0 var(--chip-size,25px)
     );
 }
 
 
 /************ Containers *************************/
 .shield{
-    padding: 30px;
-    color: white;
-    clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
+    aspect-ratio: 1/1;
+    color: #000;
+    --chip-size: 25px;
+    position: relative;    
+    z-index: 1;
+    background-color: var(--foreground, #fff);
+}
+.shield::before, .shield::after{
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+
+}
+.shield::before{
+    content: '';
+    transform: scale(0.96);
+    z-index: -1;    
+    opacity: .5;
+    background:  var(--foreground);    
+    /* background: linear-gradient( var(--foreground, #FFF), var(--midground, #CCC) ); */
+    clip-path: polygon(0 90%, 100% 90%, 90% 100%, 0 100%);
+    border-bottom: thick solid var(--background) ;
+}
+.shield::after{
+    content: '';
+    z-index: -2;
+    background-color: var(--midground);
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+    border-top: thick solid var(--background) ;
 }
 
 .chipped-button{

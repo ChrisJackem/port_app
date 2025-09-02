@@ -67,26 +67,22 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
   }
 
 const Typewriter = ({}) => {
-
     const [typed, dispatchTyped] = useReducer(typedReducer, {
         index: 0,
         word: "",
         direction: 1
     });
 
-     useEffect(()=>{
-    dispatchTyped({type:"INIT"});
+    useEffect(()=>{
+      dispatchTyped({type:"INIT"});      
       const timeout = setInterval(() => {        
-        dispatchTyped({type: "TYPE"});        
-      }, DELAY);
-    
-    return ()=> {
-      console.log('cleared timeout')
-      clearTimeout(timeout);
-    };
-  }, []); 
+        dispatchTyped({type: "TYPE"});
+      }, DELAY);    
+      return ()=> { clearTimeout(timeout); }
+    }, []);
+
     return (      
-        <p  className='heavy'>{typed.word}</p>
+        <p className='heavy'>{typed.word}</p>
     )
 }
 

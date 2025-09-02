@@ -2,16 +2,25 @@
 //import { useEffect, useRef, useState, useReducer } from "react";
 import "./page.css";
 import Image from 'next/image'
-import { motion } from "motion/react";
+import { motion, stagger } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
 
 
 // Animation
-const variants = {
+const variantsPage = {
+  hidden: { opacity: 0, x: 0, y: 10 },
+  enter: { opacity: 1, x: 0, y: 0 ,
+    transition: {
+      delayChildren: stagger(0.25, { from: "last" })
+    }
+  },
+  exit: { opacity: 0, x: 0, y: 10 },
+}
+const variantsDivs = {
   hidden: { opacity: 0, x: 0, y: 10 },
   enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 10 },
+  exit: { opacity: 0, x: 0, y: 10 },  
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -24,7 +33,7 @@ const HomePage = () => {
   return (    
     <motion.div
         key="home"
-        variants={variants}
+        variants={variantsPage}
         initial="hidden"
         animate="enter" 
         exit="exit"
@@ -50,31 +59,38 @@ const HomePage = () => {
 
       <section className="page-flex" >
 
-        <motion.div 
+        <motion.div
+          key='programming'
           className="shield bubble"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ease: "easeOut", duration: 2 }}
-          >
-          <h1>Programming</h1>
-          <p>Self taught and formally accredited programmer</p>
-          <br/>
-          <button className="accent-bg" >Button</button>
+          variants={variantsDivs} 
+        >
+            <h1>Programming</h1>
+            <p>Self taught and formally accredited programmer</p>
+            <br/>
+            <button className="accent-bg" >Button</button>
         </motion.div>
 
-        <div className="shield bubble" >
+        <motion.div 
+          className="shield bubble"
+          key='webDesign'          
+          variants={variantsDivs} 
+        >
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
           <button className="chip-btn-a" >Button</button>
-        </div>
+        </motion.div>
         
-        <div className="shield bubble" >
+        <motion.div 
+          className="shield bubble" 
+          key='games'
+          variants={variantsDivs} 
+        >
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
           <br/>
           <button className="accent-bg" >Button</button>
-        </div>
+        </motion.div>
       </section>
 
       <div className="divider-2"></div>

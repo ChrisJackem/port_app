@@ -16,7 +16,7 @@ const NavBar = () => {
   const pathName = usePathname();
   return (
     <div id="nav-container">
-      <nav id="nav-bar" className='chip-tl-lg'>
+      <nav id="nav-bar" className='anim-bg chip-tl-lg'>
         <p>LOGO</p>
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home" pathname={pathName} />

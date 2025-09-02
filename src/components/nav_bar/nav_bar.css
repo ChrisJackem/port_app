@@ -19,19 +19,16 @@
 #nav-bar{    
     padding-left: 1rem;
     padding-right: 1rem;
-
-    background-color: #6d6d6d;
-    background-color: var(--midground);
-
+    background-color: var(--midground, #6d6d6d);
     color: black;
     display: flex;
     gap: 1rem;
     justify-content: right;
     position: relative;
-    
-    border-bottom: 2px solid white;
-    border-bottom: 2px solid var(--accent);
-    
+    border: 2px solid var(--darkest);
+    border-left: none;
+    border-bottom: 2px solid var(--accent, #FFF); 
+
     z-index: 9999;
 }
 
@@ -43,15 +40,14 @@
 }
 
 .link.active{
-    color: white;
-    color: var(--accent);   
+    color: var(--accent, #FFF);   
 }
 
 .link{
     display: block;
     line-height: 1rem;
     font-size: 30px;
-    color: #EEE;
+    color: var(--foreground, #FFF);
     letter-spacing: -0.06rem;
     font-weight: 400;
     padding: 13px 20px 15px 20px;
