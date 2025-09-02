@@ -2,10 +2,8 @@
 //import { useEffect, useRef, useState, useReducer } from "react";
 import "./page.css";
 import Image from 'next/image'
-import { useInView } from "react-intersection-observer";
 import { motion } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
-import ThreeLogo from "@/components/threeLogo/threelogo";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
 
 
@@ -18,10 +16,10 @@ const variants = {
 
 //////////////////////////////////////////////////////////////////////////////
 const HomePage = () => {
-  const { ref, inView } = useInView({
+  /* const { ref, inView } = useInView({
     threshold: 0.6,
     delay: 1000,
-  }); 
+  }); */ 
 
   return (    
     <motion.div
@@ -81,7 +79,7 @@ const HomePage = () => {
 
       <div className="divider-2"></div>
 
-      <section className="page-double" ref={ref}>
+      <section className="page-double" >
         <ThemeBtns />
       </section>
       <div className="divider-1"></div>
