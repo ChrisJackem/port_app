@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './themeBtns.css';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image'
 import { AnimatePresence, motion } from 'motion/react';
 
 
@@ -37,13 +36,13 @@ const ThemeBtns = () => {
             id="theme-screen"
             className={`${inView ? 'viewed' : ''}`}       
         >
-            <div>
+            <div id="img-container">
                 <AnimatePresence>
                     <motion.img
                     layout
                         id="theme-img"
                         key={themeName}
-                        initial={{ x: 300, y: 0, opacity: 0 }}
+                        initial={{ x: 0, y: 0, opacity: 0 }}
                         animate={{ x: 0, y: 0, opacity: 1 }}
                         exit={{ x: -300, y: 0, opacity: 0 }}
                         /* transition={{ duration: .2, type: 'tween' }} */
@@ -58,6 +57,8 @@ const ThemeBtns = () => {
             <div id="theme-title">{themeName}</div>
         </div>
         <div id='btn-container' className="flex ">
+            <h2 style={{ textAlign: 'center', width: '100%' }}>Change Theme</h2>
+            
             <ThemeBtn 
             options={{
                 name:"Default",
@@ -118,6 +119,7 @@ const ThemeBtns = () => {
             }}
             onHover={()=> hoverHandler('Candy')}
             />
+            <p>Change the theme of the site here!</p>
         </div>
     </div>
     )
@@ -127,6 +129,7 @@ const ThemeBtns = () => {
 
 const ThemeBtn = ({ options, onHover}: ThemeBtnProps) => {    
     return (
+        <div>
         <button
             className='chip-a link theme-btn'
             onClick={() => {
@@ -138,7 +141,8 @@ const ThemeBtn = ({ options, onHover}: ThemeBtnProps) => {
                 document.documentElement.style.setProperty('--text', options.text);
             }}
             onMouseEnter={onHover}
-        >{options.name}</button>    
+        >{options.name}</button>
+        </div>   
     )
 }
 
