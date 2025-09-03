@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './themeBtns.css';
-import { useInView } from 'react-intersection-observer';
+/* import { useInView } from 'react-intersection-observer'; */
 import { AnimatePresence, motion } from 'motion/react';
 
 
@@ -20,10 +20,10 @@ type ThemeBtnProps = {
 
 const ThemeBtns = () => {
     const [themeName, setThemeName] = useState('Default')
-    const { ref, inView } = useInView({
+    /* const { ref, inView } = useInView({
         threshold: 0.6,
         delay: 1000,
-    });
+    }); */
 
     const hoverHandler = (name: string)=>{
         console.log('Hover', name)
@@ -31,15 +31,15 @@ const ThemeBtns = () => {
     }
     
     return (
-    <div id="theme-container" ref={ref} className='flex'>
+    <div id="theme-container" /* ref={ref} */ className='flex'>
          <div 
             id="theme-screen"
-            className={`${inView ? 'viewed' : ''}`}       
+            /* className={`${inView ? 'viewed' : ''}`}        */
         >
             <div id="img-container">
                 <AnimatePresence>
                     <motion.img
-                    layout
+                        layout
                         id="theme-img"
                         key={themeName}
                         initial={{ x: 0, y: 0, opacity: 0 }}
