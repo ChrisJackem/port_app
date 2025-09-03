@@ -5,14 +5,21 @@ import Image from 'next/image'
 import { motion, stagger } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
+import { Tilt_Warp } from "next/font/google";
 
+
+const tilt = Tilt_Warp({
+    subsets:['latin'],
+    style: "normal",    
+    weight: '400'
+});
 
 // Animation
 const variantsPage = {
   hidden: { opacity: 0, x: 0, y: 10 },
   enter: { opacity: 1, x: 0, y: 0 ,
     transition: {
-      delayChildren: stagger(0.25, { from: "last" })
+      delayChildren: stagger(0.25, { from: "first" })
     }
   },
   exit: { opacity: 0, x: 0, y: 10 },
@@ -67,7 +74,7 @@ const HomePage = () => {
             <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>
             <br/>
-            <button className="accent-bg" >Button</button>
+            <button className={`chip-a link ${tilt.className}`} >GitHub</button>
         </motion.div>
 
         <motion.div 
@@ -78,7 +85,7 @@ const HomePage = () => {
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
-          <button className="chip-btn-a" >Button</button>
+          <button className={`chip-a link ${tilt.className}`} >Work</button>
         </motion.div>
         
         <motion.div 
@@ -89,7 +96,7 @@ const HomePage = () => {
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
           <br/>
-          <button className="accent-bg" >Button</button>
+          <button className={`chip-a link ${tilt.className}`} >Work</button>
         </motion.div>
       </section>
 

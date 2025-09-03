@@ -6,7 +6,7 @@ const ThemeBtns = () => {
         <div id='btn-container' className="flex ">
             <ThemeBtn 
                 name="Default"
-                text='#000'
+                text='#FFF'
                 darkest='#000' 
                 background='#3d3d3d'
                 midground='#999999'

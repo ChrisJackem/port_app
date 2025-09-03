@@ -43,19 +43,22 @@
     color: var(--accent, #FFF);   
 }
 
-.link{
+.link{    
+    cursor: pointer;
     display: block;
     line-height: 1rem;
     font-size: 30px;
     color: var(--foreground, #FFF);
     letter-spacing: -0.06rem;
     font-weight: 400;
-    padding: 13px 20px 15px 20px;
+    padding: 13px 20px 15px 20px;    
+}
+button.link{
+    border: none;
 }
 
 @media screen and (max-width: 600px) {
-    #nav-bar, #nav-bar ul{
-        
+    #nav-bar, #nav-bar ul{        
         flex-direction: column;
         width: 100%;
     }

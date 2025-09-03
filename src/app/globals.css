@@ -4,13 +4,13 @@
   --midground: #999999;
   --foreground: #FFF;
   --accent: #dbf227;
-  --text: #000;
+  --text: #FFF;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #3d3d3d;
-    --foreground: #ededed;
+    --foreground: #FFF;
   }
 }
 
@@ -53,7 +53,19 @@ a {
 .anim-bg{
   transition: background-color 500ms;
 }
+.link.active{
+    color: var(--accent, #FFF);   
+}
 
+.link{
+    display: block;
+    line-height: 1rem;
+    font-size: 30px;
+    color: var(--foreground, #FFF);
+    letter-spacing: -0.06rem;
+    font-weight: 400;
+    padding: 13px 20px 15px 20px;
+}
 /* button{
   padding: 10px 20px;
   border: none;
