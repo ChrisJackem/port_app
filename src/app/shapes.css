@@ -82,20 +82,19 @@ transition: background-color 500ms ease-out;
 /* Bottom Blade */
 .chip-a::after{
     background: var(--darkest);
-    clip-path: polygon( 0 85%, 10% 85%, 20% 95%, 100% 95%, 100% 100%, 0 100%); 
+    clip-path: polygon( 0 90%, 10% 90%, 20% 95%, 100% 95%, 100% 100%, 0 100%); 
 }
 /* Body of blade */
 .chip-a::before{
     background-color: var(--background, #000); 
-    clip-path: polygon( 0 5%, 85% 5%, 95% 10%, 100% 10%, 100% 100%, 0 100% );
+    clip-path: polygon( 0 10%, 85% 10%, 95% 30%, 100% 30%, 100% 100%, 0 100% );
 }
 
 
 
 /************ Containers *************************/
 .shield{    
-    aspect-ratio: 1/1;
-    /* color: var(--text); */
+    aspect-ratio: 1/1;   
     --chip-size: 25px;
     position: relative;    
     z-index: 1;
@@ -106,13 +105,10 @@ transition: background-color 500ms ease-out;
     content: '';
     position: absolute; top: 0; left: 0;
     width: 100%; height: 100%;
-
 }
 .shield::before{
     content: '';
-    /* transform: scale(0.97); */
     z-index: -1;    
-    opacity: .5;
     background:  var(--background);     
     clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 15%, 0 15%);    
 }

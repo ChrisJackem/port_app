@@ -91,7 +91,7 @@ const ThemeBtns = () => {
                 background:'#ff6e40',
                 midground:'#ffb86b',
                 foreground:'#fff',
-                accent:'#ff206e'
+                accent:'#f7f71fff'
             }}
             onHover={()=> hoverHandler('Sunset')}
             />
