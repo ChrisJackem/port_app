@@ -102,7 +102,7 @@ transition: background-color 500ms ease-out;
 }
 .shield::before{
     content: '';
-    transform: scale(0.97);
+    /* transform: scale(0.97); */
     z-index: -1;    
     opacity: .5;
     background:  var(--background);     

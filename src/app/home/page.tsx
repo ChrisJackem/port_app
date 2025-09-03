@@ -105,10 +105,9 @@ const HomePage = () => {
       <section className="page-double" >
         <ThemeBtns />
       </section>
+      
       <div className="divider-1"></div>
-      <br/>
-      <br/>
-      <br/>
+      
       <br/>
       {/* <div id='test' className="shield">
         <h1>Header</h1>
