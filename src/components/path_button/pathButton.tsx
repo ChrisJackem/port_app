@@ -41,6 +41,7 @@ const PathButton = () => {
             onClick={handleClick}
             className={`nav-url${scrolled ? ' scrolled' : ''}`}
             layout
+            transition={{ duration: .1}}
         >{pathName}</motion.div>
     )
 }
