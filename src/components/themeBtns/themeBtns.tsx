@@ -49,7 +49,7 @@ const ThemeBtns = () => {
                         alt='The active theme'
                         width={300} 
                         height={300} 
-                        src={`/img/themes/${themeName}.jpg`}
+                        src={`/theme_${themeName}.jpg`}
                     />
                 </AnimatePresence>
             </div>
