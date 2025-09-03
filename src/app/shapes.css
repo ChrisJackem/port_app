@@ -70,7 +70,7 @@ transition: background-color 500ms ease-out;
     content: '';
     width: 100%; height: 100%;
     top: 0; left: 0;
-    border-top: 2px solid black;
+    /* border-top: 2px solid black; */
     background: #606060;
     background: var(--background);
     clip-path: polygon(
@@ -87,7 +87,7 @@ transition: background-color 500ms ease-out;
 /************ Containers *************************/
 .shield{    
     aspect-ratio: 1/1;
-    color: var(--text);
+    /* color: var(--text); */
     --chip-size: 25px;
     position: relative;    
     z-index: 1;
@@ -105,20 +105,15 @@ transition: background-color 500ms ease-out;
     transform: scale(0.97);
     z-index: -1;    
     opacity: .5;
-    background:  var(--background); 
-    /* clip-path: polygon(0 90%, 100% 90%, 90% 100%, 0 100%);  */
-    clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 15%, 0 15%);
-    /* border-top: 3px solid var(--darkest); */
-    
+    background:  var(--background);     
+    clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 15%, 0 15%);    
 }
 .shield::after{
     content: '';
     z-index: -2;
     background-color: var(--midground);
-    /* clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%); */
     clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 0 100%);
-    border-bottom: 3px solid var(--background);
-    
+    border-bottom: 3px solid var(--background);    
 }
 
 .chipped-button{
