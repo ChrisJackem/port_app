@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import './themeBtns.css';
-/* import { useInView } from 'react-intersection-observer'; */
+import { useInView } from 'react-intersection-observer';
 import { AnimatePresence, motion } from 'motion/react';
 
 
@@ -15,11 +15,9 @@ type ThemeType = {
     midground: string;
     accent: string;
 }
-
 type ThemesType = {
     [key: string]: ThemeType;
 };
-
 const THEMES: ThemesType = {
     'Default':{
         name:"Default",
@@ -67,7 +65,6 @@ const THEMES: ThemesType = {
         accent:'#d8ffb3ff'
     },
 }
-
 function SetTheme(theme: ThemeType){
     document.documentElement.style.setProperty('--darkest', theme.darkest);
     document.documentElement.style.setProperty('--background', theme.background);
@@ -82,6 +79,7 @@ function SetTheme(theme: ThemeType){
 const ThemeBtns = () => {
     const [themeName, setThemeName] = useState('Default');
 
+    // Load theme from localStorage
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedTheme = localStorage.getItem('themeName');
@@ -93,46 +91,42 @@ const ThemeBtns = () => {
             }
         }
     }, []);
-
-    useEffect(() => {
-        
-    }, [themeName]);
-
-    /* const { ref, inView } = useInView({
-        threshold: 0.6,
-        delay: 1000,
-    }); */
+    
+    const { ref, inView } = useInView({
+        threshold: 0.6
+    });
 
     const hoverHandler = (name: string)=>{
         setThemeName(name);
     }
     
     return (
-    <div id="theme-container" /* ref={ref} */>
-         <div id='theme-inner-container' className='flex'>
-            <div  id="theme-screen" /*className={`${inView ? 'viewed' : ''}`}*/ >
-                <div id="img-container">
-                    <AnimatePresence>
-                        <motion.img
-                            layout
-                            id="theme-img"
-                            key={themeName}
-                            initial={{ x: 0, y: 0, opacity: 0 }}
-                            animate={{ x: 0, y: 0, opacity: 1 }}
-                            exit={{ x: -300, y: 0, opacity: 0 }}
-                            /* transition={{ duration: .2, type: 'tween' }} */
-                            alt='The active theme'
-                            width={300} 
-                            height={300} 
-                            src={`static/images/theme_${themeName}.jpg`}
-                        />
-                    </AnimatePresence>
-                </div>            
-                <div id="theme-title">{themeName}</div>
-            </div>
+    <div id='theme-main-container'>
+        
+        <div id="theme-container" ref={ref}>
+            <div id='button-text' >
+                <h2>Change Theme</h2>
+                <p><strong>Change the theme of the site here!</strong> Your choice will be persistant. Choose wisely.</p>
+            </div> 
+            <AnimatePresence>
+                <motion.img
+                    id="theme-img"
+                    className='absolute-fill'                    
+                    key={themeName}
+                    initial={{ x: 0, y: 0, opacity: 0 }}
+                    animate={{ x: 0, y: 0, opacity: 1 }}
+                    exit={{ x: -400, y: 0, opacity: 0 }}
+                    /* transition={{ duration: .2, type: 'tween' }} */
+                    alt='The active theme'
+                    width={400} 
+                    height={355}                            
+                    src={`static/images/theme_${themeName}.jpg`}
+                    layout
+                />
+            </AnimatePresence>
+        </div>
             
-            <div id='btn-container' className="flex ">
-                <h1 id="change-theme-text">Change Theme</h1>            
+            <div id='btn-container' className="flex">                  
                 <ThemeBtn 
                 options={THEMES['Default']}
                 onHover={()=> hoverHandler('Default')}
@@ -153,10 +147,7 @@ const ThemeBtns = () => {
                 options={THEMES['Candy']}
                 onHover={()=> hoverHandler('Candy')}
                 />
-                <h3></h3>
-                <p><strong>Change the theme of the site here!</strong> Your choice will be persistant. Choose wisely!</p>
             </div>
-         </div>
     </div>
     )
 }
