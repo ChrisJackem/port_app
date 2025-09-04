@@ -50,7 +50,9 @@ transition: background-color 500ms ease-out;
 
 /************** Chip Button **********************************/
 .chip-a{
-    color: black;
+    font-family: "Tilt Warp", sans-serif, inherit !important;
+    font-style: normal;
+    color: white !important;
     --chip-size: 15px;    
     background-color: var(--darkest);
     position: relative;
@@ -98,8 +100,8 @@ transition: background-color 500ms ease-out;
     --chip-size: 25px;
     position: relative;    
     z-index: 1;
-    background-color: var(--foreground, #fff);
-    
+    color: var(--text, inherit);
+    background-color: var(--foreground, #fff);    
 }
 .shield::before, .shield::after{
     content: '';

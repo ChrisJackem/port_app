@@ -48,7 +48,7 @@ const HomePage = () => {
         className="home-container page-container"
     >
       <section className="page-flex">
-        <div>
+        <div id="typewriter-demo">
           <h1 className='heavy'>I make</h1>
           <Typewriter />
           <h3>If I had to explain myself, it gets complicated.</h3>
@@ -62,10 +62,8 @@ const HomePage = () => {
         />
       </section>
 
-      {/* <div className="divider-1"></div> */}
-
-      <section className="page-flex" >
-
+      <section className="page-flex">
+        
         <motion.div
           key='programming'
           className="shield bubble"
@@ -73,8 +71,8 @@ const HomePage = () => {
         >
             <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>
-            <br/>
-            <button className={`chip-a link ${tilt.className}`} >GitHub</button>
+            {/* <br/>
+            <button className={`chip-a link ${tilt.className}`} >GitHub</button> */}
         </motion.div>
 
         <motion.div 
@@ -84,8 +82,8 @@ const HomePage = () => {
         >
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
-          <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button>
+          {/* <br/>
+          <button className={`chip-a link ${tilt.className}`} >Work</button> */}
         </motion.div>
         
         <motion.div 
@@ -95,18 +93,18 @@ const HomePage = () => {
         >
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
-          <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button>
+          {/* <br/>
+          <button className={`chip-a link ${tilt.className}`} >Work</button> */}
         </motion.div>
       </section>
 
       <div className="divider-2"></div>
 
-      <section className="page-double" >
+      <section className="page-double" /* style={{backgroundColor: 'var(--midground)'}} */>
         <ThemeBtns />
       </section>
       
-      <div className="divider-1"></div>
+      {/* <div className="divider-1"></div> */}
       
       <br/>
       {/* <div id='test' className="shield">
