@@ -48,10 +48,14 @@ transition: background-color 500ms ease-out;
     transform: scaleX(-1);
 }
 
+
+.chip-tl-box{
+    clip-path: polygon(0 30px, 30px 0, 100% 0, 100% 100%, 0 100%);
+}
+
 /************** Chip Button **********************************/
-.chip-a{
-    font-family: "Tilt Warp", sans-serif, inherit !important;
-    font-style: normal;
+.chip-a{    
+    /* font-style: normal; */
     color: white !important;
     --chip-size: 15px;    
     background-color: var(--darkest);

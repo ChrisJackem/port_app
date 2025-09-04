@@ -133,7 +133,7 @@ const ThemeBtns = () => {
             <span id='active-theme-text'>Active: {activeTheme}</span>
         </div>
             
-            <div id='btn-container' className="flex">                  
+            <div id='btn-container' className="flex chip-tl-box">                  
                 <ThemeBtn 
                 options={THEMES['Default']}
                 onHover={()=> hoverHandler('Default')}

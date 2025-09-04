@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Armata } from "next/font/google";
 import "./globals.css";
 import "./shapes.css";
 import "./layout.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 
 
-const fnt = Poppins({
+const fnt = Armata({
   subsets: ["latin"],
   weight: '400'
 });
