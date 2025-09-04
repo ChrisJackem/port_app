@@ -65,27 +65,31 @@ const THEMES: ThemesType = {
         accent:'#d8ffb3ff'
     },
 }
-function SetTheme(theme: ThemeType){
-    document.documentElement.style.setProperty('--darkest', theme.darkest);
-    document.documentElement.style.setProperty('--background', theme.background);
-    document.documentElement.style.setProperty('--midground', theme.midground);
-    document.documentElement.style.setProperty('--foreground', theme.foreground);
-    document.documentElement.style.setProperty('--accent', theme.accent);
-    document.documentElement.style.setProperty('--text', theme.text);
-    localStorage.setItem('themeName', theme['name']);
-}
-
+const ACTIVE_THEME = "activeTheme";
 
 const ThemeBtns = () => {
-    const [themeName, setThemeName] = useState('Default');
+    //const [themeName, setThemeName] = useState('Default');
+    const [activeTheme, setActiveTheme] = useState('Default');
+
+    function SetTheme(theme: ThemeType){
+        document.documentElement.style.setProperty('--darkest', theme.darkest);
+        document.documentElement.style.setProperty('--background', theme.background);
+        document.documentElement.style.setProperty('--midground', theme.midground);
+        document.documentElement.style.setProperty('--foreground', theme.foreground);
+        document.documentElement.style.setProperty('--accent', theme.accent);
+        document.documentElement.style.setProperty('--text', theme.text);
+        localStorage.setItem(ACTIVE_THEME, theme.name);
+        setActiveTheme(theme.name);
+    }
 
     // Load theme from localStorage
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const storedTheme = localStorage.getItem('themeName');
+            const storedTheme = localStorage.getItem(ACTIVE_THEME);
             if (storedTheme) {
                 if (storedTheme && THEMES.hasOwnProperty(storedTheme)){
-                    setThemeName(storedTheme);
+                    setActiveTheme(storedTheme)
+                    //setThemeName(storedTheme);
                     SetTheme(THEMES[storedTheme])
                 }                  
             }
@@ -97,22 +101,19 @@ const ThemeBtns = () => {
     });
 
     const hoverHandler = (name: string)=>{
-        setThemeName(name);
+        //setThemeName(name);
     }
     
     return (
     <div id='theme-main-container'>
         
         <div id="theme-container" ref={ref}>
-            <div id='button-text' >
-                <h2>Change Theme</h2>
-                <p><strong>Change the theme of the site here!</strong> Your choice will be persistant. Choose wisely.</p>
-            </div> 
+            
             <AnimatePresence>
                 <motion.img
                     id="theme-img"
                     className='absolute-fill'                    
-                    key={themeName}
+                    key={activeTheme}
                     initial={{ x: 0, y: 0, opacity: 0 }}
                     animate={{ x: 0, y: 0, opacity: 1 }}
                     exit={{ x: -400, y: 0, opacity: 0 }}
@@ -120,32 +121,43 @@ const ThemeBtns = () => {
                     alt='The active theme'
                     width={400} 
                     height={355}                            
-                    src={`static/images/theme_${themeName}.jpg`}
+                    src={`static/images/theme_${activeTheme}.jpg`}
                     layout
                 />
             </AnimatePresence>
+
+            <div id='button-text' >
+                <h2>Change Theme</h2>
+                <p>Change the theme of the entire website with the buttons below</p>
+            </div>
+            <span id='active-theme-text'>Active: {activeTheme}</span>
         </div>
             
             <div id='btn-container' className="flex">                  
                 <ThemeBtn 
                 options={THEMES['Default']}
                 onHover={()=> hoverHandler('Default')}
+                onClick={()=>{ SetTheme(THEMES['Default']) }}
                 />
                 <ThemeBtn
                 options={THEMES['Ocean']}
                 onHover={()=> hoverHandler('Ocean')}
+                onClick={()=>{ SetTheme(THEMES['Ocean']) }}
                 />
                 <ThemeBtn
                 options={THEMES['Sunset']}
                 onHover={()=> hoverHandler('Sunset')}
+                onClick={()=>{ SetTheme(THEMES['Sunset']) }}
                 />
                 <ThemeBtn 
                 options={THEMES['Forest']}
                 onHover={()=> hoverHandler('Forest')}
+                onClick={()=>{ SetTheme(THEMES['Forest']) }}
                 />
                 <ThemeBtn 
                 options={THEMES['Candy']}
                 onHover={()=> hoverHandler('Candy')}
+                onClick={()=>{ SetTheme(THEMES['Candy']) }}
                 />
             </div>
     </div>
@@ -156,12 +168,13 @@ const ThemeBtns = () => {
 type ThemeBtnProps = {
     options: ThemeType;
     onHover?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
-const ThemeBtn = ({ options, onHover}: ThemeBtnProps) => {
+const ThemeBtn = ({ options, onHover, onClick }: ThemeBtnProps) => {
     return (
         <button
             className='chip-a link theme-btn'
-            onClick={() => { SetTheme(options) }}
+            onClick={onClick}
             onMouseEnter={onHover}
         >{options.name}</button>
     )
