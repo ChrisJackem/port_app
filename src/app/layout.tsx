@@ -5,7 +5,7 @@ import "./shapes.css";
 import "./layout.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
-
+import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
 
 const fnt = Armata({
   subsets: ["latin"],
@@ -22,13 +22,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body className={`${fnt.className}`}>
         <main id="main-container" className="anim-bg">
           <NavBar/>          
           <div className="child-container">
-            {children}           
+            <ThemeWrapper>
+              {children}
+            </ThemeWrapper>
             <Footer />
           </div>
           {/* <footer id="footer" className="anim-bg">Footer</footer> */}
