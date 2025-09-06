@@ -135,26 +135,31 @@ const ThemeBtns = () => {
             
             <div id='btn-container' className="flex chip-tl-box">                  
                 <ThemeBtn 
+                className={activeTheme === 'Default' ? 'active' :  ''}
                 options={THEMES['Default']}
                 onHover={()=> hoverHandler('Default')}
-                onClick={()=>{ SetTheme(THEMES['Default']) }}
+                onClick={()=> SetTheme(THEMES['Default'])}
                 />
                 <ThemeBtn
+                className={activeTheme === 'Ocean' ? 'active' :  ''}
                 options={THEMES['Ocean']}
                 onHover={()=> hoverHandler('Ocean')}
                 onClick={()=>{ SetTheme(THEMES['Ocean']) }}
                 />
                 <ThemeBtn
+                className={activeTheme === 'Sunset' ? 'active' :  ''}
                 options={THEMES['Sunset']}
                 onHover={()=> hoverHandler('Sunset')}
                 onClick={()=>{ SetTheme(THEMES['Sunset']) }}
                 />
                 <ThemeBtn 
+                className={activeTheme === 'Forest' ? 'active' :  ''}
                 options={THEMES['Forest']}
                 onHover={()=> hoverHandler('Forest')}
                 onClick={()=>{ SetTheme(THEMES['Forest']) }}
                 />
                 <ThemeBtn 
+                className={activeTheme === 'Candy' ? 'active' :  ''}
                 options={THEMES['Candy']}
                 onHover={()=> hoverHandler('Candy')}
                 onClick={()=>{ SetTheme(THEMES['Candy']) }}
@@ -166,14 +171,15 @@ const ThemeBtns = () => {
 
 
 type ThemeBtnProps = {
+    className: string;
     options: ThemeType;
     onHover?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
-const ThemeBtn = ({ options, onHover, onClick }: ThemeBtnProps) => {
+const ThemeBtn = ({ className, options, onHover, onClick }: ThemeBtnProps) => {
     return (
         <button
-            className='chip-a link theme-btn'
+            className={`chip-a link theme-btn ${className}`}
             onClick={onClick}
             onMouseEnter={onHover}
         >{options.name}</button>

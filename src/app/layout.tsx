@@ -4,6 +4,7 @@ import "./globals.css";
 import "./shapes.css";
 import "./layout.css";
 import NavBar from "@/components/nav_bar/nav_bar";
+import Footer from "@/components/footer/footer";
 
 
 const fnt = Armata({
@@ -28,8 +29,9 @@ export default function RootLayout({
           <NavBar/>          
           <div className="child-container">
             {children}           
+            <Footer />
           </div>
-          <footer id="footer" className="anim-bg">Footer</footer>
+          {/* <footer id="footer" className="anim-bg">Footer</footer> */}
         </main>
       </body>
     </html>

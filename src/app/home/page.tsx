@@ -39,6 +39,7 @@ const HomePage = () => {
 
   return (    
     <motion.div
+        id='home-container'
         key="home"
         variants={variantsPage}
         initial="hidden"
@@ -62,39 +63,40 @@ const HomePage = () => {
         />
       </section>
 
-      <section className="page-flex">
-        
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum sapiente doloremque, sunt quasi dolores alias, optio veniam, beatae modi rerum eius amet inventore ea mollitia corrupti aut nesciunt quam neque.</p>
+
+      <section id='shields' className="page-flex">
         <motion.div
           key='programming'
-          className="shield bubble"
-          variants={variantsDivs} 
+          className="shield bubble flex"
+          variants={variantsDivs}
         >
             <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>
-            {/* <br/>
-            <button className={`chip-a link ${tilt.className}`} >GitHub</button> */}
+            <br/>
+            <button className={`chip-a link ${tilt.className}`} >GitHub</button>
         </motion.div>
 
         <motion.div 
-          className="shield bubble"
+          className="shield bubble flex"
           key='webDesign'          
           variants={variantsDivs} 
         >
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
-          {/* <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button> */}
+          <br/>
+          <button className={`chip-a link ${tilt.className}`} >Work</button>
         </motion.div>
         
         <motion.div 
-          className="shield bubble" 
+          className="shield bubble flex" 
           key='games'
           variants={variantsDivs} 
         >
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
-          {/* <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button> */}
+          <br/>
+          <button className={`chip-a link ${tilt.className}`} >Work</button>
         </motion.div>
       </section>
 
@@ -104,16 +106,8 @@ const HomePage = () => {
         <ThemeBtns />
       </section>
       
-      {/* <div className="divider-1"></div> */}
-      
-      <br/>
-      {/* <div id='test' className="shield">
-        <h1>Header</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
-        <span>SPAN</span>
-      </div> */}
+     
     </motion.div>
-    
   );
 }
 
