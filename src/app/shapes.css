@@ -114,16 +114,15 @@ transition: background-color 500ms ease-out;
     background: var(--background);
 }
 
-
-
-
-
-
 .chipped-button{
     font-weight: bold;
     font-size: 18px;
     padding: 3px 8px;
     clip-path: polygon(10% 0, 100% 0, 100% 90%, calc(100% - 10%) 100%, 0 100%, 0 10%);
+}
+
+.chip-tl-md-npad{
+    clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
 }
 
 .chip-tl-md{

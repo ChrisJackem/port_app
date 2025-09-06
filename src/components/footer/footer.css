@@ -1,7 +1,7 @@
 
 #footer-container{    
     position: relative;
-    padding: 50px 0 0 15px; 
+    padding: 60px 0 0 20px; 
     background-color: var(--midground, #CCC);
     clip-path: polygon(0 12px, 30px 12px, 40px 0, calc(100% - 20px) 0, 100% 12px, 100% 100%, 0 100%);
 
@@ -31,25 +31,17 @@
 
 #footer-header{
     grid-area: links;
-    background-color: var(--background, #CCC);
-    padding: 1.5rem;
-    /* border: 5px solid var(--darkest, #000); */
-    color: var(--foreground);
+    padding: 0.5rem 0;
 }
 #footer-aside, #footer-footer{
-    color: #000;
-    background-color: rgba(255,255,255, 0.3);
-    
     padding: 1rem;
 }
 #footer-aside{
-    /* border-top: 3px solid var(--background, #CCC); */
+    color: #000;
     grid-area: aside;
-    
-    /* text-align: right; */
+    background-color: rgba(255,255,255, 0.4);    
 }
-
 #footer-footer{
-    /* border-left: 3px solid var(--background, #CCC); */
+    background-color: rgba(255,255,255, 0.3); 
     grid-area: foot;
 }
