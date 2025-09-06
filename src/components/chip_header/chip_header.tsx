@@ -6,11 +6,13 @@ type ChipHeaderProps = {
     colBg?: string;
     colTx?: string;
     children?: React.ReactNode;
+    childBg?: string;
 };
 
-const ChipHeader = ({ title, colBg, colTx, children }: ChipHeaderProps) => {
+const ChipHeader = ({ title, colBg, colTx, children, childBg }: ChipHeaderProps) => {
     const background_color = colBg ? colBg : `var(--background, #999)`;
     const text_color = colTx ? colTx : `var(--foreground, #FFF)`;
+    const child_bg_color = childBg ? childBg : `var(--foreground, #FFF)`;
     return (
         <section className=''>
         <div 
@@ -22,7 +24,10 @@ const ChipHeader = ({ title, colBg, colTx, children }: ChipHeaderProps) => {
                 style={{ backgroundColor: background_color, color: `${text_color}`}}
             >{title}</h3>
         </div>
-        { children && <div className='chip-header-child-container padded'>{ children }</div>}
+        { children && <div 
+        className='chip-header-child-container padded'
+        style={{ backgroundColor: child_bg_color }}
+        >{ children }</div>}
         </section>
     );
 }

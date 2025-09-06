@@ -33,6 +33,12 @@
     grid-area: links;
     padding: 0.5rem 0;
 }
+.footer-links{
+    margin-top: 3px;
+    font-weight: 900;
+    font-size: 24px;
+}
+
 #footer-aside, #footer-footer{
     padding: 1rem;
 }
@@ -42,6 +48,6 @@
     background-color: rgba(255,255,255, 0.4);    
 }
 #footer-footer{
-    background-color: rgba(255,255,255, 0.3); 
+    background-color: rgba(255,255,255, 0.4); 
     grid-area: foot;
 }
