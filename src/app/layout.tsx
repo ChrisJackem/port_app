@@ -33,8 +33,7 @@ export default function RootLayout({
               {children}
             </ThemeWrapper>
             <Footer />
-          </div>
-          {/* <footer id="footer" className="anim-bg">Footer</footer> */}
+          </div>          
         </main>
       </body>
     </html>

@@ -46,11 +46,10 @@
 .link{    
     cursor: pointer;
     display: block;
-    line-height: 1rem;
-    font-size: 30px;
+    font-size: 28px;
     color: var(--foreground, #FFF);
-    letter-spacing: -0.06rem;
-    font-weight: 400;
+    letter-spacing: -0.01rem;
+    /* font-weight: bolder; */
     padding: 13px 20px 15px 20px;    
 }
 button.link{

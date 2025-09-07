@@ -47,12 +47,6 @@ const ThemeBtns = () => {
 
 const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
-
-    /* function SetTheme(_theme: ThemeType){        
-        if (setTheme && _theme.name) {
-            setTheme(_theme.name);
-        }
-    } */
     return (
         <button
             className={`chip-a link theme-btn ${theme === Theme.name ? 'active' : ''}`}

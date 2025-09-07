@@ -3,7 +3,7 @@
     position: relative;
     padding: 60px 0 0 20px; 
     background-color: var(--midground, #CCC);
-    clip-path: polygon(0 12px, 30px 12px, 40px 0, calc(100% - 20px) 0, 100% 12px, 100% 100%, 0 100%);
+    clip-path: polygon(0 12px, 30px 12px, 40px 0, calc(100% - 20px) 0, 100% 0, 100% 100%, 0 100%);
 
     display: grid;
     grid-template-rows: 1fr 1fr;

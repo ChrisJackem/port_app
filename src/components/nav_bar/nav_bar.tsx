@@ -2,11 +2,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import { /* Poppins, */ Tilt_Warp } from "next/font/google";
+//import { /* Poppins, */ Tilt_Warp } from "next/font/google";
+import { Jockey_One } from 'next/font/google';
 import './nav_bar.css'
 import PathButton from '../path_button/pathButton';
 
-const blk = Tilt_Warp({
+const blk = Jockey_One({
     subsets:['latin'],
     style: "normal",    
     weight: '400'
@@ -19,8 +20,9 @@ const NavBar = () => {
       <nav id="nav-bar" className='anim-bg chip-tl-lg'>
         <p>LOGO</p>
         <ul className='flex' style={{ gap: '0.5rem' }}>
-            <NavLink name="Home" href="/home" pathname={pathName} />
-            <NavLink name="About" href="/about" pathname={pathName}/>
+            <NavLink name="Home" href="/home"  />
+            <NavLink name="About" href="/about"/>
+            <NavLink name="Blerp" href="/about"/>
         </ul>        
       </nav>
       {/* <div className='blade-1 nav-url'>{pathName}</div> */}
@@ -31,15 +33,14 @@ const NavBar = () => {
 
 export default NavBar
 
-export function NavLink({ name, href, pathname }: {name: string, href: string, pathname: string}){  
-  //const pathName = usePathname();
-  return <li>
-    {/* <div className='chip-a'> */}
+export function NavLink({ name, href }: {name: string, href: string}){
+  const pathName = usePathname();
+  const isActive:string = pathName === href ? 'active' : ''
+  return (<li>
     <Link 
       href={href}
-      className={`link chip-a ${pathname === href ? 'active' : ''} ${blk.className}`}
+      className={`link chip-a ${isActive} ${blk.className}`}
     >{name}
     </Link>
-    {/* </div> */}
-  </li>
+  </li>);
 }

@@ -12,7 +12,7 @@
 .chip-tl-lg,
 .lip-tr-lg,
 .screened {
-transition: background-color 500ms ease-out;
+transition: all 500ms ease-out;
 }
 .divider-1{    
     height: 30px;
@@ -55,45 +55,49 @@ transition: background-color 500ms ease-out;
 
 /************** Chip Button **********************************/
 .chip-a{    
-    /* font-style: normal; */
-    color: white !important;
     --chip-size: 15px;    
-    background-color: var(--darkest);
+    background-color: var(--background);
     position: relative;
     clip-path: polygon(
-        var(--chip-size, 25px) 0,
+        15px 0,
         100% 0,
-        100% calc(100% - var(--chip-size, 25px)),
-        calc(100% - var(--chip-size,25px)) 100%,
+        100% calc(100% - 15px),
+        calc(100% - 15px) 100%,
         0 100%,
-        0 var(--chip-size,25px)
+        0 15px
     );
     padding: 20px 30px !important;
 }
 .chip-a.active{
-    background-color: var(--accent, #FFF);
+    color: var(--accent, lime);
+    background-color: var(--darkest, #FFF);
 }
 .chip-a::after, .chip-a::before{
     z-index: -1;
     content: '';
-    position: absolute;
-    width: 100%; height: 100%;
-    top: 0; left: 0;
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
     transition: all 300ms ease-out;
 }
 
-.chip-a:hover::after{
-    background-color: var(--accent);
+
+/* Top blade */
+.chip-a.active::before{ background-color: var(--accent, #FFF); }
+.chip-a::before{
+    background-color: var(--darkest, #000);
+    clip-path: polygon( 0 0, 100% 0, 100% 30%, 95% 30%, 85% 12%, 0 12%);
 }
+.chip-a:hover::before{
+    /* clip-path: polygon( 100% 0, 100% 5%, 20% 15%, 15% 20%, 0 20%, 0 0); */
+    clip-path: polygon( 0 0, 100% 0, 100% 12%, 35% 12%, 30% 8%, 0 8%);
+}
+
 /* Bottom Blade */
 .chip-a::after{
     background: var(--darkest);
     clip-path: polygon( 0 90%, 10% 90%, 20% 95%, 100% 95%, 100% 100%, 0 100%); 
 }
-/* Body of blade */
-.chip-a::before{
-    background-color: var(--background, #000); 
-    clip-path: polygon( 0 10%, 85% 10%, 95% 30%, 100% 30%, 100% 100%, 0 100% );
+.chip-a:hover::after{
+    background-color: var(--accent);
 }
 
 
