@@ -6,14 +6,14 @@ export type Slide = {
 
 const config: { [key: string]: Slide } = {
     test: {
-        dir: '/static/images/work/test/',
+        dir: 'static/images/work/test/',
         images: [
             'test1.png',
             
         ]
     },
     test2: {
-        dir: '/static/images/work/test/',
+        dir: 'static/images/work/test/',
         images: [
             'test1.png',
             'test2.png',
