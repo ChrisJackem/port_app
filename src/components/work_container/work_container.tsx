@@ -34,15 +34,15 @@ const WorkContainer = ({ title, conf, children }: {
 
   useEffect(()=>{
     console.log('testing', isInView);
-    /* if (!images && isInView){
+    if (!images && isInView){
       const blah = conf.images.map( (name)=> conf.dir + name );
       console.log(JSON.stringify(blah))
       setImages( blah )
 
     }
 
-    return  */
-    if (isInView && conf.images.length > 0 && !images) {
+    return 
+    /* if (isInView && conf.images.length > 0 && !images) {
       console.log('fetchin')
       Promise.all(
       conf.images.map((img) =>
@@ -61,7 +61,7 @@ const WorkContainer = ({ title, conf, children }: {
       console.error(`Fetch Failed ${E}`);
       //images_loaded.current = null;
       });
-    }
+    } */
   }, [isInView]);
 
   return (
