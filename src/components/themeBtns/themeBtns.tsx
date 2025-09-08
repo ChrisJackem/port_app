@@ -19,8 +19,8 @@ const ThemeBtns = () => {
                     initial={{ x: 0, y: 0, opacity: 0 }}
                     animate={{ x: 0, y: 0, opacity: 1 }}
                     exit={{ x: -400, y: 0, opacity: 0 }}
-                    /* transition={{ duration: .2, type: 'tween' }} */
-                    alt='The active theme'
+                    transition={{ duration: .4, type: 'tween' }}
+                    alt={`Active theme image: ${theme}`}
                     width={400} 
                     height={355}                            
                     src={`static/images/theme_${theme}.jpg`}
@@ -34,7 +34,7 @@ const ThemeBtns = () => {
             </div>
             <span id='active-theme-text'>Active: {theme}</span>
         </div>            
-            <div id='btn-container' className="flex chip-tl-box">                  
+            <div id='btn-container' className={`flex chip-tl-box `}>                  
                 <ThemeBtn Theme={THEMES.Default} />               
                 <ThemeBtn Theme={THEMES.Forest} />               
                 <ThemeBtn Theme={THEMES.Sunset} />
@@ -50,7 +50,7 @@ const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     return (
         <button
             className={`chip-a link theme-btn ${theme === Theme.name ? 'active' : ''}`}
-            onClick={()=> { if (SetTheme) SetTheme(Theme); }}            
+            onClick={()=>SetTheme(Theme)}           
         >{Theme.name}</button>
     )
 }

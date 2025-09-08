@@ -28,10 +28,7 @@ const PathButton = () => {
     }, []);
 
     function handleClick(){
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         setScrolled(false);
     }
 

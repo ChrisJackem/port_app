@@ -42,7 +42,7 @@ body {
   background: #3d3d3d; background: var(--background);  
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -91,9 +91,11 @@ a {
   line-height: 3rem;
 }
 
+/* Pages */
 .page-container{
- 
+  padding: 2rem 0;
 }
+
 
 .page-flex{
   max-width: 1000px;

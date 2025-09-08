@@ -1,19 +1,11 @@
 'use client'
-//import { useEffect, useRef, useState, useReducer } from "react";
 import "./page.css";
 import Image from 'next/image'
 import { motion, stagger } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
-import { Tilt_Warp } from "next/font/google";
 
-
-const tilt = Tilt_Warp({
-    subsets:['latin'],
-    style: "normal",    
-    weight: '400'
-});
-
+/*********************************************************************************** Home Page  */
 // Animation
 const variantsPage = {
   hidden: { opacity: 0, x: 0, y: 10 },
@@ -30,13 +22,7 @@ const variantsDivs = {
   exit: { opacity: 0, x: 0, y: 10 },  
 }
 
-//////////////////////////////////////////////////////////////////////////////
 const HomePage = () => {
-  /* const { ref, inView } = useInView({
-    threshold: 0.6,
-    delay: 1000,
-  }); */ 
-
   return (    
     <motion.div
         id='home-container'
@@ -74,7 +60,7 @@ const HomePage = () => {
             <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>
             <br/>
-            <button className={`chip-a link ${tilt.className}`} >GitHub</button>
+            <button className={`chip-a link `} >GitHub</button>
         </motion.div>
 
         <motion.div 
@@ -85,7 +71,7 @@ const HomePage = () => {
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button>
+          <button className={`chip-a link `} >Work</button>
         </motion.div>
         
         <motion.div 
@@ -96,7 +82,7 @@ const HomePage = () => {
           <h1>Games</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
           <br/>
-          <button className={`chip-a link ${tilt.className}`} >Work</button>
+          <button className={`chip-a link `} >Work</button>
         </motion.div>
       </section>
 

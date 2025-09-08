@@ -9,6 +9,7 @@
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'links aside' 'foot aside';
+    border-right: 3px solid var(--darkest, #000);
 }
 
 #footer-container:after, #footer-container:before{
@@ -18,8 +19,8 @@
 }
 #footer-container:after{    
     height: 16px;
-    background-color: var(--background);
-    border-bottom: 1px solid var(--accent, #FFF);
+    background-color: var(--midground);
+    border-bottom: 2px solid var(--foreground, #FFF);
 }
 #footer-container:before{
     height: 60px;

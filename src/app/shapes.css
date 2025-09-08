@@ -54,8 +54,8 @@ transition: all 500ms ease-out;
 }
 
 /************** Chip Button **********************************/
-.chip-a{    
-    --chip-size: 15px;    
+.chip-a{   
+    font-family: var(--font-header, inherit);
     background-color: var(--background);
     position: relative;
     clip-path: polygon(
@@ -88,7 +88,7 @@ transition: all 500ms ease-out;
 }
 .chip-a:hover::before{
     /* clip-path: polygon( 100% 0, 100% 5%, 20% 15%, 15% 20%, 0 20%, 0 0); */
-    clip-path: polygon( 0 0, 100% 0, 100% 12%, 35% 12%, 30% 8%, 0 8%);
+    /* clip-path: polygon( 0 0, 100% 0, 100% 12%, 35% 12%, 30% 8%, 0 8%); */
 }
 
 /* Bottom Blade */

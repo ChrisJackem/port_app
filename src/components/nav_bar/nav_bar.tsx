@@ -14,7 +14,6 @@ const blk = Jockey_One({
 });
 
 const NavBar = () => {
-  const pathName = usePathname();
   return (
     <div id="nav-container">
       <nav id="nav-bar" className='anim-bg chip-tl-lg'>
@@ -22,10 +21,9 @@ const NavBar = () => {
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>
-            <NavLink name="Blerp" href="/about"/>
+            <NavLink name="Work" href="/work"/>
         </ul>        
       </nav>
-      {/* <div className='blade-1 nav-url'>{pathName}</div> */}
       <PathButton />
     </div>
   );

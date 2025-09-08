@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Armata } from "next/font/google";
+import { Armata, Jockey_One } from "next/font/google";
 import "./globals.css";
 import "./shapes.css";
 import "./layout.css";
@@ -7,9 +7,16 @@ import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
 
-const fnt = Armata({
+const font_body = Armata({
   subsets: ["latin"],
-  weight: '400'
+  weight: '400',
+  variable: '--font-armata'
+});
+
+const font_header = Jockey_One({
+    subsets:['latin'],  
+    weight: '400',
+    variable: '--font-header'
 });
 
 export const metadata: Metadata = {
@@ -25,15 +32,15 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body className={`${fnt.className}`}>
+      <body className={`${font_body.className} ${font_header.variable}`}>
         <main id="main-container" className="anim-bg">
-          <NavBar/>          
+          <NavBar/>
           <div className="child-container">
             <ThemeWrapper>
               {children}
             </ThemeWrapper>
-            <Footer />
-          </div>          
+          </div>
+          <Footer />
         </main>
       </body>
     </html>

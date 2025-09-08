@@ -12,8 +12,17 @@
     color: black;
     background-color: var(--foreground);
     border-right: 3px solid var(--darkest, #000);
-    /* padding-top: 20px; */
+    position: relative;
 }
+/* just to look nice*/
+/* .page-container::after{
+    transition: background-color 500ms ease-out;
+  content: '';
+  position: absolute;
+  left: 0; bottom:-20px; width: 100%; height: 35px;
+  background-color: var(--background, #FFF);
+  clip-path: polygon(0 0, 5px 0, 15px 20%, 100% 20%, 100% 100%, 0 100%);
+} */
 
 #footer{
     padding: 1rem;
