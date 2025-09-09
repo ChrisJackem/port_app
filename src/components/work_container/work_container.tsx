@@ -63,35 +63,23 @@ const WorkContainer = ({ title, conf, children }: {
   const viewed_class = isInView ? 'viewed' : '';
 
   return (
-    <motion.section
+    <motion.section className={`work-container ${viewed_class} ${ready_class}`}
         key={title}
         variants={variantsContainer}
         whileInView= {{transform: "scale(1)", opacity: 1}}      
-        ref={container_ref}
-        className={`work-container ${viewed_class} ${ready_class}`}
+        ref={container_ref}        
     >
-      <motion.div
+      <motion.div className="work-title"
         key={title}
-        className="work-title"
         initial={{ x: 100 }}
         whileInView={{ x: 0 }}
       >
-        <ChipHeader 
-          title={title} 
-          colBg='var(--accent, red)'
-          colTx='black'
-        />      
-        {/* <p>Loading: {loadingStatus}</p>  */}
+        <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' />
       </motion.div>
-
         
-
-
-        
-          <motion.div
+          <motion.div className={`work-content`}
               key={`inner-${title}-a`}
               variants={variantSlideIn}
-              className={`work-content`}
           >
             { images && images.map((url, i) => (
               // eslint-disable-next-line @next/next/no-img-element
