@@ -1,4 +1,17 @@
+/* work page css */
+
 #work-main-container{
     gap: 4rem;
+    padding: 1rem;
+    padding-top: 2rem;
     /* padding-left: auto; */
+}
+
+.time-divider{
+    position: relative;
+}
+.time-span{
+    position: sticky;
+    top: 50px;
+    background-color: red;
 }

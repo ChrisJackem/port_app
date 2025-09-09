@@ -26,8 +26,8 @@ const WorkPage = () => {
         exit="exit"
         transition={{ type: 'tween' }}
         className="page-container flex flex-column"
-    >    
-        <WorkContainer title={'Test'} conf={config.test}>            
+    >     
+        <WorkContainer title={'Test'} conf={config.test}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
         </WorkContainer>
 

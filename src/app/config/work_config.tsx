@@ -1,12 +1,14 @@
 
 export type Slide = {
     dir: string;
+    link?: string;
     images: string[]
 }
 
 const config: { [key: string]: Slide } = {
     test: {
         dir: 'static/images/work/test/',
+        link: 'https://www.google.com',
         images: [
             'test1.png',            
         ]
