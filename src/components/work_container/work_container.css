@@ -1,3 +1,39 @@
 .work-container{
-    min-height: 500px;
+    position: relative;
+    min-height: 700px;
+    max-width: 1000px;
+    display: grid;
+    grid-template-rows: min-content 200px 1fr;
+    background-color: var(--background);
+    margin: 0 auto;
+    padding: 2rem 4rem 1rem 2.5rem;
+    clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%, 0 5% );
 }
+
+.work-container::after{
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--midground, #ccc);
+    clip-path: polygon(98% 0, 98% 10%, 95% 15%, 95% 50%, 90% 55%, 90% 100%, 100% 100%, 100% 0);
+}
+
+.work-title{
+    /* background-color: red; */
+}
+
+.work-content{
+    overflow: hidden;
+    background-color: green;
+    /* height: 20px; */
+    transition: all 1s ease-out; 
+}
+
+.work-child-container{
+    color: white;
+    padding-right: 3rem;
+    background-color: var(--darkest);
+}
+
+/* .work-container.ready .work-content{
+    height: 500px;
+} */
