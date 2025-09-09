@@ -4,7 +4,7 @@
     max-width: 1000px;
     min-width: 50%;
     display: grid;
-    grid-template-rows: min-content 200px 1fr;
+    grid-template-rows: min-content min-content 1fr;
     margin: 0 auto;
     padding: 2rem 10px 2.5rem 2.5rem;
     transition: all 500ms ease-out;
