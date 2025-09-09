@@ -5,14 +5,11 @@
     min-width: 50%;
     display: grid;
     grid-template-rows: min-content 200px 1fr;
-    /* background-color: var(--background, #000);
-    background: linear-gradient(var(--background, #000), var(--midground, #CCC)); */
     margin: 0 auto;
     padding: 2rem 10px 2.5rem 2.5rem;
     transition: all 500ms ease-out;
-    clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );
-    /* filter: drop-shadow(0px 0px 5px black); */
-    
+    /* clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px ); */
+    filter: drop-shadow(2px 2px 5px #a0a0a0);    
 }
     /* Decoration */
     .work-container::after, .work-container::before{
@@ -21,12 +18,18 @@
     .work-container::after{/* side */
         z-index: 99;
         background-color: var(--midground, #ccc);
-        clip-path: polygon( 98% 0, 98% 10%, 95% 15%, 95% 50%, 92% 55%, 92% 98%, 0 98%, 0 100%, 100% 100%, 100% 0);        
+        clip-path: polygon( 98% 80px, 
+        /* 98% 25%, 96% 30%, 96% 50%,  */
+            98% 40%,
+        95% 50%, 95% 100%,
+        100% 100%, 
+        100% 50px);/* end at 30px*/        
+        left: -2px;/* Move to left add border to blend angle */
     }
     .work-container::before{/* back */
         z-index: -2;
-        background: linear-gradient(var(--background, #000), var(--midground, #CCC));
-        clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );       
+        background: linear-gradient(var(--background, #000), var(--midground, #CCC));        
+        clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );/* Old main clip */        
     }
 
 .work-title{
@@ -35,9 +38,6 @@
 
 .work-content{
     overflow: hidden;
-    /* background-color: black;
-    background-color: rgba(0,0,0, 0.2); */
-    /* height: 20px; */
     transition: all 1s ease-out; 
 }
 
@@ -45,6 +45,10 @@
     color: white;    
     background-color: var(--darkest, #FFF);
     position: relative;
+    clip-path: polygon(
+        0 0, 100% 0, 
+        100% 100%, 20px 100%, 
+        0 calc(100% - 20px) )
 }
 
 .link-container{
@@ -61,16 +65,11 @@
     .work-container{
         padding: 1.2rem;
     }
-
     .work-child-inner-container{
         padding: 1rem;
     }
-
     /* Move decoration */
     .work-container::after{
-        transform: scale(1.09); 
+        /* transform: scale(1.09);  */
     }
 }
-
-
-

@@ -14,7 +14,8 @@ const variantsContainer = {
   enter: { opacity: .5, x: 0, transform: "scale(.9)", 
     transition: { delayChildren: stagger(1, { startDelay: 0.5, from: "first" }) }
    },
-  exit: { opacity: 0, x: -70, y: 10 },  
+  exit: { opacity: 0, x: -70, y: 10 },
+  viewport: { amount: 0.95 }
 }
 
 const variantSlideIn = {
@@ -66,7 +67,8 @@ const WorkContainer = ({ title, conf, children }: {
     <motion.section className={`work-container ${viewed_class} ${ready_class}`}
         key={title}
         variants={variantsContainer}
-        whileInView= {{transform: "scale(1)", opacity: 1}}      
+        whileInView= {{transform: "scale(1)", opacity: 1}}
+        /* viewport={{ amount: 0.2 }} */
         ref={container_ref}        
     >
       <motion.div className="work-title"
