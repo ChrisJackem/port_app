@@ -1,0 +1,9 @@
+.slideshow-container{
+    position: relative;
+    padding-top: 355px;
+}
+
+.slideshow-image-main{
+    position: absolute;
+    top: 0; left: 0;
+}

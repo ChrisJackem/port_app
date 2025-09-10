@@ -26,12 +26,12 @@ const SlideShow = ({ title, inView, data }:{
         <AnimatePresence>
             <motion.img
                 id={`slideshow-main-${title}`}
-                className='slideshow-image '                     
-                key={title}
-                initial={{ x: 100, y: 0, opacity: 0 }}
+                className='slideshow-image-main'                     
+                key={activeImg}
+                initial={{ x: 0, y: 0, opacity: 0 }}
                 animate={{ x: 0, y: 0, opacity: 1 }}
-                exit={{ x: -400, y: 0, opacity: 0 }}
-                transition={{ duration: .4, type: 'tween' }}
+                exit={{ x: -200, y: 0, opacity: 0 }}
+                transition={{ duration: 0.85, type: 'spring' }}
                 alt={`Active theme image: ${title}`}
                 width={400} 
                 height={355}                            
