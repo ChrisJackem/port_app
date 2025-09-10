@@ -15,8 +15,7 @@
 .logo_container{
     position: absolute;
     bottom: 60px;
-    left: 10px;
-    
+    left: 10px;    
 }
 #nav-container{
     position: relative;
@@ -33,7 +32,6 @@
     border: 2px solid var(--darkest);
     border-left: none;
     border-bottom: 2px solid var(--accent, #FFF); 
-
     z-index: 9999;
 }
 
@@ -41,7 +39,6 @@
     list-style-type: none;
     margin-left: auto;
     padding-bottom: 0.25rem;
-    /* padding: 5px 25px; */
 }
 
 .link.active{

@@ -7,10 +7,7 @@
 .spinner{
     float: left;
     width: 50px; height: 50px;
-    /* background-color: red; */
     display: block;
-    /* animation: 2s linear infinite spin; */
-    /* clip-path: polygon(0 20%, 20% 0, 100% 0, 100% 100%, 0 100%); */
     position: relative;
 }
 
@@ -20,7 +17,7 @@
     top: 0; left: 0;
 }
 .flipped{
-    left: 25px;
+    left: 23px;
     transform: scale(-1, 1);
 }
 
@@ -29,6 +26,8 @@
   stroke-dashoffset: 1680;
   animation-duration: 2s;
   animation-name: draw;
+
+  stroke: var(--darkest, #000);
 }
 .pen{
     animation-iteration-count: infinite;
@@ -36,6 +35,7 @@
     animation-timing-function: linear;
 }
 .penOnce{
+    animation-delay: 200ms;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out !important;
     animation-iteration-count: 1 !important;
@@ -46,21 +46,21 @@
   0%{
     stroke-dashoffset: 1680;
     fill: transparent;
-    stroke: var(--accent, #CCC);
+    /* stroke: var(--accent, #CCC); */
   }
 
   50%{
     fill: transparent;
-    stroke: var(--accent, #CCC);
+    /* stroke: var(--accent, #CCC); */
   }
   75%{
     fill: var(--accent, #CCC);
-    stroke: var(--darkest, #000);
+    /* stroke: var(--darkest, #000); */
   }
 
   100% {
     stroke-dashoffset: 0;
     fill: var(--accent, #CCC);
-    stroke: var(--darkest, #000);
+    /* stroke: var(--darkest, #000); */
   }
 }
