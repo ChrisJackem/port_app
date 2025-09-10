@@ -3,11 +3,10 @@ import { motion, stagger, useInView } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 import './work_container.css';
 import { Slide } from '@/app/config/work_config';
-
 import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
+import LoadingComponent from '../loading_component/loading_component';
 
-//import { animate } from 'motion';
 
 const variantsContainer = {
   initial: { transform: "scale(.98)" },
@@ -24,10 +23,10 @@ const variantSlideIn = {
   whileInView:{ x: 0, opacity: 1 },
 }
 
-
+///////////////////////////////////////////////////////
 const WorkContainer = ({ title, conf, children }: {
     title: string;
-    conf: Slide;
+    conf: Slide
     children: React.ReactNode;
 }) => {
   const [loadingStatus, setLoadingStatus] = useState('init');
@@ -39,22 +38,24 @@ const WorkContainer = ({ title, conf, children }: {
   useEffect(()=>{
     if ( loadingStatus==='init' && isInView ) {
       setLoadingStatus('loading');
-      // Retrieve blobbed images and convert to objURL[]
-      Promise.all(        
-        conf.images.map((img) =>
-          fetch(`${conf.dir}${img}`)
-          .then((res) => {
-            if (!res.ok) throw new Error(`Failed to fetch ${img}`);
-            return res.blob();
+      // Load all images and return string[] with full urls
+      Promise.all( 
+        conf.images.map((img) => 
+          new Promise((res, rej)=>{
+            const image_url = `${conf.dir}${img}`;
+            const image = new Image();
+            image.onload = ()=> res(image_url);
+            image.onerror = (E)=> rej(E);
+            image.src = image_url;
           })
-          .then((blob) => URL.createObjectURL(blob))
-        )
+      )
       // Set states
       ).then((urls) => {
-        setImages(urls);
+        console.log(JSON.stringify(urls, null, 2))
+        setImages(urls as string[]);
         setLoadingStatus('loaded');
       }).catch((E) => {
-        console.error(`Fetch Failed ${E}`);      
+        console.error(`Image load failed:\n ${E}`);      
       });
     }    
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,21 +84,21 @@ const WorkContainer = ({ title, conf, children }: {
               key={`inner-${title}-a`}
               variants={variantSlideIn}
           >
-            {/* { images && images.map((url, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img 
-                key={i.toString()} 
-                src={url}
-                alt={`alt ${i}`}
-              />
-            ))} */}
-            { images && 
-              <SlideShow 
+            { images ? 
+            <SlideShow 
               title={'Test'}
                 inView={isInView}
-                data={conf}
-              />
-            }
+                images={images}
+                /* data={conf} */
+            /> 
+            : <LoadingComponent 
+              styles={{ color: 'var(--foreground, #fff)'}}
+            /> }
+
+            <LoadingComponent 
+              styles={{ color: 'var(--foreground, #fff)'}}
+            />
+
           </motion.div>
 
           <div className='work-child-outer-container'>
@@ -106,7 +107,7 @@ const WorkContainer = ({ title, conf, children }: {
                 <button className={`chip-a link `} >Button</button>
               </div>
             }
-            <div className='work-child-inner-container'>{children}</div>
+            <div className='work-child-inner-container'>{children}</div>        
           </div>
 
     </motion.section>

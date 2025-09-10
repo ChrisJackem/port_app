@@ -1,5 +1,6 @@
+
+
 .work-container{
-    position: relative;
     min-height: 600px;
     max-width: 1000px;
     min-width: 50%;
@@ -9,7 +10,7 @@
     padding: 2rem 10px 2.5rem 2.5rem;
     transition: all 500ms ease-out;
     /* clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px ); */
-    filter: drop-shadow(2px 2px 5px #a0a0a0);    
+    /* filter: drop-shadow(2px 2px 5px #a0a0a0);     */
 }
     /* Decoration */
     .work-container::after, .work-container::before{
@@ -28,7 +29,8 @@
     }
     .work-container::before{/* back */
         z-index: -2;
-        background: linear-gradient(var(--background, #000), var(--midground, #CCC));        
+       /*  background: linear-gradient(var(--background, #000), var(--midground, #CCC));  */
+       background-color: var(--background, #000);   
         clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );/* Old main clip */        
     }
 
@@ -68,9 +70,5 @@
     }
     .work-child-inner-container{
         padding: 1rem;
-    }
-    /* Move decoration */
-    .work-container::after{
-        /* transform: scale(1.09);  */
-    }
+    }   
 }
