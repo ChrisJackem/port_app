@@ -4,11 +4,9 @@
     font-weight: bold;
 }
 
-
-
 .spinner{
     float: left;
-    width: 100px; height: 100px;
+    width: 50px; height: 50px;
     /* background-color: red; */
     display: block;
     /* animation: 2s linear infinite spin; */
@@ -17,34 +15,42 @@
 }
 
 .svgLogo{
-    width: 50px; height: 100px;
+    width: 25px; height: 50px;
     position: absolute;
     top: 0; left: 0;
 }
 .flipped{
-    transform: scale(-1, 1) translateX(-96%);
+    left: 25px;
+    transform: scale(-1, 1);
 }
 
-.pen {
+.pen, .penOnce {
   stroke-dasharray: 1680 1680;
   stroke-dashoffset: 1680;
   animation-duration: 2s;
   animation-name: draw;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: linear;
+}
+.pen{
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+.penOnce{
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out !important;
+    animation-iteration-count: 1 !important;
 }
 
 
 @keyframes draw {
-  0% {
+  0%{
     stroke-dashoffset: 1680;
-    fill: var(--darkest, #000);
+    fill: transparent;
     stroke: var(--accent, #CCC);
   }
 
   50%{
-    fill: var(--darkest, #000);
+    fill: transparent;
     stroke: var(--accent, #CCC);
   }
   75%{
@@ -58,9 +64,3 @@
     stroke: var(--darkest, #000);
   }
 }
-/* @keyframes spin {
-    0% { clip-path: polygon(0 20%, 20% 0, 100% 0, 100% 100%, 0 100%); }
-    25% { clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 0 100%) }
-    50% { clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%); }
-    
-} */

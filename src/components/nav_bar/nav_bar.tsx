@@ -6,6 +6,7 @@ import React from 'react';
 import { Jockey_One } from 'next/font/google';
 import './nav_bar.css'
 import PathButton from '../path_button/pathButton';
+import { StrokeLogo } from '../loading_component/loading_component';
 
 const blk = Jockey_One({
     subsets:['latin'],
@@ -15,9 +16,11 @@ const blk = Jockey_One({
 
 const NavBar = () => {
   return (
-    <div id="nav-container">
+    <div id={"nav-container"}>
       <nav id="nav-bar" className='anim-bg chip-tl-lg'>
-        <p>LOGO</p>
+        <div className='logo_container'>
+          <StrokeLogo infinite={false}/>
+        </div>
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>

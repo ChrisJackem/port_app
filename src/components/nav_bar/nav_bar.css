@@ -12,7 +12,12 @@
     align-items: center;
     flex-wrap: wrap;
 }
-
+.logo_container{
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
+    
+}
 #nav-container{
     position: relative;
 }
