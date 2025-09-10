@@ -92,11 +92,11 @@ const WorkContainer = ({ title, conf, children }: {
                 /* data={conf} */
             /> 
             : <LoadingComponent 
-              styles={{ color: 'var(--foreground, #fff)'}}
+              /* styles={{ color: 'var(--foreground, #fff)'}} */
             /> }
 
             <LoadingComponent 
-              styles={{ color: 'var(--foreground, #fff)'}}
+              /* styles={{ color: 'var(--foreground, #fff)'}} */
             />
 
           </motion.div>
