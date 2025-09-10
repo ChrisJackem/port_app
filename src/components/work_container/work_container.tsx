@@ -5,6 +5,7 @@ import './work_container.css';
 import { Slide } from '@/app/config/work_config';
 
 import ChipHeader from '../chip_header/chip_header';
+import SlideShow from '../slide_show/slide_show';
 
 //import { animate } from 'motion';
 
@@ -68,7 +69,6 @@ const WorkContainer = ({ title, conf, children }: {
         key={title}
         variants={variantsContainer}
         whileInView= {{transform: "scale(1)", opacity: 1}}
-        /* viewport={{ amount: 0.2 }} */
         ref={container_ref}        
     >
       <motion.div className="work-title"
@@ -83,26 +83,31 @@ const WorkContainer = ({ title, conf, children }: {
               key={`inner-${title}-a`}
               variants={variantSlideIn}
           >
-            { images && images.map((url, i) => (
+            {/* { images && images.map((url, i) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img 
                 key={i.toString()} 
                 src={url}
                 alt={`alt ${i}`}
               />
-            ))}
+            ))} */}
+            { images && 
+              <SlideShow 
+              title={'Test'}
+                inView={isInView}
+                data={conf}
+              />
+            }
           </motion.div>
 
           <div className='work-child-outer-container'>
             { conf.link !== undefined && 
               <div className='link-container'>
-                Ok
+                <button className={`chip-a link `} >Button</button>
               </div>
             }
             <div className='work-child-inner-container'>{children}</div>
           </div>
-
-
 
     </motion.section>
   )
