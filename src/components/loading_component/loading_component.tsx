@@ -34,7 +34,7 @@ const StrokeLogo = ({xtra_styles}:{xtra_styles?: string}) => {
       className={`${styles.svgLogo} ${xtra_styles !== undefined ? xtra_styles : ''}`}
       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.5 288"
     >
-      <path className={`${styles.pen}`} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" fill="none" stroke="white" strokeWidth="10"/>
+      <path className={`${styles.pen}`} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" fill="none" stroke="white" strokeWidth="14"/>
     </svg>
   );
 }
