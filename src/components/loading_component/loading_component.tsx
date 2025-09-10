@@ -19,6 +19,7 @@ const LoadingComponent: React.FC<{ style?: React.CSSProperties }> = ({ style }) 
           height={50}
         /> */}
         <StrokeLogo />
+        <StrokeLogo xtra_styles={styles.flipped}/>
       </span>
       <span>Loading...</span>
     </div>
@@ -27,10 +28,13 @@ const LoadingComponent: React.FC<{ style?: React.CSSProperties }> = ({ style }) 
 
 
 
-const StrokeLogo = () => {
+const StrokeLogo = ({xtra_styles}:{xtra_styles?: string}) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.5 288">
-      <path className={styles.pen} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" stroke="white" strokeWidth="10"/>
+    <svg 
+      className={`${styles.svgLogo} ${xtra_styles !== undefined ? xtra_styles : ''}`}
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.5 288"
+    >
+      <path className={`${styles.pen}`} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" fill="none" stroke="white" strokeWidth="10"/>
     </svg>
   );
 }

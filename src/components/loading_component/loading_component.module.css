@@ -8,15 +8,21 @@
 
 .spinner{
     float: left;
-    width: 50px; height: 100px;
+    width: 100px; height: 100px;
     /* background-color: red; */
     display: block;
     /* animation: 2s linear infinite spin; */
     /* clip-path: polygon(0 20%, 20% 0, 100% 0, 100% 100%, 0 100%); */
-
+    position: relative;
 }
+
 .svgLogo{
-    background-color: red;
+    width: 50px; height: 100px;
+    position: absolute;
+    top: 0; left: 0;
+}
+.flipped{
+    transform: scale(-1, 1) translateX(-96%);
 }
 
 .pen {
@@ -29,13 +35,18 @@
   animation-timing-function: linear;
 }
 
+
 @keyframes draw {
   from {
     stroke-dashoffset: 1680;
+    fill: var(--darkest, #000);
+    stroke: var(--accent, #CCC);
   }
 
   to {
     stroke-dashoffset: 0;
+    stroke: var(--darkest, #000);
+    fill: var(--accent, #CCC);
   }
 }
 /* @keyframes spin {
