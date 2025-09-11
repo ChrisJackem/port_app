@@ -86,7 +86,7 @@ const WorkContainer = ({ title, conf, children }: {
           >
             { images/*  && false */ ? 
             <SlideShow 
-              title={'Test'}
+                title={title}
                 inView={isInView}
                 images={images}
                 /* data={conf} */

@@ -9,9 +9,22 @@
 
 }
 
-.slideshow_buttons{
-    /* justify-content: center; */
+.slideshow_buttons{    
+    padding: 0.25rem;
 }
+    /* .slideshow_buttons::before{
+        height: 90%;
+        background-color: var(--darkest, #000);        
+    }
+    .slideshow_buttons::after{
+        background-color: var(--midground, #ccc);
+        clip-path: polygon(
+            0 30%, 100% 30%,
+            100% 90%, 98% 100%,
+            0 100%
+            );
+    } */
+
 .slideshow_button{
     padding: 0;
     background-color: transparent;
@@ -20,7 +33,7 @@
 .slideshow_button:hover{
     transform: scale(1.1);
 }
-.slideshow_button:focus, .slideshow_button.active{
+.slideshow_button:focus, .active{
     transform: scale(1.2);
     z-index: 2;
 }
