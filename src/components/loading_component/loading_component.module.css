@@ -1,7 +1,10 @@
-.main-container{
+.mainContainer{
     color: #000;
     padding: 0.5rem; 
     font-weight: bold;
+    display: flex;    
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .spinner{
@@ -11,34 +14,31 @@
     position: relative;
 }
 
+.svgLogo:first-of-type{ margin-right: -2px; }
 .svgLogo{
     width: 25px; height: 50px;
-    position: absolute;
-    top: 0; left: 0;
 }
-.flipped{
-    left: 23px;
-    transform: scale(-1, 1);
-}
+
+
+.flipped{ transform: scale(-1, 1); }
 
 .pen, .penOnce {
   stroke-dasharray: 1680 1680;
-  stroke-dashoffset: 1680;
-  animation-duration: 2s;
+  stroke-dashoffset: 1680;  
   animation-name: draw;
-
-  stroke: var(--darkest, #000);
 }
 .pen{
+    animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: linear;
 }
 .penOnce{
+    animation-duration: 3s;
     animation-delay: 200ms;
     animation-fill-mode: forwards;
-    animation-timing-function: ease-out !important;
-    animation-iteration-count: 1 !important;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
 }
 
 
@@ -46,21 +46,17 @@
   0%{
     stroke-dashoffset: 1680;
     fill: transparent;
-    /* stroke: var(--accent, #CCC); */
   }
 
   50%{
     fill: transparent;
-    /* stroke: var(--accent, #CCC); */
   }
   75%{
     fill: var(--accent, #CCC);
-    /* stroke: var(--darkest, #000); */
   }
 
   100% {
     stroke-dashoffset: 0;
     fill: var(--accent, #CCC);
-    /* stroke: var(--darkest, #000); */
   }
 }

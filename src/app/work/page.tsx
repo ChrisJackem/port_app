@@ -37,9 +37,16 @@ const WorkPage = () => {
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
         </WorkContainer>
 
-        <WorkContainer title={'Cheesed 2'} conf={config.test2}>
-            <h3>Cheesed 2</h3>
+        <WorkContainer title={'Cats'} conf={config.test2}>
+            <h1>Cats</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
+            <br/>
+            <h3>Cat Features:</h3>
+            <ul style={{ marginLeft: 30 }}>
+                <li>Cuddly</li>
+                <li>Snuggly</li>
+                <li>Get off there</li>
+            </ul>
         </WorkContainer>
 
         <WorkContainer title={'Cheesed 3'} conf={config.test3}>

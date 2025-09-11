@@ -29,12 +29,12 @@ const SlideShow = ({ title, inView, images/* data */ }:{
                 id={`slideshow-main-${title}`}
                 className='slideshow-image-main'                     
                 key={activeImg}
-                initial={{ x: '-50%', y: 0, opacity: 0 }}
-                animate={{ x: '-50%', y: 0, opacity: 1 }}
-                exit={{ x: '-100%', y: 0, opacity: 0 }}
-                transition={{ duration: 0.85, type: 'spring' }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -300, opacity: 0 }}
+                transition={{ duration: .5, type: 'spring' }}
                 alt={`Active theme image: ${title}`}
-                width={400} 
+                width={500} 
                 height={355}                            
                 src={`${images[activeImg]}`}
                 layout
@@ -42,7 +42,8 @@ const SlideShow = ({ title, inView, images/* data */ }:{
         </AnimatePresence>
 
         <div className='slideshow-buttons flex'>
-            { images.map( (image, i)=>(
+            <button >Play</button>
+            { images.length > 1 && images.map( (image, i)=>(
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                     alt='meaning'
@@ -50,7 +51,7 @@ const SlideShow = ({ title, inView, images/* data */ }:{
                     src={`${images[i]}`}
                     width={50}
                     height={50}
-                    onClick={()=>buttonHandler(i)}
+                    onClick={()=>buttonHandler(i)}                    
                 ></img>
             ))}
         </div>

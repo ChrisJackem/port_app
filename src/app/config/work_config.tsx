@@ -14,9 +14,11 @@ const config: { [key: string]: Slide } = {
         ]
     },
     test2: {
-        dir: 'static/images/work/test/',
+        dir: 'static/images/work/test2/',
         images: [         
-            'test2.png',           
+            'cat1.jpg',         
+            'cat2.jpg',         
+            'cat3.jpg',         
         ]
     },
     test3: {

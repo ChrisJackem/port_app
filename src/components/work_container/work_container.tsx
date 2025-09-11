@@ -84,25 +84,20 @@ const WorkContainer = ({ title, conf, children }: {
               key={`inner-${title}-a`}
               variants={variantSlideIn}
           >
-            { images ? 
+            { images/*  && false */ ? 
             <SlideShow 
               title={'Test'}
                 inView={isInView}
                 images={images}
                 /* data={conf} */
             /> 
-            : <LoadingComponent 
-              /* styles={{ color: 'var(--foreground, #fff)'}} */
-            /> }
-
-            <LoadingComponent 
-              /* styles={{ color: 'var(--foreground, #fff)'}} */
-            />
+            : <LoadingComponent dark_mode={false}/> }
 
           </motion.div>
 
           <div className='work-child-outer-container'>
-            { conf.link !== undefined && 
+
+            { conf.link !== undefined && images && /* false && */
               <div className='link-container'>
                 <button className={`chip-a link `} >Button</button>
               </div>

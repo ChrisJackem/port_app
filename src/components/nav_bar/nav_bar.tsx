@@ -18,9 +18,9 @@ const NavBar = () => {
   return (
     <div id={"nav-container"}>
       <nav id="nav-bar" className='anim-bg chip-tl-lg'>
-        <div className='logo_container'>
+        {/* <div className='logo_container'> */}
           <StrokeLogo infinite={false}/>
-        </div>
+        {/* </div> */}
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>

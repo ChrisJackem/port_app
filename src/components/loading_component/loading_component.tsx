@@ -1,40 +1,45 @@
 import React from 'react';
 import styles from './loading_component.module.css';
 
-const LoadingComponent: React.FC<{ style?: React.CSSProperties }> = ({ style }) => {
-  
+const LoadingComponent = ({ dark_mode=true }) => {  
   return (
-    <div
+    <section
       className={styles.mainContainer}
-      style={style}
+      style={{ 
+        color: `${dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)'}`
+      }}
     >
-      <span className={styles.spinner}>        
-        <StrokeLogo />
-       {/*  <StrokeLogo xtra_styles={styles.flipped}/> */}
-      </span>
+      <StrokeLogo dark_mode={true}/>
       <span>Loading...</span>
-    </div>
+    </section>
   );
 }
 
 
+// The logo twice, once flipped around in CSS. infinite -> animation
+export const StrokeLogo = ({dark_mode=true, infinite=true}
+  :{infinite?:boolean, dark_mode?:boolean}) => {
 
-export const StrokeLogo = ({xtra_styles, infinite=true}:{infinite?:boolean, xtra_styles?: string}) => {
   const pen_style = infinite ? styles.pen : styles.penOnce ;
-  return (<>
+  const color = dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)';
+  const path = "M69,206.5v-125l75,100v100H6.5V6.5h137.5v174";
+
+  return (<div style={{ display: 'inline-block'}}>
     <svg 
-      className={`${styles.svgLogo} ${xtra_styles !== undefined ? xtra_styles : ''}`}
-      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.5 288"
+      className={`${styles.svgLogo} `}
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 150.5 288"
     >
-      <path className={`${pen_style} ${xtra_styles !== undefined ? xtra_styles : ''}`} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" fill="none" stroke="white" strokeWidth="14"/>
+      <path className={`${pen_style} `} d={path} fill="none" stroke={color} strokeWidth="14"/>
     </svg>
     <svg 
-      className={`${styles.svgLogo} ${styles.flipped} ${xtra_styles !== undefined ? xtra_styles : ''}`}
-      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.5 288"
+      className={`${styles.svgLogo} ${styles.flipped}`}
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 150.5 288"
     >
-      <path className={`${pen_style} ${xtra_styles !== undefined ? xtra_styles : ''}`} d="M69,206.5v-125l75,100v100H6.5V6.5h137.5v174" fill="none" stroke="white" strokeWidth="14"/>
+      <path className={`${pen_style}`} d={path} fill="none" stroke={color} strokeWidth="14"/>
     </svg>
-  </>);
+  </div>);
 }
 
 
