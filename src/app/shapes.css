@@ -1,4 +1,33 @@
 
+.miter-tl-rb{
+    clip-path: polygon(
+    60px 0, 100% 0, 
+    100% 80%, 90% 90%, 90% 100%, 
+    0 100%, 0 30px, 
+    25px 30px );
+}
+
+.miter-tl-rb-shadow{
+    filter: drop-shadow(2px 2px 8px var(--darkest, #000) );
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+}
+
+.miter-tl-rb-shadow::after{
+    content: '';
+    background-color: var(--darkest, #CCC);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    clip-path: polygon(
+    60px 0, 100% 0, 
+    100% 80%, 90% 90%, 90% 100%, 
+    0 100%, 0 30px, 
+    25px 30px );
+}
+
+
+
+
+
 /************ Divider *************************/
 .divider-1,
 .divider-2,

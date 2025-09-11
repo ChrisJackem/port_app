@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react'
-import './slide_show.css'
+import styles from './slide_show.module.css'
 import { AnimatePresence, motion } from 'motion/react'
 //import { Slide } from '@/app/config/work_config'
 
@@ -23,36 +24,49 @@ const SlideShow = ({ title, inView, images/* data */ }:{
     }, [inView]);
     
     return (
-    <div className='slideshow-container'>
+    <div 
+        className={`p-rel padded ${styles.slideshow_container ?? ''}`}
+        style={{
+            margin: '1rem 3% 0 0',
+            paddingTop: '395px'
+        }}
+    >
+        <div
+            className='miter-tl-rb p-abs underer bg-dk'
+            style={{ width: 800, height: 400 }}
+        ></div>
+        
         <AnimatePresence>
             <motion.img
-                id={`slideshow-main-${title}`}
-                className='slideshow-image-main'                     
+                className={`miter-tl-rb p-abs under ${styles.slideshow_image_main ?? ''}`}                     
                 key={activeImg}
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -300, opacity: 0 }}
-                transition={{ duration: .5, type: 'spring' }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{ duration: .5, type: 'tween' }}
                 alt={`Active theme image: ${title}`}
-                width={500} 
-                height={355}                            
+            width={800} 
+            height={400}                            
                 src={`${images[activeImg]}`}
-                layout
             />
         </AnimatePresence>
+        
 
-        <div className='slideshow-buttons flex'>
-            <button >Play</button>
+        <div className={`${styles.slideshow_buttons} flex`}>
+            <button>Play</button>
             { images.length > 1 && images.map( (image, i)=>(
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                    alt='meaning'
+                <button
+                    className={`un-border pointer shadow-sm ${styles.slideshow_button}`}
                     key={i.toString()}
+                    onClick={()=>buttonHandler(i)}
+                >
+                <img
+                    alt={`Button image for image #${i}.`}                    
                     src={`${images[i]}`}
                     width={50}
                     height={50}
-                    onClick={()=>buttonHandler(i)}                    
                 ></img>
+                </button>
             ))}
         </div>
     </div>

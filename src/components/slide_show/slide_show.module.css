@@ -1,0 +1,26 @@
+/*.slideshow_container{
+    margin: 1rem 3% 0 0;
+     position: relative;
+    padding: 1rem; 
+    padding-top: 395px;
+}*/
+
+.slideshow_image_main{
+
+}
+
+.slideshow_buttons{
+    /* justify-content: center; */
+}
+.slideshow_button{
+    padding: 0;
+    background-color: transparent;
+    transition: all 200ms ease-out;
+}
+.slideshow_button:hover{
+    transform: scale(1.1);
+}
+.slideshow_button:focus, .slideshow_button.active{
+    transform: scale(1.2);
+    z-index: 2;
+}

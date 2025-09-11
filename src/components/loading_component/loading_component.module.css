@@ -19,7 +19,6 @@
     width: 25px; height: 50px;
 }
 
-
 .flipped{ transform: scale(-1, 1); }
 
 .pen, .penOnce {
@@ -40,7 +39,6 @@
     animation-timing-function: ease-out;
     animation-iteration-count: 1;
 }
-
 
 @keyframes draw {
   0%{
