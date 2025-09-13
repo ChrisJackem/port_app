@@ -3,24 +3,24 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './slide_show.module.css'
 import './slide_show.module.css';
 import { AnimatePresence, motion } from 'motion/react'
-//import { Slide } from '@/app/config/work_config'
 
 const TIMEOUT = 1000;
 
-const SlideShow = ({ title, inView, images/* data */ }:{ 
+const SlideShow = ({ title, inView, images }:{ 
     title: string,
     inView:boolean,
     images: string[],
-    /* data: Slide */
 }) => {
 
     const [activeImg, setActiveImg] = useState(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [playing, setPlaying] = useState<boolean>(true);
+    const has_images = images.length > 1;
 
     useEffect(() => {
+        if (!has_images) return;
         // Start interval if on screen and no interval running
-        if ( playing && inView && !intervalRef.current && images.length > 1 ) {
+        if ( playing && inView && !intervalRef.current ) {
             intervalRef.current = setInterval(tickHandler, TIMEOUT);
         }
         // Stop interval if not on screen
@@ -29,33 +29,33 @@ const SlideShow = ({ title, inView, images/* data */ }:{
             intervalRef.current = null;
             console.log('stopped ', title)
         }
-
         return () => {
             if (intervalRef.current) {
-                console.log('killed ', title)
                 clearInterval(intervalRef.current);
                 intervalRef.current = null;
             }
         };
-    }, [inView]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [inView, has_images]);
 
     function tickHandler() {
-        setActiveImg((activeImg)=> ++activeImg >= images.length ? 0 : activeImg);
+        setActiveImg(activeImg => ++activeImg >= images.length ? 0 : activeImg);
     }
 
-    function playBtnHandler(){
+    function playBtnHandler( force_off=false ){
         setPlaying( playing => {
-            const ret = !playing;
+            const ret = force_off===true ? false : !playing;
             // Remove no matter what incase of spam click
             if (intervalRef.current) clearInterval(intervalRef.current);
             if (ret) intervalRef.current = setInterval(tickHandler, TIMEOUT);            
-            return ret
+            return ret;
         } );
     }
 
     function imgBtnHandler(id:number){
         if (id > -1 && id < images.length){
-            setActiveImg(id);        
+            setActiveImg(id);
+            if (playing) playBtnHandler(true);        
         }
     }
     
@@ -85,29 +85,26 @@ const SlideShow = ({ title, inView, images/* data */ }:{
             height={400}                            
                 src={`${images[activeImg]}`}
             />
-        </AnimatePresence>
-        
+        </AnimatePresence>        
 
-        <div className={`${styles.slideshow_buttons} flex psudo`}>
-
-            <button  onClick={playBtnHandler}>{ playing ? 'Stop' : 'Play' }</button>
-
+        { has_images &&<div className={`${styles.slideshow_buttons} flex`}>
+             <button onClick={()=>playBtnHandler()}>{ playing ? 'Stop' : 'Play' }</button>
             { images.length > 1 && images.map( (image, i)=>(
                 <button
                     className={`un-border pointer ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}
                     key={i.toString()}
-                    onClick={()=>imgBtnHandler(i)}
+                    onClick={()=> imgBtnHandler(i)}
                 >
                 <img
                     alt={`Button image for image #${i}.`}                    
                     src={`${images[i]}`}
-                    width={50}
-                    height={50}
+                    width={70}
+                    height={70}
                 ></img>
                 </button>
             ))}
+        </div>}
 
-        </div>
     </div>
     )
 }

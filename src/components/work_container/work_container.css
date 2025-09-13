@@ -9,6 +9,7 @@
     margin: 0 auto;
     padding: 2rem 10px 2.5rem 2.5rem;
     transition: all 500ms ease-out;
+    scroll-snap-type: y mandatory;
     /* clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px ); */
     /* filter: drop-shadow(2px 2px 5px #a0a0a0);     */
 }
@@ -29,7 +30,7 @@
     }
     .work-container::before{/* back */
         z-index: -2;
-       /*  background: linear-gradient(var(--background, #000), var(--midground, #CCC));  */
+        /*  background: linear-gradient(var(--background, #000), var(--midground, #CCC));  */
        background-color: var(--background, #000);   
         clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );/* Old main clip */        
     }
@@ -41,7 +42,7 @@
 
 .work-content{
     overflow: hidden;
-    transition: all 1s ease-out; 
+    transition: all 1s ease-out;    
 }
 
 .work-child-outer-container{
