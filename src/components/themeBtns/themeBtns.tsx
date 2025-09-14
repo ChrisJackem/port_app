@@ -36,6 +36,7 @@ const ThemeBtns = () => {
         </div>            
             <div id='btn-container' className={`flex chip-tl-box `}>                  
                 <ThemeBtn Theme={THEMES.Default} />               
+                <ThemeBtn Theme={THEMES.Dark} />               
                 <ThemeBtn Theme={THEMES.Forest} />               
                 <ThemeBtn Theme={THEMES.Sunset} />
                 <ThemeBtn Theme={THEMES.Ocean} />

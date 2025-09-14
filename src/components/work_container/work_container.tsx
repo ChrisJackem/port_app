@@ -32,7 +32,7 @@ const WorkContainer = ({ title, conf, children }: {
   const [loadingStatus, setLoadingStatus] = useState('init');
   const container_ref = useRef(null);
   const [images, setImages] = useState<string[] | null>(null)
-  const isInView = useInView(container_ref);
+  const isInView = useInView(container_ref, {amount: .75});
 
   // Batch lazy load the images when isInView
   useEffect(()=>{
@@ -80,20 +80,19 @@ const WorkContainer = ({ title, conf, children }: {
         <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' />
       </motion.div>
         
-          <motion.div className={`work-content`}
-              key={`inner-${title}-a`}
-              variants={variantSlideIn}
-          >
-            { images/*  && false */ ? 
-            <SlideShow 
-                title={title}
-                inView={isInView}
-                images={images}
-                /* data={conf} */
-            /> 
-            : <LoadingComponent dark_mode={false}/> }
-
-          </motion.div>
+      <motion.div className={`work-content`}
+          key={`inner-${title}-a`}
+          variants={variantSlideIn}
+      >
+        { images ? 
+        <SlideShow 
+            title={title}
+            inView={isInView}
+            images={images}
+            /* data={conf} */
+        /> 
+        : <LoadingComponent dark_mode={false}/> }
+      </motion.div>
 
           <div className='work-child-outer-container'>
 

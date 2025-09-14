@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Armata, Jockey_One } from "next/font/google";
 import "./globals.css";
 import "./shapes.css";
-import "./layout.css";
+import styles from "./layout.module.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
@@ -33,9 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font_body.className} ${font_header.variable}`}>
-        <main id="main-container" className="anim-bg">
+        <main className={`${styles.main_container}`}>
           <NavBar/>
-          <div className="child-container">
+          <div className={`${styles.child_container}`}>
             <ThemeWrapper>
               {children}
             </ThemeWrapper>

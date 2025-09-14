@@ -14,49 +14,58 @@ export type ThemesType = {
 };
 
 export const THEMES: ThemesType = {
-    'Default':{
-        name:"Default",
-        text:'#FFF',
-        darkest:'#000',
-        background:'#3d3d3d',
-        midground:'#999999',
-        foreground:'#FFF',
-        accent:'#dbf227',
-    },    
-    'Forest':{
-        name:"Forest",
-        text:'#2a190cff',
-        darkest:'#184d47',
-        background:'#96bb7c',
-        midground:'#f3e9dd',
-        foreground:'#fff',
-        accent:'#cdffa6ff'
+    Default: {
+        name: "Default",
+        text: "#000",
+        darkest: "#000",
+        background: "#3b3b3bff",
+        midground: "#999999",
+        foreground: "#FFF",
+        accent: "#dbf227",
     },
-    'Sunset':{
-        name:"Sunset",
-        text:'#fff',
-        darkest:'#2d0633',
-        background:'#ff6e40',
-        midground:'#ffb86b',
-        foreground:'#fff',
-        accent:'#ffff00ff'
+    Dark: {
+        name: "Dark",
+        text: "#FFF",
+        darkest: "#272727ff",
+        background: "#757575ff",
+        midground: "#282828ff",
+        foreground: "#131313ff",
+        accent: "#27e4f2ff",
     },
-   'Ocean':{
-        name:"Ocean",
-        text:'#022c43',
-        darkest:'#022c43',
-        background:'#115173',
-        midground:'#ffd700',
-        foreground:'#e1e1e1',
-        accent:'#21e6c1'
+    Forest: {
+        name: "Forest",
+        text: "#2a190cff",
+        darkest: "#184d47",
+        background: "#96bb7c",
+        midground: "#f3e9dd",
+        foreground: "#fff",
+        accent: "#cdffa6ff",
     },
-    'Candy':{
-        name:"Candy",
-        text:'#1b1e60ff',
-        darkest:'#ff61a6',
-        background:'#ffb3c6',
-        midground:'#faffd8',
-        foreground:'#fff',
-        accent:'#d8ffb3ff'
+    Sunset: {
+        name: "Sunset",
+        text: "#000",
+        darkest: "#2d0633",
+        background: "#ff6e40",
+        midground: "#ffb86b",
+        foreground: "#fff",
+        accent: "#ffff00ff",
     },
-}
+    Ocean: {
+        name: "Ocean",
+        text: "#022c43",
+        darkest: "#022c43",
+        background: "#115173",
+        midground: "#ffd700",
+        foreground: "#e1e1e1",
+        accent: "#21e6c1",
+    },
+    Candy: {
+        name: "Candy",
+        text: "#1b1e60ff",
+        darkest: "#ff61a6",
+        background: "#ffb3c6",
+        midground: "#faffd8",
+        foreground: "#fff",
+        accent: "#d8ffb3ff",
+    },
+};

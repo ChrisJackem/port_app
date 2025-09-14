@@ -17,9 +17,11 @@
    background-color: var(--background, #000);
    z-index: 1;   
 }
-#button-text{    
+#button-text{
+    color: var(--background, #000);    
     z-index: 1;
-    background: linear-gradient(180deg, #fff, #e6e6e6);
+    /* background: linear-gradient(180deg, #fff, #e6e6e6); */
+    background: var(--foreground, #CCC);
     position: absolute;
     width: 100%;
     bottom: 15%; 

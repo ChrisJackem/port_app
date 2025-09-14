@@ -49,7 +49,7 @@
     cursor: pointer;
     display: block;
     font-size: 28px;
-    color: var(--foreground, #FFF);
+    /* color: var(--foreground, #FFF); */
     letter-spacing: -0.01rem;
     /* font-weight: bolder; */
     padding: 13px 20px 15px 20px;    

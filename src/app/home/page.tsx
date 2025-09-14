@@ -49,8 +49,6 @@ const HomePage = () => {
         />
       </section>
 
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum sapiente doloremque, sunt quasi dolores alias, optio veniam, beatae modi rerum eius amet inventore ea mollitia corrupti aut nesciunt quam neque.</p>
-
       <section id='shields' className="page-flex">
         <motion.div
           key='programming'

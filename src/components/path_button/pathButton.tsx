@@ -3,26 +3,20 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import './pathButton.css';
 import { motion } from 'motion/react';
+import { debounce } from '../debounce/debounce';
 
-/* function debounce<T extends (...args: unknown[]) => void>(fn: T, delay: number): T {
-    let timer: ReturnType<typeof setTimeout> | null = null;
-    return function(this: unknown, ...args: Parameters<T>) {
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(() => fn.apply(this, args), delay);
-    } as T;
-} */
 const PathButton = () => {
     const pathName = usePathname();
     const [scrolled, setScrolled] = useState(false);
     const elementRef = useRef(null);
 
     useEffect(() => {        
-        const scrollHandler = () => {//debounce((scrolled) => {
+        const scrollHandler = debounce(() => {
             if (elementRef.current) {                            
                 const scrollYed = window.scrollY > 160;
                 setScrolled(scrollYed);
             }
-        }
+        }, 100);
         window.addEventListener("scroll", scrollHandler);
         return () => { window.removeEventListener("scroll", scrollHandler); }
     }, []);
