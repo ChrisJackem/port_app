@@ -2,9 +2,7 @@
     padding: 0.75rem 1rem 0.25rem 20px;
     position: fixed;
     z-index: 9999;
-    top: 0px; left: 0px;
-    background-color: var(--darkest, #000);    
-    /* filter: drop-shadow(-2px -2px 5px #000); */
+    top: 0px; left: 0px;    
 }
 
 .scroll_tools::after{
@@ -13,10 +11,7 @@
 
 .scroll_tools::after{
     background-color: var(--darkest, #CCC);
-    clip-path: polygon(
-        0 0, 100% 0, 
-        100% calc(100% - 10px), calc(100% - 10px) 100%,
-        0 100%);
+    /* clip-path: polygon(); */
     z-index: -1;
     /* transform: scale(0.98, 0.9); */
 }
@@ -30,6 +25,9 @@
 }
 .btn_next{
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon fill="white" points="176 137.24 176 175.75 25 175.75 25 137.24 62.75 137.24 61.75 88 99.5 88 176 137.24"/></svg>');
+}
+.btn_next:active{
+    transform: scale(1.21);
 }
 .btn_scroll{
     background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon fill="white" points="99.25 37 137.5 37 137.5 187 99.25 187 99.25 149.5 62.5 149.5 62.5 112 99.25 37"/><rect fill="white" x="62" y="12.5" width="76" height="12.5"/></svg>');
