@@ -4,7 +4,7 @@ import './page.css'
 import { motion, stagger } from 'motion/react'
 import WorkContainer from '@/components/work_container/work_container'
 import config from '../config/work_config'
-import Scroller from '@/components/work_container/scroller/scroller'
+import Scroller from '@/components/scroller/scroller'
 
 /*********************************************************************************** Work Page  */
 
