@@ -32,7 +32,7 @@ const WorkContainer = ({ title, conf, children }: {
   const [loadingStatus, setLoadingStatus] = useState('init');
   const container_ref = useRef(null);
   const [images, setImages] = useState<string[] | null>(null)
-  const isInView = useInView(container_ref, {amount: .75});
+  const isInView = useInView(container_ref);
 
   // Batch lazy load the images when isInView
   useEffect(()=>{
@@ -52,8 +52,8 @@ const WorkContainer = ({ title, conf, children }: {
       // Set states
       ).then((urls) => {
         console.log(JSON.stringify(urls, null, 2))
-        setImages(urls as string[]);
-        setLoadingStatus('loaded');
+        //setImages(urls as string[]);
+        //setLoadingStatus('loaded');
       }).catch((E) => {
         console.error(`Image load failed:\n ${E}`);      
       });
@@ -84,7 +84,7 @@ const WorkContainer = ({ title, conf, children }: {
           key={`inner-${title}-a`}
           variants={variantSlideIn}
       >
-        { images && false ? 
+        { images !== null ? 
         <SlideShow 
             title={title}
             inView={isInView}
