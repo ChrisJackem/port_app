@@ -12,14 +12,6 @@
     transition: font-size 500ms ease-out;
 }
 
-.scrolled{
-    position: fixed;
-    font-size: 14px;
-    margin-bottom: 1rem;
-    top: 0px;
-    cursor: pointer;
-}
-
 .nav_url::before{
     content: '';
     background: var(--darkest, #000);
@@ -28,6 +20,13 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     clip-path: polygon(0 0, 100% 0, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 50%, 0 50%);
+}
+
+.scrolled{
+    position: fixed;
+    font-size: 14px;
+    top: 0px;
+    cursor: pointer;
 }
 
 .scrolled::after{
