@@ -52,8 +52,8 @@ const WorkContainer = ({ title, conf, children }: {
       // Set states
       ).then((urls) => {
         console.log(JSON.stringify(urls, null, 2))
-        //setImages(urls as string[]);
-        //setLoadingStatus('loaded');
+        setImages(urls as string[]);
+        setLoadingStatus('loaded');
       }).catch((E) => {
         console.error(`Image load failed:\n ${E}`);      
       });

@@ -1,7 +1,7 @@
 .scroll_tools{    
     padding: 1rem 50px;
     position: fixed;
-    z-index: 9998;
+    z-index: 99999;
     top: 0px; left: 0px;
     filter: drop-shadow( 2px, 2px, 5px, #000);
     gap: 0.5rem;
