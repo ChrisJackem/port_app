@@ -48,13 +48,27 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         }
     }
 
-    function toggleScroller(){
+/*     function toggleScroller(){
         setScrollState( scrollState => !scrollState );
-    }
+    } */
 
-    function scrollNext(){
-        const last_element = (Object.keys(refsByKey).length - 1).toString();        
-        for( const [key, element] of Object.entries(refsByKey) ){
+    function scrollNext(reverse=false){
+        const last_element = (Object.keys(refsByKey).length - 1).toString();  
+        const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey);  
+        for( const [key, element] of obj ){
+            if (!element) continue;
+            const rect_y = element.getBoundingClientRect().y;
+            if ( !reverse && rect_y > 0 || reverse && rect_y < 0 ){
+                window.scrollBy( { top: rect_y, behavior: 'smooth'});
+                setNextState(key.toString() !== last_element);
+                return;
+            }
+        }
+    }
+    /* function scrollNext(reverse=false){
+        const last_element = (Object.keys(refsByKey).length - 1).toString();  
+        const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey);  
+        for( const [key, element] of obj ){
             if (!element) continue;
             const rect_y = element.getBoundingClientRect().y;
             if (rect_y > 0){
@@ -63,18 +77,22 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 return;
             }
         }
-    }
+    } */
     
     return (
         <>
             <motion.div className={`flex ${styles.scroll_tools}`}>
                 <BtnScroll 
-                    onClick={toggleScroller} 
-                    color={scrollState ? COLOR_DARKEST : COLOR_MIDGROUND} 
+                    onClick={() => setScrollState( scrollState => !scrollState )} 
+                    color={scrollState ? COLOR_ACCENT : COLOR_MIDGROUND} 
                 />                 
+                <BtnPrev
+                    onClick={()=>scrollNext(true)} 
+                    color={nextState ? COLOR_ACCENT : COLOR_DARKEST} 
+                />
                 <BtnNext 
-                    onClick={scrollNext} 
-                    color={nextState ? COLOR_DARKEST : COLOR_DARKEST} 
+                    onClick={()=>scrollNext()} 
+                    color={nextState ? COLOR_ACCENT : COLOR_DARKEST} 
                 />
             </motion.div>
 
@@ -90,11 +108,6 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     )
 }
 
-/**
- * A scroll button with color changing
- * @param color the color of the button 
- * @returns React.Node
- */
 export const BtnScroll = ({ color, onClick, disabled=false }:{color?: string, disabled?:boolean, onClick:(e: React.MouseEvent<HTMLButtonElement>) => void }) => {
     const final_color = color ? color : 'var(--accent, #FFF)';
     return (
@@ -104,17 +117,13 @@ export const BtnScroll = ({ color, onClick, disabled=false }:{color?: string, di
             disabled={disabled}
         >
            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">  
-                <polygon fill={final_color} points="99.25 37 137.5 37 137.5 187 99.25 187 99.25 149.5 62.5 149.5 62.5 112 99.25 37"/>
-                <rect fill={final_color} x="62" y="12.5" width="76" height="12.5"/>  
+                <polygon fill={final_color} stroke-width="4%" stroke="#000" points="99.25 37 137.5 37 137.5 187 99.25 187 99.25 149.5 62.5 149.5 62.5 112 99.25 37"/>
+                <rect fill={final_color} stroke-width="3px" stroke="#000" x="62" y="12.5" width="76" height="12.5"/>  
             </svg> 
         </button>
     )
 }
-/**
- * A next button with color changing
- * @param color the color of the button 
- * @returns React.Node
- */
+
 export const BtnNext = ({ color, onClick, disabled = false }: { color?: string; disabled?: boolean; onClick: (e: React.MouseEvent<HTMLButtonElement>) => void }) => {
     const final_color = color ? color : 'var(--accent, #FFF)';
     return (
@@ -124,7 +133,22 @@ export const BtnNext = ({ color, onClick, disabled = false }: { color?: string; 
             disabled={disabled}
         >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                <polygon fill={final_color} points="176 137.24 176 175.75 25 175.75 25 137.24 62.75 137.24 61.75 88 99.5 88 176 137.24" />
+                <polygon fill={final_color} stroke-width="4%" stroke="#000" points="176 137.24 176 175.75 25 175.75 25 137.24 62.75 137.24 61.75 88 99.5 88 176 137.24" />
+            </svg>
+        </button>
+    );
+};
+
+export const BtnPrev = ({ color, onClick, disabled = false }: { color?: string; disabled?: boolean; onClick: (e: React.MouseEvent<HTMLButtonElement>) => void }) => {
+    const final_color = color ? color : 'var(--accent, #FFF)';
+    return (
+        <button
+            onClick={onClick}
+            className={`${styles.btn_next}`}
+            disabled={disabled}
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <polygon fill={final_color} stroke-width="4%" stroke="#000" points="25 137.24 25 175.75 176 175.75 176 137.24 138.25 137.24 139.25 88 101.5 88 25 137.24"/>
             </svg>
         </button>
     );

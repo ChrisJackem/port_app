@@ -1,5 +1,5 @@
 .scroll_tools{    
-    padding: 1rem 53px;
+    padding: 1rem 50px;
     position: fixed;
     z-index: 9999;
     top: 0px; left: 0px;
@@ -24,6 +24,7 @@
     height: 30px;
     outline: 0; border: 0;
 }
+
 .btn_next, .btn_scroll{
     cursor: pointer;
 }
@@ -38,3 +39,4 @@
 .btn_scroll{
     /* background-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon fill="white" points="99.25 37 137.5 37 137.5 187 99.25 187 99.25 149.5 62.5 149.5 62.5 112 99.25 37"/><rect fill="white" x="62" y="12.5" width="76" height="12.5"/></svg>'); */
 }
+
