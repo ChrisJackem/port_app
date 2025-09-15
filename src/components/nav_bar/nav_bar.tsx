@@ -25,7 +25,7 @@ const NavBar = () => {
   }, [nav_main]);
 
   return (
-    <div id={"nav-container"}>
+    <div id="nav-container">
       <nav 
         id="nav-bar"
         ref={nav_main}

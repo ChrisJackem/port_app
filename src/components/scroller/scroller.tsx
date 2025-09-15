@@ -62,13 +62,13 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
 
     // Scroll to next or previous scroll container
     function scrollNext(reverse=false){        
-        const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey);  
+        const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey); 
         for( const [key, element] of obj ){
             if (!element) continue;
-            const rect_y = element.getBoundingClientRect().y;
+            const rect = element.getBoundingClientRect();
             // Different checks for reverse *
-            if ( !reverse && rect_y > 0 || reverse && rect_y < 0 ){
-                window.scrollBy( { top: rect_y, behavior: 'smooth'}); 
+            if ( !reverse && rect.top > 0 || reverse && rect.top < 0 ){
+                window.scrollBy( { top: rect.top, behavior: 'smooth'}); 
                 checkScroll(key);
                 return;
             }

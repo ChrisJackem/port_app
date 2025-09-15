@@ -13,7 +13,6 @@ const PathButton = ({ threshold }: {threshold: number}) => {
         const scrollHandler = () => {
             if (elementRef.current) {                            
                 const scrollYed = window.scrollY > threshold;
-                console.log(window.scrollY, threshold)
                 setScrolled(scrollYed);
             }
         };
