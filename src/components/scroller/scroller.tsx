@@ -16,7 +16,7 @@ const COLOR_DARKEST = 'var(--darkest, #000)';
 const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {    
     const timer = useRef<number | null>(null);
     const {refsByKey, setRef} = useRefs();
-    const [scrollState, setScrollState] = useState('first');
+    const [scrollState, setScrollState] = useState<'first'|'last'|''>('first');
 
     // Listener
     useEffect(()=>{        
@@ -30,7 +30,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         }
         timer.current =  window.setTimeout(()=>{
             scrollSnap();
-            if (window.scrollY === 0) setScrollState('first');
+            if (window.scrollY < 20) setScrollState('first');
             timer.current = null;
         }, TIMEOUT);
     }
@@ -52,13 +52,12 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         for( const [key, element] of obj ){
             if (!element) continue;
             const rect_y = element.getBoundingClientRect().y;
-            // Different checks for reverse - this allows both btns to use this
+            // Different checks for reverse *
             if ( !reverse && rect_y > 0 || reverse && rect_y < 0 ){
-                window.scrollBy( { top: rect_y, behavior: 'smooth'});
-                //setNextState(key.toString() !== last_element);
+                window.scrollBy( { top: rect_y, behavior: 'smooth'}); 
                 if (key === last_element){
                     setScrollState('last');
-                }else  if (key === '0'){
+                }else if (key === '0'){
                     setScrollState('first');
                 }else{
                     setScrollState('');
@@ -74,13 +73,14 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 <SvgBtn type={'prev'}
                     onClick={()=>scrollNext(true)} 
                     color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}
-                    /* disabled={scrollState !== 'first'} */
+                    /* disabled={scrollState === 'first'} */
                 />
                 <SvgBtn type={'next'}
                     onClick={()=>scrollNext()} 
                     color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
                     /* disabled={scrollState !== 'last'} */
                 />
+                <p>{scrollState}</p>
             </motion.div>
 
             { React.Children.toArray(children).map((child, i) => {
