@@ -77,7 +77,7 @@ const WorkContainer = ({ title, conf, children }: {
         initial={{ x: 100 }}
         whileInView={{ x: 0 }}
       >
-        <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' />
+        {/* <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' /> */}
       </motion.div>
         
       <motion.div className={`work-content`}
