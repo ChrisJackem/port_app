@@ -19,7 +19,8 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     const [scrollState, setScrollState] = useState<'first'|'last'|''>('first');
 
     // Listener
-    useEffect(()=>{        
+    useEffect(()=>{
+        window.scrollTo({ top: 0, behavior: 'smooth'})     
         window.addEventListener('scroll', scrollHandler );
         return ()=> window.removeEventListener('scroll', scrollHandler)
     }, []);
@@ -35,19 +36,30 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         }, TIMEOUT);
     }
 
+    function checkScroll( key:string ){
+        const last_element = (Object.keys(refsByKey).length - 1).toString();
+        if (key === last_element){
+            setScrollState('last');
+        }else if (key === '0'){
+            setScrollState('first');
+        }else{
+            setScrollState('');
+        }
+    }
+
     // Called from timeou. Scrolls to closest refByKey
     function scrollSnap(){
-        for( const element of Object.values(refsByKey)){
+        for( const [key, element] of Object.entries(refsByKey)){
             if (!element) continue;
             const rect_y = element.getBoundingClientRect().y;            
             if ( (Math.abs(rect_y) <= MIN_DISTANCE) && (window.scrollY > 100) ){                                  
-                window.scrollBy( { top: rect_y, behavior: 'smooth'});                
+                window.scrollBy( { top: rect_y, behavior: 'smooth'});
+                checkScroll(key)
             } 
         }
     }
 
-    function scrollNext(reverse=false){
-        const last_element = (Object.keys(refsByKey).length - 1).toString();  
+    function scrollNext(reverse=false){        
         const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey);  
         for( const [key, element] of obj ){
             if (!element) continue;
@@ -55,13 +67,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
             // Different checks for reverse *
             if ( !reverse && rect_y > 0 || reverse && rect_y < 0 ){
                 window.scrollBy( { top: rect_y, behavior: 'smooth'}); 
-                if (key === last_element){
-                    setScrollState('last');
-                }else if (key === '0'){
-                    setScrollState('first');
-                }else{
-                    setScrollState('');
-                }
+                checkScroll(key);
                 return;
             }
         }
@@ -80,7 +86,8 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                     color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
                     /* disabled={scrollState !== 'last'} */
                 />
-                <p>{scrollState}</p>
+                {/* <small style={{ color: 'var(--accent, #FFF'}}                
+                >Navigate elements</small>   */}     
             </motion.div>
 
             { React.Children.toArray(children).map((child, i) => {

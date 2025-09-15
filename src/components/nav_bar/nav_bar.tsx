@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 //import { /* Poppins, */ Tilt_Warp } from "next/font/google";
 import { Jockey_One } from 'next/font/google';
 import './nav_bar.css'
@@ -14,18 +14,31 @@ const blk = Jockey_One({
     weight: '400'
 });
 
-const NavBar = () => {
+const NavBar = () => {  
+  const nav_main = useRef<HTMLElement | null>(null);
+  const [navHeight, setNavHeight] = useState(100)
+  
+  useEffect(()=>{
+    if (!nav_main.current) return;
+    const rect = nav_main.current.getBoundingClientRect();
+    setNavHeight(rect.height + 20);
+  }, [nav_main]);
+
   return (
     <div id={"nav-container"}>
-      <nav id="nav-bar" className='anim-bg chip-tl-lg'>
+      <nav 
+        id="nav-bar"
+        ref={nav_main}
+        className='anim-bg chip-tl-lg'
+      >
         <StrokeLogo infinite={false}/>        
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>
             <NavLink name="Work" href="/work"/>
-        </ul>        
+        </ul>
       </nav>
-      <PathButton />
+      <PathButton threshold={navHeight}/>
     </div>
   );
 }
