@@ -77,19 +77,18 @@ const WorkContainer = ({ title, conf, children }: {
         initial={{ x: 100 }}
         whileInView={{ x: 0 }}
       >
-        {/* <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' /> */}
+        <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' />
       </motion.div>
         
       <motion.div className={`work-content`}
           key={`inner-${title}-a`}
           variants={variantSlideIn}
       >
-        { images ? 
+        { images && false ? 
         <SlideShow 
             title={title}
             inView={isInView}
             images={images}
-            /* data={conf} */
         /> 
         : <LoadingComponent dark_mode={false}/> }
       </motion.div>
