@@ -60,29 +60,17 @@ const SlideShow = ({ title, inView, images }:{
     }
     
     return (
-    <div 
-        className={`p-rel padded ${styles.slideshow_container ?? ''}`}
-        style={{
-            margin: '1rem 3% 0 0',
-            paddingTop: '395px'
-        }}
-    >
-        <div
-            className='miter-tl-rb p-abs underer bg-dk'
-            style={{ width: 800, height: 400 }}
-        ></div>
+    <div className={`p-rel padded ${styles.slideshow_container}`} >
         
         <AnimatePresence>
             <motion.img
-                className={`miter-tl-rb p-abs under ${styles.slideshow_image_main ?? ''}`}                     
+                className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
                 key={activeImg}
                 initial={{ x: 0, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 300, opacity: 0 }}
                 transition={{ duration: .5, type: 'tween' }}
-                alt={`Active theme image: ${title}`}
-            width={800} 
-            height={400}                            
+                alt={`Active theme image: ${title}`}      
                 src={`${images[activeImg]}`}
             />
         </AnimatePresence>        
@@ -96,10 +84,9 @@ const SlideShow = ({ title, inView, images }:{
                     onClick={()=> imgBtnHandler(i)}
                 >
                 <img
+                    className={styles.img_btn}
                     alt={`Button image for image #${i}.`}                    
-                    src={`${images[i]}`}
-                    width={70}
-                    height={70}
+                    src={`${images[i]}`}                                      
                 ></img>
                 </button>
             ))}

@@ -66,7 +66,7 @@ const WorkContainer = ({ title, conf, children }: {
   const viewed_class = isInView ? 'viewed' : '';
 
   return (
-    <motion.section className={`work-container ${viewed_class} ${ready_class}`}
+    <motion.section className={`work-container flex-column ${viewed_class} ${ready_class}`}
         key={title}
         variants={variantsContainer}
         whileInView= {{transform: "scale(1)", opacity: 1}}
@@ -94,7 +94,6 @@ const WorkContainer = ({ title, conf, children }: {
       </motion.div>
 
           <div className='work-child-outer-container'>
-
             { conf.link !== undefined && images && /* false && */
               <div className='link-container'>
                 <button className={`chip-a link `} >Button</button>

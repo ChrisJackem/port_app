@@ -1,5 +1,5 @@
 .scroll_tools{    
-    padding: 1rem 50px;
+    padding: 0.5rem 50px;
     position: fixed;
     z-index: 99999;
     top: 0px; left: 0px;
@@ -8,20 +8,12 @@
     align-items: center;
 }
 
-.scroll_tools::after{
-    height: 0;
-}
-
-.scroll_tools::after{
-    background-color: var(--darkest, #CCC);
-    z-index: -1;
-}
 .scroll_tools > button{
     background-size: cover;
     padding: 0.015rem;
     background-color: transparent;
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     outline: 0; border: 0;
 }
 
@@ -32,4 +24,11 @@
 
 .btn_next:active, .btn_scroll:active{
     transform: scale(1.1);    
+}
+
+@media screen and (max-width: 600px){
+    .scroll_tools > button{
+        width: 40px;
+        height: 40px;
+    }
 }
