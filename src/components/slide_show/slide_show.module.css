@@ -2,12 +2,13 @@
     padding-top: 420px;
     gap: 0.5rem;
     padding-bottom: 0;
+    perspective: 800px;
 }
 
 .slideshow_image_main{
     width: 100%;
     object-fit: cover;
-    height: 400px;
+    height: 400px;    
 }
 
 .slideshow_buttons{    
@@ -27,6 +28,7 @@
         transform: scale(1.2);
         z-index: 2;
     }
+
 /* image inside */
 .img_btn{
     aspect-ratio: 1 / 1;

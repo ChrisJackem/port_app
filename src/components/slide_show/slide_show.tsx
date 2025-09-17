@@ -66,10 +66,10 @@ const SlideShow = ({ title, inView, images }:{
             <motion.img
                 className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
                 key={activeImg}
-                initial={{ x: 0, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 300, opacity: 0 }}
-                transition={{ duration: .5, type: 'tween' }}
+                initial={{ opacity: 0, transform: 'scale(.95)' }}
+                animate={{ opacity: 1, transform: 'scale(1)' }}
+                exit={{    opacity: 0, transform: 'scale(.95)' }}
+                transition={{ duration: 0.5 }}
                 alt={`Active theme image: ${title}`}      
                 src={`${images[activeImg]}`}
             />
@@ -79,7 +79,7 @@ const SlideShow = ({ title, inView, images }:{
              <button onClick={()=>playBtnHandler()}>{ playing ? 'Stop' : 'Play' }</button>
             { images.length > 1 && images.map( (image, i)=>(
                 <button
-                    className={`un-border pointer ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}
+                    className={`un-border ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}
                     key={i.toString()}
                     onClick={()=> imgBtnHandler(i)}
                 >
