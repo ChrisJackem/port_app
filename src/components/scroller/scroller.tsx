@@ -61,7 +61,8 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     }
 
     // Scroll to next or previous scroll container
-    function scrollNext(reverse=false){       
+    function scrollNext(reverse=false){
+        if (scrollState === 'lock') {console.log('No'); return;     }
         const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey); 
         for( const [key, element] of obj ){
             if (!element) continue;
@@ -95,13 +96,13 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
             <motion.div className={`flex ${styles.scroll_tools}`}>                          
                 <SvgBtn type={'prev'}
                     onClick={()=>scrollNext(true)}
-                    color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}  
-                                        
+                    color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}
+                    disabled={ scrollState==='lock' }
                 />
                 <SvgBtn type={'next'}
                     onClick={()=>scrollNext()}
                     color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
-                    
+                    disabled={ scrollState==='lock' }                  
                 />   
             </motion.div>
 
@@ -124,7 +125,6 @@ export const SvgBtn = ({ color, onClick, type, disabled=false }: {
     disabled?: boolean;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
  }) => {
-
     const final_color = color ? color : 'var(--accent, #FFF)';
 
     function getSvg(){
@@ -143,7 +143,8 @@ export const SvgBtn = ({ color, onClick, type, disabled=false }: {
         <button
             onClick={onClick}
             className={`${styles.btn_next}`}
-            disabled={disabled}
+            /* disabled={disabled} */
+            style={{ opacity: `${ disabled ? 0.5 : 1 }`}}
         >{ getSvg() }</button>
     );
 };
