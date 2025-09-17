@@ -1,5 +1,5 @@
 #nav-container{
-z-index: 99999999;
+z-index: 99999;
 }
 /* Ensure nav-bar uses flexbox in all browsers */
 #nav-bar {

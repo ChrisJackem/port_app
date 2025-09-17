@@ -22,9 +22,8 @@
     transition: all 1s ease-out;    
 }
 
-.work-child-outer-container{
-    
-    overflow-y: scroll;
+.work-child-outer-container{    
+    overflow-y: auto;
     color: white;    
     background-color: var(--darkest, #FFF);
     position: relative; 
@@ -40,15 +39,14 @@
     background-color: var(--accent);
 }
 
-
 .work-child-inner-container{
     padding-top: 0;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 @media screen and (max-width: 600px) {
     .work-container{
-        padding: 2.25rem 1rem 1rem 1rem;
+        padding: 1rem;
     }
     .work-child-inner-container{
         padding: 1rem;

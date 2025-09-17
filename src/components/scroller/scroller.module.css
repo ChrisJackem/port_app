@@ -1,11 +1,16 @@
-.scroll_tools{    
-    padding: 0.5rem 50px;
+.scroll_tools{     
+    padding: 0.45rem;
     position: fixed;
-    z-index: 99999;
+    z-index: 9999999;
     top: 0px; left: 0px;
-    filter: drop-shadow( 2px, 2px, 5px, #000);
     gap: 0.5rem;
     align-items: center;
+    background-color: var(--darkest, #000);
+    clip-path: polygon(
+        0 0, 100% 0,
+        100% calc(100% - 10px), calc(100% - 10px) 100%,
+        0 100%
+    );
 }
 
 .scroll_tools > button{
@@ -26,9 +31,13 @@
     transform: scale(1.1);    
 }
 
+.scroll_container{
+    padding: 2.05rem 0 0 0;
+}
+
 @media screen and (max-width: 600px){
     .scroll_tools > button{
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
 }
