@@ -26,7 +26,7 @@ const COLOR_DARKEST = 'var(--darkest, #000)';
 const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {    
     const timer = useRef<number | null>(null);
     const {refsByKey, setRef} = useRefs();
-    const [scrollState, setScrollState] = useState<'first'|'last'|''>('first');
+    const [scrollState, setScrollState] = useState<'first'|'last'|'lock'|''>('first');
 
     // Scroll Listener
     useEffect(()=>{
@@ -37,7 +37,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     }, []);
 
     // Scroll Handler
-    function scrollHandler(){        
+    function scrollHandler(){
         if ( timer.current ){       
             window.clearTimeout(timer.current)
         }
@@ -55,21 +55,23 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
             const rect_y = element.getBoundingClientRect().y;            
             if ( (Math.abs(rect_y) <= MIN_DISTANCE) && (window.scrollY > 100) ){                                  
                 window.scrollBy( { top: rect_y, behavior: 'smooth'});
-                checkScroll(key)
+                checkScroll(key);
             } 
         }
     }
 
     // Scroll to next or previous scroll container
-    function scrollNext(reverse=false){        
+    function scrollNext(reverse=false){       
         const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey); 
         for( const [key, element] of obj ){
             if (!element) continue;
             const rect = element.getBoundingClientRect();
             // Different checks for reverse *
-            if ( !reverse && rect.top > 0 || reverse && rect.top < 0 ){
-                window.scrollBy( { top: rect.top, behavior: 'smooth'}); 
-                checkScroll(key);
+            if ( !reverse && rect.top > 0 || reverse && rect.top < -1 ){
+                window.scrollBy( { top: rect.top, behavior: 'smooth'});
+                // Lock and set timeout for unlock
+                setScrollState('lock');
+                window.setTimeout( ()=>checkScroll(key), 1000);
                 return;
             }
         }
@@ -87,17 +89,19 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
             setScrollState('');
         }
     }
-        
+
     return (
         <>
             <motion.div className={`flex ${styles.scroll_tools}`}>                          
                 <SvgBtn type={'prev'}
-                    onClick={()=>scrollNext(true)} 
-                    color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}                    
+                    onClick={()=>scrollNext(true)}
+                    color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}  
+                                        
                 />
                 <SvgBtn type={'next'}
-                    onClick={()=>scrollNext()} 
-                    color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}                    
+                    onClick={()=>scrollNext()}
+                    color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
+                    
                 />   
             </motion.div>
 
