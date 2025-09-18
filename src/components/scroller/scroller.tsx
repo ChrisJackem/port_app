@@ -34,12 +34,16 @@ const variantsToolbar = {
 const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {    
     const timer = useRef<number | null>(null);
     const {refsByKey, setRef} = useRefs();
+    const [refSize, setRefSize] = useState<undefined | number>();
     // Toolbar
     const [scrollState, setScrollState] = useState<'first'|'last'|'lock'|''>('first');
     const [hideTools, setHideTools] = useState(true);
     const [userHideTools, setUserHideTools] = useState(true);
 
+    // Init
     useEffect(()=>{
+        setRefSize(Object.keys(refsByKey).length-1);
+
         const scrollHandler = ()=> {            
             if ( timer.current ) {
                 window.clearTimeout(timer.current);
@@ -67,7 +71,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         //window.scrollTo({ top: 0, behavior: 'smooth'});   
         window.addEventListener('scroll', scrollHandler );
         return ()=> window.removeEventListener('scroll', scrollHandler)
-    }, [userHideTools]);    
+    }, [refsByKey, userHideTools]);    
 
     // Scroll to next or previous scroll container
     function scrollNext(reverse=false){
@@ -90,8 +94,8 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     // Helper for scroll methods
     // checks key (refsByKey) for first or last and sets scroll state
     function checkScroll( key:string ){
-        //const last_element = `${Object.keys(refsByKey).length-1}`;
-        if (key === `${Object.keys(refsByKey).length-1}`){
+        /* if (key === `${Object.keys(refsByKey).length-1}`){ */
+        if (key === `${refSize}`){
             setScrollState('last');
         }else if (key === '0'){
             setScrollState('first');
@@ -112,7 +116,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 layout
             >   
                 <SvgBtn type={userHideTools ? 'x' : 'scroll'}
-                    onClick={ ()=> setUserHideTools(userHideTools => !userHideTools) }
+                    onClick={()=>setUserHideTools(userHideTools => !userHideTools)}
                     color={COLOR_ACCENT}                         
                 />
                 { userHideTools && (<>
@@ -126,12 +130,10 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                         color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
                         disabled={ scrollState==='lock' }                  
                     />  
-                </>)}              
-                  
+                </>)}
             </motion.div>) }
             </AnimatePresence>
             
-
             { React.Children.toArray(children).map((child, i) => {
                 if (!child) return null;
                 return <div
@@ -143,67 +145,5 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         </>
     )
 }
-/* 
-export const SvgBtn = ({ color, onClick, type, disabled=false }: { 
-    color?: string; 
-    type: 'next'|'prev'|'x'|'scroll';
-    disabled?: boolean;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
- }) => {
-    const final_color = color ? color : 'var(--accent, #FFF)';
-    function getSvg(){
-        switch(type){
-            case 'next': return (<SVG_NEXT final_color={final_color}  />)
-            case 'prev': return (<SVG_PREV final_color={final_color} />)
-            case 'x': return (<SVG_X final_color={final_color} />)
-            case 'scroll': return (<SVG_SCROLL final_color={final_color} />)
-        }
-    }
-    return (
-        <button
-            onClick={onClick}
-            className={`${styles.btn_next}`}
-            style={{ opacity: `${ disabled ? 0.5 : 1 }`}}
-        >{ getSvg() }</button>
-    );
-};
-
-export const SVG_NEXT = ({ final_color }: { final_color: string }) => (
-    <svg viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="176 99.24 176 137.75 25 137.75 25 99.24 62.75 99.24 61.75 50 99.5 50 176 99.24"/>
-    </svg>
-);
-
-export const SVG_PREV = ({ final_color }: { final_color: string }) => (
-    <svg viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="25 99.24 25 137.75 176 137.75 176 99.24 138.25 99.24 139.25 50 101.5 50 25 99.24"/>
-    </svg>
-);
-
-export const SVG_X = ({ final_color }: { final_color: string }) => (
-    <svg  viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="169.21 70.82 143.29 41.68 101.62 78.72 64.57 37.04 35.43 62.96 72.47 104.63 30.79 141.68 56.71 170.82 98.38 133.78 135.43 175.46 164.57 149.54 127.53 107.87 169.21 70.82"/>
-    </svg>
-);
-
-export const SVG_SCROLL = ({ final_color }: { final_color: string }) => (
-    <svg  viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="99.25 37 137.5 37 137.5 187 99.25 187 99.25 149.5 62.5 149.5 62.5 112 99.25 37"/>
-        <rect fill={final_color} strokeWidth="4%" stroke="#000" x="62" y="12.5" width="76" height="12.5"/>  
-    </svg>
-);
-
-export const SVG_PLAY = ({ final_color }: { final_color: string }) => (
-    <svg  viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="179 100.62 179 148.98 22 148.98 22 100.62 53.09 100.62 51.83 38.77 99.24 38.77 179 100.62"/>
-    </svg>
-);
-export const SVG_PAUSE = ({ final_color }: { final_color: string }) => (
-   <svg viewBox="0 0 200 200">
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="31.5 64.44 70.79 41 90.43 41 90.43 146.5 31.5 146.5 31.5 64.44"/>
-        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="110.07 41 169 41 169 123.06 149.36 123.06 129.71 146.5 110.07 146.5 110.07 41"/>
-    </svg>
-);
- */
 
 export default Scroller;

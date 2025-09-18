@@ -4,9 +4,13 @@
     max-width: 1000px;
     min-width: 50%;
     display: grid;
-    grid-template-rows: min-content min-content min-content 1fr;
+    grid-template-rows: 
+        min-content 
+        min-content 
+        min-content 
+        1fr;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0.75rem;
     transition: all 500ms ease-out;
     overflow: hidden;     
 }
@@ -18,21 +22,9 @@
         clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );/* Old main clip */        
     }
 
-.work-content{    
+.slideshow-container{    
     transition: all 1s ease-out;    
 }
-
-.work-child-outer-container{    
-    overflow-y: auto;
-    color: white;    
-    background-color: var(--darkest, #FFF);
-    position: relative; 
-    clip-path: polygon(
-        0 0, 100% 0, 
-        100% 100%, 20px 100%, 
-        0 calc(100% - 20px) )
-}
-
 
 .link_button_container{
     width: 100px;
@@ -48,9 +40,16 @@
     padding: 0.5rem;
 }
 
-/* .link-button::after{
-    background-color: ;
-} */
+.work-child-outer-container{    
+    overflow-y: auto;
+    color: white;    
+    background-color: var(--darkest, #FFF);
+    position: relative; 
+    clip-path: polygon(
+        0 0, 100% 0, 
+        100% 100%, 20px 100%, 
+        0 calc(100% - 20px) )
+}
 
 .work-child-inner-container{
     padding-top: 0;
@@ -58,9 +57,9 @@
 }
 
 @media screen and (max-width: 600px) {
-    .work-container{
-        padding: 1rem;
-    }
+    /* .work-container{
+        padding: 0.5rem;
+    } */
     .work-child-inner-container{
         padding: 1rem;
     }   

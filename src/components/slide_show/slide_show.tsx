@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './slide_show.module.css'
@@ -36,7 +37,6 @@ const SlideShow = ({ title, inView, images }:{
                 intervalRef.current = null;
             }
         };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inView, has_images]);
 
     function tickHandler() {
