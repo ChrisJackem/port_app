@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './slide_show.module.css'
 import './slide_show.module.css';
 import { AnimatePresence, motion } from 'motion/react'
+import SvgBtn from '../svg_btns/svg_btns';
 
 const TIMEOUT = 1000;
 
@@ -60,7 +61,7 @@ const SlideShow = ({ title, inView, images }:{
     }
     
     return (
-    <div className={`p-rel padded ${styles.slideshow_container}`} >
+    <div className={`p-rel ${styles.slideshow_container}`} >
         
         <AnimatePresence>
             <motion.img
@@ -76,7 +77,13 @@ const SlideShow = ({ title, inView, images }:{
         </AnimatePresence>        
 
         { has_images &&<div className={`${styles.slideshow_buttons} flex`}>
-             <button onClick={()=>playBtnHandler()}>{ playing ? 'Stop' : 'Play' }</button>
+             
+             <SvgBtn
+                className={styles.play_button}
+                type={ playing ? 'pause' : 'play'}              
+                onClick={()=>playBtnHandler()}
+             ></SvgBtn>
+            
             { images.length > 1 && images.map( (image, i)=>(
                 <button
                     className={`un-border ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}

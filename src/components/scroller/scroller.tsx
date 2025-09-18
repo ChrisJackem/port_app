@@ -6,6 +6,7 @@ import React, { useEffect, useRef, Children, useState } from 'react';
 import useRefs from '@/hooks/useRefs';
 import styles from './scroller.module.css';
 import { AnimatePresence, motion } from 'motion/react';
+import SvgBtn from '../svg_btns/svg_btns';
 
 const TIMEOUT = 200;
 const MIN_DISTANCE = 300;
@@ -142,8 +143,7 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         </>
     )
 }
-
-/********************************************************************** Buttons  */
+/* 
 export const SvgBtn = ({ color, onClick, type, disabled=false }: { 
     color?: string; 
     type: 'next'|'prev'|'x'|'scroll';
@@ -163,7 +163,6 @@ export const SvgBtn = ({ color, onClick, type, disabled=false }: {
         <button
             onClick={onClick}
             className={`${styles.btn_next}`}
-            /* disabled={disabled} This was disabling and not firing callback on some devices */
             style={{ opacity: `${ disabled ? 0.5 : 1 }`}}
         >{ getSvg() }</button>
     );
@@ -194,5 +193,17 @@ export const SVG_SCROLL = ({ final_color }: { final_color: string }) => (
     </svg>
 );
 
+export const SVG_PLAY = ({ final_color }: { final_color: string }) => (
+    <svg  viewBox="0 0 200 200">
+        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="179 100.62 179 148.98 22 148.98 22 100.62 53.09 100.62 51.83 38.77 99.24 38.77 179 100.62"/>
+    </svg>
+);
+export const SVG_PAUSE = ({ final_color }: { final_color: string }) => (
+   <svg viewBox="0 0 200 200">
+        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="31.5 64.44 70.79 41 90.43 41 90.43 146.5 31.5 146.5 31.5 64.44"/>
+        <polygon fill={final_color} strokeWidth="4%" stroke="#000" points="110.07 41 169 41 169 123.06 149.36 123.06 129.71 146.5 110.07 146.5 110.07 41"/>
+    </svg>
+);
+ */
 
 export default Scroller;

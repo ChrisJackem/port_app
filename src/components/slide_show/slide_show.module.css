@@ -1,5 +1,5 @@
 .slideshow_container{
-    padding-top: 420px;
+    padding-top: 400px;
     gap: 0.5rem;
     padding-bottom: 0;
     perspective: 800px;
@@ -12,7 +12,15 @@
 }
 
 .slideshow_buttons{    
-    padding: 0.25rem;    
+    /* padding: 0.25rem;     */
+    justify-content: left;
+    /* background-color: var(--darkest, #000); */
+}
+
+.play_button{
+    aspect-ratio: 1/1;
+    width: 52px;
+    background-color: transparent;
 }
 
 /* Container */

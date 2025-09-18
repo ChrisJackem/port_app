@@ -66,7 +66,7 @@ const WorkContainer = ({ title, conf, children }: {
   const viewed_class = isInView ? 'viewed' : '';
 
   return (
-    <motion.section className={`work-container flex-column ${viewed_class} ${ready_class}`}
+    <motion.section className={`work-container flex-column p-rel ${viewed_class} ${ready_class}`}
         key={title}
         variants={variantsContainer}
         whileInView= {{transform: "scale(1)", opacity: 1}}
@@ -77,7 +77,7 @@ const WorkContainer = ({ title, conf, children }: {
         initial={{ x: 100 }}
         whileInView={{ x: 0 }}
       >
-        <ChipHeader title={title} colBg='var(--accent, red)' colTx='black' />
+        <ChipHeader title={title} colBg='var(--foreground, red)' colTx='var(--text, #000)' />
       </motion.div>
         
       <motion.div className={`work-content`}
@@ -93,14 +93,19 @@ const WorkContainer = ({ title, conf, children }: {
         : <LoadingComponent dark_mode={false}/> }
       </motion.div>
 
-          <div className='work-child-outer-container'>
-            { conf.link !== undefined && images && /* false && */
-              <div className='link-container'>
-                <button className={`chip-a link `} >Button</button>
-              </div>
-            }
-            <div className='work-child-inner-container'>{children}</div>        
+      
+      <div className='p-rel'>
+        { conf.link !== undefined && images && (
+          <div className={`link_button_container psudo chip-tl-box flex`} >
+            <button className='chip-a link_button'>Goto</button>
+            <small>Goto Blah</small>
           </div>
+        )}
+      </div> 
+
+      <div className='work-child-outer-container p-rel'>          
+        <div className='work-child-inner-container'>{children}</div>        
+      </div>
 
     </motion.section>
   )

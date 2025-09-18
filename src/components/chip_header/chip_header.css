@@ -9,6 +9,7 @@
     display: inline-block;
     font-weight: bold;
     z-index: 2;
+    font-size: x-large;
 }
 .chip-header-child-container{
     color: var(--darkest, #000);

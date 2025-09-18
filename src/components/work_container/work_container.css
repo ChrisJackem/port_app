@@ -4,11 +4,11 @@
     max-width: 1000px;
     min-width: 50%;
     display: grid;
-    grid-template-rows: min-content min-content 1fr;
+    grid-template-rows: min-content min-content min-content 1fr;
     margin: 0 auto;
     padding: 1rem;
     transition: all 500ms ease-out;
-    overflow: hidden;    
+    overflow: hidden;     
 }
     /* Background shape */
     .work-container::before{
@@ -33,11 +33,24 @@
         0 calc(100% - 20px) )
 }
 
-.link-container{
-    border-top: 2px solid var(--darkest, #FFF);
-    color: black;    
-    background-color: var(--accent);
+
+.link_button_container{
+    width: 100px;
+    color: var(--foreground, #FFF);
+    position: absolute; top: 1rem; right: 0;
+    background-color: var(--darkest, #000);
+    transform: translateY(-100%);
+    /* padding: 0.5rem; */
+    justify-content: right;
 }
+
+.link_button{
+    padding: 0.5rem;
+}
+
+/* .link-button::after{
+    background-color: ;
+} */
 
 .work-child-inner-container{
     padding-top: 0;

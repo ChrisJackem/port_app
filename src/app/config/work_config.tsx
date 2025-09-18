@@ -15,6 +15,7 @@ const config: { [key: string]: Slide } = {
     },
     test2: {
         dir: 'static/images/work/test2/',
+        link: 'https://www.google.com',
         images: [         
             'cat1.jpg',         
             'cat2.jpg',         
