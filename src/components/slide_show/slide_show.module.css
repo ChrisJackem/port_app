@@ -11,16 +11,14 @@
     height: 400px;    
 }
 
-.slideshow_buttons{    
-    /* padding: 0.25rem;     */
+.slideshow_buttons{
     justify-content: left;
-    /* background-color: var(--darkest, #000); */
+    gap: 0.5rem;   
 }
 
 .play_button{
     aspect-ratio: 1/1;
-    width: 60px;
-   /*  background-color: transparent; */
+    width: 40px;   
 }
 
 /* Container */
