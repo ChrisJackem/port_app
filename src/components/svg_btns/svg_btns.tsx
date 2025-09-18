@@ -20,9 +20,9 @@ const SvgBtn = ({ color, onClick, type, className='', disabled=false }: {
     }
     return (
         <button
-            className={`un-border ${className} ${styles.btn}`}
+            className={`un-border p-rel ${className} ${styles.btn}`}
             onClick={onClick}
-            
+            aria-hidden='true'
             /* className={`${styles.btn_next}`} */
             /* disabled={disabled} This was disabling and not firing callback on some devices */
             style={{ opacity: `${ disabled ? 0.5 : 1 }`}}
@@ -57,15 +57,13 @@ export const SVG_SCROLL = ({ final_color }: { final_color: string }) => (
 
 export const SVG_PLAY = ({ final_color }: { final_color: string }) => (
     <svg  viewBox="0 0 200 200">
-        <polygon stroke="#000" strokeWidth="3px" fill={final_color} points="173 111.24 173 149.75 48 149.75 48 111.24 72.75 111.24 71.75 62 109.5 62 173 111.24"/>
-        <path stroke="#000" strokeWidth="3px" fill={final_color} d="M176.72,30l13.28,13.28v133.43l-13.28,13.28H43.28l-13.28-13.28V43.28l13.28-13.28h133.43M185,10H35l-25,25v150l25,25h150l25-25V35l-25-25h0Z"/>
+        <path fill={final_color} d="M175,0H25L0,25v150l25,25h150l25-25V25L175,0ZM163,139.75H38v-38.5h24.75l-1-49.24h37.75l63.5,49.24v38.5Z"/>
     </svg>
 );
+
 export const SVG_PAUSE = ({ final_color }: { final_color: string }) => (
    <svg viewBox="0 0 200 200">
-    <polygon fill={final_color} points="169.23 85.44 136.65 66 120.36 66 120.36 153.5 169.23 153.5 169.23 85.44"/>
-    <polygon fill={final_color} points="50.69 134.06 83.28 153.5 99.57 153.5 99.57 66 50.69 66 50.69 134.06"/>
-    <path fill={final_color} d="M176.72,30l13.28,13.28v133.43l-13.28,13.28H43.28l-13.28-13.28V43.28l13.28-13.28h133.43M185,10H35l-25,25v150l25,25h150l25-25V35l-25-25h0Z"/>
+    <path fill={final_color} d="M175,0H25L0,25v150l25,25h150l25-25V25L175,0ZM89.57,143.5h-16.29l-32.58-19.44V56h48.87v87.5ZM159.23,143.5h-48.87V56h16.29l32.58,19.44v68.06Z"/>
     </svg>
 );
 
