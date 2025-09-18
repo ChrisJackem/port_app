@@ -122,12 +122,12 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 { userHideTools && (<>
                     <SvgBtn type={'prev'}
                         onClick={()=>scrollNext(true)}
-                        color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_DARKEST}
+                        color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_MIDGROUND}
                         disabled={ scrollState==='lock' }
                     />
                     <SvgBtn type={'next'}
                         onClick={()=>scrollNext()}
-                        color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_DARKEST}
+                        color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_MIDGROUND}
                         disabled={ scrollState==='lock' }                  
                     />  
                 </>)}

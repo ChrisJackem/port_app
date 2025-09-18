@@ -1,5 +1,5 @@
 .main_container{
-    padding: 0.5rem 0.25rem 0 0.5rem;
+    padding: 0.5rem 0.15rem 0 0.5rem;
     min-height: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr min-content;

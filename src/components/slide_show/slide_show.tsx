@@ -46,7 +46,6 @@ const SlideShow = ({ title, inView, images }:{
     function playBtnHandler( force_off=false ){
         setPlaying( playing => {
             const ret = force_off===true ? false : !playing;
-            // Remove no matter what incase of spam click
             if (intervalRef.current) clearInterval(intervalRef.current);
             if (ret) intervalRef.current = setInterval(tickHandler, TIMEOUT);            
             return ret;
@@ -76,11 +75,10 @@ const SlideShow = ({ title, inView, images }:{
             />
         </AnimatePresence>        
 
-        { has_images &&<div className={`${styles.slideshow_buttons} flex`}>
-             
+        { has_images &&<div className={`${styles.slideshow_buttons} flex`}>             
              <SvgBtn
                 className={styles.play_button}
-                type={ playing ? 'pause' : 'play'}              
+                type={playing ? 'pause' : 'play'}              
                 onClick={()=>playBtnHandler()}
              ></SvgBtn>
             
@@ -89,12 +87,13 @@ const SlideShow = ({ title, inView, images }:{
                     className={`un-border ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}
                     key={i.toString()}
                     onClick={()=> imgBtnHandler(i)}
+                    aria-hidden='true'
                 >
-                <img
-                    className={styles.img_btn}
-                    alt={`Button image for image #${i}.`}                    
-                    src={`${images[i]}`}                                      
-                ></img>
+                    <img
+                        className={styles.img_btn}
+                        alt={`Slideshow Image #${i}.`}
+                        src={images[i]}                                  
+                    ></img>
                 </button>
             ))}
         </div>}

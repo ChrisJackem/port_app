@@ -102,9 +102,9 @@ const WorkContainer = ({ title, conf, children }: {
         : <LoadingComponent dark_mode={false}/> }
       </motion.div>
       
-      <div className='link-holder p-rel'>
+      <div className='link-container p-rel'>
         { conf.link !== undefined && images && (
-          <div className={`link_button_container psudo chip-tl-box flex`} >
+          <div className={`link-button-container psudo chip-tl-box flex`} >
             <button className='chip-a link_button'>Goto</button>
             <small>Goto Blah</small>
           </div>
