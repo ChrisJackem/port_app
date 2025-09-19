@@ -54,7 +54,9 @@ const HomePage = () => {
           height={300}
           alt={"portrait drawing"}
           src={"static/images/portrait_02.svg"}
-        ><LoadingComponent/></LoadImg>
+        >
+          <LoadingComponent dark_mode={false}/>
+        </LoadImg>
       </section>
 
       <section id='shields' className="page-flex">
