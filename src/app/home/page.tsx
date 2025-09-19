@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { motion, stagger } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
+import { LoadImg } from "@/hooks/useImg";
+import LoadingComponent from "@/components/loading_component/loading_component";
 
 /*********************************************************************************** Home Page  */
 // Animation
@@ -34,6 +36,12 @@ const HomePage = () => {
         transition={{ type: 'tween' }}
         className="home-container page-container"
     >
+     {/*  <LoadImg
+        src={'static/images/theme_Ocean.jpg'}
+      >
+        <p>Loadin</p>
+      </LoadImg> */}
+
       <section className="page-flex">
         <div id="typewriter-demo">
           <h1 className='heavy'>I make</h1>
@@ -41,12 +49,12 @@ const HomePage = () => {
           <h3>If I had to explain myself, it gets complicated.</h3>
         </div>
 
-        <Image         
+        <LoadImg         
           width={300}
           height={300}
-          alt="portrait drawing" 
-          src="./portrait_02.svg"
-        />
+          alt={"portrait drawing"}
+          src={"static/images/portrait_02.svg"}
+        ><LoadingComponent/></LoadImg>
       </section>
 
       <section id='shields' className="page-flex">

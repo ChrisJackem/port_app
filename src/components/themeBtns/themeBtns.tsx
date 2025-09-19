@@ -39,7 +39,11 @@ const ThemeBtns = () => {
         .then((imageResults) => {
             const _map = new Map<string, string>();
             for (const { name, data } of imageResults) {
-                _map.set(name, data);
+                if (data.length < 2){
+                    console.error(`ThemeBtns image failed: ${name}`)
+                }else{
+                    _map.set(name, data);
+                }
             }
             setThemeImgs(_map);
         })
@@ -84,7 +88,7 @@ const ThemeBtns = () => {
                 <ThemeBtn Theme={THEMES.Ocean} />
                 <ThemeBtn Theme={THEMES.Candy} />                
             </div>
-            { themeImgs && Array.from(themeImgs.entries()).map(([name, data], i) => <p key={i}>{`${name}`}</p>) }
+            {/* { themeImgs && Array.from(themeImgs.entries()).map(([name, data], i) => <p key={i}>{`${name}`}</p>) } */}
     </div> 
     )
 }

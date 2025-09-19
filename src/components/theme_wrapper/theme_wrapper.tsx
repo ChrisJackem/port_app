@@ -15,7 +15,7 @@ const ACTIVE_THEME = 'activeTheme';
 export const ThemeContext = createContext<{
   theme: string;
   SetTheme: (t:ThemeType)=> void;
-}>({ theme: 'Default', SetTheme: (t)=>{} });
+}>({ theme: 'Default', SetTheme: ()=>{} });
 
 /**
  * Wraps children with the ThemeContext provider
