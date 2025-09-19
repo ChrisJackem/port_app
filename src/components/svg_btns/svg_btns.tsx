@@ -1,32 +1,38 @@
-import styles from './svg_btns.module.css';
+import stylesCss from './svg_btns.module.css';
 
-const SvgBtn = ({ color, onClick, type, className='', disabled=false }: { 
-    color?: string; 
+const SvgBtn = ({
+    color,
+    onClick,
+    type,
+    className = '',    
+    disabled = false
+}: {
+    color?: string;
     className?: string;
-    type: 'next'|'prev'|'x'|'scroll'|'play'|'pause';
+    type: 'next' | 'prev' | 'x' | 'scroll' | 'play' | 'pause';
     disabled?: boolean;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
- }) => {
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}) => {
     const final_color = color ? color : 'var(--accent, #FFF)';
-    function getSvg(){
-        switch(type){
-            case 'next': return (<SVG_NEXT final_color={final_color}  />)
-            case 'prev': return (<SVG_PREV final_color={final_color} />)
-            case 'x': return (<SVG_X final_color={final_color} />)
-            case 'scroll': return (<SVG_SCROLL final_color={final_color} />)
-            case 'play': return (<SVG_PLAY final_color={final_color} />)
-            case 'pause': return (<SVG_PAUSE final_color={final_color} />)
+    function getSvg() {
+        switch (type) {
+            case 'next': return (<SVG_NEXT final_color={final_color} />);
+            case 'prev': return (<SVG_PREV final_color={final_color} />);
+            case 'x': return (<SVG_X final_color={final_color} />);
+            case 'scroll': return (<SVG_SCROLL final_color={final_color} />);
+            case 'play': return (<SVG_PLAY final_color={final_color} />);
+            case 'pause': return (<SVG_PAUSE final_color={final_color} />);
         }
     }
     return (
         <button
-            className={`un-border p-rel ${className} ${styles.btn}`}
+            className={`un-border p-rel ${className} ${stylesCss?.btn ?? ''}`}
             onClick={onClick}
             aria-hidden='true'
-            /* className={`${styles.btn_next}`} */
-            /* disabled={disabled} This was disabling and not firing callback on some devices */
-            style={{ opacity: `${ disabled ? 0.5 : 1 }`}}
-        >{ getSvg() }</button>
+            style={{ opacity: disabled ? 0.5 : 1 }}
+        >
+            {getSvg()}
+        </button>
     );
 };
 

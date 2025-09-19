@@ -73,14 +73,15 @@ body {
 }
 
 
-body::-webkit-scrollbar { width: 6px; } 
-body::-webkit-scrollbar-track { background: var(--background, #000); }
-body::-webkit-scrollbar-thumb { 
-  background-color: var(--midground, #CCC); 
-  border-radius: 0px; 
-  clip-path: polygon(0 0, 100% 10px, 100% 100%, 0 100%);
+::-webkit-scrollbar { width: 6px; } 
+::-webkit-scrollbar-track { background: var(--background, #000); }
+::-webkit-scrollbar-thumb { 
+  background-color: var(--accent, yellow); 
+  border-radius: 0px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--accent, yellow); }
+::-webkit-scrollbar-thumb:hover { background: var(--midground, #ccc); }
+
+
 
 * {
   box-sizing: border-box;

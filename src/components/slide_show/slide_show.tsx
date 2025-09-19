@@ -13,7 +13,6 @@ const SlideShow = ({ title, inView, images }:{
     inView:boolean,
     images: string[],
 }) => {
-
     const [activeImg, setActiveImg] = useState(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [playing, setPlaying] = useState<boolean>(true);
@@ -29,7 +28,6 @@ const SlideShow = ({ title, inView, images }:{
         else if (!inView && intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
-            console.log('stopped ', title)
         }
         return () => {
             if (intervalRef.current) {
@@ -60,25 +58,32 @@ const SlideShow = ({ title, inView, images }:{
     }
     
     return (
-    <div className={`p-rel ${styles.slideshow_container}`} >
+    <motion.div 
+        className={`p-rel ${styles.slideshow_container}`}
+        layout
+    >
         
         <AnimatePresence>
             <motion.img
                 className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
                 key={activeImg}
-                initial={{ opacity: 0, transform: 'scale(.95)' }}
-                animate={{ opacity: 1, transform: 'scale(1)' }}
-                exit={{    opacity: 0, transform: 'scale(.95)' }}
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{    opacity: 0, x: 100 }}
                 transition={{ duration: 0.5 }}
                 alt={`Active theme image: ${title}`}      
                 src={`${images[activeImg]}`}
             />
         </AnimatePresence>        
 
-        { has_images &&<div className={`${styles.slideshow_buttons} flex`}>             
+        { has_images &&
+        <div 
+            className={`${styles.slideshow_buttons} flex`}
+            style={{ animationDuration: `${TIMEOUT}ms`}}
+        >             
              <SvgBtn
-                className={styles.play_button}
-                type={playing ? 'pause' : 'play'}              
+                className={`${styles.play_button}`}
+                type={playing ? 'pause' : 'play'} 
                 onClick={()=>playBtnHandler()}
              ></SvgBtn>
             
@@ -98,7 +103,7 @@ const SlideShow = ({ title, inView, images }:{
             ))}
         </div>}
 
-    </div>
+    </motion.div>
     )
 }
 

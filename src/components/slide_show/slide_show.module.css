@@ -1,5 +1,5 @@
 .slideshow_container{
-    padding-top: 400px;
+    padding-top: 380px;
     gap: 0.5rem;
     padding-bottom: 0;
     perspective: 800px;
@@ -8,17 +8,20 @@
 .slideshow_image_main{
     width: 100%;
     object-fit: cover;
-    height: 400px;    
+    height: 400px;
+    /* height: var(--h, 400px);     */
 }
 
 .slideshow_buttons{
+    padding: 0.25rem;
     justify-content: left;
-    gap: 0.5rem;   
+    gap: 0.55rem;
+    position: relative;
 }
 
 .play_button{
     aspect-ratio: 1/1;
-    width: 40px;   
+    width: 45px;   
 }
 
 /* Container */
@@ -43,7 +46,7 @@
 
 @media screen and (max-width: 500px){
     .slideshow_container{
-        padding-top: 310px;
+        padding-top: 280px;
     }
     .slideshow_image_main{
         height: 300px;
