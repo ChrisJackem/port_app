@@ -1,27 +1,22 @@
 import stylesCss from './svg_btns.module.css';
 
-const SvgBtn = ({
-    color,
-    onClick,
-    type,
-    className = '',    
-    disabled = false
-}: {
+const SvgBtn = ({ color, onClick, type, className = '', disabled = false }: {
     color?: string;
     className?: string;
     type: 'next' | 'prev' | 'x' | 'scroll' | 'play' | 'pause';
     disabled?: boolean;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
+
     const final_color = color ? color : 'var(--accent, #FFF)';
     function getSvg() {
         switch (type) {
-            case 'next': return (<SVG_NEXT final_color={final_color} />);
-            case 'prev': return (<SVG_PREV final_color={final_color} />);
-            case 'x': return (<SVG_X final_color={final_color} />);
-            case 'scroll': return (<SVG_SCROLL final_color={final_color} />);
-            case 'play': return (<SVG_PLAY final_color={final_color} />);
-            case 'pause': return (<SVG_PAUSE final_color={final_color} />);
+            case 'next':    return (<SVG_NEXT final_color={final_color} />);
+            case 'prev':    return (<SVG_PREV final_color={final_color} />);
+            case 'x':       return (<SVG_X final_color={final_color} />);
+            case 'scroll':  return (<SVG_SCROLL final_color={final_color} />);
+            case 'play':    return (<SVG_PLAY final_color={final_color} />);
+            case 'pause':   return (<SVG_PAUSE final_color={final_color} />);
         }
     }
     return (
