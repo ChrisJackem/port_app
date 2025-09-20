@@ -44,10 +44,9 @@ const HomePage = () => {
       </LoadImg> */}
 
       <section className="page-flex">
-        <div id="typewriter-demo">
-          <h1 className='heavy'>I make</h1>
+        <div id="typewriter-demo">          
           <Typewriter />
-          <h3>If I had to explain myself, it gets complicated.</h3>
+          <p>If I had to explain myself, it gets complicated.</p>
         </div>
 
         <LoadImg         
