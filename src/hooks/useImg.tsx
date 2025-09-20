@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react"
 
-const CACHE = new Map()
+const CACHE = new Map();
 
 export const STATUS = {
     INIT:'init',
     LOADING: 'loading',
     LOADED: 'loaded',
     FAILED:'failed'
-}
+};
 
 /**
  * fetch file at url and manage CACHE
@@ -21,8 +21,7 @@ function fetchFile(url: string): Promise<string> {
             console.log(`url(${url}) is CA$HED`)
             res(CACHE.get(url));
         }        
-        fetch(url)
-        .then(response => response.blob())
+        fetch(url).then(response => response.blob())
         .then(blob => {
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -39,7 +38,6 @@ function fetchFile(url: string): Promise<string> {
     });
 }
 
-
 /**
  * Image fetching hook with CACHE.
  * STATUS constants are exported above
@@ -48,21 +46,45 @@ function fetchFile(url: string): Promise<string> {
  * @param url Url of image
  * @returns [status, data]
  */
-const useImg = (url: string) => {
+const useImg = (url: string ) => {
     const [status, setStatus] = useState<string>(STATUS.INIT);
-    const [data, setData] = useState<string | undefined>();    
-    useEffect(()=>{        
+    const [data, setData] = useState<string | string[] | undefined>();    
+    useEffect(()=>{
         fetchFile(url)
         .then( result =>{
             setStatus(STATUS.LOADED);
             setData(result);
         })
         .catch( error =>{
-            console.error(`fetch error: ${error}`)
+            console.error(`{useImg} fetch error: ${error}`)
             setStatus(STATUS.FAILED);
         });
     }, [url]);        
     return [status, data]
 }
 
+/**
+ * Batch Image fetching hook with CACHE. Same as useImg but for arrays
+ * STATUS constants are exported above
+ * * status: one of the STATUS vars
+ * * data: base64 string of the image once loaded
+ * @param urls Url of image
+ * @returns [status, data]
+ */
+export const useImgs = ( urls: string[] ) => {
+    const [status, setStatus] = useState<string>(STATUS.INIT);
+    const [data, setData] = useState<Map<string, string> | undefined>();    
+    useEffect(()=>{
+        Promise.all( urls.map(url => fetchFile(url)) )
+        .then( result =>{
+            setStatus(STATUS.LOADED);
+            setData( new Map( urls.map((url, i) => [url, result[i]]) ));
+        })
+        .catch( error =>{
+            console.error(`{useImgs} fetch error: ${error}`)
+            setStatus(STATUS.FAILED);
+        });
+    }, [urls]);        
+    return [status, data]
+}
 export default useImg

@@ -6,6 +6,7 @@ import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
 import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
+import { LoadImgs } from "@/components/load_img/load_imgs";
 
 /*********************************************************************************** Home Page  */
 // Animation
@@ -100,6 +101,10 @@ const HomePage = () => {
         <ThemeBtns />
       </section>
       
+      {/* <LoadImgs
+        src={['static/images/theme_Candy.jpg', 'static/images/theme_Default.jpg']}>
+          <p>Derp</p>
+        </LoadImgs> */}
      
     </motion.div>
   );
