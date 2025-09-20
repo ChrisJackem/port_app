@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { motion, stagger } from "motion/react";
 import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
-import { LoadImg } from "@/hooks/useImg";
+import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
 
 /*********************************************************************************** Home Page  */

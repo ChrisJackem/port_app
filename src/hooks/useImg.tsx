@@ -1,62 +1,47 @@
 /* eslint-disable @next/next/no-img-element */
-'use client'
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-const cache = new Map()
+const CACHE = new Map()
 
 export const STATUS = {
+    INIT:'init',
     LOADING: 'loading',
     LOADED: 'loaded',
     FAILED:'failed'
 }
 
 /**
- * 
- * @param * normal attributes will be passed onto normal img tag
- * @param src this url will be fetched
- * @param children shown while loading 
+ * fetch file at url and manage CACHE
+ * @param url url to fetch and save to CACHE
+ * @returns Promise[string] Containing the data of the file in base64
  */
-export const LoadImg = ({ src, children, className, alt, style, height, width}:{
-    src:string;
-    children?: React.ReactNode;
-    className?: string;
-    alt?: string;
-    style?: object;
-    height?: number;
-    width?: number;
-}) => {
-    const [status, data] = useImg(src);
-    if (status === STATUS.LOADING ){
-        return (
-            <div
-                style={{ 
-                    width: `${ width ? `${width}px` : '100px'}`,
-                    height: `${ height ? `${height}px` : '100px'}`,
-                    backgroundColor: 'var(--background, #CCC)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}
-            >
-                {children}
-            </div>
-        )
-    }else if (status === STATUS.FAILED){
-        return (<p>FAILED</p>)
-    }
-
-    return (       
-        <img
-            src={typeof data === 'string' ? data : ''}
-            alt={alt || 'Loaded Image'}
-            className={className}
-            style={style ?? undefined}
-            width={width ?? undefined}
-            height={height ?? undefined}
-        />
-    )
+function fetchFile(url: string): Promise<string> {
+    return new Promise((res, rej) => {
+        if ( CACHE.has(url) ){
+            console.log(`url(${url}) is CA$HED`)
+            res(CACHE.get(url));
+        }        
+        fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                if (typeof reader.result === 'string') {
+                    CACHE.set(url, reader.result);
+                    res(reader.result);
+                } else {
+                    rej(new Error(`file reader result not a string: ${reader.result}`));
+                }
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(E => rej(E));
+    });
 }
 
+
 /**
- * Image fetching hook with cache.
+ * Image fetching hook with CACHE.
  * STATUS constants are exported above
  * * status: one of the STATUS vars
  * * data: base64 string of the image once loaded
@@ -64,35 +49,18 @@ export const LoadImg = ({ src, children, className, alt, style, height, width}:{
  * @returns [status, data]
  */
 const useImg = (url: string) => {
-    const [status, setStatus] = useState<string>(STATUS.LOADING);
+    const [status, setStatus] = useState<string>(STATUS.INIT);
     const [data, setData] = useState<string | undefined>();    
-    useEffect(()=>{
-        if ( cache.has(url) ){
+    useEffect(()=>{        
+        fetchFile(url)
+        .then( result =>{
             setStatus(STATUS.LOADED);
-            setData(cache.get(url));
-            console.log(`Cached ${url}`)
-            return
-        }
-        try{
-            fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => {
-                        if (typeof reader.result === 'string'){
-                            cache.set(url, reader.result);
-                            setData(reader.result);
-                            setStatus(STATUS.LOADED);
-                        }else{
-                            throw new Error(`file reader broke: ${reader.result}`)
-                        }
-                    }                
-                    reader.readAsDataURL(blob);
-                })
-        }catch(E){
+            setData(result);
+        })
+        .catch( error =>{
+            console.error(`fetch error: ${error}`)
             setStatus(STATUS.FAILED);
-            console.error('Fetch Error', E)
-        }
+        });
     }, [url]);        
     return [status, data]
 }
