@@ -22,15 +22,16 @@ export const LoadImg = ({ src, children, className, alt, style, height, width}:{
 
     switch(status){
 
-        case STATUS.INIT: return ( <div></div> );
+        //case STATUS.INIT: return ( <div></div> );
         case STATUS.FAILED: return( <p>Something bad happened. Please try again later.</p> )
 
+        case STATUS.INIT:
         case STATUS.LOADING: return (
             <div
                 style={{ 
                     width: `${ width ? `${width}px` : '100px'}`,
                     height: `${ height ? `${height}px` : '100px'}`,
-                    backgroundColor: 'var(--background, #CCC)',
+                    backgroundColor: 'var(--background, #787878ff)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}
             >{children}</div>

@@ -32,9 +32,7 @@ type TypedState = {
   word: string;
   direction: number;
 };
-
 function typedReducer(state: TypedState, action: { type: string }): TypedState {
-
     function getNewState():TypedState{
         let i: number = -1;
         // Do not pick the same one twice
@@ -47,12 +45,11 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
           word: `${WORDS[i][0]}`
         }
     }
-
     switch(action.type){      
-      case "INIT"://////////////////////////////
-        return getNewState();        
+      case "INIT":
+        return getNewState();       
 
-      case "TYPE"://////////////////////////////        
+      case "TYPE":     
         if (state.direction===1){ // Forwards
           const WORD = WORDS[state.index]
           const _word = WORD.slice(0, state.word.length + 1);
@@ -73,29 +70,29 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
     }
   }
 
-const Typewriter = ({}) => {
-    const [typed, dispatchTyped] = useReducer(typedReducer, {
-        index: 0,
-        word: "",
-        direction: 1
-    });
+const canvasProps = { 
+    fontSize: 40,
+    width: 300, 
+    height: 50
+};
+const Typewriter = ({ }) => {
+    const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1} );
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasCtx = useRef<CanvasRenderingContext2D | null>(null);
-    const canvasSize = { width: 300, height: 60 }
-
     
     useEffect(()=>{
-      if (canvasRef.current){
+      // Initialize canvas context
+      if (canvasRef.current && !canvasCtx.current){
         const ctx = canvasRef.current.getContext('2d');
         if (ctx){
-          ctx.font = '40px Monospace'
+          ctx.font = `${canvasProps.fontSize}px Monospace`
           canvasCtx.current = ctx;
         }
       }
-
+      // Writing to canvas
       if (typed.word && canvasCtx.current && canvasRef.current){
-        canvasCtx.current.clearRect(0, 0, canvasSize.width, canvasSize.height);      
-        canvasCtx.current.fillText(typed.word, 10, canvasSize.height-10);
+        canvasCtx.current.clearRect(0, 0, canvasProps.width, canvasProps.height);      
+        canvasCtx.current.fillText(typed.word, 0, canvasProps.height-10);
       }
     }, [typed.word]);
 
@@ -109,13 +106,17 @@ const Typewriter = ({}) => {
     }, []);
 
     return (
-        <>
-          <h3>I Make</h3>          
-          <canvas ref={canvasRef}
-            width={canvasSize.width}
-            height={canvasSize.height}
-          ></canvas>
-        </>
+        <div className='padded'>
+          <h1 style={{ fontSize: '30px', marginBottom: -10 }}>
+            {`I make${!typed?.word ? '...' : ''}`}
+          </h1>
+            <canvas
+              ref={canvasRef}
+              width={canvasProps.width}
+              height={canvasProps.height}
+            ></canvas>          
+          <p>If I had to explain myself, it gets complicated.</p>
+        </div>
     )
 }
 

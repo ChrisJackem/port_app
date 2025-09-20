@@ -1,12 +1,13 @@
 'use client'
 import "./page.css";
-import Image from 'next/image'
+//import Image from 'next/image'
 import { motion, stagger } from "motion/react";
-import Typewriter from "@/components/typewriter/typewriter";
+//import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
 import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
-import { LoadImgs } from "@/components/load_img/load_imgs";
+import dynamic from "next/dynamic";
+//import { LoadImgs } from "@/components/load_img/load_imgs";
 
 /*********************************************************************************** Home Page  */
 // Animation
@@ -25,9 +26,18 @@ const variantsDivs = {
   exit: { opacity: 0, x: 0, y: 10 },  
 }
 
+const TypewriterLoading = dynamic(
+    ()=> import('@/components/typewriter/typewriter'),
+    { loading: ()=> <LoadingComponent />}
+)
+
 const HomePage = () => {
   return (    
-    <motion.div
+    <div
+        id='home-container'        
+        className="home-container page-container"
+    >
+   {/*  <motion.div
         id='home-container'
         key="home"
         variants={variantsPage}
@@ -36,20 +46,12 @@ const HomePage = () => {
         exit="exit"
         transition={{ type: 'tween' }}
         className="home-container page-container"
-    >
-     {/*  <LoadImg
-        src={'static/images/theme_Ocean.jpg'}
-      >
-        <p>Loadin</p>
-      </LoadImg> */}
-
-      <section className="page-flex">
-        <div id="typewriter-demo">          
-          <Typewriter />
-          <p>If I had to explain myself, it gets complicated.</p>
-        </div>
-
-        <LoadImg         
+    > */}
+      <section className="page-flex">              
+        {/* <Typewriter /> */}
+        <TypewriterLoading />
+        <LoadImg
+        style={{ margin: '0 auto'}}       
           width={300}
           height={300}
           alt={"portrait drawing"}
@@ -60,38 +62,55 @@ const HomePage = () => {
       </section>
 
       <section id='shields' className="page-flex">
-        <motion.div
+        <div
           key='programming'
           className="shield bubble flex"
-          variants={variantsDivs}
         >
+            <LoadImg
+              style={{ margin: '0 auto'}}      
+              width={200}
+              height={200}
+              alt={"XX"}
+              src={"static/images/icons/icon_bracket.svg"}
+            ><LoadingComponent dark_mode={false}/></LoadImg>
+
             <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>
             <br/>
             <button className={`chip-a link `} >GitHub</button>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          className="shield bubble flex"
-          key='webDesign'          
-          variants={variantsDivs} 
-        >
+        <div className="shield bubble flex">
+          <LoadImg
+              style={{ margin: '0 auto'}}        
+              width={200}
+              height={200}
+              alt={"XX"}
+              src={"static/images/icons/icon_ltgt.svg"}
+            ><LoadingComponent dark_mode={false}/></LoadImg>
+
           <h1>Web Design</h1>
           <p>Strong artistic background</p>
           <br/>
           <button className={`chip-a link `} >Work</button>
-        </motion.div>
+        </div>
         
-        <motion.div 
+        <div 
           className="shield bubble flex" 
-          key='games'
-          variants={variantsDivs} 
         >
-          <h1>Games</h1>
+          <LoadImg
+              style={{ margin: '0 auto'}}      
+              width={200}
+              height={200}
+              alt={"XX"}
+              src={"static/images/icons/icon_parent.svg"}
+            ><LoadingComponent dark_mode={false}/></LoadImg>
+          <br/>
+          <h1> Games </h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
           <br/>
           <button className={`chip-a link `} >Work</button>
-        </motion.div>
+        </div>
       </section>
 
       <div className="divider-2"></div>
@@ -99,13 +118,8 @@ const HomePage = () => {
       <section className="page-double" /* style={{backgroundColor: 'var(--midground)'}} */>
         <ThemeBtns />
       </section>
-      
-      {/* <LoadImgs
-        src={['static/images/theme_Candy.jpg', 'static/images/theme_Default.jpg']}>
-          <p>Derp</p>
-        </LoadImgs> */}
-     
-    </motion.div>
+           
+    </div>
   );
 }
 
