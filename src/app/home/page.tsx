@@ -68,8 +68,8 @@ const HomePage = () => {
         >
             <LoadImg
               style={{ margin: '0 auto'}}      
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               alt={"XX"}
               src={"static/images/icons/icon_bracket.svg"}
             ><LoadingComponent dark_mode={false}/></LoadImg>
@@ -83,10 +83,10 @@ const HomePage = () => {
         <div className="shield bubble flex">
           <LoadImg
               style={{ margin: '0 auto'}}        
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               alt={"XX"}
-              src={"static/images/icons/icon_ltgt.svg"}
+              src={"static/images/icons/icon_parent.svg"}
             ><LoadingComponent dark_mode={false}/></LoadImg>
 
           <h1>Web Design</h1>
@@ -100,10 +100,10 @@ const HomePage = () => {
         >
           <LoadImg
               style={{ margin: '0 auto'}}      
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               alt={"XX"}
-              src={"static/images/icons/icon_parent.svg"}
+              src={"static/images/icons/icon_bracket.svg"}
             ><LoadingComponent dark_mode={false}/></LoadImg>
           <br/>
           <h1> Games </h1>
