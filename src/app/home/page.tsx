@@ -7,6 +7,7 @@ import ThemeBtns from "@/components/themeBtns/themeBtns";
 import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
 import dynamic from "next/dynamic";
+import { IconFrame } from "@/components/icon_frame/icon_frame";
 //import { LoadImgs } from "@/components/load_img/load_imgs";
 
 /*********************************************************************************** Home Page  */
@@ -33,86 +34,40 @@ const TypewriterLoading = dynamic(
 
 const HomePage = () => {
   return (    
-    <div
-        id='home-container'        
-        className="home-container page-container"
-    >
-   {/*  <motion.div
-        id='home-container'
-        key="home"
-        variants={variantsPage}
-        initial="hidden"
-        animate="enter" 
-        exit="exit"
-        transition={{ type: 'tween' }}
-        className="home-container page-container"
-    > */}
+    <div id='home-container' className="home-container page-container">
+
       <section className="page-flex">              
-        {/* <Typewriter /> */}
         <TypewriterLoading />
+
         <LoadImg
-        style={{ margin: '0 auto'}}       
+          style={{ margin: '0 auto'}}       
           width={300}
           height={300}
           alt={"portrait drawing"}
           src={"static/images/portrait_02.svg"}
-        >
-          <LoadingComponent dark_mode={false}/>
-        </LoadImg>
+        />
       </section>
+      <br/>
+      <section className="page-flex">
+        <IconFrame url={"static/images/icons/icon_bracket.svg"}>
+          <h1>Programming</h1>
+            <p>Self taught and formally accredited programmer</p>            
+            <button className={`chip-a link `} >GitHub</button>            
+        </IconFrame>        
 
-      <section id='shields' className="page-flex">
-        <div
-          key='programming'
-          className="shield bubble flex"
-        >
-            <LoadImg
-              style={{ margin: '0 auto'}}      
-              width={100}
-              height={100}
-              alt={"XX"}
-              src={"static/images/icons/icon_bracket.svg"}
-            ><LoadingComponent dark_mode={false}/></LoadImg>
+        <IconFrame url={"static/images/icons/icon_parent.svg"}>
+          <h1>Programming</h1>
+            <p>Self taught and formally accredited programmer</p>            
+            <button className={`chip-a link `} >GitHub</button>            
+        </IconFrame>
 
-            <h1>Programming</h1>
-            <p>Self taught and formally accredited programmer</p>
-            <br/>
-            <button className={`chip-a link `} >GitHub</button>
-        </div>
-
-        <div className="shield bubble flex">
-          <LoadImg
-              style={{ margin: '0 auto'}}        
-              width={100}
-              height={100}
-              alt={"XX"}
-              src={"static/images/icons/icon_parent.svg"}
-            ><LoadingComponent dark_mode={false}/></LoadImg>
-
+        <IconFrame url={"static/images/icons/icon_bracket.svg"}>
           <h1>Web Design</h1>
-          <p>Strong artistic background</p>
-          <br/>
-          <button className={`chip-a link `} >Work</button>
-        </div>
-        
-        <div 
-          className="shield bubble flex" 
-        >
-          <LoadImg
-              style={{ margin: '0 auto'}}      
-              width={100}
-              height={100}
-              alt={"XX"}
-              src={"static/images/icons/icon_bracket.svg"}
-            ><LoadingComponent dark_mode={false}/></LoadImg>
-          <br/>
-          <h1> Games </h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quas!</p>
-          <br/>
-          <button className={`chip-a link `} >Work</button>
-        </div>
+          <p>Strong artistic background</p>          
+          <button className={`chip-a link `} >Work</button>   
+        </IconFrame>        
       </section>
-
+      <br/>
       <div className="divider-2"></div>
 
       <section className="page-double" /* style={{backgroundColor: 'var(--midground)'}} */>
