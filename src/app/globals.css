@@ -145,18 +145,32 @@ a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-  /* font-size: large; */
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.page_triple{
+    display: grid;
+    padding: 1.25rem;
+    gap: 1.25rem;
+    margin: 0px auto;
+    max-width: 1000px;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 900px) {
+  .page_triple{
+        grid-template-rows: repeat(min-content);
+        grid-template-columns: 1fr;
+  }
+  .page-flex{
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 500px){
-.page-flex{
-  flex-direction: column;
-}
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */
 
-}
+

@@ -50,7 +50,7 @@ const HomePage = () => {
       <br/>
 
       <section className={'page_triple'}>
-        <IconFrame url={"static/images/icons/icon_bracket.svg"}>
+        <IconFrame url={"static/images/icons/icon_code.svg"}>
           <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>            
             <button className={`chip-a link `} >GitHub</button>            
@@ -62,7 +62,7 @@ const HomePage = () => {
             <button className={`chip-a link `} >GitHub</button>            
         </IconFrame>
 
-        <IconFrame url={"static/images/icons/icon_bracket.svg"}>
+        <IconFrame url={"static/images/icons/icon_web.svg"}>
           <h1>Web Design</h1>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, tempore? Esse nulla hic mollitia pariatur doloribus cupiditate fugiat voluptas quam?</p>
           <button className={`chip-a link `} >Work</button>  
