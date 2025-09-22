@@ -1,12 +1,5 @@
 /* Home Page CSS */
 
-#shields{
-
-}
-
-#typewriter-demo{
-    /* color: black; */
-}
 
 .bubble{
     padding: 60px 20px 20px 20px;
@@ -15,16 +8,29 @@
     text-align: center;
 }
 
+.page_triple{
+    display: grid;
+    padding: 1.25rem;
+    gap: 1.25rem;
+    margin: 0px auto;
+    max-width: 1000px;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(3, 1fr);
+}
 
 #test > *{
     padding: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .bubble{
         width: 100%;
     }
     #shields, .bubble{
         flex-direction: column;
+    }
+    .page_triple{
+        grid-template-rows: repeat(min-content);
+        grid-template-columns: 1fr;
     }
 }

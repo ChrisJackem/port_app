@@ -1,16 +1,20 @@
 .main_container{
-    padding: 1rem;
+    padding: 1.25rem;
     background-color: var(--midground, #CCC);
     clip-path: polygon( 0px 0px, calc(100% - 35px) 0px,  100% 35px, 100% 100%,  0px 100%);
-    aspect-ratio: 1/1;
-    /* max-width: 100%; */
-    flex: 1 1 0px;
-    display: flex;
+    /* aspect-ratio: 1/1; */
+/* width: 1fr;
+flex: 1 1 0px; */
     flex-direction: column;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 0.25rem;
     --offset: 95%;
+}
+
+.main_container > *{
+    text-align: center;
 }
 .main_container.inactive, .main_container:hover{ 
     --offset: 60%; 
@@ -35,7 +39,7 @@
 
 .imaged{
     flex: 2 1 30px;
-    max-height: 200px;
+    max-height: 100px;
     object-fit: contain;
     object-position: top;
     margin: 0 auto;
@@ -49,11 +53,11 @@
 
 
 
-@media screen and (max-width: 600px){
-    .imaged{
+@media screen and (min-width: 600px){
+    /* .imaged{
         height: 50px;
-    }
+    }  */   
     .main_container{
-        flex-direction: column;
+        aspect-ratio: unset;
     }
 }

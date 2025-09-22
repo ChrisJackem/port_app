@@ -48,7 +48,8 @@ const HomePage = () => {
         />
       </section>
       <br/>
-      <section className="page-flex">
+
+      <section className={'page_triple'}>
         <IconFrame url={"static/images/icons/icon_bracket.svg"}>
           <h1>Programming</h1>
             <p>Self taught and formally accredited programmer</p>            
@@ -57,17 +58,17 @@ const HomePage = () => {
 
         <IconFrame url={"static/images/icons/icon_parent.svg"}>
           <h1>Programming</h1>
-            <p>Self taught and formally accredited programmer</p>            
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, reprehenderit!</p>            
             <button className={`chip-a link `} >GitHub</button>            
         </IconFrame>
 
         <IconFrame url={"static/images/icons/icon_bracket.svg"}>
           <h1>Web Design</h1>
-          <p>Strong artistic background</p>          
-          <button className={`chip-a link `} >Work</button>   
-        </IconFrame>        
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, tempore? Esse nulla hic mollitia pariatur doloribus cupiditate fugiat voluptas quam?</p>
+          <button className={`chip-a link `} >Work</button>  
+          </IconFrame>
       </section>
-      
+
       <br/>
       <div className="divider-2"></div>
 

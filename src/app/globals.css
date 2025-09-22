@@ -154,9 +154,9 @@ a {
   }
 }
 
-@media screen and (min-width: 500px){
-  .page-double{
-
-  }
+@media screen and (max-width: 500px){
+.page-flex{
+  flex-direction: column;
+}
 
 }
