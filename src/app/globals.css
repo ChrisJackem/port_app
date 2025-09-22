@@ -134,7 +134,8 @@ a {
   padding: 1rem 0;
 }
 
-.page-flex, 
+.page-flex,
+.page_double, 
 .page_triple, 
 .paged{
   padding: 1.25rem;
@@ -151,15 +152,24 @@ a {
   justify-content: space-around;
 }
 
-.page_triple{
+.page_double, .page_triple{
     display: grid;
     gap: 1.25rem;
     grid-template-rows: max-content;
+}
+
+.page_double{    
+    grid-template-columns: repeat(2, 1fr);
+}
+.page_triple{    
     grid-template-columns: repeat(3, 1fr);
 }
 
 @media only screen and (max-width: 900px) {
-  .page_triple{
+  .page_double{
+    
+  }
+  .page_triple, .page_double{
         grid-template-rows: repeat(min-content);
         grid-template-columns: 1fr;
   }

@@ -24,7 +24,7 @@ export const STATUS = {
  * @param url url to fetch
  * @returns Promise[string] base64 image
  */
-function fetchFile(url: string): Promise<string> {
+export function fetchFile(url: string): Promise<string> {
     if ( CACHE.has(url) ){
         const cached = CACHE.get(url);
         if (cached)
@@ -104,7 +104,7 @@ export const useImgs = ( urls: string[] ) => {
                 setStatus(STATUS.FAILED);
             });
     }, [urls]);        
-    return [status, data]
+    return [status, data];
 }
 export default useImg
 

@@ -61,8 +61,15 @@ const HomePage = () => {
       <div className="divider-1"></div>
       <br/>
 
-      <section className="paged">
+      <section className="page_double" style={{
+          padding: '40px', 
+          gap: '2rem' 
+        }}>
         <CacheReader />
+        <div>
+          <h2>Feature: Custom Image Cache</h2>
+          <p>This site uses a custom image cache bla blac</p>
+        </div>
       </section>
 
       <br/>

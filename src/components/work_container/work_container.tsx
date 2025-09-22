@@ -7,6 +7,7 @@ import { Slide } from '@/app/config/work_config';
 import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
+import { fetchFile } from '@/hooks/useImg';
 
 
 const variantsContainer = {
@@ -24,9 +25,9 @@ const variantSlideIn = {
   whileInView:{ x: 0, opacity: 1 },
 }
 /**
- * Slideshow and content container
- * This will fetch all images in conf and save them in images state as base64
- * Then we can have a wonderful slideshow! Also keeps track of loading state
+ * Slideshow and content container.
+ * Keeps track of loading state and waits to fetch images until inView (motion)
+ * * Uses the global CACHE (fetchFile)
  * @param title The title at the top
  * @param conf img urls and other config
  * @param children This will be visible while loading and is the written content
@@ -45,28 +46,12 @@ const WorkContainer = ({ title, conf, children }: {
   useEffect(()=>{
     if ( loadingStatus==='init' && isInView ) {
       setLoadingStatus('loading');
-      // Load all images and return string[] of base64 data
-      Promise.all( conf.images.map( img => {
-          try {
-              return new Promise( async (res, rej)=>{
-                const response = await fetch( `${conf.dir}${img}` );
-                const blob = await response.blob();
-                const reader = new FileReader();                
-                reader.onloadend = ()=> res(reader.result);
-                reader.onerror = rej;
-                reader.readAsDataURL(blob);           
-              })
-          } catch (error) {
-              console.error(`Fetch Error: ${error}`);
-          }
-      } ) )
-      // Set states
-      .then( basedImages => {
-        //console.log(JSON.stringify(basedImages, null, 2))
-        setImages(basedImages as string[]);
-        setLoadingStatus('loaded');
-      })
-      .catch( E => console.error(`Image load failed:\n ${E}`) );
+      Promise.all( conf.images.map( img => fetchFile(`${conf.dir}${img}`) ))       
+        .then( basedImages => {
+          setImages(basedImages as string[]);
+          setLoadingStatus('loaded');
+        })
+        .catch( E => console.error(`Image load failed:\n ${E}`) );
     }    
   }, [isInView]);
 
