@@ -67,6 +67,7 @@ const HomePage = () => {
           <button className={`chip-a link `} >Work</button>   
         </IconFrame>        
       </section>
+      
       <br/>
       <div className="divider-2"></div>
 

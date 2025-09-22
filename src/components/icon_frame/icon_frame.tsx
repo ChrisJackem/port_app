@@ -21,9 +21,9 @@ export const IconFrame = ({ url, children }: {
                     alt={'OK'}
                     src={data}
                 ></img>
-                <div className={styles.child_container}>
+                {/* <div className={styles.child_container}> */}
                     {children}
-                </div>
+                {/* </div> */}
               </>)
         }
         
