@@ -11,7 +11,7 @@
 }
 
 .main_container > *{ text-align: center;}
-.main_container.inactive, .main_container:hover{ --offset: 60%; }
+.main_container.inactive{ --offset: 60%; }
 
 .main_container::after{  
     background-color: var(--background, #CCC);  
@@ -38,10 +38,7 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 600px){
-    /* .imaged{
-        height: 50px;
-    }  */   
+@media screen and (max-width: 600px){  
     .main_container{
         padding: 2.5rem;
     }

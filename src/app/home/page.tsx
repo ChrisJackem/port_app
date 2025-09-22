@@ -8,24 +8,11 @@ import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
 import dynamic from "next/dynamic";
 import { IconFrame } from "@/components/icon_frame/icon_frame";
+import CacheReader from "@/components/cache_reader/cache_reader";
 //import { LoadImgs } from "@/components/load_img/load_imgs";
 
 /*********************************************************************************** Home Page  */
 // Animation
-const variantsPage = {
-  hidden: { opacity: 0, x: 0, y: 10 },
-  enter: { opacity: 1, x: 0, y: 0 ,
-    transition: {
-      delayChildren: stagger(0.25, { from: "first" })
-    }
-  },
-  exit: { opacity: 0, x: 0, y: 10 },
-}
-const variantsDivs = {
-  hidden: { opacity: 0, x: 0, y: 10 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 10 },  
-}
 
 const TypewriterLoading = dynamic(
     ()=> import('@/components/typewriter/typewriter'),
@@ -47,22 +34,23 @@ const HomePage = () => {
           src={"static/images/portrait_02.svg"}
         />
       </section>
+
       <br/>
 
       <section className={'page_triple'}>
-        <IconFrame url={"static/images/icons/icon_code.svg"}>
+        <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h1>Programming</h1>
-            <p>Self taught and formally accredited programmer</p>            
-            <button className={`chip-a link `} >GitHub</button>            
+          <p>Self taught and formally accredited programmer</p>            
+          <button className={`chip-a link `} >GitHub</button>            
         </IconFrame>        
 
-        <IconFrame url={"static/images/icons/icon_parent.svg"}>
+        <IconFrame url="static/images/icons/icon_parent.svg" alt="parenthasis icon">
           <h1>Programming</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, reprehenderit!</p>            
-            <button className={`chip-a link `} >GitHub</button>            
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, reprehenderit!</p>            
+          <button className={`chip-a link `} >GitHub</button>            
         </IconFrame>
 
-        <IconFrame url={"static/images/icons/icon_web.svg"}>
+        <IconFrame url="static/images/icons/icon_web.svg" alt="web icon">
           <h1>Web Design</h1>
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, tempore? Esse nulla hic mollitia pariatur doloribus cupiditate fugiat voluptas quam?</p>
           <button className={`chip-a link `} >Work</button>  
@@ -70,9 +58,18 @@ const HomePage = () => {
       </section>
 
       <br/>
-      <div className="divider-2"></div>
+      <div className="divider-1"></div>
+      <br/>
 
-      <section className="page-double" /* style={{backgroundColor: 'var(--midground)'}} */>
+      <section className="paged">
+        <CacheReader />
+      </section>
+
+      <br/>
+      <div className="divider-2"></div>
+      <br/>
+
+      <section className="paged">
         <ThemeBtns />
       </section>
            

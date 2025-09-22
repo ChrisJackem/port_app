@@ -134,12 +134,16 @@ a {
   padding: 1rem 0;
 }
 
-
-.page-flex{
+.page-flex, 
+.page_triple, 
+.paged{
+  padding: 1.25rem;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.page-flex{
   gap: 1rem;
-  padding: 1rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -149,10 +153,7 @@ a {
 
 .page_triple{
     display: grid;
-    padding: 1.25rem;
     gap: 1.25rem;
-    margin: 0px auto;
-    max-width: 1000px;
     grid-template-rows: max-content;
     grid-template-columns: repeat(3, 1fr);
 }

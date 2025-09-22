@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react"
+import { createContext } from "vm";
 
-const CACHE = new Map<string, string | Promise<string>>(); // All file data
+export const CACHE = new Map<string, string | Promise<string>>(); // All file data
+export const CACHE_AMOUNT:number = 0;
+
+export const CacheContext = createContext(CACHE)
 
 export const STATUS = {
     INIT:'init',
@@ -39,10 +43,12 @@ function fetchFile(url: string): Promise<string> {
                 } else {
                     rej(new Error(`file reader result not a string: ${reader.result}`));
                 }
+                reader.removeEventListener('loadend', callee)
             };
             reader.readAsDataURL(blob);
         })
         .catch(E => rej(E))
+        
     });    
     CACHE.set(url, promise);// *
     return promise;
@@ -100,3 +106,7 @@ export const useImgs = ( urls: string[] ) => {
     return [status, data]
 }
 export default useImg
+
+function callee(this: FileReader, ev: ProgressEvent<FileReader>) {
+    throw new Error("Function not implemented.");
+}
