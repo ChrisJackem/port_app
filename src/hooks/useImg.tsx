@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { createContext } from "vm";
 
 export const CACHE = new Map<string, string | Promise<string>>(); // All file data
-export const CACHE_AMOUNT:number = 0;
+export let CACHE_AMOUNT:number = 0;
 
 export const CacheContext = createContext(CACHE)
 
@@ -35,6 +35,7 @@ function fetchFile(url: string): Promise<string> {
     const promise = new Promise<string>((res, rej) => {
         fetch(url).then(response => response.blob())
         .then(blob => {
+            CACHE_AMOUNT += Math.round(blob.size / 100);
             const reader = new FileReader();
             reader.onloadend = () => {
                 if (typeof reader.result === 'string') {                    

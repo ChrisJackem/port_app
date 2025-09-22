@@ -5,57 +5,20 @@ import { AnimatePresence, motion } from 'motion/react';
 import { THEMES, ThemeType } from '@/app/config/theme';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import LoadingComponent from '../loading_component/loading_component';
+import { STATUS, useImgs } from '@/hooks/useImg';
 
-type ImageResult = {
-    name: string;
-    data: string;
-}
+// The images are all in the same dir, and 1 for each theme
+const theme_directoried = (s:string) => `static/images/theme_${s}.jpg`
+const theme_urls:string[] = Object.keys(THEMES).map( name => theme_directoried(name) );
 
 const ThemeBtns = () => {
     const {theme} = useContext(ThemeContext);
-    const [themeImgs, setThemeImgs] = useState<undefined | Map<string, string>>();
-    
-    useEffect(()=>{
-        // Load all images for themes as base64
-        Promise.all(
-            Object.keys(THEMES).map((key) => {
-                return new Promise<ImageResult>((res, rej) => {
-                    fetch(`static/images/theme_${key}.jpg`)
-                        .then(response => response.blob())
-                        .then(blob => {
-                            const reader = new FileReader();
-                            reader.onloadend = () => res({
-                                name: key, 
-                                data: typeof reader.result === 'string' ? reader.result : '' 
-                            });                            
-                            reader.onerror = rej;
-                            reader.readAsDataURL(blob);
-                        })
-                        .catch(rej);
-                });
-            })
-        )
-        // Save to themeImgs
-        .then((imageResults) => {
-            const _map = new Map<string, string>();
-            for (const { name, data } of imageResults) {
-                if (data.length < 2){
-                    console.error(`ThemeBtns image failed: ${name}`)
-                }else{
-                    _map.set(name, data);
-                }
-            }
-            setThemeImgs(_map);
-        })
-    }, []);
+    const [status, data] = useImgs(theme_urls);   
 
-    /////////////////////////////////////////// Loading
-    if (!themeImgs) return <LoadingComponent />
-
+    if (status !== STATUS.LOADED || !data) return <LoadingComponent />
     return ( 
-    <div id='theme-main-container'>        
-        <div id="theme-container">
-            
+    <div id='theme-main-container'>
+        <div id="theme-container">            
             <AnimatePresence>
                 <motion.img
                     id="theme-img"
@@ -67,9 +30,8 @@ const ThemeBtns = () => {
                     transition={{ duration: .4, type: 'tween' }}
                     alt={`Active theme image: ${theme}`}
                     width={400} 
-                    height={355}                            
-                    /* src={`static/images/theme_${theme}.jpg`} */
-                    src={`${themeImgs?.get(theme)}`}
+                    height={355}
+                    src={ typeof data === 'string' ? data : data.get(theme_directoried(theme)) }
                     layout
                 />
             </AnimatePresence>
@@ -88,7 +50,6 @@ const ThemeBtns = () => {
                 <ThemeBtn Theme={THEMES.Ocean} />
                 <ThemeBtn Theme={THEMES.Candy} />                
             </div>
-            {/* { themeImgs && Array.from(themeImgs.entries()).map(([name, data], i) => <p key={i}>{`${name}`}</p>) } */}
     </div> 
     )
 }

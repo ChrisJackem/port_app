@@ -61,8 +61,7 @@ const SlideShow = ({ title, inView, images }:{
     <motion.div 
         className={`p-rel ${styles.slideshow_container}`}
         layout
-    >
-        
+    >        
         <AnimatePresence>
             <motion.img
                 className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
