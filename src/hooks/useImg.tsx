@@ -1,11 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react"
-import { createContext } from "vm";
 
 export const CACHE = new Map<string, string | Promise<string>>(); // All file data
-export let CACHE_AMOUNT:number = 0;
-
-export const CacheContext = createContext(CACHE)
 
 export const STATUS = {
     INIT:'init',
@@ -18,8 +14,7 @@ export const STATUS = {
  * fetch file at url and manage CACHE -
  * CACHE[url] will be either:
  * * Promise[string] if loading
- * * String[data] if loaded
- * 
+ * * String[data] if loaded * 
  * Once fetched img will be converted to base64 and stored
  * @param url url to fetch
  * @returns Promise[string] base64 image
@@ -30,12 +25,11 @@ export function fetchFile(url: string): Promise<string> {
         if (cached)
             return typeof cached === 'string'
                 ? Promise.resolve<string>(cached)
-                : cached;        
+                : cached;
     } 
     const promise = new Promise<string>((res, rej) => {
         fetch(url).then(response => response.blob())
-        .then(blob => {
-            CACHE_AMOUNT += Math.round(blob.size / 100);
+        .then(blob => {            
             const reader = new FileReader();
             reader.onloadend = () => {
                 if (typeof reader.result === 'string') {                    
@@ -43,13 +37,11 @@ export function fetchFile(url: string): Promise<string> {
                     res(reader.result);
                 } else {
                     rej(new Error(`file reader result not a string: ${reader.result}`));
-                }
-                reader.removeEventListener('loadend', callee)
+                }                
             };
             reader.readAsDataURL(blob);
         })
-        .catch(E => rej(E))
-        
+        .catch(E => rej(E))        
     });    
     CACHE.set(url, promise);// *
     return promise;
@@ -108,6 +100,3 @@ export const useImgs = ( urls: string[] ) => {
 }
 export default useImg
 
-function callee(this: FileReader, ev: ProgressEvent<FileReader>) {
-    throw new Error("Function not implemented.");
-}

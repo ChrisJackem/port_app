@@ -165,8 +165,7 @@ transition: all 500ms ease-out;
     clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
 }
 
-.chip-tl-br{
-    padding: 10px;
+.chip-tl-br{    
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 

@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Armata } from 'next/font/google';
-import React, { useEffect, useReducer, useRef } from 'react'
+import React, { useContext, useEffect, useReducer, useRef } from 'react';
+import { ThemeContext } from '../theme_wrapper/theme_wrapper';
+import { THEMES } from '@/app/config/theme';
 
 const font_typewriter = Armata({
   subsets: ["latin"],
@@ -71,14 +73,15 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
   }
 
 const canvasProps = { 
-    fontSize: 40,
-    width: 300, 
+    fontSize: 36,
+    width: 250, 
     height: 50
 };
 const Typewriter = ({ }) => {
     const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1} );
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasCtx = useRef<CanvasRenderingContext2D | null>(null);
+    const {theme} = useContext(ThemeContext);
     
     useEffect(()=>{
       // Initialize canvas context
@@ -87,6 +90,7 @@ const Typewriter = ({ }) => {
         if (ctx){
           ctx.font = `${canvasProps.fontSize}px Monospace`
           canvasCtx.current = ctx;
+          canvasCtx.current.fillStyle = THEMES[theme].text;
         }
       }
       // Writing to canvas
@@ -107,7 +111,7 @@ const Typewriter = ({ }) => {
 
     return (
         <div className='padded'>
-          <h1 style={{ fontSize: '30px', marginBottom: -10 }}>
+          <h1 style={{ fontSize: '26px', marginBottom: -10 }}>
             {`I make${!typed?.word ? '...' : ''}`}
           </h1>
             <canvas

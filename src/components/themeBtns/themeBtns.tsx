@@ -38,23 +38,24 @@ const ThemeBtns = () => {
 
             <div id='button-text' >
                 <h2>Change Theme</h2>
-                <p>Change the theme of the entire website with the buttons below</p>
+                <p>Change the theme of the entire website</p>
             </div>
             <span id='active-theme-text'>Active: {theme}</span>
         </div>            
             <div id='btn-container' className={`flex chip-tl-box `}>                  
                 <ThemeBtn Theme={THEMES.Default} />               
-                <ThemeBtn Theme={THEMES.Dark} />               
+                {/* <ThemeBtn Theme={THEMES.Dark} />    */}            
                 <ThemeBtn Theme={THEMES.Forest} />               
                 <ThemeBtn Theme={THEMES.Sunset} />
                 <ThemeBtn Theme={THEMES.Ocean} />
-                <ThemeBtn Theme={THEMES.Candy} />                
+                <ThemeBtn Theme={THEMES.Candy} />                             
             </div>
+            
     </div> 
     )
 }
 
-const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
+export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
         <button

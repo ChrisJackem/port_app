@@ -33,15 +33,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font_body.className} ${font_header.variable}`}>
+        <ThemeWrapper>
         <main className={`${styles.main_container}`}>
           <NavBar/>
-          <div className={`${styles.child_container}`}>
-            <ThemeWrapper>
-              {children}
-            </ThemeWrapper>
+          <div className={`${styles.child_container}`}>            
+              {children}            
           </div>
-          <Footer />
         </main>
+          <Footer />
+        </ThemeWrapper>
       </body>
     </html>
   );

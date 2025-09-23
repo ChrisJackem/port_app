@@ -41,6 +41,43 @@ button{
 .psudo{ position: relative; }
 .psudo::before, .psudo::after{ content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
+.centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faded_bg{ position: relative; }
+.faded_bg::after{
+    z-index: -1;
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--background, #797979);
+    opacity: 0.1;
+}
+
+.feature_container{
+    padding: 1rem;
+    border-bottom: 2px solid var(--background, #CCC);    
+}
+
+.feature{
+    position: relative;
+    width: 100%;
+    background-color: var(--background, #000);
+    color: var(--foreground, #FFF);
+    padding: 24px 2rem 5px 1rem;   
+    letter-spacing: -0.01rem;
+}
+
+.feature::after{
+    content: 'feature:';
+    /* color: var(--accent, yellow); */
+    top: 5px; left: 10px; position: absolute;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: italic;
+}
+
 /************************** Misc */
 .padded{ padding: 1rem; }
 .unpadded{ padding: 0; }

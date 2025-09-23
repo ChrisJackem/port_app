@@ -61,22 +61,31 @@ const HomePage = () => {
       <div className="divider-1"></div>
       <br/>
 
-      <section className="page_double" style={{
-          padding: '40px', 
-          gap: '2rem' 
-        }}>
-        <CacheReader />
-        <div>
-          <h2>Feature: Custom Image Cache</h2>
-          <p>This site uses a custom image cache bla blac</p>
+      <section className="page_double">
+        <div className="centered">
+          <CacheReader />
         </div>
+        <div className="faded_bg chip-tl-br">
+
+
+          <h2 className="feature chip-tl-br">Custom Image Cache</h2>
+          <p className="padded">This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
+
+        </div>        
       </section>
 
       <br/>
       <div className="divider-2"></div>
       <br/>
 
-      <section className="paged">
+      <section className="page_double">
+        <div className="flex home_text">
+          <h2 className="feature chip-tl-br">Website Theme</h2>
+          <p>You can change the colors of the entire site any time you want. 
+            Your choice will be saved to localStorage and so when you come back later your theme will still be active.</p>
+          <i>Theme can also be changed from the footer below.</i>   
+        </div>
+
         <ThemeBtns />
       </section>
            
