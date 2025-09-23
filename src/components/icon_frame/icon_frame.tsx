@@ -19,7 +19,7 @@ export const IconFrame = ({ url, alt, children }: {
     const [status, data] = useImg(url);
     const isLoaded = status && status === STATUS.LOADED;
     return (
-        <div className={`psudo ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
+        <div className={`psudo p-rel ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
             { !isLoaded 
                 ? <LoadingComponent />
                 : <>
@@ -30,7 +30,7 @@ export const IconFrame = ({ url, alt, children }: {
                     ></img>                
                     {children}                
                 </>
-            }        
+            }
         </div>
     )
 }

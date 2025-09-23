@@ -1,16 +1,21 @@
 import React from 'react';
 import styles from './loading_component.module.css';
 
-const LoadingComponent = ({ dark_mode=true }) => {  
+const LoadingComponent = ({ dark_mode=true, height=undefined, width=undefined }:{
+  dark_mode?:boolean;
+  width?: string;
+  height?: string;
+}) => {  
   return (
     <section
       className={styles.mainContainer}
       style={{ 
-        color: `${dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)'}`
+        height: height ? height : '100%',
+        width: width ? width : '100%',
+        /* color: `${dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)'}` */
       }}
     >
-      <StrokeLogo dark_mode={true}/>
-      <span>Loading...</span>
+      <StrokeLogo dark_mode={dark_mode}/>
     </section>
   );
 }

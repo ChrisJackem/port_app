@@ -100,3 +100,24 @@ export const useImgs = ( urls: string[] ) => {
 }
 export default useImg
 
+/* export const CacheReader = ({}) => {
+  const [count, setCount]= useState<number>(0);
+  useEffect(()=>{
+    setCount(CACHE.size);
+  }, [CACHE]);
+
+  return (
+    <div className={styles.container}>
+      <p className={styles.count}>count: {count}</p>
+      <div className={styles.inner}>
+        { count > 0 && Array(count).fill(0).map((_, i) => (
+            <div 
+            key={i}
+            className={styles.dot}
+            ></div>
+          ) )}
+      </div>
+    </div>
+  )
+} */
+

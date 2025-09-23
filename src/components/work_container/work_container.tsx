@@ -58,6 +58,7 @@ const WorkContainer = ({ title, conf, children }: {
   // CSS
   const ready_class = loadingStatus === 'loaded' && isInView ? 'ready' : '';
   const viewed_class = isInView ? 'viewed' : '';
+  const image_height:number = 400;
 
   return (
     <motion.section className={`work-container flex-column p-rel ${viewed_class} ${ready_class}`}
@@ -77,14 +78,18 @@ const WorkContainer = ({ title, conf, children }: {
       <motion.div className={`slideshow-container`}
           key={`slideshow-${title}`}
           variants={variantSlideIn}
+          layout
       >
         { images ? 
           <SlideShow 
               title={title}
               inView={isInView}
-              images={images}
+              images={images}              
           /> 
-        : <LoadingComponent dark_mode={false}/> }
+        : <LoadingComponent 
+            dark_mode={true}
+            height={image_height + 'px'}            
+          /> }
       </motion.div>
       
       <div className='link-container p-rel'>

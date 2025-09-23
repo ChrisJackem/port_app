@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import "./page.css";
 //import Image from 'next/image'
@@ -19,6 +20,11 @@ const TypewriterLoading = dynamic(
     { loading: ()=> <LoadingComponent />}
 )
 
+const CacheReaderLoading = dynamic(
+    ()=> import("@/components/cache_reader/cache_reader"),
+    { loading: ()=> <LoadingComponent />}
+)
+
 const HomePage = () => {
   return (    
     <div id='home-container' className="home-container page-container">
@@ -26,7 +32,7 @@ const HomePage = () => {
       <section className="page-flex">              
         <TypewriterLoading />
 
-        <LoadImg
+       <LoadImg
           style={{ margin: '0 auto'}}       
           width={300}
           height={300}
@@ -63,18 +69,15 @@ const HomePage = () => {
 
       <section className="page_double">
         <div className="centered">
-          <CacheReader />
+          <CacheReaderLoading />
         </div>
         <div className="faded_bg chip-tl-br">
-
-
           <h2 className="feature chip-tl-br">Custom Image Cache</h2>
-          <p className="padded">This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
-
+          <p className="padded"  style={{ marginRight: '10px' }}>This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
         </div>        
       </section>
 
-      <br/>
+     <br/>
       <div className="divider-2"></div>
       <br/>
 

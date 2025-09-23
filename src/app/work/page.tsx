@@ -5,6 +5,8 @@ import { motion, stagger } from 'motion/react'
 import WorkContainer from '@/components/work_container/work_container'
 import config from '../config/work_config'
 import Scroller from '@/components/scroller/scroller'
+import LoadingComponent from '@/components/loading_component/loading_component'
+import dynamic from 'next/dynamic'
 
 /*********************************************************************************** Work Page  */
 
@@ -15,6 +17,11 @@ const variantsPage = {
     },
   exit: { opacity: 0, x: 0, y: 10 },  
 }
+
+const WorkPageLoading = dynamic(
+    ()=> import('@/components/work_container/work_container'),
+    { loading: ()=> <LoadingComponent />}
+)
 
 const WorkPage = () => {
   return (
