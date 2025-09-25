@@ -5,21 +5,17 @@ import styles from './slide_show.module.css'
 import './slide_show.module.css';
 import { AnimatePresence, motion } from 'motion/react'
 import SvgBtn from '../svg_btns/svg_btns';
+import { Slide } from '../work_container/work_container';
 
-const TIMEOUT = 1000;
+const TIMEOUT = 3000;
 
-const SlideShow = ({ title, inView, images }:{ 
-    title: string,
-    inView:boolean,
-    images: string[],
-}) => {
-    const [activeImg, setActiveImg] = useState(0);
+const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, slides: Slide[] }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const [activeSlide, setActiveSlide] = useState(0);
     const [playing, setPlaying] = useState<boolean>(true);
-    const has_images = images.length > 1;
 
     useEffect(() => {
-        if (!has_images) return;
+        if (!(slides.length > 1)) return;
         // Start interval if on screen and no interval running
         if ( playing && inView && !intervalRef.current ) {
             intervalRef.current = setInterval(tickHandler, TIMEOUT);
@@ -35,10 +31,10 @@ const SlideShow = ({ title, inView, images }:{
                 intervalRef.current = null;
             }
         };
-    }, [inView, has_images]);
+    }, [inView]);
 
     function tickHandler() {
-        setActiveImg(activeImg => ++activeImg >= images.length ? 0 : activeImg);
+        setActiveSlide(activeSlide => ++activeSlide >= slides.length ? 0 : activeSlide);
     }
 
     function playBtnHandler( force_off=false ){
@@ -51,8 +47,8 @@ const SlideShow = ({ title, inView, images }:{
     }
 
     function imgBtnHandler(id:number){
-        if (id > -1 && id < images.length){
-            setActiveImg(id);
+        if (id > -1 && id < slides.length){
+            setActiveSlide(id);
             if (playing) playBtnHandler(true);        
         }
     }
@@ -65,17 +61,17 @@ const SlideShow = ({ title, inView, images }:{
         <AnimatePresence>
             <motion.img
                 className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
-                key={activeImg}
+                key={activeSlide}
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{    opacity: 0, x: 100 }}
                 transition={{ duration: 0.5 }}
                 alt={`Active theme image: ${title}`}      
-                src={`${images[activeImg]}`}
+                src={slides[activeSlide].data}
             />
         </AnimatePresence>        
 
-        { has_images &&
+        { slides.length &&
         <div 
             className={`${styles.slideshow_buttons} flex`}
             style={{ animationDuration: `${TIMEOUT}ms`}}
@@ -86,9 +82,9 @@ const SlideShow = ({ title, inView, images }:{
                 onClick={()=>playBtnHandler()}
              ></SvgBtn>
             
-            { images.length > 1 && images.map( (image, i)=>(
+            { slides.length > 1 && slides.map( (image, i)=>(
                 <button
-                    className={`un-border ${i===activeImg ? styles.active : ''} ${styles.slideshow_button}`}
+                    className={`un-border ${i===activeSlide ? styles.active : ''} ${styles.slideshow_button}`}
                     key={i.toString()}
                     onClick={()=> imgBtnHandler(i)}
                     aria-hidden='true'
@@ -96,7 +92,7 @@ const SlideShow = ({ title, inView, images }:{
                     <img
                         className={styles.img_btn}
                         alt={`Slideshow Image #${i}.`}
-                        src={images[i]}                                  
+                        src={slides[i].data}
                     ></img>
                 </button>
             ))}

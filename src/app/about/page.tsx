@@ -17,43 +17,17 @@ const AboutPage = () => {
         initial="hidden"
         animate="enter" 
         exit="exit"
-        transition={{ duration: 2, type: 'tween' }}
         className="about-container"
     >
-        <div className="page-flex">
-            <section>
-                <h1>About</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-            </section>
-
-            <section>
-                <h3>More</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-            </section>
-        </div>
-        <div className="page-flex">
-            <section>
-                <h1>About</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-                <a href="#foo">FOO</a>
-            </section>
-
-            <section id="foo">
-                <h3>More</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-            </section>
-        </div>
-        <div className="page-flex">
-            <section>
-                <h1>About</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-            </section>
-
-            <section>
-                <h3>More</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, quaerat molestias tempore perspiciatis doloremque ut nemo nulla nostrum beatae laborum voluptatum laudantium, excepturi totam recusandae quod at dolores ullam iure?</p>
-            </section>
-        </div>
+        <section className='paged'>
+            <h1 className='chip-tl-br bg-bg tx-fg' style={{ padding: '1rem 0.2rem 0.2rem 1rem' }}>About this website</h1>
+            <p className='padded' >I have always had an interest in computers and art. At a young age I learned how to code and since have made many, many things of which some still survive today, and are archived here.</p>   
+        </section>
+        <br/>
+        <section className='faded_bg paged' style={{ padding: '5px'}}>
+            <h1 className='chip-tl-br bg-bg tx-fg' style={{ padding: '1rem 0.2rem 0.2rem 1rem' }}>About Me</h1>
+            <p className='padded' >I have always had an interest in computers and art. At a young age I learned how to code and since have made many, many things of which some still survive today, and are archived here.</p>   
+        </section>
         
         
     </motion.div>

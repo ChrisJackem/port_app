@@ -161,7 +161,7 @@ transition: all 500ms ease-out;
 .chip-tl-md{
     --offset: 20px;
     position: relative;
-    padding: 25px 5px 5px 5px;
+    /* padding: 25px 5px 5px 5px; */
     clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
 }
 
@@ -176,9 +176,7 @@ transition: all 500ms ease-out;
     clip-path: polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px);
 }
 
-.lip-tr-lg{
-    position: relative;
-    padding: 25px 5px 5px 5px;
+.chip-tr-lg{
     clip-path: polygon(0 20px, 80% 20px, 90% 0, 100% 0, 100% 100%, 0 100%);
 }
 

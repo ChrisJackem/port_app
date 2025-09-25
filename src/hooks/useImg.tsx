@@ -83,8 +83,9 @@ const useImg = (url: string ) => {
  */
 export const useImgs = ( urls: string[] ) => {
     const [status, setStatus] = useState<string>(STATUS.INIT);
-    const [data, setData] = useState<Map<string, string> | undefined>();    
+    const [data, setData] = useState<Map<string, string> | undefined>();  
     useEffect(()=>{
+        if ( urls === undefined ) return;
         setStatus(STATUS.LOADING);
         Promise.all( urls.map(url => fetchFile(url)) )
             .then( result =>{
@@ -96,28 +97,6 @@ export const useImgs = ( urls: string[] ) => {
                 setStatus(STATUS.FAILED);
             });
     }, [urls]);        
-    return [status, data];
+    return [status, data, urls];
 }
-export default useImg
-
-/* export const CacheReader = ({}) => {
-  const [count, setCount]= useState<number>(0);
-  useEffect(()=>{
-    setCount(CACHE.size);
-  }, [CACHE]);
-
-  return (
-    <div className={styles.container}>
-      <p className={styles.count}>count: {count}</p>
-      <div className={styles.inner}>
-        { count > 0 && Array(count).fill(0).map((_, i) => (
-            <div 
-            key={i}
-            className={styles.dot}
-            ></div>
-          ) )}
-      </div>
-    </div>
-  )
-} */
-
+export default useImg;

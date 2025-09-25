@@ -27,11 +27,14 @@ export const LoadImg = ({ src, className, alt, style, height, width}:{
     }
 
     switch(status){
-        //case STATUS.INIT: return ( <div></div> );
         case STATUS.FAILED: return( <p>Something bad happened. Please try again later.</p> )
-
-        case STATUS.INIT:    return ( <div style={placeholder_style}></div> );
-        case STATUS.LOADING: return ( <div style={placeholder_style}>{ <LoadingComponent/> }</div> );
+        
+        case STATUS.INIT:
+        case STATUS.LOADING: return ( 
+                <div style={placeholder_style}>
+                    <LoadingComponent/>
+                </div> 
+            );
 
         case STATUS.LOADED: return(
             <img
@@ -43,7 +46,6 @@ export const LoadImg = ({ src, className, alt, style, height, width}:{
                 height={height ?? undefined}
             />
         )
-
         default: return null;
     }
 }

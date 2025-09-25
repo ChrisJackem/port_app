@@ -1,41 +1,8 @@
 /* Home Page CSS */
 
-/* .bubble{
-    padding: 60px 20px 20px 20px;
-    flex: 1 1 0px;
-    aspect-ratio: 1 / 1;    
-    text-align: center;
-} */
-
 .home_text{
     align-content: center;
 }
-
-
-
-/* .feature_container{
-    padding: 1rem;
-    border-bottom: 3px solid var(--background, #CCC);
-}
-
-.feature{
-    position: relative;
-    width: 100%;
-    background-color: var(--background, #000);
-    color: var(--foreground, #FFF);
-    padding: 24px 2rem 5px 1rem;   
-    letter-spacing: -0.01rem;
-}
-
-.feature::after{
-    content: 'feature:';
-    color: var(--accent, yellow);
-    top: 5px; left: 15px; position: absolute;
-    font-size: 10px;
-    font-weight: normal;
-    font-style: italic;
-} */
-
 
 @media only screen and (max-width: 900px) {
     

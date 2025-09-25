@@ -1,16 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import "./page.css";
-//import Image from 'next/image'
-import { motion, stagger } from "motion/react";
-//import Typewriter from "@/components/typewriter/typewriter";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
 import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
 import dynamic from "next/dynamic";
 import { IconFrame } from "@/components/icon_frame/icon_frame";
-import CacheReader from "@/components/cache_reader/cache_reader";
-//import { LoadImgs } from "@/components/load_img/load_imgs";
+
 
 /*********************************************************************************** Home Page  */
 // Animation

@@ -1,28 +1,68 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { motion, stagger, useInView } from 'motion/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { useInView } from 'motion/react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './work_container.css';
-import { Slide } from '@/app/config/work_config';
+//import { Slide } from '@/app/config/work_config';
 import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
-import { fetchFile } from '@/hooks/useImg';
+import { fetchFile, STATUS} from '@/hooks/useImg';
 
+/**
+ * Holds an image url, title, text, and alt
+ */
+export type Slide = {
+  title: string;
+  url: string;
+  alt?: string;
+  type?: undefined | 'image' | 'youtube';
+  text?: undefined | string;
+  data?: undefined | string;
+}
+export type SlideState = {
+  status: string;
+  slides: Slide[];
+}
+// Init slides
+const createInitialSlides = (slides: Slide[]): SlideState => ({
+    status: STATUS.INIT,
+    slides: slides.map(slide => ({ 
+      ...slide,
+      type: slide.type ?? 'image',
+      alt: slide.alt ?? `${slide.title} image`,
+      data: undefined 
+    }))
+})
+function slideReducer(
+  state: SlideState,
+  action: { type: string,  payload: unknown }
+): SlideState {
+  try{
+    switch (action.type){    
+      
+      case 'LOADED':
+        const DATA = action.payload as Map<string, string>;
+        if (!DATA || !action.payload) throw new Error(`No Data:\n${JSON.stringify(action.payload)}`);
+        return ({
+          ...state,
+          status: STATUS.LOADED,
+          slides: state.slides.map( slide => ({ ...slide, data: DATA.get(slide.url) }) )
+        })
 
-const variantsContainer = {
-  initial: { transform: "scale(.98)" },
-  hidden: { opacity: 0, x: 100 },
-  enter: { opacity: .5, x: 0, transform: "scale(.9)", 
-    transition: { delayChildren: stagger(1, { startDelay: 0.5, from: "first" }) }
-   },
-  exit: { opacity: 0, x: -70, y: 10 },
-  viewport: { amount: 0.95 }
+      default: return state;
+    }
+  }catch(E){ 
+    console.error(`ERR: ${E}`)
+    return state; 
+  }
 }
 
-const variantSlideIn = {
-  initial:{ x: 100, opacity: 0 },
-  whileInView:{ x: 0, opacity: 1 },
+export type WorkContainerProps = {
+    title: string;
+    content: Slide[]
+    children: React.ReactNode;
 }
 /**
  * Slideshow and content container.
@@ -32,80 +72,51 @@ const variantSlideIn = {
  * @param conf img urls and other config
  * @param children This will be visible while loading and is the written content
  */
-const WorkContainer = ({ title, conf, children }: {
-    title: string;
-    conf: Slide
-    children: React.ReactNode;
-}) => {
-  const [loadingStatus, setLoadingStatus] = useState<string>('init');
-  const [images, setImages] = useState<string[] | null>(null)
+const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
+  const [slideState, slideDispatch] = useReducer(slideReducer, content, createInitialSlides)
   const container_ref = useRef(null);
   const isInView = useInView(container_ref);
 
   // Batch lazy load the images when isInView
   useEffect(()=>{
-    if ( loadingStatus==='init' && isInView ) {
-      setLoadingStatus('loading');
-      Promise.all( conf.images.map( img => fetchFile(`${conf.dir}${img}`) ))       
+    if ( slideState.status === STATUS.INIT && isInView ) {
+      const imgs = content.map( item => item.url );
+      Promise.all( imgs.map( img => fetchFile(`${img}`) ))
         .then( basedImages => {
-          setImages(basedImages as string[]);
-          setLoadingStatus('loaded');
+            const mapped_images = new Map( imgs.map((url, i) => [url, basedImages[i]]) );
+            slideDispatch({type: 'LOADED', payload: mapped_images});
         })
-        .catch( E => console.error(`Image load failed:\n ${E}`) );
+        .catch( E => console.error(`slide error: ${E}`))
     }    
   }, [isInView]);
 
-  // CSS
-  const ready_class = loadingStatus === 'loaded' && isInView ? 'ready' : '';
-  const viewed_class = isInView ? 'viewed' : '';
-  const image_height:number = 400;
-
   return (
-    <motion.section className={`work-container flex-column p-rel ${viewed_class} ${ready_class}`}
-        key={title + '_container'}
-        variants={variantsContainer}
-        whileInView= {{transform: "scale(1)", opacity: 1}}
-        ref={container_ref}        
-    >
-      <motion.div className="work-title"
-        key={title + '_title'}
-        initial={{ x: 100 }}
-        whileInView={{ x: 0 }}
-      >
-        <ChipHeader title={title} colBg='var(--midground, red)' colTx='var(--text, red)' />
-      </motion.div>
-        
-      <motion.div className={`slideshow-container`}
-          key={`slideshow-${title}`}
-          variants={variantSlideIn}
-          layout
-      >
-        { images ? 
-          <SlideShow 
-              title={title}
-              inView={isInView}
-              images={images}              
-          /> 
-        : <LoadingComponent 
+    <section className='work-container flex-column p-rel' ref={container_ref}>     
+      <ChipHeader title={title} colBg='var(--foreground, #FFF)' colTx='var(--text, red)' />
+      { slideState.status !== STATUS.LOADED 
+        ? <LoadingComponent 
             dark_mode={true}
-            height={image_height + 'px'}            
-          /> }
-      </motion.div>
-      
+            height={ '400px'}            
+          />
+        : <SlideShow 
+            title={title}
+            inView={isInView}
+            slides={slideState.slides}              
+        /> 
+      }      
       <div className='link-container p-rel'>
-        { conf.link !== undefined && images && (
+        {/* { images && (
           <div className={`link-button-container psudo chip-tl-box flex`} >
             <button className='chip-a link_button'>Goto</button>
             <small>Goto Blah</small>
           </div>
-        )}
-      </div> 
-
+        )} */}
+      </div>
       <div className='work-child-outer-container'>
         <div className='work-child-inner-container'>{children}</div>        
       </div>
 
-    </motion.section>
+    </section>
   )
 }
 

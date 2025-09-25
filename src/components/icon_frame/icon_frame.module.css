@@ -9,6 +9,7 @@
     align-items: center;
     gap: 0.25rem;
     --offset: 95%;
+    min-height: 150px;
 }
 
 .main_container > *{ text-align: center;}
