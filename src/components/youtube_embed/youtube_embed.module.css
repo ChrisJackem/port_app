@@ -5,6 +5,7 @@
     top: 0; left: 0;
     height: 400px; /* Make sure this is synced */
     width: 100%; 
+    transition: all 200ms ease-out;
 }
 
 .video_responsive iframe {
