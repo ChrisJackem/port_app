@@ -31,7 +31,7 @@ const ThemeBtns = () => {
                     alt={`Active theme image: ${theme}`}
                     width={400} 
                     height={355}
-                    src={
+                    src={ /* WTF  */
                         typeof data === 'string'
                             ? data
                             : Array.isArray(data)
