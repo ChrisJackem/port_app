@@ -32,10 +32,14 @@ const WorkPage = () => {
             { title: 'test', url: 'static/images/work/test/test1.png' },
             { title: 'test2', 
                 url: 'static/images/work/test/test2.png',
-                text: 'Fuck you, buddy.' 
+                text: 'This is working' 
             },
             { title: 'test3', url: 'static/images/work/test/test3.png' },
-            { title: 'Beei', url: 'static/images/work/test2/cat3.jpg', embedId:'J63mfimO5qE'}
+            { title: 'Beei', 
+                url: 'static/images/work/test2/cat3.jpg', 
+                embedId:'J63mfimO5qE',
+                text: 'A youtube vieeo'
+            }
         ]}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>

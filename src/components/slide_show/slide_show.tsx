@@ -65,9 +65,7 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     
     return (
     <div className={`p-rel ${styles.slideshow_container}`} 
-        style={{ paddingTop: `${hero_height + 10}px` }}>
-
-        
+        /* style={{ paddingTop: `${hero_height + 10}px` }} */>        
 
         <AnimatePresence>
             <>
