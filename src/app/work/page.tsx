@@ -35,7 +35,7 @@ const WorkPage = () => {
                 text: 'This is working' 
             },
             { title: 'test3', url: 'static/images/work/test/test3.png' },
-            { title: 'Beei', 
+            { title: 'Beei',
                 url: 'static/images/work/test2/cat3.jpg', 
                 embedId:'J63mfimO5qE',
                 text: 'A youtube vieeo'

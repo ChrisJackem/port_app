@@ -67,19 +67,26 @@ export type WorkContainerProps = {
  * @param children This will be visible while loading and is the written content
  */
 const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
-  const [slideState, slideDispatch] = useReducer(slideReducer, content, createInitialSlides)
+  //const [slideState, slideDispatch] = useReducer(slideReducer, content, createInitialSlides);
+  const [slideData, setSlideData] = useState<SlideState>({ status: STATUS.INIT, slides:content })
   const container_ref = useRef(null);
   const isInView = useInView(container_ref);
 
   // Batch lazy load the images when isInView
   useEffect(()=>{
-    if ( slideState.status === STATUS.INIT && isInView ) {
-      const imgs = content.map( item => item.url );
-      Promise.all( imgs.map( img => fetchFile(`${img}`) ))
+    if ( slideData.status === STATUS.INIT && isInView ) {
+      //const imgs = content.map( item => item.url );
+      Promise.all( content.map( item => item.url ).map( img => fetchFile(`${img}`) ))
         .then( basedImages => {
-          // Mapped to url : data
-          const mapped_images = new Map( imgs.map((url, i) => [url, basedImages[i]]) );
-          slideDispatch({type: 'LOADED', payload: mapped_images});
+          // Setting the data attributes
+          setSlideData({
+            status: STATUS.LOADED,
+            slides: content.map(
+              (slide, i) => ({
+                ...slide,
+                data: basedImages[i] 
+              }))
+          });
         })
         .catch( E => console.error(`slide error: ${E}`))
     }    
@@ -88,7 +95,7 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
   return (
     <section className='work-container flex-column p-rel' ref={container_ref}>     
       <ChipHeader title={title} colBg='var(--foreground, #FFF)' colTx='var(--text, red)' />
-      { slideState.status !== STATUS.LOADED 
+      { slideData.status !== STATUS.LOADED 
         ? <LoadingComponent 
             dark_mode={true}
             height={ '400px'}
@@ -96,7 +103,7 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
         : <SlideShow 
             title={title}
             inView={isInView}
-            slides={slideState.slides}              
+            slides={slideData.slides}              
         /> 
       }      
       <div className='link-container p-rel'>
