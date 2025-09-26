@@ -3,18 +3,25 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './slide_show.module.css'
 import './slide_show.module.css';
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
 import { Slide } from '../work_container/work_container';
+import YoutubeEmbed from '../youtube_embed/youtube_embed';
 
 const TIMEOUT = 3000;
 
 const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, slides: Slide[] }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
-    const [activeSlide, setActiveSlide] = useState(0);
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
     const [playing, setPlaying] = useState<boolean>(true);
+    //const [hasVideo, setHasVideo] = useState<string | undefined>();
 
-    useEffect(() => {
+    /* useEffect(()=>{
+
+        setHasVideo( slides.map( slide => slide.embedId ).some( id => id ) )
+    },[slides]) */
+
+    useEffect(() => {        
         if (!(slides.length > 1)) return;
         // Start interval if on screen and no interval running
         if ( playing && inView && !intervalRef.current ) {
@@ -34,7 +41,7 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     }, [inView]);
 
     function tickHandler() {
-        setActiveSlide(activeSlide => ++activeSlide >= slides.length ? 0 : activeSlide);
+        setActiveSlideIndex(activeSlideIndex => ++activeSlideIndex >= slides.length ? 0 : activeSlideIndex);
     }
 
     function playBtnHandler( force_off=false ){
@@ -48,27 +55,46 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
 
     function imgBtnHandler(id:number){
         if (id > -1 && id < slides.length){
-            setActiveSlide(id);
+            setActiveSlideIndex(id);
             if (playing) playBtnHandler(true);        
         }
     }
+
+    const activeSlide = slides[activeSlideIndex];
+    const hero_height = 400;
     
     return (
-    <motion.div 
-        className={`p-rel ${styles.slideshow_container}`}
-        layout
-    >        
+    <div className={`p-rel ${styles.slideshow_container}`} 
+        style={{ paddingTop: `${hero_height + 10}px` }}>
+
+        
+
         <AnimatePresence>
-            <motion.img
-                className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}                     
-                key={activeSlide}
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{    opacity: 0, x: 100 }}
-                transition={{ duration: 0.5 }}
-                alt={`Active theme image: ${title}`}      
-                src={slides[activeSlide].data}
-            />
+            <>
+            { activeSlide.embedId 
+                ? (<YoutubeEmbed embedId={activeSlide.embedId} />)
+                : (<motion.img
+                    className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`} 
+                    height={`${hero_height}px`}
+                    key={activeSlideIndex}
+                    initial={{ opacity: 0, x: -100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{    opacity: 0, x: 100 }}
+                    alt={`Active theme image: ${title}`}      
+                    src={activeSlide.data}
+                />  )
+            }     
+            
+            { activeSlide.text && ( 
+                <motion.div 
+                    className={`chip-tl-br ${styles.slide_text}`}
+                    initial={{ opacity: 0, x: 100}}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{    opacity: 0, x: 100 }}
+                                  
+                >{activeSlide.text}</motion.div>
+            )}
+            </>
         </AnimatePresence>        
 
         { slides.length &&
@@ -82,12 +108,11 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
                 onClick={()=>playBtnHandler()}
              ></SvgBtn>
             
-            { slides.length > 1 && slides.map( (image, i)=>(
+            { slides.length > 1 && slides.map(( image, i )=>(
                 <button
-                    className={`un-border ${i===activeSlide ? styles.active : ''} ${styles.slideshow_button}`}
+                    className={`un-border ${i===activeSlideIndex ? styles.active : ''} ${styles.slideshow_button}`}
                     key={i.toString()}
                     onClick={()=> imgBtnHandler(i)}
-                    aria-hidden='true'
                 >
                     <img
                         className={styles.img_btn}
@@ -98,7 +123,7 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
             ))}
         </div>}
 
-    </motion.div>
+    </div>
     )
 }
 

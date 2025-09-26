@@ -1,15 +1,22 @@
-.slideshow_container{
+/* .slideshow_container{
     padding-top: 380px;
     gap: 0.5rem;
     padding-bottom: 0;
     perspective: 800px;
-}
+} */
 
 .slideshow_image_main{
     width: 100%;
     object-fit: cover;
-    height: 400px;
-    /* height: var(--h, 400px);     */
+}
+
+.slide_text{
+    position: absolute;
+    z-index: 999999;
+    padding: 0.75rem;
+    top: 0; right: 0;
+    background-color: var(--foreground);
+    font-weight: 600;
 }
 
 .slideshow_buttons{

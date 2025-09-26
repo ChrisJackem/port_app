@@ -4,23 +4,21 @@
 import { useInView } from 'motion/react';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import './work_container.css';
-//import { Slide } from '@/app/config/work_config';
 import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
 import { fetchFile, STATUS} from '@/hooks/useImg';
 
-/**
- * Holds an image url, title, text, and alt
- */
+// Individual slides
 export type Slide = {
   title: string;
   url: string;
   alt?: string;
-  type?: undefined | 'image' | 'youtube';
+  embedId?: undefined | string;
   text?: undefined | string;
   data?: undefined | string;
 }
+// State of the component
 export type SlideState = {
   status: string;
   slides: Slide[];
@@ -29,16 +27,12 @@ export type SlideState = {
 const createInitialSlides = (slides: Slide[]): SlideState => ({
     status: STATUS.INIT,
     slides: slides.map(slide => ({ 
-      ...slide,
-      type: slide.type ?? 'image',
-      alt: slide.alt ?? `${slide.title} image`,
+      ...slide,     
+      alt: slide.alt ? slide.alt : `${slide.title} image`,
       data: undefined 
     }))
 })
-function slideReducer(
-  state: SlideState,
-  action: { type: string,  payload: unknown }
-): SlideState {
+function slideReducer( state: SlideState, action: { type: string,  payload: unknown }): SlideState {
   try{
     switch (action.type){    
       
@@ -83,8 +77,9 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
       const imgs = content.map( item => item.url );
       Promise.all( imgs.map( img => fetchFile(`${img}`) ))
         .then( basedImages => {
-            const mapped_images = new Map( imgs.map((url, i) => [url, basedImages[i]]) );
-            slideDispatch({type: 'LOADED', payload: mapped_images});
+          // Mapped to url : data
+          const mapped_images = new Map( imgs.map((url, i) => [url, basedImages[i]]) );
+          slideDispatch({type: 'LOADED', payload: mapped_images});
         })
         .catch( E => console.error(`slide error: ${E}`))
     }    
@@ -96,7 +91,7 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
       { slideState.status !== STATUS.LOADED 
         ? <LoadingComponent 
             dark_mode={true}
-            height={ '400px'}            
+            height={ '400px'}
           />
         : <SlideShow 
             title={title}
