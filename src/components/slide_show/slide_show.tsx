@@ -7,19 +7,25 @@ import { AnimatePresence, motion } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
 import { Slide } from '../work_container/work_container';
 import YoutubeEmbed from '../youtube_embed/youtube_embed';
+//import useRefs from '@/hooks/useRefs';
 
 const TIMEOUT = 3000;
 
 const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, slides: Slide[] }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    //const {refsByKey, setRef} = useRefs();
+    const [videoIds, setVideoIds] = useState<string[] | undefined>();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
     const [playing, setPlaying] = useState<boolean>(true);
-    //const [hasVideo, setHasVideo] = useState<string | undefined>();
 
-    /* useEffect(()=>{
 
-        setHasVideo( slides.map( slide => slide.embedId ).some( id => id ) )
-    },[slides]) */
+    useEffect(()=>{
+        // Find video slides
+        const found_videos = slides
+            .map(slide => slide.embedId)
+            .filter((id): id is string => typeof id === 'string');
+        if (found_videos.length > 0) setVideoIds(found_videos);
+    }, [])
 
     useEffect(() => {        
         if (!(slides.length > 1)) return;
@@ -64,32 +70,35 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     const hero_height = 400;
     
     return (
-    <div className={`p-rel ${styles.slideshow_container}`} 
-        /* style={{ paddingTop: `${hero_height + 10}px` }} */>        
+    <div className={`p-rel ${styles.slideshow_container}`}>
+
+        { inView && videoIds !== undefined && videoIds.map((id, i)=> (
+            <YoutubeEmbed 
+                key={i}
+                embedId={id} 
+                visible={activeSlide.embedId === id}
+            />
+        ) )}  
 
         <AnimatePresence>
             <>
-            { activeSlide.embedId 
-                ? (<YoutubeEmbed embedId={activeSlide.embedId} />)
-                : (<motion.img
-                    className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`} 
-                    height={`${hero_height}px`}
-                    key={activeSlideIndex}
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{    opacity: 0, x: 100 }}
-                    alt={`Active theme image: ${title}`}      
-                    src={activeSlide.data}
-                />  )
-            }     
+            { !activeSlide.embedId && ( <motion.img
+                className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`} 
+                height={`${hero_height}px`}
+                key={activeSlideIndex}
+                initial={{ opacity: 0, x: -100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{    opacity: 0, x: 100 }}
+                alt={`Active theme image: ${title}`}      
+                src={activeSlide.data}
+            /> ) }     
             
             { activeSlide.text && ( 
                 <motion.div 
                     className={`chip-tl-br ${styles.slide_text}`}
                     initial={{ opacity: 0, x: 100}}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{    opacity: 0, x: 100 }}
-                                  
+                    exit={{    opacity: 0, x: 100 }}                                  
                 >{activeSlide.text}</motion.div>
             )}
             </>
