@@ -28,7 +28,9 @@ const WorkPage = () => {
     <div id='work-main-container' className="page-container flex flex-column">        
     <Scroller>
         
-        <WorkContainer title='Title' content={[
+        <WorkContainer title='Title'
+        link={{ text: 'click', href: 'google.com' }}
+        content={[
             { title: 'test', url: 'static/images/work/test/test1.png' },
             { title: 'test2', 
                 url: 'static/images/work/test/test2.png',

@@ -4,11 +4,7 @@
     max-width: 1000px;
     min-width: 50%;
     display: grid;
-    grid-template-rows: 
-        min-content 
-        min-content 
-        min-content 
-        1fr;
+    grid-template-rows: repeat( 3, min-content) 1fr;
     margin: 0 auto;
     padding: 0.75rem;
     transition: all 500ms ease-out;
@@ -23,8 +19,17 @@
     }
 
 
-
-.link-button-container{
+.link-container{
+    z-index: 1;
+    color: var(--foreground, #FFF);
+    background-color: var(--darkest, #000);
+    padding: 8px;
+    border-bottom: 1px solid var(--background, #CCC);
+}
+.link-container > *{
+    float: right;
+}
+/* .link-button-container{
     width: 100px;
     color: var(--foreground, #FFF);
     position: absolute; top: 1rem; right: 0;
@@ -35,12 +40,12 @@
 
 .link_button{
     padding: 0.5rem;
-}
+} */
 
 .work-child-outer-container{    
     overflow-y: auto;
     color: white;    
-    background-color: var(--darkest, #FFF);
+    background-color: var(--darkest, #000);
     position: relative; 
     clip-path: polygon(
         0 0, 100% 0, 

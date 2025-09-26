@@ -3,13 +3,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './slide_show.module.css'
 import './slide_show.module.css';
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
 import { Slide } from '../work_container/work_container';
 import YoutubeEmbed from '../youtube_embed/youtube_embed';
 
 // Timeout interval time (ms)
-const TIMEOUT = 1000;
+const TIMEOUT = 3000;
 /**
  *  Slideshow component - 
  * Images should be loaded * 
@@ -32,10 +32,13 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     const [videoIds, setVideoIds] = useState<string[] | undefined>();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
     const [playing, setPlaying] = useState<boolean>(true);
+    const [scope, animate] = useAnimate();
+    const [animateControls, setAnimateControls] = useState<undefined | ReturnType<typeof animate>>()
     const activeSlide = slides[activeSlideIndex];
     const hero_height = 400;
 
-    useEffect(()=>{        
+    useEffect(()=>{
+        progressBar(playing);
         const found_videos = slides // Find video slides
             .map(slide => slide.embedId)
             .filter((id): id is string => typeof id === 'string');
@@ -61,7 +64,23 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
         };
     }, [inView]);
 
-    function tickHandler() {
+    function progressBar( start:boolean ){
+        if (!start){
+            animateControls?.stop();            
+            animate( scope.current, 
+                { width: "0%" }, 
+                { duration: .2, ease: 'linear' })            
+        }else{
+            setAnimateControls( 
+                animate( scope.current, 
+                    { width: ["0%", "100%"] }, 
+                    { duration: TIMEOUT / 1000, ease: 'linear' })
+            )
+        }
+    }
+
+    function tickHandler() {        
+        progressBar(true);
         setActiveSlideIndex(activeSlideIndex => ++activeSlideIndex >= slides.length ? 0 : activeSlideIndex);
     }
 
@@ -69,7 +88,8 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
         setPlaying( playing => {
             const ret = force_off===true ? false : !playing;
             if (intervalRef.current) clearInterval(intervalRef.current);
-            if (ret) intervalRef.current = setInterval(tickHandler, TIMEOUT);            
+            if (ret) intervalRef.current = setInterval(tickHandler, TIMEOUT);
+            progressBar(ret);
             return ret;
         } );
     }
@@ -83,6 +103,11 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     
     return (
         <div className={`p-rel ${styles.slideshow_container}`}>
+
+            <div
+                ref={scope}
+                className={`bg-ac ${styles.progress_bar}`}                
+            ></div>
 
             { inView && videoIds !== undefined && videoIds.map((id, i)=> (
                 <YoutubeEmbed 

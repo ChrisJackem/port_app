@@ -44,6 +44,14 @@
         z-index: 2;
     }
 
+.progress_bar{
+    position: absolute;
+    background: linear-gradient(to right, transparent, var(--accent, yellow) );
+    bottom: -2px;
+    height: 4px;
+    width: 10px;
+}
+
 /* image inside */
 .img_btn{
     aspect-ratio: 1 / 1;

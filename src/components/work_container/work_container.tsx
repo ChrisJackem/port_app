@@ -20,6 +20,11 @@ export type Slide = {
   data?: undefined | string;
 }
 
+export type WorkLink = {
+  text: string;
+  href: string;
+}
+
 // State of the component
 export type SlideState = {
   status: string; // useImg constants
@@ -30,6 +35,7 @@ export type WorkContainerProps = {
     title: string;
     content: Slide[]
     children: React.ReactNode;
+    link?: WorkLink;
 }
 /**
  * Slideshow and content container.
@@ -39,7 +45,7 @@ export type WorkContainerProps = {
  * @param conf img urls and other config
  * @param children This will be visible while loading and is the written content
  */
-const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
+const WorkContainer = ({ title, content, children, link }: WorkContainerProps) => {
   const [slideState, setSlideState] = useState<SlideState>({ status: STATUS.INIT, slides:content });
 
   const container_ref = useRef(null);
@@ -69,8 +75,8 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
   }, [isInView, content]);
 
   return (
-    <section className='work-container flex-column p-rel' ref={container_ref}>     
-      <ChipHeader title={title} colBg='var(--foreground, #FFF)' colTx='var(--text, red)' />
+    <section className='work-container p-rel' ref={container_ref}>     
+      <ChipHeader title={title} colBg='var(--darkest, #000)' colTx='var(--foreground, #FFF)' />
       { slideState.status !== STATUS.LOADED 
         ? <LoadingComponent 
             dark_mode={true}
@@ -82,14 +88,13 @@ const WorkContainer = ({ title, content, children }: WorkContainerProps) => {
             slides={slideState.slides}              
         /> 
       }      
-      <div className='link-container p-rel'>
-        {/* { images && (
-          <div className={`link-button-container psudo chip-tl-box flex`} >
-            <button className='chip-a link_button'>Goto</button>
-            <small>Goto Blah</small>
-          </div>
-        )} */}
-      </div>
+      
+        <div className='link-container'>
+          { link && (<span>
+            <button className='chip-a un-border'>{link.text}</button>
+          </span>) }
+        </div>
+      
       <div className='work-child-outer-container'>
         <div className='work-child-inner-container'>{children}</div>        
       </div>
