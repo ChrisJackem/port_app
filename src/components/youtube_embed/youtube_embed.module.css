@@ -6,18 +6,22 @@
     height: 400px; /* Make sure this is synced */
     width: 100%; 
     transition: all 200ms ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .video_responsive iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
+    max-height: 400px;
+    aspect-ratio: 16 / 9;
     border: none;
 }
 @media screen and (max-width: 500px){
     .video_responsive{
         height:300px;/* Make sure this is synced */
+    }
+    .video_responsive iframe {
+        aspect-ratio: 1 / 1;
+        max-height: 300px;/* Make sure this is synced */
     }
 }

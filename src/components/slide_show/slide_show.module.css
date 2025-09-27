@@ -20,6 +20,7 @@
 
 .slideshow_buttons{
     padding: 0.25rem;
+    margin-bottom: 0.25rem;
     justify-content: left;
     gap: 0.55rem;
     position: relative;

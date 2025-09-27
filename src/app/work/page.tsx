@@ -39,13 +39,11 @@ const WorkPage = () => {
             { title: 'test3', url: 'static/images/work/test/test3.png' },
             { title: 'Beei',
                 url: 'static/images/work/test2/cat3.jpg', 
-                embedId:'J63mfimO5qE',
-                text: 'A youtube vieeo'
+                embedId:'J63mfimO5qE'
             },
             { title: 'Beef',
                 url: 'static/images/work/test2/cat2.jpg', 
-                embedId:'aAGaNgkBdgc',
-                text: 'A youtube vieeo 2'
+                embedId:'aAGaNgkBdgc'
             }
         ]}>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>

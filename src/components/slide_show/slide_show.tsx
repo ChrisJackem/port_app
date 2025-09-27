@@ -45,16 +45,21 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
         if (found_videos.length > 0) setVideoIds(found_videos);
     }, [])
 
-    useEffect(() => {        
-        if (!(slides.length > 1)) return;
-        // Start interval if on screen and no interval running
+    useEffect(() => {
+        if (!(slides.length > 1)) return;            
+        // Start bar
+        progressBar(inView && playing);
+        // Reset slide on hide - this hides video loading
+        if (!inView) setActiveSlideIndex(0);
+
+        // Interval
         if ( playing && inView && !intervalRef.current ) {
+            // Start interval if on screen and no interval running
             intervalRef.current = setInterval(tickHandler, TIMEOUT);
-        }
-        // Stop interval if not on screen
-        else if (!inView && intervalRef.current) {
+        }else if (!inView && intervalRef.current) {
+            // Stop interval if not on screen
             clearInterval(intervalRef.current);
-            intervalRef.current = null;
+            intervalRef.current = null;            
         }
         return () => {
             if (intervalRef.current) {

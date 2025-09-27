@@ -19,8 +19,8 @@ const YoutubeEmbed = ({ embedId, visible=true }:{embedId: string; visible?: bool
       }}>
       <iframe
         style={{ visibility: visible && loaded ? 'visible' : 'hidden' }}
-        width="800"
-        height="400"
+        /* width="800"
+        height="400" */
         onLoad={()=>setLoaded(true)}      
         src={`https://www.youtube.com/embed/${embedId}`}
         allowFullScreen
