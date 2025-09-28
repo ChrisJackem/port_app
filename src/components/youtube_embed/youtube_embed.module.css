@@ -1,6 +1,5 @@
 .video_responsive {
     overflow: hidden;
-    /* padding-bottom: 57%; */
     position: absolute;
     top: 0; left: 0;
     height: 400px; /* Make sure this is synced */
@@ -12,7 +11,7 @@
 }
 
 .video_responsive iframe {
-    max-height: 400px;
+    max-height: 400px; /* Make sure this is synced */
     aspect-ratio: 16 / 9;
     border: none;
 }

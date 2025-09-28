@@ -14,8 +14,10 @@
 }
 
 .svgLogo:first-of-type{ margin-right: -2px; }
-.svgLogo{
-    width: 25px; height: 50px;
+.svgLogo{ 
+  width: 25px; height: 50px;
+  overflow: visible; 
+  transform: scale(1, 1);
 }
 
 .flipped{ transform: scale(-1, 1); }

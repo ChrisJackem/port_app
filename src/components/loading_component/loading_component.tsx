@@ -11,8 +11,7 @@ const LoadingComponent = ({ dark_mode=true, height=undefined, width=undefined }:
       className={styles.mainContainer}
       style={{ 
         height: height ? height : '100%',
-        width: width ? width : '100%',
-        /* color: `${dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)'}` */
+        width: width ? width : '100%'
       }}
     >
       <StrokeLogo dark_mode={dark_mode}/>
@@ -29,23 +28,14 @@ export const StrokeLogo = ({dark_mode=true, infinite=true}
   const color = dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)';
   const path = "M69,206.5v-125l75,100v100H6.5V6.5h137.5v174";
 
-  return (<div style={{ display: 'inline-block'}}>
-    <svg 
-      className={`${styles.svgLogo} `}
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 150.5 288"
-    >
+  return (<div>
+    <svg className={`${styles.svgLogo}`} viewBox="0 0 150.5 288">
       <path className={`${pen_style} `} d={path} fill="none" stroke={color} strokeWidth="14"/>
     </svg>
-    <svg 
-      className={`${styles.svgLogo} ${styles.flipped}`}
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 150.5 288"
-    >
+    <svg className={`${styles.svgLogo} ${styles.flipped}`} viewBox="0 0 150.5 288">
       <path className={`${pen_style}`} d={path} fill="none" stroke={color} strokeWidth="14"/>
     </svg>
   </div>);
 }
-
 
 export default LoadingComponent;

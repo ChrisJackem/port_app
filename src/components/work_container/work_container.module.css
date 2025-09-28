@@ -1,4 +1,4 @@
-.work-container{
+.work_container{
     min-height: 600px;
     max-height: calc(100vh - 2rem);
     max-width: 1000px;
@@ -11,7 +11,7 @@
     overflow: hidden;
 }
     /* Background shape */
-    .work-container::before{
+    .work_container::before{
         z-index: 0;
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background-color: var(--background, #000);   
@@ -19,30 +19,48 @@
     }
 
 
-.link-container{
-    z-index: 1;
-    color: var(--foreground, #FFF);
-    background-color: var(--darkest, #000);
+.link_container{
+    z-index: 1;    
+    color: var(--foreground, #FFF);    
     padding: 8px;
-    border-bottom: 1px solid var(--background, #CCC);
-}
-.link-container > *{
-    float: right;
-}
-/* .link-button-container{
-    width: 100px;
-    color: var(--foreground, #FFF);
-    position: absolute; top: 1rem; right: 0;
-    background-color: var(--darkest, #000);
-    transform: translateY(-100%);
+    display: flex;
     justify-content: right;
+    
+}
+.link_container::after{
+    z-index: -1;
+    background-color: var(--darkest, #000);
+    clip-path: polygon(
+        0 30px, 20px 10px, 65% 10px, 68% 0px, 100% 0px,
+        100% 100%, 0 100%
+    );
+}
+
+.inner_link_container{
+    width: min-content;
+    gap: 2px;
+    text-align: center;
 }
 
 .link_button{
-    padding: 0.5rem;
-} */
+    width: 80px;
+    padding: 6px 12px;
+    color: var(--darkest, #000);
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: var(--accent, yellow);
+    clip-path: polygon(
+        0px 10px, 10px 0px, 100% 0px,
+        100% 100%, 0px 100%
+    );
+}
 
-.work-child-outer-container{    
+.link_text{
+    font-size: 10px;
+    color: var(--accent, yellow);
+}
+
+.outer_container{    
     overflow-y: auto;
     color: white;    
     background-color: var(--darkest, #000);
@@ -53,14 +71,8 @@
         0 calc(100% - 20px) )
 }
 
-.work-child-inner-container{
+.inner_container{
     padding-top: 0;
-    padding: 1.5rem;
-    
+    padding: 1.5rem;    
 }
 
-/* @media screen and (max-width: 600px) {
-    .work-child-inner-container{
-        padding: 1rem;
-    }   
-} */

@@ -38,18 +38,22 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     const hero_height = 400;
 
     useEffect(()=>{
+        // Start progress bar - default is playing
         progressBar(playing);
-        const found_videos = slides // Find video slides
+        // Find video slides
+        const found_videos = slides 
             .map(slide => slide.embedId)
             .filter((id): id is string => typeof id === 'string');
         if (found_videos.length > 0) setVideoIds(found_videos);
     }, [])
 
     useEffect(() => {
-        if (!(slides.length > 1)) return;            
+        if (slides.length <= 1) return; 
+
         // Start bar
         progressBar(inView && playing);
-        // Reset slide on hide - this hides video loading
+
+        // Reset slide to 0 on hide - this hides video loading
         if (!inView) setActiveSlideIndex(0);
 
         // Interval
@@ -71,11 +75,13 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
 
     function progressBar( start:boolean ){
         if (!start){
-            animateControls?.stop();            
+            // Stop animation and also animate lol
+            animateControls?.stop();
             animate( scope.current, 
                 { width: "0%" }, 
-                { duration: .2, ease: 'linear' })            
+                { duration: .2, ease: 'easeOut' })            
         }else{
+            // Start animation
             setAnimateControls( 
                 animate( scope.current, 
                     { width: ["0%", "100%"] }, 
@@ -84,11 +90,13 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
         }
     }
 
+    // Interval callback
     function tickHandler() {        
         progressBar(true);
         setActiveSlideIndex(activeSlideIndex => ++activeSlideIndex >= slides.length ? 0 : activeSlideIndex);
     }
 
+    // Play button
     function playBtnHandler( force_off=false ){
         setPlaying( playing => {
             const ret = force_off===true ? false : !playing;
@@ -99,10 +107,11 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
         } );
     }
 
+    // Thumbnail buttons
     function imgBtnHandler(id:number){
         if (id > -1 && id < slides.length){
             setActiveSlideIndex(id);
-            if (playing) playBtnHandler(true);        
+            if (playing) playBtnHandler(true);
         }
     }    
     
@@ -111,17 +120,18 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
 
             <div
                 ref={scope}
-                className={`bg-ac ${styles.progress_bar}`}                
-            ></div>
-
+                className={`bg-ac ${styles.progress_bar}`}               
+            ></div>            
+                  
             { inView && videoIds !== undefined && videoIds.map((id, i)=> (
                 <YoutubeEmbed 
                     key={i}
                     embedId={id} 
                     visible={activeSlide.embedId === id}
                 />
-            ) )}        
-
+                ) )
+            }
+            
             <AnimatePresence>
                 <>
                 { !activeSlide.embedId && ( 

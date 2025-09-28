@@ -1,7 +1,7 @@
 .slideshow_container{
     padding-top: 410px;
-    gap: 0.5rem;
-    padding-bottom: 0;
+    /* gap: 0.5rem; */
+    /* padding-bottom: 0; */
 }
 
 .slideshow_image_main{
@@ -20,7 +20,7 @@
 
 .slideshow_buttons{
     padding: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
     justify-content: left;
     gap: 0.55rem;
     position: relative;
@@ -46,11 +46,12 @@
     }
 
 .progress_bar{
-    position: absolute;
-    background: linear-gradient(to right, transparent, var(--accent, yellow) );
-    bottom: -2px;
-    height: 4px;
-    width: 10px;
+    /* position: absolute; */
+    /* background: linear-gradient(to right, transparent, var(--accent, yellow) ); */
+    background: var(--accent, yellow);
+    /* bottom: 0px; */
+    height: 2px;
+    /* width: 10px; */
 }
 
 /* image inside */

@@ -3,12 +3,12 @@
 'use client'
 import { useInView } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
-import './work_container.css';
+import styles from './work_container.module.css';
 import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
-import { fetchFile, STATUS} from '@/hooks/useImg';
-import useRefs from '@/hooks/useRefs';
+import { fetchFile, STATUS } from '@/hooks/useImg';
+
 
 // Individual slides
 export type Slide = {
@@ -75,13 +75,15 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
   }, [isInView, content]);
 
   return (
-    <section className='work-container p-rel' ref={container_ref}>     
-      <ChipHeader title={title} colBg='var(--darkest, #000)' colTx='var(--foreground, #FFF)' />
-      { slideState.status !== STATUS.LOADED 
-        ? <LoadingComponent 
-            dark_mode={true}
-            height={ '400px'}
-          />
+    <section className={`p-rel ${styles.work_container}`} ref={container_ref}>     
+      <ChipHeader 
+        title={title} 
+        styles={{ marginBottom: "5px" }}
+        colBg='var(--darkest, #000)' 
+        colTx='var(--foreground, #FFF)' 
+      />
+      { slideState.status !== STATUS.LOADED
+        ? <LoadingComponent height={ '400px'} />
         : <SlideShow 
             title={title}
             inView={isInView}
@@ -89,14 +91,21 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
         /> 
       }      
       
-        <div className='link-container'>
-          { link && (<span>
-            <button className='chip-a un-border'>{link.text}</button>
-          </span>) }
-        </div>
+      { link 
+        ? ( // The link container
+            <section className={`psudo ${styles.link_container}`}>              
+              <div className={`${styles.inner_link_container}`}>
+                <button className={`un-border link ${styles.link_button}`}>{link.text}</button>
+                <small className={styles.link_text}>Click to Play</small>
+              </div>
+            </section>
+          )
+        : (<div></div>)// empty div for grid layout
+      }
+        
       
-      <div className='work-child-outer-container'>
-        <div className='work-child-inner-container'>{children}</div>        
+      <div className={`${styles.outer_container}`}>
+        <div className={`${styles.inner_container}`}>{children}</div>        
       </div>
 
     </section>
