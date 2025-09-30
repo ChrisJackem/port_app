@@ -8,6 +8,7 @@ import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
 import { fetchFile, STATUS } from '@/hooks/useImg';
+import PageButton from '../page_button/page_button';
 
 
 // Individual slides
@@ -93,9 +94,10 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
       
       { link 
         ? ( // The link container
-            <section className={`psudo ${styles.link_container}`}>              
+            <section className={`${styles.link_container}`}>              
               <div className={`${styles.inner_link_container}`}>
-                <button className={`un-border link ${styles.link_button}`}>{link.text}</button>
+                {/* <button className={`un-border link ${styles.link_button}`}>{link.text}</button> */}
+                <PageButton>{link.text}</PageButton>
                 <small className={styles.link_text}>Click to Play</small>
               </div>
             </section>

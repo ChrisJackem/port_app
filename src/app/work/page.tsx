@@ -81,7 +81,7 @@ const WorkPage = () => {
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
         </WorkContainer>
         <WorkContainer title='Title'
-            link={{ text: 'Click', href: 'google.com' }}
+            link={{ text: 'Click to dasmdfkasdmfkl', href: 'google.com' }}
             content={[
                 { title: 'test', url: 'static/images/work/test/test1.png' },
                 { title: 'test2', 
