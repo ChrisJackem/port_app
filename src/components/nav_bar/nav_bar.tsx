@@ -7,6 +7,7 @@ import { Jockey_One } from 'next/font/google';
 import './nav_bar.css'
 import PathButton from '../path_button/pathButton';
 import { StrokeLogo } from '../loading_component/loading_component';
+import PageButton from '../page_button/page_button';
 
 const blk = Jockey_One({
     subsets:['latin'],
@@ -51,8 +52,10 @@ export function NavLink({ name, href }: {name: string, href: string}){
   return (<li>
     <Link 
       href={href}
-      className={`link chip-a ${isActive} ${blk.className}`}
-    >{name}
+      /* className={`link chip-a ${isActive} ${blk.className}`} */
+      
+    >{/* {name} */}
+    <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
     </Link>
   </li>);
 }
