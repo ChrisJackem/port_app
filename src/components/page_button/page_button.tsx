@@ -7,7 +7,7 @@ const font = Blinker({
   weight: '700'
 });
 
-const PageButton = ({ children, onClick, className, style, active=false }: {
+const PageButton = ({ children, onClick, className, style={}, active=false }: {
     children: React.ReactNode;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
@@ -17,7 +17,8 @@ const PageButton = ({ children, onClick, className, style, active=false }: {
   return (
     <button
       className={`un-border p-rel ${className ? className + ' ' : ''}${styles.button} ${font.className} ${active ? styles.active : ''}`}
-      style={style}
+      style={{ ...style     
+      }}
       onClick={onClick}
     >
       {children}

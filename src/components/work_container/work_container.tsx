@@ -95,11 +95,14 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
       { link 
         ? ( // The link container
             <section className={`${styles.link_container}`}>              
-              <div className={`${styles.inner_link_container}`}>
+              {/* <div className={`${styles.inner_link_container}`}> */}
                 {/* <button className={`un-border link ${styles.link_button}`}>{link.text}</button> */}
+                <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
+                  Click to Play                  
+                  <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
+                </div>
                 <PageButton>{link.text}</PageButton>
-                <small className={styles.link_text}>Click to Play</small>
-              </div>
+              {/* </div> */}
             </section>
           )
         : (<div></div>)// empty div for grid layout

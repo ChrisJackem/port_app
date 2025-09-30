@@ -1,11 +1,11 @@
 .button{
     color: var(--darkest, #000);
+    background-color: var(--darkest, #FFF);
     padding: 0.5rem 1.25rem 0.6rem 1.5rem;
     clip-path: polygon(
         0px 10px, 10px 0px, 100% 0,
         100% 100%, 0 100%
     );
-    background-color: var(--darkest, #000);
     font-size: 26px;
     font-weight: bold;
     transition: all 200ms ease-out;
@@ -33,7 +33,7 @@
     width: 100%; height: 100%;
     transform: scale(0.88);
     transform-origin: bottom right;
-    background-color: var(--foreground, #ccc);
+    background-color: var(--foreground, #FFF);
     clip-path: inherit;
 }
 

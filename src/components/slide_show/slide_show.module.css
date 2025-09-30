@@ -18,11 +18,13 @@
     font-weight: 600;
 }
 
+/* Container */
 .slideshow_buttons{
     padding: 0.25rem;
     margin-top: 0.5rem;
-    justify-content: left;
-    gap: 0.55rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     position: relative;
 }
 
@@ -31,7 +33,7 @@
     width: 45px;   
 }
 
-/* Container */
+
 .slideshow_button{
     padding: 0;
     background-color: transparent;
