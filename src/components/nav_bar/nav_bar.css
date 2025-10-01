@@ -1,24 +1,11 @@
 #nav-container{
-z-index: 99999;
+    z-index: 99;
 }
-/* Ensure nav-bar uses flexbox in all browsers */
-#nav-bar {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: right;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    flex-wrap: wrap;
-    
-}
+
 .logo_container{
-    position: absolute;
-    bottom: 60px;
-    left: 10px;    
+    height: min-content;
+    align-items: center;
+    gap: 0.5rem;
 }
 #nav-container{
     position: relative;
@@ -26,6 +13,7 @@ z-index: 99999;
 #nav-bar{    
     padding-left: 1rem;
     padding-right: 1rem;
+    padding: 40px 20px 10px 30px;
     background-color: var(--midground, #6d6d6d);
     color: black;
     display: flex;
@@ -44,25 +32,16 @@ z-index: 99999;
     padding-bottom: 0.25rem;
 }
 
-.link.active{
-    color: var(--accent, #FFF);   
-}
-
-.link{    
-    cursor: pointer;
-    display: block;
-    font-size: 28px;
-    letter-spacing: -0.01rem;
-    padding: 13px 20px 15px 20px;    
-}
-button.link{
-    border: none;
-}
-
 @media screen and (max-width: 600px) {
     #nav-bar, #nav-bar ul{        
-        flex-direction: column;
+        flex-direction: column; 
+    }
+    .logo_container{
         width: 100%;
+        justify-content: center;  
+    }
+    #nav-bar button{
+        width: 150px;
     }
     .link{
         font-size: 26px;

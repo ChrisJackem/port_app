@@ -32,7 +32,10 @@ const NavBar = () => {
         ref={nav_main}
         className='anim-bg chip-tl-lg'
       >
-        <StrokeLogo infinite={false}/>        
+        <div className={'logo_container flex'}>
+          <StrokeLogo infinite={false}/> 
+          <small>Chris Jackem Official Website</small>       
+        </div>
         <ul className='flex' style={{ gap: '0.5rem' }}>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>
@@ -55,7 +58,7 @@ export function NavLink({ name, href }: {name: string, href: string}){
       /* className={`link chip-a ${isActive} ${blk.className}`} */
       
     >{/* {name} */}
-    <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
+      <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
     </Link>
   </li>);
 }

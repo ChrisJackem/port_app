@@ -1,0 +1,15 @@
+.chipped_header{
+    width: 100%; 
+    position: relative;
+}
+.chip_text{
+    padding: 10px 20px 3px 30px;
+    display: inline-block;
+    font-weight: bold;
+    z-index: 2;
+    font-size: x-large;
+}
+.child_container{
+    color: var(--darkest, #000);
+    background-color: var(--foreground, #FFF);
+}

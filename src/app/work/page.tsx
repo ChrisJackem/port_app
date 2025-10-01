@@ -5,8 +5,6 @@ import './page.css'
 import WorkContainer, {Slide} from '@/components/work_container/work_container'
 import config from '../config/work_config'
 import Scroller from '@/components/scroller/scroller'
-//import LoadingComponent from '@/components/loading_component/loading_component'
-//import dynamic from 'next/dynamic'
 
 /*********************************************************************************** Work Page  */
 
@@ -25,7 +23,12 @@ import Scroller from '@/components/scroller/scroller'
 
 const WorkPage = () => {
   return (
-    <div id='work-main-container' className="page-container flex flex-column">        
+    <div id='work-main-container' className="page-container flex flex-column">
+
+    <section className={`page-title chip-tl-lg`}>
+        Ok
+    </section>
+
     <Scroller>
         
         <WorkContainer title='Title'

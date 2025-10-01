@@ -11,12 +11,14 @@ import LoadingComponent from "../loading_component/loading_component";
  */
 const YoutubeEmbed = ({ embedId, visible=true }:{embedId: string; visible?: boolean}) => {
   const [loaded, setLoaded] = useState<boolean>(false);
-  return (
+
+  return (<>
     <div className={styles.video_responsive} style={{ 
         zIndex: visible ? 1 : -1, 
         opacity: visible ? 1 : 0,
         transform: `translateX(${visible ? 0 : -100}px)`
       }}>
+        
       <iframe
         style={{ visibility: visible && loaded ? 'visible' : 'hidden' }}
         onLoad={()=>setLoaded(true)}      
@@ -28,9 +30,10 @@ const YoutubeEmbed = ({ embedId, visible=true }:{embedId: string; visible?: bool
         <div className="p-abs" style={{ width: '100%', height: "100%" }}>
           <LoadingComponent />
         </div>
-        )}    
+        )} 
+
     </div>
-  )
+  </>)
 };
 
 export default YoutubeEmbed;
