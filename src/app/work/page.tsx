@@ -33,7 +33,7 @@ const WorkPage = () => {
     <AttentionSection color={'#f23a3a'}>
         <h2 style={{ marginBottom: '15px' }}>Scroll Control</h2>
         <p>This page features custom scroll controls. This is meant to display individual elements filling the viewport the entire time. 
-            As well as <strong>scroll snapping,</strong> you can navigate to the elements without scrolling or swiping. Turning off controls will disable snapping and buttons.
+            As well as <strong>scroll snapping,</strong> you can navigate without scrolling or swiping. Turning off controls will disable snapping and buttons.
         </p>
         <br/>
         <table className='scroll-table'>
