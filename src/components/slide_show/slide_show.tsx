@@ -117,21 +117,19 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     
     return (
         <div className={`p-rel ${styles.slideshow_container}`}>
-
             <div
-                ref={scope}
                 className={`bg-ac ${styles.progress_bar}`}               
-            ></div>            
-                  
-            { inView && videoIds !== undefined && videoIds.map((id, i)=> (
-                <YoutubeEmbed 
-                    key={i}
-                    embedId={id} 
-                    visible={activeSlide.embedId === id}
-                />
+                ref={scope}
+            ></div>
+            { inView && videoIds !== undefined && 
+                videoIds.map((id, i)=> (
+                    <YoutubeEmbed 
+                        key={i}
+                        embedId={id} 
+                        visible={activeSlide.embedId === id}
+                    />
                 ) )
-            }
-            
+            }            
             <AnimatePresence>
                 <>
                 { !activeSlide.embedId && ( 

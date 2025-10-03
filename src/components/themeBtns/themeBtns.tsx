@@ -6,6 +6,7 @@ import { THEMES, ThemeType } from '@/app/config/theme';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import LoadingComponent from '../loading_component/loading_component';
 import { STATUS, useImgs } from '@/hooks/useImg';
+import PageButton from '../page_button/page_button';
 
 // The images are all in the same dir, and 1 for each theme
 const theme_directoried = (s:string) => `static/images/theme_${s}.jpg`
@@ -64,10 +65,10 @@ const ThemeBtns = () => {
 export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
-        <button
-            className={`chip-a link theme-btn ${theme === Theme.name ? 'active' : ''}`}
-            onClick={()=>SetTheme(Theme)}           
-        >{Theme.name}</button>
+        <PageButton
+            active={theme === Theme.name}
+            onClick={()=>SetTheme(Theme)}
+        >{Theme.name}</PageButton>
     )
 }
 

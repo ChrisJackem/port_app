@@ -74,7 +74,6 @@ transition: all 500ms ease-out;
     transform: scaleX(-1);
 }
 
-
 .chip-tl-box{
     clip-path: polygon(0 30px, 30px 0, 100% 0, 100% 100%, 0 100%);
 }
@@ -112,10 +111,6 @@ transition: all 500ms ease-out;
     background-color: var(--darkest, #000);
     clip-path: polygon( 0 0, 100% 0, 100% 30%, 95% 30%, 85% 12%, 0 12%);
 }
-.chip-a:hover::before{
-    /* clip-path: polygon( 100% 0, 100% 5%, 20% 15%, 15% 20%, 0 20%, 0 0); */
-    /* clip-path: polygon( 0 0, 100% 0, 100% 12%, 35% 12%, 30% 8%, 0 8%); */
-}
 
 /* Bottom Blade */
 .chip-a::after{
@@ -125,8 +120,6 @@ transition: all 500ms ease-out;
 .chip-a:hover::after{
     background-color: var(--accent);
 }
-
-
 
 /************ Containers *************************/
 .shield{        
@@ -156,9 +149,6 @@ transition: all 500ms ease-out;
 }
 
 .chip-tl-md{
-    --offset: 20px;
-    position: relative;
-    /* padding: 25px 5px 5px 5px; */
     clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%, 0 20px);
 }
 
@@ -166,15 +156,25 @@ transition: all 500ms ease-out;
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 
-.chip-tl-lg{
-    --offset: 60px;
-    position: relative;
-    
+.chip-tl-lg{    
     clip-path: polygon(50px 0, 100% 0, 100% 100%, 0 100%, 0 50px);
 }
 
 .chip-tr-lg{
     clip-path: polygon(0 20px, 80% 20px, 90% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.chip-top{
+    clip-path: polygon(
+        0px 10px, 10px 0px, calc(100% - 10px) 0px, 100% 10px,
+        100% 100%, 0px 100%
+    );
+}
+.chip-tr{
+    clip-path: polygon(
+        0px 0px, calc(100% - 10px) 0px, 100% 10px,
+        100% 100%, 0px 100%
+    );
 }
 
 .screened::after{

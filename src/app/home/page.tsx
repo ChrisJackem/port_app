@@ -61,7 +61,7 @@ const HomePage = () => {
 
       <br/>
       <div className="divider-1"></div>
-      <br/>
+      <br />
 
       <section className="page_double">
         <div className="centered">

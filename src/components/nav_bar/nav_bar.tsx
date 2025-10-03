@@ -2,18 +2,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
-//import { /* Poppins, */ Tilt_Warp } from "next/font/google";
-import { Jockey_One } from 'next/font/google';
 import './nav_bar.css'
 import PathButton from '../path_button/pathButton';
 import { StrokeLogo } from '../loading_component/loading_component';
 import PageButton from '../page_button/page_button';
-
-const blk = Jockey_One({
-    subsets:['latin'],
-    style: "normal",    
-    weight: '400'
-});
 
 const NavBar = () => {  
   const nav_main = useRef<HTMLElement | null>(null);
@@ -52,13 +44,11 @@ export default NavBar
 export function NavLink({ name, href }: {name: string, href: string}){
   const pathName = usePathname();
   const isActive:string = pathName === href ? 'active' : ''
-  return (<li>
-    <Link 
-      href={href}
-      /* className={`link chip-a ${isActive} ${blk.className}`} */
-      
-    >{/* {name} */}
-      <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
-    </Link>
-  </li>);
+  return (
+    <li>
+      <Link href={href}>
+        <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
+      </Link>
+    </li>
+  );
 }

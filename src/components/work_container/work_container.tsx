@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { useInView } from 'motion/react';
@@ -78,8 +77,7 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
   return (
     <section className={`p-rel ${styles.work_container}`} ref={container_ref}>     
       <ChipHeader 
-        title={title} 
-        styles={{ marginBottom: "5px" }}
+        title={title}
         colBg='var(--darkest, #000)' 
         colTx='var(--foreground, #FFF)' 
       />

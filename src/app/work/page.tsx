@@ -2,9 +2,10 @@
 import React from 'react'
 import './page.css'
 //import { motion, stagger } from 'motion/react'
-import WorkContainer, {Slide} from '@/components/work_container/work_container'
-import config from '../config/work_config'
+import WorkContainer from '@/components/work_container/work_container'
 import Scroller from '@/components/scroller/scroller'
+import AttentionSection from '@/components/attention_section/attention_section'
+import SvgBtn from '@/components/svg_btns/svg_btns'
 
 /*********************************************************************************** Work Page  */
 
@@ -25,9 +26,35 @@ const WorkPage = () => {
   return (
     <div id='work-main-container' className="page-container flex flex-column">
 
-    <section className={`page-title chip-tl-lg`}>
-        Ok
-    </section>
+{/* <div className={`paged`}>
+    <h1>Work</h1>
+</div> */}
+    
+    <AttentionSection color={'#f23a3a'}>
+        <h2 style={{ marginBottom: '15px' }}>Scroll Control</h2>
+        <p>This page features custom scroll controls. This is meant to display individual elements filling the viewport the entire time. 
+            As well as <strong>scroll snapping,</strong> you can navigate to the elements without scrolling or swiping. Turning off controls will disable snapping and buttons.
+        </p>
+        <br/>
+        <table className='scroll-table'>
+            <caption className='scroll-table-caption'>Buttons</caption>
+            <tr>
+                <td>Toggle controls on/off</td>
+                <td><SvgBtn className={''} type='x' /></td>
+            </tr>
+            <tr>
+                <td>Previous Element</td>
+                <td><SvgBtn className={''} type='prev' /></td>
+            </tr>
+            <tr>
+                <td>Next Element</td>
+                <td><SvgBtn className={''} type='next' /></td>
+            </tr>
+            
+        </table>
+        <br/>
+        <i>If controls are not visible yet, scroll down some more.</i>
+    </AttentionSection>
 
     <Scroller>
         

@@ -1,5 +1,4 @@
 import React from 'react';
-import { blinker } from '@/app/config/fonts';
 import styles from './chip_header.module.css';
 
 type ChipHeaderProps = {

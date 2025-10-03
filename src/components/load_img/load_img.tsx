@@ -26,15 +26,18 @@ export const LoadImg = ({ src, className, alt, style, height, width}:{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
     }
 
-    switch(status){
-        case STATUS.FAILED: return( <p>Something bad happened. Please try again later.</p> )
+    switch(status){        
         
+        case STATUS.FAILED:
+        default:
+            console.error(`LoadImage error: (${src})\nstatus:${status}`);
+
         case STATUS.INIT:
         case STATUS.LOADING: return ( 
-                <div style={placeholder_style}>
-                    <LoadingComponent/>
-                </div> 
-            );
+            <div style={placeholder_style}>
+                <LoadingComponent/>
+            </div>
+        );
 
         case STATUS.LOADED: return(
             <img
@@ -46,6 +49,5 @@ export const LoadImg = ({ src, className, alt, style, height, width}:{
                 height={height ?? undefined}
             />
         )
-        default: return null;
     }
 }

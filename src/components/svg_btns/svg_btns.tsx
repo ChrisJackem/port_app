@@ -1,11 +1,11 @@
 import stylesCss from './svg_btns.module.css';
 
-const SvgBtn = ({ color, onClick, type, className = '', disabled = false }: {
+const SvgBtn = ({ color, type, className = '', onClick=()=>{}, disabled = false }: {
     color?: string;
     className?: string;
     type: 'next' | 'prev' | 'x' | 'scroll' | 'play' | 'pause';
     disabled?: boolean;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
 
     const final_color = color ? color : 'var(--accent, #FFF)';
@@ -22,8 +22,7 @@ const SvgBtn = ({ color, onClick, type, className = '', disabled = false }: {
     return (
         <button
             className={`un-border p-rel ${className} ${stylesCss?.btn ?? ''}`}
-            onClick={onClick}
-            aria-hidden='true'
+            onClick={onClick}            
             style={{ opacity: disabled ? 0.5 : 1 }}
         >
             {getSvg()}

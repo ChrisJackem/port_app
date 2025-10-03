@@ -1,0 +1,28 @@
+.container{
+    /* background-color: rgba(0,0,0, 0.15);  */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.60rem;
+}
+
+.imaged{
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.imaged > img{
+    max-height: 200px;
+}
+
+.child_container{
+
+    padding: 100px 2rem 3rem 2rem;    
+    /* margin-right: 5px; */
+    background-color: var(--foreground, #FFF);
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        grid-template-columns: 1fr;
+    }    
+}
