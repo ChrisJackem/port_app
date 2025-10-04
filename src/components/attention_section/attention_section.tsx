@@ -6,7 +6,8 @@ import { motion, stagger, useInView } from 'motion/react';
 
 export const IMG_TYPES = {
     EXCLAIM: 'static/images/icons/icon_exclaim.svg',
-    QUESTION: 'static/images/icons/icon_question.svg'
+    QUESTION: 'static/images/icons/icon_question.svg',
+    CACHE: 'static/images/icons/icon_cache.svg'
 }
 
 // Animation

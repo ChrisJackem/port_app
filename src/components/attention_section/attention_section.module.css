@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     padding: 0.3rem;
     /* padding-top: 0.5rem; */
-   
+   transition: all 200ms ease-out;
     background: none;
 }
     .container::after{
@@ -21,7 +21,7 @@
         max-height: 200px;
     }
 
-.child_container{
+.child_container{    
     padding: 100px 2rem 3rem 2rem;
     background-color: var(--foreground, #FFF);
 }

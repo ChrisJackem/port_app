@@ -76,12 +76,13 @@ const HomePage = () => {
       <section className="padded">
         <AttentionSection 
           color={'var(--background, #CCC)'} 
-          bgOpacity={0.5} 
-          icon_url={IMG_TYPES.EXCLAIM}
+          bgOpacity={0.6} 
+          icon_url={IMG_TYPES.CACHE}
         >
           <h2>Custom Image Cache</h2>
           <br/>
           <p>This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
+          <br/>
           <br/>
           <CacheReaderLoading />
         </AttentionSection>
@@ -94,10 +95,10 @@ const HomePage = () => {
 
       <section className="page_double">
         <div className="flex home_text">
-          <h2 className="feature chip-tl-br">Website Theme</h2>
+          <h2>Website Theme</h2>
           <p>You can change the colors of the entire site any time you want. 
             Your choice will be saved to localStorage and so when you come back later your theme will still be active.</p>
-          <i>Theme can also be changed from the footer below.</i>   
+          <i>Theme can also be changed at the the bottom of every page.</i>   
         </div>
 
         <ThemeBtns />

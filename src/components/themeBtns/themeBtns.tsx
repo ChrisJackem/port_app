@@ -43,10 +43,10 @@ const ThemeBtns = () => {
                 />
             </AnimatePresence>
 
-            <div id='button-text' >
+            {/* <div id='button-text' >
                 <h2>Change Theme</h2>
                 <p>Change the theme of the entire website</p>
-            </div>
+            </div> */}
             <span id='active-theme-text'>Active: {theme}</span>
         </div>            
             <div id='btn-container' className={`flex chip-tl-box `}>                  
