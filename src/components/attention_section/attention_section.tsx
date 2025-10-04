@@ -3,34 +3,21 @@ import React, { useRef } from 'react';
 import styles from './attention_section.module.css';
 import { LoadImg } from '../load_img/load_img';
 import { motion, stagger, useInView } from 'motion/react';
+import { SlamVariantsContainer, SlamVariantsLeft, SlamVariantsRight } from "@/app/config/variants";
 
 export const IMG_TYPES = {
     EXCLAIM: 'static/images/icons/icon_exclaim.svg',
     QUESTION: 'static/images/icons/icon_question.svg',
-    CACHE: 'static/images/icons/icon_cache.svg'
+    CACHE: 'static/images/icons/icon_cache.svg',
+    SCROLL: 'static/images/icons/icon_scroll.svg'
 }
 
-// Animation
-const variantsContainer = {   
-    seen: { opacity: 1 },
-    unseen: { opacity: 0 },
-    /* transition: { delayChildren: stagger(0.07, { startDelay: 0.2 }) } */
-    transition: { duration: 2 }
-}
-const variantsLeft = {
-    seen: { x: 0, opacity: 1 },
-    unseen: { x: -200, opacity: 0 }
-}
-const variantsRight = {
-    seen: { x: 0, opacity: 1 },
-    unseen: { x: 200, opacity: 0 }
-}
-
-const AttentionSection = ({children, icon_url, color, bgOpacity=1}:{
+const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitial=false}:{
         children:React.ReactNode;
         icon_url: string;
         color: string;
         bgOpacity?: number;
+        supressInitial: boolean;
     }) => {
 
     const container_ref = useRef(null);
@@ -43,17 +30,19 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1}:{
     return (
         <motion.section
             ref={container_ref}
-            variants={variantsContainer}
-            initial={'unseen'}
+            variants={SlamVariantsContainer}
+            initial={supressInitial ? undefined : 'unseen' }
             animate={isInView ? 'seen' : 'unseen'}
+            exit='unseen'
+            transition= {{ delayChildren: 0.2 }}
             className={`chip-top paged psudo ${styles.container}`}
             style={containerStyle}
-        >
-            <motion.div className={`flex ${styles.imaged}`} variants={variantsLeft}>
+        >          
+            <motion.div className={`flex ${styles.imaged}`} variants={SlamVariantsLeft}>
                 <LoadImg src={icon_url} alt={'attention image'}></LoadImg>
             </motion.div>
-            
-            <motion.div className={`chip-tr padded ${styles.child_container}`} variants={variantsRight}>
+
+            <motion.div className={`chip-tr padded p-rel ${styles.child_container}`} variants={SlamVariantsRight}>
                 {children}
             </motion.div>
 

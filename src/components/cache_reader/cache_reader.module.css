@@ -4,7 +4,7 @@
     height: min-content;
     color: var(--foreground, #FFF);
     clip-path: polygon(
-        0px 0px, 100px 0px, 120px 10px, 96% 10px, 100% 20px,
+        0px 0px, 100px 0px, 120px 10px, 100% 10px,
         100% 100%, 0 100% 
         );
     width: 100%;

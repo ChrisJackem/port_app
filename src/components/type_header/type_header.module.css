@@ -1,0 +1,19 @@
+.container{
+    overflow: hidden;
+    display: block;
+    gap: 0px;
+    padding: 0;
+    
+}
+.reader_text{
+    /* Its just for robots */
+    visibility: hidden;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
+.letter{
+    display: inline;
+    font-family: var(--f-blinker, inherit);
+    font-size: 50px;
+    font-weight: bold;
+}

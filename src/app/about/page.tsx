@@ -1,24 +1,25 @@
 'use client'
-import { motion } from 'motion/react'
+import { motion } from 'motion/react';
+import { PageVariants } from '../config/variants';
+import TypeHeader from '@/components/type_header/type_header';
 
 /*********************************************************************************** About Page  */
 
-const variants = {
-    hidden: { opacity: 0, x: 0, y: 10 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: 10 },
-}
 const AboutPage = () => {
 
   return (
     <motion.div
         key="about"
-        variants={variants}
+        variants={PageVariants}
         initial="hidden"
         animate="enter" 
         exit="exit"
         className="about-container"
     >
+        <section className='paged'>
+            <TypeHeader word='About' />            
+        </section>
+        
         <section className='paged'>
             <h1 className='chip-tl-br bg-bg tx-fg' style={{ padding: '1rem 0.2rem 0.2rem 1rem' }}>About this website</h1>
             <p className='padded' >This website is optimized for speed and user experience. All images are lazy-loaded and so </p>   

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react"
 
 export const CACHE = new Map<string, string | Promise<string>>(); // All file data
-
 export const STATUS = {
     INIT:'init',
     LOADING: 'loading',

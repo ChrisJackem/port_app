@@ -19,22 +19,28 @@
     z-index: -1;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 50%, 0 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, calc(100% - 100px) 100%, calc(100% - 120px) 50%, 0 50%);    
 }
 
 .scrolled{
     position: fixed;
-    font-size: 14px;
+    font-size: 18px;
     top: 0px;
     cursor: pointer;
 }
 
 .scrolled::after{
     content: '';
-    background-color: var(--accent, white);
+    background-color: var(--accent, yellow);
     position: absolute;
-    top: -3px; right: 3px;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(100% 50%, 100% 110%, calc(100% - 10px) 100%);    
+    top: 4px; right: 3px;
+    width: 8px;
+    height: 16px;
+    /* clip-path: polygon(100% 50%, 100% 110%, calc(100% - 10px) 100%);  */
+    clip-path: polygon(
+        50% 0px, 100% 0px,
+        100% 100%, 50% 100%,
+        50% 75%, 0px 75%,
+        0px 50%
+    );
 }
