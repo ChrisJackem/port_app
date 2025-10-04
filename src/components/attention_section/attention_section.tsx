@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import styles from './attention_section.module.css';
 import { LoadImg } from '../load_img/load_img';
-import { motion, stagger, useInView } from 'motion/react';
+import { motion, useInView } from 'motion/react';
 import { SlamVariantsContainer, SlamVariantsLeft, SlamVariantsRight } from "@/app/config/variants";
 
 export const IMG_TYPES = {
@@ -17,7 +17,7 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
         icon_url: string;
         color: string;
         bgOpacity?: number;
-        supressInitial: boolean;
+        supressInitial?: boolean;
     }) => {
 
     const container_ref = useRef(null);
