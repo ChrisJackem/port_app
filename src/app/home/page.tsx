@@ -6,6 +6,7 @@ import { LoadImg } from "../../components/load_img/load_img";
 import LoadingComponent from "@/components/loading_component/loading_component";
 import dynamic from "next/dynamic";
 import { IconFrame } from "@/components/icon_frame/icon_frame";
+import AttentionSection, { IMG_TYPES } from "@/components/attention_section/attention_section";
 
 
 /*********************************************************************************** Home Page  */
@@ -63,7 +64,7 @@ const HomePage = () => {
       <div className="divider-1"></div>
       <br />
 
-      <section className="page_double">
+      {/* <section className="page_double">
         <div className="centered">
           <CacheReaderLoading />
         </div>
@@ -71,11 +72,25 @@ const HomePage = () => {
           <h2 className="feature chip-tl-br">Custom Image Cache</h2>
           <p className="padded"  style={{ marginRight: '10px' }}>This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
         </div>        
+      </section> */}
+      <section className="padded">
+        <AttentionSection 
+          color={'var(--background, #CCC)'} 
+          bgOpacity={0.5} 
+          icon_url={IMG_TYPES.EXCLAIM}
+        >
+          <h2>Custom Image Cache</h2>
+          <br/>
+          <p>This site uses a <strong>custom image cache system </strong>for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
+          <br/>
+          <CacheReaderLoading />
+        </AttentionSection>
       </section>
+      
 
-     <br/>
+    {/*  <br/>
       <div className="divider-2"></div>
-      <br/>
+      <br/> */}
 
       <section className="page_double">
         <div className="flex home_text">

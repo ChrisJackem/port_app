@@ -4,7 +4,7 @@ import './page.css'
 //import { motion, stagger } from 'motion/react'
 import WorkContainer from '@/components/work_container/work_container'
 import Scroller from '@/components/scroller/scroller'
-import AttentionSection from '@/components/attention_section/attention_section'
+import AttentionSection, {IMG_TYPES} from '@/components/attention_section/attention_section'
 import SvgBtn from '@/components/svg_btns/svg_btns'
 
 /*********************************************************************************** Work Page  */
@@ -30,7 +30,11 @@ const WorkPage = () => {
     <h1>Work</h1>
 </div> */}
     
-    <AttentionSection color={'#f23a3a'}>
+    <AttentionSection 
+    color={'var(--background, #CCC)'} 
+    bgOpacity={0.5} 
+    icon_url={IMG_TYPES.EXCLAIM}
+    >
         <h2 style={{ marginBottom: '15px' }}>Scroll Control</h2>
         <p>This page features custom scroll controls. This is meant to display individual elements filling the viewport the entire time. 
             As well as <strong>scroll snapping,</strong> you can navigate without scrolling or swiping. Turning off controls will disable snapping and buttons.
@@ -38,19 +42,20 @@ const WorkPage = () => {
         <br/>
         <table className='scroll-table'>
             <caption className='scroll-table-caption'>Buttons</caption>
-            <tr>
-                <td>Toggle controls on/off</td>
-                <td><SvgBtn className={''} type='x' /></td>
-            </tr>
-            <tr>
-                <td>Previous Element</td>
-                <td><SvgBtn className={''} type='prev' /></td>
-            </tr>
-            <tr>
-                <td>Next Element</td>
-                <td><SvgBtn className={''} type='next' /></td>
-            </tr>
-            
+            <tbody>
+                <tr>
+                    <td>Toggle controls on/off</td>
+                    <td><SvgBtn className={''} type='x' /></td>
+                </tr>
+                <tr>
+                    <td>Previous Element</td>
+                    <td><SvgBtn className={''} type='prev' /></td>
+                </tr>
+                <tr>
+                    <td>Next Element</td>
+                    <td><SvgBtn className={''} type='next' /></td>
+                </tr>            
+            </tbody>
         </table>
         <br/>
         <i>If controls are not visible yet, scroll down some more.</i>

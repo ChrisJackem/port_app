@@ -166,13 +166,13 @@ transition: all 500ms ease-out;
 
 .chip-top{
     clip-path: polygon(
-        0px 10px, 10px 0px, calc(100% - 10px) 0px, 100% 10px,
+        0px 20px, 20px 0px, calc(100% - 20px) 0px, 100% 20px,
         100% 100%, 0px 100%
     );
 }
 .chip-tr{
     clip-path: polygon(
-        0px 0px, calc(100% - 10px) 0px, 100% 10px,
+        0px 0px, calc(100% - 20px) 0px, 100% 20px,
         100% 100%, 0px 100%
     );
 }
