@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import ChipHeader from '../chip_header/chip_header'
 import { THEMES, ThemeType } from '@/app/config/theme';
+import { LoadImg } from '../load_img/load_img';
 
 
 const Footer = () => {
@@ -35,15 +36,16 @@ const Footer = () => {
       </section>
 
       <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>        
-        <ChipHeader title='External Links'/>        
-        <h3>Stuff</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, error?</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, error?</p>
+        <ChipHeader title='External Links'/>
+        <p>OK</p>
+        <p>OK</p>
+        <p>OK</p>
 
-        <h3>Stuff</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, error?</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, error?</p>
-        <p>2025 CMJ</p>
+        <div className='flex footer-lib'>
+          <h5 style={{ width: '100%' }}>This site is powered by</h5>
+          <LoadImg src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
+          <LoadImg src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
+        </div>
       </aside>
 
     </footer>

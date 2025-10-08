@@ -92,10 +92,11 @@ export const useImgs = ( urls: string[] ) => {
                 setData( new Map( urls.map((url, i) => [url, result[i]]) ));
             })
             .catch( error =>{
-                console.error(`{useImgs} fetch error: ${error}`)
+                console.error(`useImgs fetch error: ${error}`)
                 setStatus(STATUS.FAILED);
             });
-    }, [urls]);        
-    return [status, data, urls];
+    }, [urls]);
+    return [status, data];
 }
+
 export default useImg;

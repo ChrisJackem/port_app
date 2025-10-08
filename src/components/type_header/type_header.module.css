@@ -2,18 +2,25 @@
     overflow: hidden;
     display: block;
     gap: 0px;
-    padding: 0;
-    
+    padding: 0;    
+    padding: 0.25rem 0.75rem;
+    position: relative;
 }
+
+.letter_container{
+    gap: 0px;
+}
+
 .reader_text{
     /* Its just for robots */
-    visibility: hidden;
+    /* visibility: hidden; */
     clip: rect(0, 0, 0, 0);
     overflow: hidden;
 }
 .letter{
-    display: inline;
+    display: inline-block;
     font-family: var(--f-blinker, inherit);
     font-size: 50px;
     font-weight: bold;
+    z-index: 99;
 }

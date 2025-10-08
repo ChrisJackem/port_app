@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 import "./page.css";
 import ThemeBtns from "@/components/themeBtns/themeBtns";
@@ -10,7 +9,6 @@ import AttentionSection, { IMG_TYPES } from "@/components/attention_section/atte
 import { motion } from "motion/react";
 import { PageVariants } from "../config/variants";
 import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
-
 
 
 /*********************************************************************************** Home Page  */

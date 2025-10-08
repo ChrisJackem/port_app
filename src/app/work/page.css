@@ -1,8 +1,9 @@
 /* work page css */
 
 #work-main-container{
-    gap: 2rem;
-    padding: 1rem;    
+    /* gap: 2rem; */
+    /* padding: 1rem;     */
+    padding: 0px 1rem 3rem 1rem;
 }
 .scroll-table{
     width: 100%;
@@ -14,6 +15,10 @@
     font-size: 18px;
     font-weight: 600;
 }
+#work-work-container{
+    gap: 3rem;
+}
+
 .scroll-table td{
     padding: 0.25rem;
 }

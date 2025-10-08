@@ -1,4 +1,4 @@
-import { stagger } from "motion"
+// Variants for motion plugin
 
 export const PageVariants = {
     hidden: { opacity: 0, x: 0, y: 10 },
@@ -24,8 +24,8 @@ export const SlamVariantsRight = {
 /////////////////// Typewriter
 export const TypeVariant = {
     container: {
-        initial: {  },
-        animate: {  },
+        initial: { x: 100, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
     },
     child: {
         initial: { opacity: 0 },

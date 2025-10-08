@@ -35,14 +35,15 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
             animate={isInView ? 'seen' : 'unseen'}
             exit='unseen'
             transition= {{ delayChildren: 0.2 }}
-            className={`chip-top paged psudo ${styles.container}`}
+            className={`chip-all paged psudo ${styles.container}`}
             style={containerStyle}
+            aria-hidden={true}
         >          
             <motion.div className={`flex ${styles.imaged}`} variants={SlamVariantsLeft}>
                 <LoadImg src={icon_url} alt={'attention image'}></LoadImg>
             </motion.div>
 
-            <motion.div className={`chip-tr padded p-rel ${styles.child_container}`} variants={SlamVariantsRight}>
+            <motion.div className={`padded p-rel ${styles.child_container}`} variants={SlamVariantsRight}>
                 {children}
             </motion.div>
 

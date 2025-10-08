@@ -33,7 +33,11 @@ type TypedState = {
   index: number;
   word: string;
   direction: number;
+  wait: number;
 };
+
+
+
 function typedReducer(state: TypedState, action: { type: string }): TypedState {
     function getNewState():TypedState{
         let i: number = -1;
@@ -42,11 +46,13 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
           i = Math.floor(Math.random() * WORDS.length);
         }        
         return {
+          wait: 0,
           direction: 1,
           index: i,
           word: `${WORDS[i][0]}`
         }
-    }
+    }   
+
     switch(action.type){      
       case "INIT":
         return getNewState();       
@@ -55,11 +61,18 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
         if (state.direction===1){ // Forwards
           const WORD = WORDS[state.index]
           const _word = WORD.slice(0, state.word.length + 1);
+          const { wait } = state;
+
           if ( _word.length >= WORD.length ){ // Switch directions
-            return { ...state, word: _word, direction: -1 };
+            /* if (state.wait < 2) {
+              return { ...state, word: WORD, wait: wait + 1 }; 
+            }else{ */
+              return { ...state, word: _word, direction: -1, wait: 0 };            
+            //}
           }else{
             return { ...state, word: _word };
           }
+
         }else{// Backwards
           const _word = state.word.slice(0, -1);          
           if (_word.length < 2){ // No more string left
@@ -72,13 +85,14 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
     }
   }
 
+
 const canvasProps = { 
     fontSize: 36,
     width: 250, 
     height: 50
 };
 const Typewriter = ({ }) => {
-    const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1} );
+    const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1, wait: 0} );
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasCtx = useRef<CanvasRenderingContext2D | null>(null);
     const {theme} = useContext(ThemeContext);
@@ -96,18 +110,30 @@ const Typewriter = ({ }) => {
       // Writing to canvas
       if (typed.word && canvasCtx.current && canvasRef.current){
         canvasCtx.current.clearRect(0, 0, canvasProps.width, canvasProps.height);      
-        canvasCtx.current.fillText(typed.word, 0, canvasProps.height-10);
+        canvasCtx.current.fillText(typed.word + '_', 0, canvasProps.height-10);
       }
+      timeOut()
     }, [typed.word]);
 
     // Setup animation
     useEffect(()=>{
-      dispatchTyped({type:"INIT"});      
-      const timeout = setInterval( () => {        
+      dispatchTyped({type:"INIT"});
+      timeOut()    
+      /* const timeout = setInterval( () => {
         dispatchTyped({type: "TYPE"});
-      }, DELAY);    
-      return ()=> { clearTimeout(timeout); }
+      }, DELAY);   */  
+      //return ()=> { clearTimeout(timeout); }
     }, []);
+
+    function timeOut( time?:number ){
+      time = time || Math.max( 200, Math.random() * 800 );
+      if (typed.direction === -1){
+        time = 200
+      }
+      setTimeout( ()=>{
+        dispatchTyped({type: "TYPE"});
+      }, time);
+    }
 
     return (
         <div className='padded'>

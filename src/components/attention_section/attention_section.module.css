@@ -1,14 +1,16 @@
 .container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0.45rem;
-   transition: all 200ms ease-out;
+    padding: 0.5rem;
+    transition: all 200ms ease-out;
     background: none;
+    transition: all 200ms ease-out;
 }
     .container::after{
         z-index: -1;    
         opacity: var(--opacity, 1);
-        background-color: var(--color, #CCC)
+        background-color: var(--color, #CCC);
+        transition: inherit;
     }
 
 .imaged{
@@ -20,11 +22,14 @@
         max-height: 200px;
     }
 
-
-
 .child_container{    
     padding: 100px 2rem 3rem 2rem;
     background-color: var(--foreground, #FFF);
+    clip-path: polygon(
+        0px 0px, calc(100% - 20px) 0px, 100% 20px,
+        100% calc(100% - 20px), calc(100% - 20px) 100%,
+        0px 100%
+    );
 }
 
 @media screen and (max-width: 600px) {
@@ -41,5 +46,11 @@
     }
     .child_container{
         padding: 1.25rem;
+        clip-path: polygon(/* Add another notch bottom left */
+        0px 0px, calc(100% - 20px) 0px, 100% 20px,
+        100% calc(100% - 20px), calc(100% - 20px) 100%,
+        20px 100%, 0px calc(100% - 20px)
+    );
     }
+    
 }

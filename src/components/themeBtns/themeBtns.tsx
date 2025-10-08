@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './themeBtns.css';
 import { AnimatePresence, motion } from 'motion/react';
 import { THEMES, ThemeType } from '@/app/config/theme';
@@ -16,7 +16,7 @@ const ThemeBtns = () => {
     const {theme} = useContext(ThemeContext);
     const [status, data] = useImgs(theme_urls);   
 
-    if (status !== STATUS.LOADED || !data) return <LoadingComponent />
+    if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
     return ( 
     <div id='theme-main-container'>
         <div id="theme-container">            
@@ -32,26 +32,17 @@ const ThemeBtns = () => {
                     alt={`Active theme image: ${theme}`}
                     width={400} 
                     height={355}
-                    src={ /* WTF  */
-                        typeof data === 'string'
-                            ? data
-                            : Array.isArray(data)
-                                ? data[theme_urls.indexOf(theme_directoried(theme))]
-                                : data.get(theme_directoried(theme))
+                    src={ typeof data === 'string'
+                        ? data
+                        : data.get(theme_directoried(theme))
                     }
                     layout
                 />
             </AnimatePresence>
-
-            {/* <div id='button-text' >
-                <h2>Change Theme</h2>
-                <p>Change the theme of the entire website</p>
-            </div> */}
             <span id='active-theme-text'>Active: {theme}</span>
         </div>            
             <div id='btn-container' className={`flex chip-tl-box `}>                  
-                <ThemeBtn Theme={THEMES.Default} />               
-                {/* <ThemeBtn Theme={THEMES.Dark} />    */}            
+                <ThemeBtn Theme={THEMES.Default} />           
                 <ThemeBtn Theme={THEMES.Forest} />               
                 <ThemeBtn Theme={THEMES.Sunset} />
                 <ThemeBtn Theme={THEMES.Ocean} />

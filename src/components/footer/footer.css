@@ -5,12 +5,14 @@
     background-color: var(--midground, #CCC);
     clip-path: polygon(0 12px, 30px 12px, 40px 0, calc(100% - 20px) 0, 100% 0, 100% 100%, 0 100%);
     border-right: 3px solid var(--darkest, #000);
+    transition: all 200ms ease-out;
 }
 
 #footer-container:after{    
     height: 16px;
     background-color: var(--midground);
     border-bottom: 2px solid var(--foreground, #FFF);
+    transition: inherit;
 }
 #footer-container:before{
     height: 60px;
@@ -19,27 +21,10 @@
     clip-path: polygon(0 0, 100% 0, 100% 5px, 80% 5px, 77% 12px, 20px 12px, 0 30px);
 }
 
-
-/************************************************************************************************/
-
-/* #footer-header{
-    padding: 0.5rem 0;
-}
-.footer-links{
-    margin-top: 3px;
-    font-weight: 900;
-    font-size: 24px;
+.footer-lib{
+    gap: 0.25rem;
 }
 
-#footer-aside, #footer-footer{
-    padding: 1rem;
+.footer-lib > img{
+    max-height: 50px;
 }
-#footer-aside{
-    color: #000;
-    grid-area: aside;
-    background-color: rgba(255,255,255, 0.4);    
-}
-#footer-footer{
-    background-color: rgba(255,255,255, 0.4); 
-    grid-area: foot;
-} */
