@@ -8,6 +8,7 @@ import SvgBtn from '@/components/svg_btns/svg_btns'
 import { motion } from 'motion/react'
 import { PageVariants } from '../config/variants'
 import TypeHeader from '@/components/type_header/type_header'
+import Typewriter from '@/components/typewritertoo/typewriter'
 
 /*********************************************************************************** Work Page  */
 
@@ -25,7 +26,8 @@ const WorkPage = () => {
             <motion.div
             >
                 The following is some of my most recent personal projects. 
-            </motion.div>        
+            </motion.div>
+            <Typewriter />     
         </section>
 
     <div id='work-work-container' className='flex flex-column'>

@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Armata } from 'next/font/google';
-import React, { useContext, useEffect, useReducer, useRef } from 'react';
+//import { Armata } from 'next/font/google';
+import React, { useCallback, useContext, useEffect, useReducer, useRef } from 'react';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import { THEMES } from '@/app/config/theme';
-
+/* 
 const font_typewriter = Armata({
   subsets: ["latin"],
   weight: '400',
   variable: '--font-armata'
-});
+}); */
 
 ////////////////////////// Typewriter Effect ////////////////////////////////////
-const DELAY = 200;
+//const DELAY = 200;
 
 const WORDS = [
   "Games",
@@ -33,10 +33,8 @@ type TypedState = {
   index: number;
   word: string;
   direction: number;
-  wait: number;
+  wait: boolean;
 };
-
-
 
 function typedReducer(state: TypedState, action: { type: string }): TypedState {
     function getNewState():TypedState{
@@ -46,38 +44,34 @@ function typedReducer(state: TypedState, action: { type: string }): TypedState {
           i = Math.floor(Math.random() * WORDS.length);
         }        
         return {
-          wait: 0,
+          wait: false,
           direction: 1,
           index: i,
           word: `${WORDS[i][0]}`
         }
-    }   
-
+    }
     switch(action.type){      
       case "INIT":
-        return getNewState();       
-
+        return getNewState();
       case "TYPE":     
         if (state.direction===1){ // Forwards
           const WORD = WORDS[state.index]
           const _word = WORD.slice(0, state.word.length + 1);
-          const { wait } = state;
-
           if ( _word.length >= WORD.length ){ // Switch directions
-            /* if (state.wait < 2) {
-              return { ...state, word: WORD, wait: wait + 1 }; 
-            }else{ */
-              return { ...state, word: _word, direction: -1, wait: 0 };            
-            //}
+              return { ...state, 
+                word: _word, 
+                direction: -1,
+                wait: true 
+              };            
           }else{
             return { ...state, word: _word };
           }
-
         }else{// Backwards
           const _word = state.word.slice(0, -1);          
-          if (_word.length < 2){ // No more string left
+          if (_word.length <= 1){ // No more string left
             return getNewState()
           }
+          if (state.wait) state.wait = false;// do something ?
           return { ...state, word: _word }
         }
 
@@ -92,7 +86,7 @@ const canvasProps = {
     height: 50
 };
 const Typewriter = ({ }) => {
-    const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1, wait: 0} );
+    const [typed, dispatchTyped] = useReducer(typedReducer, {index: 0, word: "", direction: 1, wait: false} );
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const canvasCtx = useRef<CanvasRenderingContext2D | null>(null);
     const {theme} = useContext(ThemeContext);
@@ -118,22 +112,20 @@ const Typewriter = ({ }) => {
     // Setup animation
     useEffect(()=>{
       dispatchTyped({type:"INIT"});
-      timeOut()    
-      /* const timeout = setInterval( () => {
-        dispatchTyped({type: "TYPE"});
-      }, DELAY);   */  
-      //return ()=> { clearTimeout(timeout); }
+      timeOut();
     }, []);
 
-    function timeOut( time?:number ){
-      time = time || Math.max( 200, Math.random() * 800 );
-      if (typed.direction === -1){
-        time = 200
+    const timeOut = useCallback(()=> {
+      let time;      
+      if (typed.wait){ // Switching directions 
+        time = 3000;
+      } else if (typed.direction === -1){ // Constant delete
+        time = 200;
+      } else{ // Normal
+        time = time || Math.max( 200, Math.random() * 800 );
       }
-      setTimeout( ()=>{
-        dispatchTyped({type: "TYPE"});
-      }, time);
-    }
+      setTimeout(()=>dispatchTyped({type: "TYPE"}), time);
+    }, [typed] );
 
     return (
         <div className='padded'>
