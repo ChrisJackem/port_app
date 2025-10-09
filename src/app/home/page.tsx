@@ -14,7 +14,8 @@ import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 /*********************************************************************************** Home Page  */
 
 const TypewriterLoading = dynamic(
-    ()=> import('@/components/typewriter/typewriter'),
+    //()=> import('@/components/typewriter/typewriter'),
+    ()=> import('@/components/typewritertoo/typewriter'),
     { loading: ()=> <LoadingComponent />}
 )
 
