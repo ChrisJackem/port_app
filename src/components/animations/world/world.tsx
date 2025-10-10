@@ -9,9 +9,8 @@ const variantsMap = {
     transition: { duration: 0, delay: 0, } 
    },
   animate: { 
-      scale: [1, 110],
-      transition: { 
-        ease: 'anticipate',       
+      scale: 110,
+      transition: {   
         duration: 1, 
         delay: 2,
       } 
