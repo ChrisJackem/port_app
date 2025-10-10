@@ -1,0 +1,14 @@
+
+.main_container{
+
+}
+.container, .main_container{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+.image{
+    transform-origin: 50% 50%;
+    /* position: absolute; */
+    /* transform: scale(140); */
+}

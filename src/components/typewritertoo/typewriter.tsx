@@ -58,19 +58,18 @@ const Typewriter = () => {
             wait = progress === l
                 ? 3000 // Full word - pause
                 : Math.max( 200, Math.floor(Math.random() * 500) );
-            current_word = full_word.slice(0, progress);              
-        }else{            
+            current_word = full_word.slice(0, progress);
+        }else{
             if ( progress >= (l * 2) ){ // Done. Get new word
                 wait = 500;
                 ({ progress, index } = randomWord(index));
             }else{// backwards
                 const overflowed = progress - l;
                 current_word = full_word.slice(0, -overflowed);
-            }         
+            }
         }
-
-        ( word.current = { progress, index } );
-        setRenderWord(current_word);     
+        (word.current = { progress, index });
+        setRenderWord(current_word);
         timeOut.current = setTimeout( tick, wait );
     };
 

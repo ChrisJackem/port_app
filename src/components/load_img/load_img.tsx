@@ -22,7 +22,7 @@ export const LoadImg = ({ src, className, alt, style, height, width}:{
     const placeholder_style: React.CSSProperties = {
         width: `${ width ? `${width}px` : '100px'}`,
         height: `${ height ? `${height}px` : '100px'}`,
-        backgroundColor: 'var(--background, #787878ff)',
+        //backgroundColor: 'var(--background, #787878ff)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
     }
 

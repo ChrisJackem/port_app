@@ -75,13 +75,10 @@ const HomePage = () => {
       <br />
 
 
-      <div className={`paged feature-header flex`}>
-        
+      <div className={`paged feature-header flex`}>        
           <SVG_GEAR />
-          <h2>Website Features</h2>
-        
+          <h2>Website Features</h2>        
       </div>
-
 
       <section className="padded">
         <AttentionSection 
@@ -92,8 +89,7 @@ const HomePage = () => {
           <h2>Custom Image Cache</h2>
           <br/>
           <p>This site uses a <strong>custom image cache system</strong> for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
-          <br/>
-          <br/>
+          <br/><br/>
           <CacheReaderLoading />
         </AttentionSection>
       </section>
@@ -112,8 +108,7 @@ const HomePage = () => {
         <AttentionSection 
           color={'var(--background, #CCC)'} 
           bgOpacity={0.6} 
-          icon_url={IMG_TYPES.SCROLL}
-          
+          icon_url={IMG_TYPES.SCROLL}          
         >
           <h2>Scroll to Top</h2>
           <br/>

@@ -2,10 +2,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
-import './nav_bar.css'
 import PathButton from '../path_button/pathButton';
 import { StrokeLogo } from '../loading_component/loading_component';
 import PageButton from '../page_button/page_button';
+import './nav_bar.css';
 
 const NavBar = () => {  
   const nav_main = useRef<HTMLElement | null>(null);
@@ -28,7 +28,7 @@ const NavBar = () => {
           <StrokeLogo infinite={false}/> 
           <small>Chris Jackem Official Website</small>       
         </div>
-        <ul className='flex' style={{ gap: '0.5rem' }}>
+        <ul className='flex nav-ul'>
             <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>
             <NavLink name="Work" href="/work"/>

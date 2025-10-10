@@ -26,10 +26,11 @@
     z-index: 9999;
 }
 
-#nav-bar ul{
+.nav-ul{
     list-style-type: none;
     margin-left: auto;
     padding-bottom: 0.25rem;
+    gap: 0.25rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -42,6 +43,9 @@
     }
     #nav-bar button{
         width: 150px;
+    }
+    .nav-ul{
+        margin-right: auto;
     }
     .link{
         font-size: 26px;
