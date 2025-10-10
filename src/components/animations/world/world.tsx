@@ -1,24 +1,54 @@
 import { LoadImg } from '@/components/load_img/load_img'
 import React from 'react'
+import { motion } from 'motion/react';
 import styles from './world.module.css';
-import { motion, scale } from 'motion/react';
+
+const variantsMap = {
+  initial: { scale: 1,
+    transition: { duration: 0, delay: 0, } 
+   },
+  animate: { 
+      scale: 110,
+      transition: { duration: 2, delay: 2 } 
+  },  
+}
+
+const variantsPin = {
+  initial: { y: -50, opacity: 0 },
+  animate: { y: 0, opacity: 1,
+    transition: { delay: 2, } 
+  }
+}
 
 const World = () => {
   return (
-    <div className={styles.container}>
+    <motion.div className={`p-rel ${styles.container}`}>
+
         <motion.div
-            className={styles.container}
-            initial={{ scale: 1 }}
-            animate={{ scale: 110 }}
-            transition={{ duration: 3, delay: 2, ease: 'easeInOut' }}
+            key={'world'}
+            className={`${styles.container}`}            
+            variants={variantsMap}            
         >
             <LoadImg src={'static/images/animations/world.svg'} 
                 width={300}
                 height={300}
                 className={styles.image}
-            />
+            />            
         </motion.div>
-    </div>
+
+        <motion.div
+              key={'pin'}
+              variants={variantsPin}
+              className={`p-abs ${styles.pin}`}
+            >
+              <LoadImg src={'static/images/animations/pin.svg'} 
+                  width={100}
+                  height={100}
+                  className={`${styles.pin_image}`}
+              />
+            </motion.div>
+
+    </motion.div>
   )
 }
 

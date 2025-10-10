@@ -12,3 +12,11 @@
     /* position: absolute; */
     /* transform: scale(140); */
 }
+
+.pin{
+    left: 50%;
+    top: 50%;    
+}
+.pin_image{
+    transform: translate(-50%, calc(-50% - 80px));    
+}
