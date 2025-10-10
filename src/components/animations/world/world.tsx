@@ -4,19 +4,22 @@ import { motion } from 'motion/react';
 import styles from './world.module.css';
 
 const variantsMap = {
-  initial: { scale: 1,
+  initial: { 
+    scale: 1,
     transition: { duration: 0, delay: 0, } 
    },
   animate: { 
       scale: 110,
-      transition: { duration: 2, delay: 2 } 
+      transition: { duration: 1.5, delay: 2.5, type: 'spring' } 
   },  
 }
 
 const variantsPin = {
-  initial: { y: -50, opacity: 0 },
+  initial: { y: -50, opacity: 0,
+    transition: { delay: 0, }
+   },
   animate: { y: 0, opacity: 1,
-    transition: { delay: 2, } 
+    transition: { delay: 3, } 
   }
 }
 
