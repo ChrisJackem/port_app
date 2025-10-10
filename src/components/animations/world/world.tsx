@@ -11,7 +11,7 @@ const variantsMap = {
   animate: { 
       scale: [1, 110],
       transition: { 
-        ease: ['easeIn', 'easeOut'],       
+        ease: 'anticipate',       
         duration: 1, 
         delay: 2,
       } 
@@ -29,9 +29,7 @@ const variantsPin = {
 
 const World = () => {
   return (
-    <motion.div 
-    className={`p-rel ${styles.container}`}>
-
+    <motion.div className={`p-rel ${styles.container}`}>
         <motion.div
             key={'world'}
             className={`${styles.container}`}            
@@ -55,7 +53,6 @@ const World = () => {
                   className={`${styles.pin_image}`}
               />
             </motion.div>
-
     </motion.div>
   )
 }
