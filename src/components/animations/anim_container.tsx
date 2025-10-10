@@ -6,6 +6,8 @@ const variants = {
   animate:{ opacity: 1 },
 }
 
+const DELAY = 0.5;
+
 const AnimContainer = ({ children }: { children: React.ReactNode }) => {
     const containerRef = useRef(null);
     const isInView = useInView(containerRef);
@@ -17,7 +19,7 @@ const AnimContainer = ({ children }: { children: React.ReactNode }) => {
             variants={variants}
             initial='initial'
             animate={ isInView ? 'animate' : 'initial'}
-            transition={{ duration: 1, delayChildren: stagger(0.2, { startDelay: 0.5 }) }}  
+            transition={{ duration: DELAY, delayChildren: stagger(0.2, { startDelay: DELAY }) }}  
         >
             {children}
         </motion.div>

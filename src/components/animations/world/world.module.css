@@ -1,6 +1,6 @@
 
-.main_container{
-
+.container{
+    margin: 0 auto;
 }
 .container, .main_container{
     width: 300px;
@@ -9,8 +9,7 @@
 }
 .image{
     transform-origin: 50% 50%;
-    /* position: absolute; */
-    /* transform: scale(140); */
+    
 }
 
 .pin{

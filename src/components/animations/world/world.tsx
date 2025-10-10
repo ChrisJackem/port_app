@@ -9,8 +9,12 @@ const variantsMap = {
     transition: { duration: 0, delay: 0, } 
    },
   animate: { 
-      scale: 110,
-      transition: { duration: 1.5, delay: 2.5, type: 'spring' } 
+      scale: [1, 110],
+      transition: { 
+        ease: ['easeIn', 'easeOut'],       
+        duration: 1, 
+        delay: 2,
+      } 
   },  
 }
 
@@ -25,12 +29,13 @@ const variantsPin = {
 
 const World = () => {
   return (
-    <motion.div className={`p-rel ${styles.container}`}>
+    <motion.div 
+    className={`p-rel ${styles.container}`}>
 
         <motion.div
             key={'world'}
             className={`${styles.container}`}            
-            variants={variantsMap}            
+            variants={variantsMap}
         >
             <LoadImg src={'static/images/animations/world.svg'} 
                 width={300}
