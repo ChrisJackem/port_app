@@ -10,7 +10,7 @@ const variantsMap = {
    },
   animate: { 
       scale: 110,
-      transition: {   
+      transition: {
         duration: 1, 
         delay: 2,
       } 

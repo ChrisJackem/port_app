@@ -4,6 +4,8 @@ import { PageVariants } from '../config/variants';
 import TypeHeader from '@/components/type_header/type_header';
 import World from '@/components/animations/world/world';
 import AnimContainer from '@/components/animations/anim_container';
+import styles from './page.module.css';
+import Kid from '@/components/animations/kid/kid';
 
 /*********************************************************************************** About Page  */
 
@@ -19,18 +21,33 @@ const AboutPage = () => {
         className="about-container"
     >
         <section className='paged'>
-            <TypeHeader word='About' />            
+            <TypeHeader word='About' />
+            <p>The following is a little about me and also some info about this site.</p>
         </section>
 
-        <section className='page_double'>
+        <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>
-
                 <World />
             </AnimContainer>
             <div>
-                <h2>I am from CT</h2>
-                <p>Born in Connecticut in the early stages of the internet</p>
+                <h2>From New England</h2>
+                <p>I was born in Connecticut in the early days of the internet.  
+                    From an early age I was interested in web design and the world wide web.
+                </p>
+                
             </div>
+        </section>
+
+        <section className={`page_double ${styles.section_container}`}>
+            <div>
+                <h2>Taught myself to Code</h2>
+                <p>I learned how to code at a very early age. Computers were so new, so there was little utility. I made my own websites and games for myself.
+                </p>
+                
+            </div>
+            <AnimContainer>
+                <Kid />
+            </AnimContainer>
         </section>
         
         <section className='paged'>
