@@ -1,5 +1,16 @@
+.svg_container{
+    justify-content: center;
+}
+
+.svg{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
 .light{ 
     animation: 5s infinite flicker; 
+    background-color: red;
 }
 @keyframes flicker{
     0%{ opacity: 0.1;}  
@@ -21,21 +32,34 @@
 }
 @keyframes shuffle{
     0%{ transform: translate(0px, 0px) rotate(0deg);}  
-    50%{ transform: rotate(1deg)}  
-    70%{ transform: translate(1px, -1px) rotate(0deg);}  
-    80%{ transform: rotate(1deg)}  
+    40%{ transform: rotate(1deg)}  
+    70%{ transform: translate(1px, -1px) rotate(0deg);} 
+    
+    80%{ transform: translate(0px, 0px) rotate(0deg);; }
     100%{ transform: translate(0px, 0px) rotate(0deg);; }
 }
 
-.arm{
+.head{
     transform-origin: bottom center;
     animation: 3s infinite swing; 
 }
+.arm{
+    transform-origin: top left;
+    animation: 10s infinite armswing;
+}
+
 @keyframes swing{
     0%{  transform: translate(0px, 0px) rotate(0deg);}  
     50%{  transform: translate(1px, 1px) rotate(1deg);}   
     100%{ transform: translate(0px, 0px) rotate(0deg);}
 }
+@keyframes armswing{
+    0%{  transform:  rotate(0deg);}  
+    50%{  transform: translate(-5px, 10px) rotate(-1deg);}   
+    100%{ transform:  rotate(0deg);}
+}
+
+
 
 
 

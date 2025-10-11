@@ -44,10 +44,8 @@ const AboutPage = () => {
                 <p>I learned how to code at a very early age. Computers were so new, so there was little utility. I made my own websites and games for myself.
                 </p>
                 
-            </div>
-            <AnimContainer>
-                <Kid />
-            </AnimContainer>
+            </div>            
+            <Kid />            
         </section>
         
         <section className='paged'>

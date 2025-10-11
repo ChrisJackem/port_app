@@ -4,7 +4,7 @@ import styles from './kid.module.css';
 
 const Kid = () => {
   return (
-    <div>
+    <div className={`flex ${styles.svg_container}`}>
         <KidSvg />
     </div>
   )
@@ -14,11 +14,11 @@ export default Kid
 
 const KidSvg = ()=>{
   return (    
-    <svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+    <svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 400 400" className={styles.svg}>
       <defs>
         <linearGradient id="n" x1="260.2" y1="121.53" x2="40.55" y2="340.4" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#fff"/>
-          <stop offset="1" stop-color="#5e5549" stop-opacity="0"/>
+          <stop offset="0" stopColor="#fff"/>
+          <stop offset="1" stopColor="#5e5549" stopOpacity="0"/>
         </linearGradient>
       </defs>
       <g id="c" data-name="screen" className={styles.code}>
@@ -46,8 +46,8 @@ const KidSvg = ()=>{
           <path d="M160.45,102.95v113.26l160.62,34.05,5.93-112-166.55-35.31ZM305.59,228.93l-135.81-29.38,3.36-81.02,136.93,28.24-4.48,82.16Z" fill="#b3b3b3"/>
         </g>
         <g id="l" data-name="body" className={styles.body}>
-          <polygon points="287.99 309.34 287.99 302.99 279.36 302.62 279.36 297.76 276.41 294.77 267.83 297.76 265.58 290.29 260.36 290.29 249.15 305.23 242.06 294.03 231.98 294.4 236.46 305.6 236.46 312.7 245.42 321.29 249.71 322.29 243.57 328.42 183.93 280.71 160.07 316.5 207.79 352.28 255.5 376.14 267.43 376.14 274.17 351.91 273.15 327.75 276.04 328.42 292.85 319.79 294.71 311.21 287.99 309.34" fill="#d6c0a5"/>
-          <g id="m" data-name="head" className={styles.arm}>
+          <polygon className={styles.arm} points="287.99 309.34 287.99 302.99 279.36 302.62 279.36 297.76 276.41 294.77 267.83 297.76 265.58 290.29 260.36 290.29 249.15 305.23 242.06 294.03 231.98 294.4 236.46 305.6 236.46 312.7 245.42 321.29 249.71 322.29 243.57 328.42 183.93 280.71 160.07 316.5 207.79 352.28 255.5 376.14 267.43 376.14 274.17 351.91 273.15 327.75 276.04 328.42 292.85 319.79 294.71 311.21 287.99 309.34" fill="#d6c0a5"/>
+          <g id="m" data-name="head" className={styles.head}>
             <polygon points="162.14 180.5 165.13 207.39 158.41 230.92 136.21 244.92 88.49 232.99 88.49 209.13 100.42 185.27 162.14 180.5" fill="#d6c0a5"/>
             <polygon points="100.42 125.63 136.21 125.63 158.04 139.8 167.74 163.32 164.38 176.4 164.42 190.14 156.17 186.1 143.1 206.27 106.39 223.93 88.49 221.06 76.56 197.2 76.56 149.49 100.42 125.63" fill="#42210b"/>
           </g>
