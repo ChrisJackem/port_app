@@ -1,0 +1,29 @@
+.active{
+    background-color: red;
+}
+.frame_el{
+    opacity: 0;
+    transition: all 300ms ease-out;
+}
+.frame_el.active{
+    opacity: 1;
+}
+
+.frame_scale{
+    /* transform: scale(0.6); */
+    opacity: 0;
+    transition: all 1s ease-out; 
+}
+.frame_scale.active{
+    opacity: 1;
+    /* transform: scale(1); */
+}
+
+.scale_r_to_l{
+    transform-origin: top left;
+    transform: scale(0);
+}
+
+.scale_r_to_l.active{
+
+}

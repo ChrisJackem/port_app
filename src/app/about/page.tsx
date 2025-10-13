@@ -6,6 +6,7 @@ import World from '@/components/animations/world/world';
 import AnimContainer from '@/components/animations/anim_container';
 import styles from './page.module.css';
 import Kid from '@/components/animations/kid/kid';
+import Schem from '@/components/animations/schem/schem';
 
 /*********************************************************************************** About Page  */
 
@@ -33,8 +34,7 @@ const AboutPage = () => {
                 <h2>From New England</h2>
                 <p>I was born in Connecticut in the early days of the internet.  
                     From an early age I was interested in web design and the world wide web.
-                </p>
-                
+                </p>                
             </div>
         </section>
 
@@ -42,10 +42,18 @@ const AboutPage = () => {
             <div>
                 <h2>Taught myself to Code</h2>
                 <p>I learned how to code at a very early age. Computers were so new, so there was little utility. I made my own websites and games for myself.
-                </p>
-                
+                </p>                
             </div>            
             <Kid />            
+        </section>
+
+        <section className={`page_double ${styles.section_container}`}>
+            <Schem />
+            <div>
+                <h2>I still make stuff</h2>
+                <p>I am always making some stuff.
+                </p>                
+            </div>
         </section>
         
         <section className='paged'>

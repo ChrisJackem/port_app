@@ -1,7 +1,10 @@
-import { LoadImg } from '@/components/load_img/load_img'
 import React from 'react';
 import styles from './kid.module.css';
-
+/**
+ * Kid animation is a loop in the svg
+ * To change, paste in and update the styles
+ * 
+ */
 const Kid = () => {
   return (
     <div className={`flex ${styles.svg_container}`}>
