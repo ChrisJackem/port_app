@@ -47,27 +47,26 @@ const Schem = () => {
     }, [isInView])
 
     return (
-    <div ref={containerRef} className='flex-column'>
-        {/* <p>{frame}</p> */}
+    <div ref={containerRef} className={`flex-column ${styles.main_container}`}>        
         <SchemSvg frame={frame}/>
+
         <div className={`flex ${styles.button_container}`}>            
             <SvgBtn 
                 className={styles.svg_btn}
                 type={ isPlaying ? 'pause' : 'play' }
                 onClick={ isPlaying ? killTimer : startTimer }
-            />
-           
+            />           
             <SvgBtn 
                 className={styles.svg_btn}
                 type={'prev'}
                 onClick={handlePrev}
-            />       
+            />
+            <p className={styles.frame_display}>{frame}</p>
             <SvgBtn 
                 className={styles.svg_btn}
                 type={'next'}
                 onClick={handleNext}
-            />      
-            
+            />
         </div>
     </div>
     )
