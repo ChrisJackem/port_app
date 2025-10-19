@@ -4,7 +4,10 @@
     justify-content: center;
     width: 400px;
 }
-
+.progress_bar{
+    background-color: var(--darkest);
+    height: 4px;    
+}
 .button_container{
     padding: 0.5rem 1rem;
     background-color: var(--background);
@@ -15,10 +18,11 @@
     height: 30px;
 }
 .frame_display{
-    background-color: var(--foreground);
-    color: var(--background);
+    /* background-color: var(--foreground); */
+    color: var(--accent);
     padding: 0.25rem;
-    width: 30px;
+    width: 20px;
+    font-size: larger;
     font-weight: bolder;
     text-align: center;
 }

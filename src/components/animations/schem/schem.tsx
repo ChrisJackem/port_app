@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useInView } from 'motion/react';
+import { useAnimate, useInView } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './schem.module.css';
 import SvgBtn from '@/components/svg_btns/svg_btns';
@@ -8,67 +9,97 @@ const WAIT = 2000;
 const MAX_FRAME = 5;
 
 const Schem = () => {
-    const [frame, setFrame] = useState<number>(0);
-    const timer = useRef<NodeJS.Timeout | null>(null);
     const containerRef = useRef(null);
-    const isInView = useInView(containerRef);
+    const isInView = useInView(containerRef);    
+    // Frames
+    const timer = useRef<NodeJS.Timeout | null>(null);
+    const [frame, setFrame] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
+    // animations
+    const [scope, animate] = useAnimate();
+    const [animateControls, setAnimateControls] = useState<undefined | ReturnType<typeof animate>>()
 
-    function tick(){
-        setFrame(frame => ++frame <= MAX_FRAME ? frame : 0);
+    // Button Handlers
+    function handlePlay(){
+        if (!isPlaying) tick();
+        ( isPlaying ? killTimer : startTimer )();       
     }
-    function untick(){
+    function handleNext(){
+        killTimer();
+        tick(false);
+    }
+    function handlePrev(){
+        killTimer();
+        // poor man's tick() subtracted to save some mem
         setFrame(frame => --frame >= 0 ? frame : MAX_FRAME);
     }
 
-    function handleNext(){
-        if (isPlaying) killTimer();
-        tick();
-    }
-    function handlePrev(){
-        if (isPlaying) killTimer();
-        untick();
+    ////// Methods
+    function tick( bar : boolean=true ){ 
+        if (bar) progressBar();
+        setFrame(frame => ++frame <= MAX_FRAME ? frame : 0);       
     }
 
-    const killTimer = ()=>{
-        if (timer.current) clearInterval(timer.current);
-        timer.current = null;
+    function killTimer(){
+        if (isPlaying) progressBar(false);
+        if (timer.current) {
+            clearInterval(timer.current);
+            timer.current = null;
+        }
         setIsPlaying(false);
+        progressBar(false);
     }
 
-    const startTimer = () => {
-        if (!timer.current) timer.current = setInterval(tick, WAIT);
+    function startTimer  (){
+        if (!timer.current){ timer.current = setInterval(tick, WAIT); }
         setIsPlaying(true);
+        progressBar();
     }
 
+    function progressBar( start:boolean = true ){
+        if (!start && scope ){
+            animateControls?.stop();
+            animate( scope.current, 
+                { width: "0%" }, 
+                { duration: .2, ease: 'easeOut' })            
+        }else if(start){// Start animation            
+            setAnimateControls( 
+                animate( scope.current, 
+                    { width: ["0%", "100%"] }, 
+                    { duration: WAIT / 1000, ease: 'linear' })
+            )
+        }
+    }
+
+    ///////////// React
     useEffect(()=>{
         ( isInView ? startTimer : killTimer )();
         return killTimer;
-    }, [isInView])
+    }, [isInView]);
 
     return (
-    <div ref={containerRef} className={`flex-column ${styles.main_container}`}>        
-        <SchemSvg frame={frame}/>
-
-        <div className={`flex ${styles.button_container}`}>            
-            <SvgBtn 
-                className={styles.svg_btn}
-                type={ isPlaying ? 'pause' : 'play' }
-                onClick={ isPlaying ? killTimer : startTimer }
-            />           
-            <SvgBtn 
-                className={styles.svg_btn}
-                type={'prev'}
-                onClick={handlePrev}
-            />
-            <p className={styles.frame_display}>{frame}</p>
-            <SvgBtn 
-                className={styles.svg_btn}
-                type={'next'}
-                onClick={handleNext}
-            />
+        <div ref={containerRef} className={`flex-column chip-br ${styles.main_container}`}>        
+            <SchemSvg frame={frame}/>
+            <div className={`bg-ac ${styles.progress_bar}`} ref={scope}></div>
+            <div className={`flex ${styles.button_container}`}>            
+                <SvgBtn 
+                    className={styles.svg_btn}
+                    type={ isPlaying ? 'pause' : 'play' }
+                    onClick={ handlePlay }
+                />           
+                <SvgBtn 
+                    className={styles.svg_btn}
+                    type={'prev'}
+                    onClick={handlePrev}
+                />
+                <p className={styles.frame_display}>{frame + 1}</p>
+                <SvgBtn 
+                    className={styles.svg_btn}
+                    type={'next'}
+                    onClick={handleNext}
+                />
+            </div>
         </div>
-    </div>
     )
 }
 
