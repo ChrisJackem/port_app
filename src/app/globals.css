@@ -24,6 +24,7 @@ button{
 /************************ Text */
 .tx-tx{ color: var(--text, #000); }
 .tx-fg{ color: var(--foreground, #FFF); }
+.tx-mg{ color: var(--midground, #FFF); }
 .tx-ac{ color: var(--accent); }
 .tx-cen{ text-align: center; }
 

@@ -7,6 +7,8 @@ import AnimContainer from '@/components/animations/anim_container';
 import styles from './page.module.css';
 import Kid from '@/components/animations/kid/kid';
 import Schem from '@/components/animations/schem/schem';
+import { NavLink } from '@/components/nav_bar/nav_bar';
+import Link from 'next/link';
 
 /*********************************************************************************** About Page  */
 
@@ -26,6 +28,8 @@ const AboutPage = () => {
             <p>The following is a little about me and also some info about this site.</p>
         </section>
 
+        <br/><br/>
+
         <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>
                 <World />
@@ -38,6 +42,8 @@ const AboutPage = () => {
             </div>
         </section>
 
+        <br/><br/>
+
         <section className={`page_double ${styles.section_container}`}>
             <div>
                 <h2>Taught myself to Code</h2>
@@ -47,14 +53,20 @@ const AboutPage = () => {
             <Kid />            
         </section>
 
+        <br/><br/>
+
         <section className={`page_double ${styles.section_container}`}>
             <Schem />
-            <div>
-                <h2>I still make stuff</h2>
-                <p>I am always making some stuff.
+            <div className='padded'>
+                <h2>I make stuff</h2>
+                <p>I am always making web apps, games and other utilities. Some samples are here in the <Link className="tx-mg" href='/work'>work</Link> section.
                 </p>                
             </div>
         </section>
+
+        <br/>
+      <div className="divider-1"></div>
+      <br />
         
         <section className='paged'>
             <h1 className='chip-tl-br bg-bg tx-fg' style={{ padding: '1rem 0.2rem 0.2rem 1rem' }}>About this website</h1>

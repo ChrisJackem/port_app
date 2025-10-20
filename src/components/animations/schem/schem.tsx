@@ -6,7 +6,7 @@ import styles from './schem.module.css';
 import SvgBtn from '@/components/svg_btns/svg_btns';
 
 const WAIT = 2000;
-const MAX_FRAME = 5;
+const MAX_FRAME = 4;
 
 const Schem = () => {
     const containerRef = useRef(null);
@@ -15,11 +15,11 @@ const Schem = () => {
     const timer = useRef<NodeJS.Timeout | null>(null);
     const [frame, setFrame] = useState<number>(0);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
-    // animations
+    // progress animation
     const [scope, animate] = useAnimate();
     const [animateControls, setAnimateControls] = useState<undefined | ReturnType<typeof animate>>()
 
-    // Button Handlers
+    // Buttons
     function handlePlay(){
         if (!isPlaying) tick();
         ( isPlaying ? killTimer : startTimer )();       
@@ -30,19 +30,18 @@ const Schem = () => {
     }
     function handlePrev(){
         killTimer();
-        // poor man's tick() subtracted to save some mem
         setFrame(frame => --frame >= 0 ? frame : MAX_FRAME);
     }
 
     ////// Methods
-    function tick( bar : boolean=true ){ 
+    function tick( bar : boolean=true ){
         if (bar) progressBar();
         setFrame(frame => ++frame <= MAX_FRAME ? frame : 0);       
     }
 
     function killTimer(){
         if (isPlaying) progressBar(false);
-        if (timer.current) {
+        if (timer.current !== null) {
             clearInterval(timer.current);
             timer.current = null;
         }
@@ -57,12 +56,13 @@ const Schem = () => {
     }
 
     function progressBar( start:boolean = true ){
-        if (!start && scope ){
+        if (!scope.current) return;
+        if (!start){
             animateControls?.stop();
             animate( scope.current, 
                 { width: "0%" }, 
                 { duration: .2, ease: 'easeOut' })            
-        }else if(start){// Start animation            
+        }else{// Start animation            
             setAnimateControls( 
                 animate( scope.current, 
                     { width: ["0%", "100%"] }, 
@@ -85,7 +85,7 @@ const Schem = () => {
                 <SvgBtn 
                     className={styles.svg_btn}
                     type={ isPlaying ? 'pause' : 'play' }
-                    onClick={ handlePlay }
+                    onClick={handlePlay}
                 />           
                 <SvgBtn 
                     className={styles.svg_btn}
