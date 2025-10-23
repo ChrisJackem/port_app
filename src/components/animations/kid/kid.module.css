@@ -1,10 +1,17 @@
 .svg_container{
     justify-content: center;
+    --width: 450px;
+}
+
+@media screen and (max-width: 600px){
+    .svg_container{
+        --width: 300px;
+    }
 }
 
 .svg{
-    width: 300px;
-    height: 300px;
+    width: var(--width, 300px );
+    height: var(--width, 300px );
     overflow: hidden;
 }
 

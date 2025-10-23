@@ -24,6 +24,7 @@ const SvgBtn = ({ color, type, className = '', onClick=()=>{}, disabled = false 
             className={`un-border p-rel ${className} ${stylesCss?.btn ?? ''}`}
             onClick={onClick}            
             style={{ opacity: disabled ? 0.5 : 1 }}
+            aria-label={`${type} button`}
         >
             {getSvg()}
         </button>
