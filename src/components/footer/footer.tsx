@@ -5,7 +5,8 @@ import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import ChipHeader from '../chip_header/chip_header'
 import { THEMES, ThemeType } from '@/app/config/theme';
 import { LoadImg } from '../load_img/load_img';
-
+import Link from 'next/link';
+import LinkComponent from '../link_component/linkComponent';
 
 const Footer = () => {
   return (
@@ -14,16 +15,15 @@ const Footer = () => {
       <section id='footer-left' className='flex-child'>
         <ChipHeader title='Jump to Page' childBg='rgba(255,255,255, 0.4)'>
           <div className='flex footer-links'>
-            <a href='/home'>Home</a>
-            <a href='/about'>About</a>
-            <a href='/about'>About</a>
-            <a href='/about'>About</a>
+            <LinkComponent name='Home' href='/home'/>
+            <LinkComponent name='About' href='/about'/>
+            <LinkComponent name='Work' href='/work'/>
+            
           </div>
         </ChipHeader>
         <br/>
-        <div>
-          {/* <h5 className='bg-bg tx-fg chip-tl-br' style={{padding: '6px'}}>Change Theme</h5> */}          
-          <h5 >Change Theme</h5>          
+        <div>        
+          <h5>Change Theme</h5>
           <div className='flex' style={{ padding: '5px 0px'}}>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
@@ -35,19 +35,30 @@ const Footer = () => {
         </div>
       </section>
 
-      <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>        
-        <ChipHeader title='External Links'/>
-        <p>OK</p>
-        <p>OK</p>
-        <p>OK</p>
+      <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>
+        <ChipHeader title='Links'/>        
+        <div className='flex'>
+          <Link href='https://www.facebook.com/chris.jackem'>
+            <LoadImg 
+              className={'footer-external'} 
+              src='./static/images/footer/fb_logo.svg'
+            />
+          </Link>
+          <Link href='https://www.linkedin.com/in/christopher-jackem-128b04187/'>
+            <LoadImg 
+              className={'footer-external'} 
+              src='./static/images/footer/li_logo.svg'
+            />
+          </Link>
+        </div>
 
         <div className='flex footer-lib'>
-          <h5 style={{ width: '100%' }}>This site is powered by</h5>
+          <h4 style={{ width: '100%', marginBottom: 4 }}>This site is powered by</h4>
           <LoadImg src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
           <LoadImg src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
         </div>
       </aside>
-
+      <div className='footer-copy chip-tl'>&copy; 2025 Chris Jackem</div>
     </footer>
   )
 }
@@ -63,7 +74,7 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
               transition: 'all 200ms ease-out',
               color : `${ active ? 'var(--background, #CCC)' : 'inherit'}`,
               borderBottom: `${active ? '2px' : '0px'} solid var(--background, #CCC)`,  
-              fontSize: active ? '22px' : '20px', 
+              /* fontSize: active ? '22px' : '20px',  */
               fontWeight: 600 
             }}
             onClick={()=>SetTheme(Theme)}           

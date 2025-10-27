@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="201.39" height="205.57" viewBox="0 0 201.39 205.57">
+  <g id="c" data-name="Layer 1">
+    <g>
+      <rect width="201.39" height="205.57" rx="36.26" ry="36.26"/>
+      <g>
+        <rect x="45.01" y="81.07" width="23.87" height="77.87" fill="#fff"/>
+        <path d="M135.01,81.07s-24.43-2.68-30.52,10.81v-10.81h-23.87v77.87h23.87v-42.9c4.73-15.79,15.97-14.6,17.61-14.23,1.76.39,12.91,1.17,12.91,14.28v42.85h23.87v-38.93s4.3-38.93-23.87-38.93Z" fill="#fff"/>
+        <circle cx="56.95" cy="56.61" r="14.67" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

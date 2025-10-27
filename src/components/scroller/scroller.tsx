@@ -28,7 +28,7 @@ const variantsToolbar = {
  * If  any wrapper div if within [MIN_DISTANCE] of the top of viewport, [scrollSnap()] will scroll the viewport to the top.
  * 
  * Also adds buttons to navigate between wrappers, absolute positioned
- * We use [scrollNext(reverse?)] to scroll to the next / previous containers - reverse to go back up the list.
+ * We use [scrollJump(reverse?)] to scroll to the next / previous containers - reverse to go back up the list.
  * @param children 
  */
 const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {    
@@ -42,28 +42,33 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
 
     // Init
     useEffect(()=>{
+        // save refSize for speed later
         setRefSize(Object.keys(refsByKey).length-1);
 
         const scrollHandler = ()=> {            
-            if ( timer.current ) {
-                window.clearTimeout(timer.current);
-                timer.current = null;            
-            }            
-            // Scroll Snap
-            timer.current = window.setTimeout(()=>{
+            if ( timer.current ) window.clearTimeout(timer.current);            
+
+            // Scroll Snap closure
+            const documentHeight = document.body.scrollHeight;
+            const tolerance = 100;
+            const scrolled = window.scrollY;
+
+            timer.current = window.setTimeout(()=> {
+                const currentScroll = scrolled + window.innerHeight;
+                const in_bounds = (scrolled > tolerance) && (currentScroll + tolerance) < documentHeight;
                 for( const [key, element] of Object.entries(refsByKey)){
                     if (!element) continue;
-                    const rect_y = element.getBoundingClientRect().y;            
-                    if ( (Math.abs(rect_y) <= MIN_DISTANCE) && (window.scrollY > 100) ){                                  
+                    const rect_y = element.getBoundingClientRect().y;
+                    if ( (Math.abs(rect_y) <= MIN_DISTANCE) && in_bounds ){
                         if (userHideTools){
                             window.scrollBy( { top: rect_y, behavior: 'smooth'});
                             checkScroll(key);
-                        } 
-                    } 
+                            break;
+                        }
+                    }
                 }
-                const scrolled = window.scrollY;
                 if (scrolled < 20) setScrollState('first');
-                setHideTools(scrolled < 100);
+                setHideTools(scrolled < tolerance);
                 timer.current = null;
             }, TIMEOUT);
         }
@@ -71,10 +76,10 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
         //window.scrollTo({ top: 0, behavior: 'smooth'});   
         window.addEventListener('scroll', scrollHandler );
         return ()=> window.removeEventListener('scroll', scrollHandler)
-    }, [refsByKey, userHideTools]);    
+    }, [refsByKey, userHideTools]);
 
     // Scroll to next or previous scroll container
-    function scrollNext(reverse=false){
+    function scrollJump(reverse=false){
         if (scrollState === 'lock' || !userHideTools) return;
         const obj = reverse ? Object.entries(refsByKey).reverse() : Object.entries(refsByKey); 
         for( const [key, element] of obj ){
@@ -121,12 +126,12 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 />
                 { userHideTools && (<>
                     <SvgBtn type={'prev'}
-                        onClick={()=>scrollNext(true)}
+                        onClick={()=>scrollJump(true)}
                         color={scrollState !== 'first' ? COLOR_ACCENT : COLOR_MIDGROUND}
                         disabled={ scrollState==='lock' }
                     />
                     <SvgBtn type={'next'}
-                        onClick={()=>scrollNext()}
+                        onClick={()=>scrollJump()}
                         color={scrollState !== 'last' ? COLOR_ACCENT : COLOR_MIDGROUND}
                         disabled={ scrollState==='lock' }                  
                     />  

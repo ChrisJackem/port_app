@@ -14,7 +14,6 @@ import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 /*********************************************************************************** Home Page  */
 
 const TypewriterLoading = dynamic(
-    //()=> import('@/components/typewriter/typewriter'),
     ()=> import('@/components/typewritertoo/typewriter'),
     { loading: ()=> <LoadingComponent />}
 )
@@ -82,7 +81,7 @@ const HomePage = () => {
 
       <section className="padded">
         <AttentionSection 
-          color={'var(--background, #CCC)'} 
+          color={'var(--background, #CCC)'}
           bgOpacity={0.6} 
           icon_url={IMG_TYPES.CACHE}
         >

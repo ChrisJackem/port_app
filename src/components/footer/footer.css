@@ -21,10 +21,25 @@
     clip-path: polygon(0 0, 100% 0, 100% 5px, 80% 5px, 77% 12px, 20px 12px, 0 30px);
 }
 
+.footer-external{
+    width: 50px;
+    height: 50px;
+}
+
 .footer-lib{
     gap: 0.25rem;
 }
 
 .footer-lib > img{
-    max-height: 50px;
+    max-height: 40px;
+}
+
+.footer-copy{
+    font-family: var(--f-blinker, inherit);
+    font-weight: 600;
+    padding: 5px 10px;
+    text-align: right;
+    width: 100%;
+    background-color: var(--background, #000);
+    color: var(--foreground, #FFF);
 }
