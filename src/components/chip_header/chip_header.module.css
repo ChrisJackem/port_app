@@ -5,7 +5,7 @@
 .chip_text{
     padding: 10px 20px 3px 30px;
     display: inline-block;
-    font-weight: bold;
+    font-weight: 500;
     z-index: 2;
     font-size: x-large;
 }

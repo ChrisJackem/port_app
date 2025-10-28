@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './chip_header.module.css';
+import { blinker } from '@/app/config/fonts';
 
 type ChipHeaderProps = {
     title: string;
@@ -17,7 +18,7 @@ const ChipHeader = ({ title, colBg, colTx, children, childBg, fontSize }: ChipHe
     return (
         <section>
             <div 
-                className={styles.chipped_header} 
+                className={`${blinker.className} ${styles.chipped_header}`} 
                 style={{ borderBottom: `4px solid ${background_color}`, ['--bg' as string]: colBg }}
             >
                 <h3 className={`chip-tl-md-npad ${styles.chip_text}`}

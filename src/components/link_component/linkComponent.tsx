@@ -2,6 +2,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import styles from './linkComponent.module.css';
 import Link from 'next/link';
+import { blinker } from '@/app/config/fonts';
 
 type LinkProps = {
     name: string;
@@ -14,7 +15,7 @@ const LinkComponent = ({ name, href}: LinkProps) => {
     return (
         <Link
             href={href}
-            className={`${styles.link} ${isActive ? styles.active : ''}`}>
+            className={`${blinker.className} ${styles.link} ${isActive ? styles.active : ''}`}>
                 {name}
         </Link>
     )

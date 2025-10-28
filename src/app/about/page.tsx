@@ -28,8 +28,6 @@ const AboutPage = () => {
             <p>The following is a little about me and also some info about this site.</p>
         </section>
 
-        <br/><br/>
-
         <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>
                 <World />
@@ -42,8 +40,6 @@ const AboutPage = () => {
             </div>
         </section>
 
-        <br/><br/>
-
         <section className={`page_double ${styles.section_container}`}>
             <div>
                 <h2>Taught myself to Code</h2>
@@ -53,13 +49,15 @@ const AboutPage = () => {
             <Kid />            
         </section>
 
-        <br/><br/>
-
         <section className={`page_double ${styles.section_container}`}>
             <Schem />
             <div className='padded'>
                 <h2>I make stuff</h2>
-                <p>I am always making web apps, games and other utilities. Some samples are here in the <Link className="tx-mg" href='/work'>work</Link> section.
+                <p>I am always making web apps, games and other utilities. Some samples are here in the 
+                    <strong>
+                        <Link className="" href='/work'> work </Link> 
+                    </strong>
+                    section.
                 </p>                
             </div>
         </section>
