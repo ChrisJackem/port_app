@@ -3,6 +3,7 @@
     color: #6d6d6d;
     font-weight: 600;
     transition: all 200ms ease-out;
+    height: min-content;
 }
 .link:hover{
     color: #4b4b4b;

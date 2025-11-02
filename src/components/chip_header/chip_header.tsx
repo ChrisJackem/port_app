@@ -9,21 +9,22 @@ type ChipHeaderProps = {
     children?: React.ReactNode;
     childBg?: string;
     fontSize?:number;
+    style?: React.CSSProperties;
 };
 
-const ChipHeader = ({ title, colBg, colTx, children, childBg, fontSize }: ChipHeaderProps) => {
+const ChipHeader = ({ title, colBg, colTx, children, childBg, fontSize, style={} }: ChipHeaderProps) => {
     const background_color = colBg ? colBg : `var(--background, #999)`;
     const text_color = colTx ? colTx : `var(--foreground, #FFF)`;
     const child_bg_color = childBg ? childBg : `var(--foreground, #FFF)`;
     return (
-        <section>
+        <section style={style}>
             <div 
                 className={`${blinker.className} ${styles.chipped_header}`} 
                 style={{ borderBottom: `4px solid ${background_color}`, ['--bg' as string]: colBg }}
             >
                 <h3 className={`chip-tl-md-npad ${styles.chip_text}`}
                     style={{ 
-                        backgroundColor: background_color, 
+                        backgroundColor: background_color,
                         color: `${text_color}`,
                         fontSize: fontSize ? `${fontSize}px`: '20px'
                     }}

@@ -8,7 +8,6 @@ import SvgBtn from '@/components/svg_btns/svg_btns'
 import { motion } from 'motion/react'
 import { PageVariants } from '../config/variants'
 import TypeHeader from '@/components/type_header/type_header'
-/*********************************************************************************** Work Page  */
 
 const WorkPage = () => {
   return (
@@ -62,7 +61,7 @@ const WorkPage = () => {
 
         <Scroller>
             
-            <WorkContainer title='Title'
+            <WorkContainer title='Noter'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[
                     { title: 'test', url: 'static/images/work/test/test1.png' },
@@ -88,7 +87,7 @@ const WorkPage = () => {
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
             </WorkContainer>
-            <WorkContainer title='Title'
+            <WorkContainer title='Ultra Custodian'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[
                     { title: 'test', url: 'static/images/work/test/test1.png' },

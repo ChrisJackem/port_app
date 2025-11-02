@@ -79,7 +79,9 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
       <ChipHeader 
         title={title}
         colBg='var(--darkest, #000)' 
-        colTx='var(--foreground, #FFF)' 
+        colTx='var(--foreground, #FFF)'
+        fontSize={28}
+        style={{ marginBottom: 10 }}
       />
       { slideState.status !== STATUS.LOADED
         ? <LoadingComponent height={ '400px'} />

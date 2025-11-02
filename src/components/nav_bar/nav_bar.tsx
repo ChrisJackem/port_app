@@ -6,6 +6,7 @@ import PathButton from '../path_button/pathButton';
 import { StrokeLogo } from '../loading_component/loading_component';
 import PageButton from '../page_button/page_button';
 import './nav_bar.css';
+import LinkComponent from '../link_component/linkComponent';
 
 const NavBar = () => {  
   const nav_main = useRef<HTMLElement | null>(null);
@@ -26,12 +27,15 @@ const NavBar = () => {
       >
         <div className={'logo_container flex'}>
           <StrokeLogo infinite={false}/> 
-          <small>Chris Jackem Official Website</small>       
+          <small className='small-txt'>ChrisJackem.com</small>       
         </div>
         <ul className='flex nav-ul'>
-            <NavLink name="Home" href="/home"  />
+          <LinkComponent name='Home' href='/home'/>
+          <LinkComponent name='About' href='/about'/>
+          <LinkComponent name='Work' href='/work'/>
+           {/*  <NavLink name="Home" href="/home"  />
             <NavLink name="About" href="/about"/>
-            <NavLink name="Work" href="/work"/>
+            <NavLink name="Work" href="/work"/> */}
         </ul>
       </nav>
       <PathButton threshold={navHeight}/>
