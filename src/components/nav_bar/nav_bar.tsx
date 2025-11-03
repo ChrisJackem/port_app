@@ -32,10 +32,7 @@ const NavBar = () => {
         <ul className='flex nav-ul'>
           <LinkComponent name='Home' href='/home'/>
           <LinkComponent name='About' href='/about'/>
-          <LinkComponent name='Work' href='/work'/>
-           {/*  <NavLink name="Home" href="/home"  />
-            <NavLink name="About" href="/about"/>
-            <NavLink name="Work" href="/work"/> */}
+          <LinkComponent name='Work' href='/work'/>          
         </ul>
       </nav>
       <PathButton threshold={navHeight}/>
@@ -45,7 +42,7 @@ const NavBar = () => {
 
 export default NavBar
 
-export function NavLink({ name, href }: {name: string, href: string}){
+/* export function NavLink({ name, href }: {name: string, href: string}){
   const pathName = usePathname();
   const isActive:string = pathName === href ? 'active' : ''
   return (
@@ -55,4 +52,4 @@ export function NavLink({ name, href }: {name: string, href: string}){
       </Link>
     </li>
   );
-}
+} */

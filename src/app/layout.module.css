@@ -13,5 +13,5 @@
     color: var(--text, #000);
     border-right: 3px solid var(--darkest, #000);
     position: relative;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
 }

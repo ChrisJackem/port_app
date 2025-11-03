@@ -78,7 +78,7 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
             style={{
               transition: 'all 200ms ease-out',
               color : `${ active ? 'var(--accent, #CCC)' : 'inherit'}`,
-              borderBottom: `${active ? '2px' : '0px'} solid var(--accent, #CCC)`,  
+              /* borderBottom: `${active ? '2px' : '0px'} solid var(--accent, #CCC)`,   */
               /* fontSize: active ? '22px' : '20px',  */
               fontWeight: 600 
             }}

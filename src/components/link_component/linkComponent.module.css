@@ -5,7 +5,8 @@
     transition: all 200ms ease-out;
     height: min-content;
     position: relative;
-    padding: 2px;
+    padding: 1px;
+    letter-spacing: .015em;
 }
 .link::after, .active::after{
     position: absolute; top: 0px; left: 0px; content: '';
@@ -15,7 +16,7 @@
 }
 
 .link:hover{
-    color: #4b4b4b;
+    /* color: #3d3d3d; */
 }
 
 .active{

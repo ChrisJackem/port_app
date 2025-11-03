@@ -9,7 +9,7 @@ type LinkProps = {
     href: string;
 }
 
-const LinkComponent = ({ name, href}: LinkProps) => {
+const LinkComponent = ({ name, href }: LinkProps) => {
     const pathName = usePathname();
     const isActive:string = pathName === href ? 'active' : ''
     return (
