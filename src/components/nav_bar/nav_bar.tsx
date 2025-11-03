@@ -25,7 +25,7 @@ const NavBar = () => {
         ref={nav_main}
         className='anim-bg chip-tl-lg'
       >
-        <div className={'logo_container flex'}>
+        <div className='logo_container flex'>
           <StrokeLogo infinite={false}/> 
           <small className='small-txt'>ChrisJackem.com</small>       
         </div>
