@@ -17,10 +17,10 @@ const Footer = () => {
           <div className='flex footer-links'>
             <LinkComponent name='Home' href='/home'/>
             <LinkComponent name='About' href='/about'/>
-            <LinkComponent name='Work' href='/work'/>
-            
+            <LinkComponent name='Work' href='/work'/>            
           </div>
         </ChipHeader>
+
         <br/>
 
         <div className={'padded bg-faded tx-fg chip-tl-md theme-container'}>          
@@ -33,7 +33,6 @@ const Footer = () => {
             <ThemeBtnFooter Theme={THEMES.Candy} />
           </div>
         </div>
-
       </section>
 
       <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>
@@ -74,12 +73,10 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     return (
         <div
             role='button'
-            className={`pointer `}
+            className={`pointer ${active ? 'active-theme' : ''}`}
             style={{
               transition: 'all 200ms ease-out',
               color : `${ active ? 'var(--accent, #CCC)' : 'inherit'}`,
-              /* borderBottom: `${active ? '2px' : '0px'} solid var(--accent, #CCC)`,   */
-              /* fontSize: active ? '22px' : '20px',  */
               fontWeight: 600 
             }}
             onClick={()=>SetTheme(Theme)}           

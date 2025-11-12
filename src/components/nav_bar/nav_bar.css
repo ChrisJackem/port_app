@@ -2,10 +2,9 @@
     z-index: 99;
     position: relative;
 }
-#nav-bar{    
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding: 10px 10px 10px 35px;
+#nav-bar{        
+    padding: 1rem;
+    padding-left: 1.5rem;
     background-color: var(--midground, #6d6d6d);
     color: black;
     display: flex;
@@ -48,6 +47,9 @@
     font-size: 24px;
 }
 
+.nav-ul a:hover{
+    transform: scale(1.05);
+}
 
 @media screen and (max-width: 600px) {
     #nav-bar ul{   

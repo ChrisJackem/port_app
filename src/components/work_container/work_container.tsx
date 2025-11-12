@@ -36,6 +36,7 @@ export type WorkContainerProps = {
     content: Slide[]
     children: React.ReactNode;
     link?: WorkLink;
+    playText?: string;
 }
 /**
  * Slideshow and content container.
@@ -45,7 +46,7 @@ export type WorkContainerProps = {
  * @param conf img urls and other config
  * @param children This will be visible while loading and is the written content
  */
-const WorkContainer = ({ title, content, children, link }: WorkContainerProps) => {
+const WorkContainer = ({ title, content, children, link, playText }: WorkContainerProps) => {
   const [slideState, setSlideState] = useState<SlideState>({ status: STATUS.INIT, slides:content });
 
   const container_ref = useRef(null);
@@ -96,10 +97,12 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
         ? ( // The link container
             <section className={`${styles.link_container}`}>
                 <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
-                  Click to Play                  
+                  <p>{ playText ? playText : 'Click to Play'}</p>                                  
                   <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
                 </div>
+              <a className="" href="https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US" target="_blank" rel="noopener noreferrer">
                 <PageButton>{link.text}</PageButton>
+              </a>
             </section>
           )
         : (<div style={{ height: '0.5rem'}}></div>)// empty div for grid layout

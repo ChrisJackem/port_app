@@ -61,31 +61,39 @@ const WorkPage = () => {
 
         <Scroller>
             
-            <WorkContainer title='Noter'
-                link={{ text: 'Click', href: 'google.com' }}
+            <WorkContainer title='Noter' playText='Google Web Store'
+                link={{ 
+                    text: 'Install',                    
+                    href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US"
+                }}
                 content={[
-                    { title: 'test', url: 'static/images/work/test/test1.png' },
-                    { title: 'test2', 
-                        url: 'static/images/work/test/test2.png',
-                        text: 'This is working' 
-                    },
-                    { title: 'test3', url: 'static/images/work/test/test3.png' },
-                    { title: 'Beei',
-                        url: 'static/images/work/test2/cat3.jpg', 
-                        embedId:'J63mfimO5qE'
-                    },
-                    { title: 'Beef',
-                        url: 'static/images/work/test2/cat2.jpg', 
-                        embedId:'aAGaNgkBdgc'
-                    }
+                    { title: 'logo', url: 'static/images/work/noter/noter_main.png' },                    
+                    { title: 'menu', url: 'static/images/work/noter/noter_menu.png', text: 'Easy Right Click Menu' },
+                    
             ]}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
+                <div className='blurb_title'>
+                    <h3>Noter Browser Extension</h3>
+                    <p>For Chromium Browsers</p>
+                </div>
+
+                <p>
+                    Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.
+                </p>                
+                <br/>
+                <p>
+                    Doing some research? Noter logs the url you copied from for your references later. Getting code snippets off of Stack Overflow? You can edit the code right in the browser before you paste it into your project.
+                </p>
+
+                <div className="feature-box">
+                    <h6 className="t-green">Features</h6>
+                    <ul>
+                        <li>Easy 2-click functionality</li>
+                        <li>Create, Read, Update, Delete any snippet anytime</li>
+                        <li>Detailed help with diagrams</li>
+                        <li>URLs tracked along with snippets</li>
+                        <li>Works on all Chromium browsers</li>
+                    </ul>
+                </div>
             </WorkContainer>
             <WorkContainer title='Ultra Custodian'
                 link={{ text: 'Click', href: 'google.com' }}

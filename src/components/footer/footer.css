@@ -44,3 +44,6 @@
     color: var(--foreground, #FFF);
 }
 
+.active-theme{
+    transform: scale(1.1);
+}
