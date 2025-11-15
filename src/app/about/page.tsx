@@ -7,7 +7,6 @@ import AnimContainer from '@/components/animations/anim_container';
 import styles from './page.module.css';
 import Kid from '@/components/animations/kid/kid';
 import Schem from '@/components/animations/schem/schem';
-import { NavLink } from '@/components/nav_bar/nav_bar';
 import Link from 'next/link';
 
 /*********************************************************************************** About Page  */
