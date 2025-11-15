@@ -64,7 +64,7 @@ export const SVG_PLAY = ({ final_color }: { final_color: string }) => (
 
 export const SVG_PAUSE = ({ final_color }: { final_color: string }) => (
    <svg viewBox="0 0 200 200">
-    <path fill={final_color} d="M175,0H25L0,25v150l25,25h150l25-25V25L175,0ZM89.57,143.5h-16.29l-32.58-19.44V56h48.87v87.5ZM159.23,143.5h-48.87V56h16.29l32.58,19.44v68.06Z"/>
+    <path fill={final_color} d="M175,0H25L0,25v150l25,25h150l25-25V25L175,0ZM164.57,143.29l-29.15,25.91-37.04-41.68-41.68,37.04-25.91-29.15,41.68-37.04-37.04-41.68,29.15-25.91,37.04,41.68,41.68-37.04,25.91,29.15-41.68,37.04,37.04,41.68Z"/>
     </svg>
 );
 

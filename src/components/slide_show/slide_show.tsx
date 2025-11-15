@@ -7,6 +7,14 @@ import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
 import { Slide } from '../work_container/work_container';
 import YoutubeEmbed from '../youtube_embed/youtube_embed';
+import PageButton from '../page_button/page_button';
+
+
+type LinkType = {
+    href: string;
+    playText?: string;
+    text?: string;
+}
 
 // Timeout interval time (ms)
 const TIMEOUT = 3000;
@@ -23,11 +31,13 @@ const TIMEOUT = 3000;
  * videoIds will contain any video ids we find in the slide
  * We filter out the video slides with useEffect on init
  * 
+ * EDIT: Moved link here to make it look right
+ * 
  * @param title the title at the top 
  * @param inView visible in viewport 
  * @param slides[] slide data 
  */
-const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, slides: Slide[] }) => {
+const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView:boolean, slides: Slide[], link?: LinkType | null }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [videoIds, setVideoIds] = useState<string[] | undefined>();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -35,7 +45,7 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
     const [scope, animate] = useAnimate();
     const [animateControls, setAnimateControls] = useState<undefined | ReturnType<typeof animate>>()
     const activeSlide = slides[activeSlideIndex];
-    const hero_height = 400;
+    const hero_height = 500;
 
     useEffect(()=>{
         // Start progress bar - default is playing
@@ -134,7 +144,8 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
                 <>
                 { !activeSlide.embedId && ( 
                     <motion.img
-                        className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`} 
+                        /* className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}  */
+                        className={`chip-tl-box p-abs ${styles.slideshow_image_main}`} 
                         height={`${hero_height}px`}
                         key={activeSlideIndex}
                         initial={{ opacity: 0, x: -100 }}
@@ -181,7 +192,21 @@ const SlideShow = ({ title, inView, slides }:{  title: string, inView:boolean, s
                         ></img>
                     </button>
                 ))}
-            </div>}
+
+            { link && (
+                <section className={`${styles.link_container}`}>
+                    <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
+                        <p>{ link.playText ? link.playText : 'Click to Play'}</p>
+                        <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
+                    </div>
+                    <a className="" href={link.href} target="_blank" rel="noopener noreferrer">
+                        <PageButton>{link.text}</PageButton>
+                    </a>
+                </section>
+                )
+            }
+            
+            </div> }
 
         </div>
     )

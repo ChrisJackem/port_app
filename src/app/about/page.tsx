@@ -62,14 +62,14 @@ const AboutPage = () => {
             </div>
         </section>
 
-        <br/>
+        {/* <br/>
         <div className="divider-1"></div>
         <br/>
         
         <div className='paged'>
             <h2>About this site</h2>
             <p></p>
-        </div>
+        </div> */}
     </motion.div>
   )
 }

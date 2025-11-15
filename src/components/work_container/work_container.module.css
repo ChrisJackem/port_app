@@ -4,7 +4,7 @@
     max-width: 1000px;
     min-width: 50%;
     display: grid;
-    grid-template-rows: repeat( 3, min-content) 1fr;
+    grid-template-rows: repeat( 2, min-content) 1fr;
     margin: 0 auto;
     padding: 0.75rem;
     transition: all 500ms ease-out;
@@ -18,10 +18,9 @@
         clip-path: polygon(30px 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px), 0 30px );/* Old main clip */        
     }
 
+/* 
+moved
 .link_container{
-    z-index: 1;    
-    color: var(--foreground, #FFF);    
-    /* background-color: var(--darkest, #000); */
     padding: 8px;
     display: flex;
     justify-content: right;
@@ -36,12 +35,8 @@
         0 30px, 20px 10px, 65% 10px, 68% 0px, 100% 0px,
         100% 100%, 0 100%
     );
-}
-
-/* .link_text{
-    font-size: 10px;
-    color: var(--accent, yellow);
 } */
+
 
 .outer_container{    
     overflow-y: auto;

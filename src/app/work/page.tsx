@@ -62,14 +62,14 @@ const WorkPage = () => {
         <Scroller>
             
             <WorkContainer title='Noter' playText='Google Web Store'
-                link={{ 
-                    text: 'Install',                    
+                link={{
+                    text: 'Install',                   
                     href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US"
                 }}
                 content={[
-                    { title: 'logo', url: 'static/images/work/noter/noter_main.png' },                    
+                    { title: 'logo', url: 'static/images/work/noter/noter_logo.png' },                    
+                    { title: 'test', url: 'static/images/slideShow_test_delete.png' },                    
                     { title: 'menu', url: 'static/images/work/noter/noter_menu.png', text: 'Easy Right Click Menu' },
-                    
             ]}>
                 <div className='blurb_title'>
                     <h3>Noter Browser Extension</h3>
@@ -78,8 +78,10 @@ const WorkPage = () => {
 
                 <p>
                     Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.
-                </p>                
+                </p>  
+
                 <br/>
+
                 <p>
                     Doing some research? Noter logs the url you copied from for your references later. Getting code snippets off of Stack Overflow? You can edit the code right in the browser before you paste it into your project.
                 </p>
@@ -95,6 +97,7 @@ const WorkPage = () => {
                     </ul>
                 </div>
             </WorkContainer>
+
             <WorkContainer title='Ultra Custodian'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[
@@ -121,6 +124,7 @@ const WorkPage = () => {
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
             </WorkContainer>
+
             <WorkContainer title='Title'
                 link={{ text: 'Click to dasmdfkasdmfkl', href: 'google.com' }}
                 content={[
@@ -147,6 +151,7 @@ const WorkPage = () => {
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
             </WorkContainer>
+
             <WorkContainer title='Title'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[

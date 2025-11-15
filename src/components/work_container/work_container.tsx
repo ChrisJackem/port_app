@@ -7,7 +7,6 @@ import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
 import { fetchFile, STATUS } from '@/hooks/useImg';
-import PageButton from '../page_button/page_button';
 
 
 // Individual slides
@@ -89,11 +88,12 @@ const WorkContainer = ({ title, content, children, link, playText }: WorkContain
         : <SlideShow 
             title={title}
             inView={isInView}
-            slides={slideState.slides}              
-        /> 
-      }      
+            slides={slideState.slides}
+            link={link ? link : null}
+        />
+      }
       
-      { link 
+      {/* { link 
         ? ( // The link container
             <section className={`${styles.link_container}`}>
                 <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
@@ -106,7 +106,7 @@ const WorkContainer = ({ title, content, children, link, playText }: WorkContain
             </section>
           )
         : (<div style={{ height: '0.5rem'}}></div>)// empty div for grid layout
-      }
+      } */}
         
       
       <div className={`${styles.outer_container}`}>
