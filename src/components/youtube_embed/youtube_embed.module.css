@@ -2,7 +2,7 @@
     overflow: hidden;
     position: absolute;
     top: 0; left: 0;
-    height: 400px; /* Make sure this is synced */
+    height: 500px; /* Make sure this is synced */
     width: 100%; 
     transition: all 200ms ease-out;
     display: flex;
@@ -11,7 +11,7 @@
 }
 
 .video_responsive iframe {
-    max-height: 400px; /* Make sure this is synced */
+    max-height: 500px; /* Make sure this is synced */
     aspect-ratio: 16 / 9;
     border: none;
 }

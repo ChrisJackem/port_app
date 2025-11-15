@@ -91,26 +91,10 @@ const WorkContainer = ({ title, content, children, link, playText }: WorkContain
             slides={slideState.slides}
             link={link ? link : null}
         />
-      }
-      
-      {/* { link 
-        ? ( // The link container
-            <section className={`${styles.link_container}`}>
-                <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
-                  <p>{ playText ? playText : 'Click to Play'}</p>                                  
-                  <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
-                </div>
-              <a className="" href="https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US" target="_blank" rel="noopener noreferrer">
-                <PageButton>{link.text}</PageButton>
-              </a>
-            </section>
-          )
-        : (<div style={{ height: '0.5rem'}}></div>)// empty div for grid layout
-      } */}
-        
+      }      
       
       <div className={`${styles.outer_container}`}>
-        <div className={`${styles.inner_container}`}>{children}</div>        
+        <div className={`${styles.inner_container}`}>{children}</div>
       </div>
 
     </section>

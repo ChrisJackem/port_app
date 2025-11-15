@@ -68,8 +68,8 @@ const WorkPage = () => {
                 }}
                 content={[
                     { title: 'logo', url: 'static/images/work/noter/noter_logo.png' },                    
-                    { title: 'test', url: 'static/images/slideShow_test_delete.png' },                    
-                    { title: 'menu', url: 'static/images/work/noter/noter_menu.png', text: 'Easy Right Click Menu' },
+                    { title: 'test', url: 'static/images/work/noter/noter_context.png', text: 'Easy Right Click Menu'  },                    
+                    { title: 'menu', url: 'static/images/work/noter/noter_menu.png' },
             ]}>
                 <div className='blurb_title'>
                     <h3>Noter Browser Extension</h3>
