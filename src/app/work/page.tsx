@@ -61,33 +61,32 @@ const WorkPage = () => {
 
         <Scroller>
             
-            <WorkContainer title='Noter' playText='Google Web Store'
+            <WorkContainer title='Noter'
                 link={{
                     text: 'Install',                   
-                    href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US"
+                    href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US",
+                    cta_text: 'Google Web Store'
                 }}
                 content={[
                     { title: 'logo', url: 'static/images/work/noter/noter_logo.png' },                    
-                    { title: 'test', url: 'static/images/work/noter/noter_context.png', text: 'Easy Right Click Menu'  },                    
-                    { title: 'menu', url: 'static/images/work/noter/noter_menu.png' },
+                    { title: 'rclick', url: 'static/images/work/noter/noter_context.png', text: 'Easy Right Click Menu' },                    
+                    { title: 'gui', url: 'static/images/work/noter/noter_gui.png' },
+                    { title: 'help', url: 'static/images/work/noter/noter_help.png', text: 'Detailed In-App help' },
+                    { title: 'noter promo', url: 'static/images/work/noter/noter_logo.png',  embedId:'7NpmneoyLUA' }
             ]}>
                 <div className='blurb_title'>
-                    <h3>Noter Browser Extension</h3>
+                    <h2>Noter Browser Extension</h2>
                     <p>For Chromium Browsers</p>
                 </div>
-
                 <p>
                     Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.
-                </p>  
-
+                </p>
                 <br/>
-
                 <p>
                     Doing some research? Noter logs the url you copied from for your references later. Getting code snippets off of Stack Overflow? You can edit the code right in the browser before you paste it into your project.
                 </p>
-
-                <div className="feature-box">
-                    <h6 className="t-green">Features</h6>
+                <div className="feature_box">
+                    <h5 className="t-green">Features</h5>
                     <ul>
                         <li>Easy 2-click functionality</li>
                         <li>Create, Read, Update, Delete any snippet anytime</li>

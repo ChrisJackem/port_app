@@ -22,6 +22,7 @@ export type Slide = {
 export type WorkLink = {
   text: string;
   href: string;
+  cta_text?: string;
 }
 
 // State of the component
@@ -35,7 +36,6 @@ export type WorkContainerProps = {
     content: Slide[]
     children: React.ReactNode;
     link?: WorkLink;
-    playText?: string;
 }
 /**
  * Slideshow and content container.
@@ -45,7 +45,7 @@ export type WorkContainerProps = {
  * @param conf img urls and other config
  * @param children This will be visible while loading and is the written content
  */
-const WorkContainer = ({ title, content, children, link, playText }: WorkContainerProps) => {
+const WorkContainer = ({ title, content, children, link }: WorkContainerProps) => {
   const [slideState, setSlideState] = useState<SlideState>({ status: STATUS.INIT, slides:content });
 
   const container_ref = useRef(null);

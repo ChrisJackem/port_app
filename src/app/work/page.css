@@ -44,7 +44,13 @@ td{
 .blurb_title{
     margin-bottom: 1rem;
 }
+
 .blurb_title p{
     font-size: small;
     font-style: italic;
+}
+
+
+.feature_box{
+    padding: 0.5rem;
 }

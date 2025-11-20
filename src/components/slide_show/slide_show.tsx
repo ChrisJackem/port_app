@@ -5,16 +5,10 @@ import styles from './slide_show.module.css'
 import './slide_show.module.css';
 import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
-import { Slide } from '../work_container/work_container';
+import { Slide, WorkLink } from '../work_container/work_container';
 import YoutubeEmbed from '../youtube_embed/youtube_embed';
 import PageButton from '../page_button/page_button';
 
-
-type LinkType = {
-    href: string;
-    playText?: string;
-    text?: string;
-}
 
 // Timeout interval time (ms)
 const TIMEOUT = 3000;
@@ -37,7 +31,7 @@ const TIMEOUT = 3000;
  * @param inView visible in viewport 
  * @param slides[] slide data 
  */
-const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView:boolean, slides: Slide[], link?: LinkType | null }) => {
+const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView:boolean, slides: Slide[], link?: WorkLink | null }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [videoIds, setVideoIds] = useState<string[] | undefined>();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -144,7 +138,6 @@ const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView
                 <>
                 { !activeSlide.embedId && ( 
                     <motion.img
-                        /* className={`miter-tl-rb p-abs ${styles.slideshow_image_main}`}  */
                         className={`chip-tl-box p-abs ${styles.slideshow_image_main}`} 
                         height={`${hero_height}px`}
                         key={activeSlideIndex}
@@ -160,9 +153,10 @@ const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView
                 { activeSlide.text && ( 
                     <motion.div 
                         className={`chip-tl-br ${styles.slide_text}`}
-                        initial={{ opacity: 0, x: 100}}
+                        initial={{ opacity: 0, x: 20}}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{    opacity: 0, x: 100 }}                                  
+                        exit={{    opacity: 0, x: 20 }}
+                        transition={{ duration: 0.1, ease: 'easeOut', type: 'tween' }}                          
                     >{activeSlide.text}</motion.div>
                 )}
                 </>
@@ -196,7 +190,7 @@ const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView
             { link && (
                 <section className={`${styles.link_container}`}>
                     <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
-                        <p>{ link.playText ? link.playText : 'Click to Play'}</p>
+                        <p>{ link.cta_text ? link.cta_text : 'Click to Play'}</p>
                         <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
                     </div>
                     <a className="" href={link.href} target="_blank" rel="noopener noreferrer">
