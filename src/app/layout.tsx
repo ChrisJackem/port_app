@@ -7,12 +7,6 @@ import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
 
-/* const font_header = Jockey_One({
-    subsets:['latin'],  
-    weight: '400',
-    variable: '--font-header'
-}); */
-
 export const metadata: Metadata = {
   title: "ChrisJackem.com",
   description: "Chris Jackem Personal Website",
@@ -30,11 +24,11 @@ export default function RootLayout({
         <ThemeWrapper>
         <main className={`${styles.main_container}`}>
           <NavBar/>
-          <div className={`${styles.child_container}`}>            
+          <div className={`${styles.child_container}`}>          
               {children}            
           </div>
         </main>
-          <Footer />
+        <Footer />
         </ThemeWrapper>
       </body>
     </html>

@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+}
+
+#gameContainer{   
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+#instructions{
+    text-align: center;
+    width: 100%;
+}

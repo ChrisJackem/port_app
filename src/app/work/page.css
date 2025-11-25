@@ -5,33 +5,11 @@
     /* padding: 1rem;     */
     padding: 0px 1rem 3rem 1rem;
 }
-.scroll-table{
-    width: 100%;
-    border-style: none;
-    table-layout: fixed;
-}
-.scroll-table-caption{
-    text-align: left;
-    font-size: 18px;
-    font-weight: 600;
-}
 #work-work-container{
     gap: 3rem;
 }
-.scroll-table td{
-    padding: 0.25rem;
-}
-td:nth-child(even){
-    background-color: var(--darkest);
-    text-align: center;
-}
-td{
-    text-align: right;
-}
-.scroll-table button{
-    height: 30px;
-    width: 30px;
-}
+
+
 .time-divider{
     position: relative;
 }

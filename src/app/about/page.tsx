@@ -24,7 +24,7 @@ const AboutPage = () => {
     >
         <section className='paged'>
             <TypeHeader word='About' />
-            <p>The following is a little about me and also some info about this site.</p>
+            <p>A little bit about me and what I do.</p>
         </section>
 
         <section className={`page_double ${styles.section_container}`}>
@@ -60,15 +60,6 @@ const AboutPage = () => {
                 </p>                
             </div>
         </section>
-
-        {/* <br/>
-        <div className="divider-1"></div>
-        <br/>
-        
-        <div className='paged'>
-            <h2>About this site</h2>
-            <p></p>
-        </div> */}
     </motion.div>
   )
 }
