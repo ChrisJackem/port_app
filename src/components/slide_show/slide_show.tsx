@@ -5,9 +5,9 @@ import styles from './slide_show.module.css'
 import './slide_show.module.css';
 import { AnimatePresence, motion, useAnimate } from 'framer-motion'
 import SvgBtn from '../svg_btns/svg_btns';
-import { Slide, WorkLink } from '../work_container/work_container';
+import { Slide } from '../work_container/work_container';
 import YoutubeEmbed from '../youtube_embed/youtube_embed';
-import PageButton from '../page_button/page_button';
+import SlideShowLink, { SSlinkType } from '../slide_show_link/slide_show_link';
 
 
 // Timeout interval time (ms)
@@ -25,13 +25,11 @@ const TIMEOUT = 3000;
  * videoIds will contain any video ids we find in the slide
  * We filter out the video slides with useEffect on init
  * 
- * EDIT: Moved link here to make it look right
- * 
  * @param title the title at the top 
  * @param inView visible in viewport 
  * @param slides[] slide data 
  */
-const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView:boolean, slides: Slide[], link?: WorkLink | null }) => {
+const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, inView:boolean, slides: Slide[], link?: SSlinkType | undefined }) => {
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [videoIds, setVideoIds] = useState<string[] | undefined>();
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -103,7 +101,7 @@ const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView
     // Play button
     function playBtnHandler( force_off=false ){
         setPlaying( playing => {
-            const ret = force_off===true ? false : !playing;
+            const ret = force_off === true ? false : !playing;
             if (intervalRef.current) clearInterval(intervalRef.current);
             if (ret) intervalRef.current = setInterval(tickHandler, TIMEOUT);
             progressBar(ret);
@@ -186,22 +184,9 @@ const SlideShow = ({ title, inView, slides, link=null }:{  title: string, inView
                         ></img>
                     </button>
                 ))}
-
-            { link && (
-                <section className={`${styles.link_container}`}>
-                    <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>
-                        <p>{ link.cta_text ? link.cta_text : 'Click to Play'}</p>
-                        <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
-                    </div>
-                    <a className="" href={link.href} target="_blank" rel="noopener noreferrer">
-                        <PageButton>{link.text}</PageButton>
-                    </a>
-                </section>
-                )
-            }
-            
+                
+                { link && <SlideShowLink link={link}/>}                    
             </div> }
-
         </div>
     )
 }

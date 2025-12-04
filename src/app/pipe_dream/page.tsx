@@ -1,17 +1,14 @@
 'use client'
 import React from 'react';
-import styles from './ucstyles.module.css';
+import styles from './pdstyles.module.css';
 import AttentionSection, { IMG_TYPES } from '@/components/attention_section/attention_section';
-import { useIsMobile } from '@/hooks/useIsMobile';
-import { LoadImg } from '@/components/load_img/load_img';
 
-const UcPage = () => {
-  const isMobile = useIsMobile();
+const PdPage = () => {
   return (
     <div className={`paged ${styles.main_container}`}>
 
       <div>
-        <h1>Ultra Custodian</h1>
+        <h1>Pipe Dream</h1>
         <p>A game I made in college that still has a special place in my heart. 
           A solid demo game with progression, multiple game modes, easter eggs, a tutorial, unlockables (literally) and more. 
           Works on desktop browsers.</p>
@@ -20,30 +17,15 @@ const UcPage = () => {
           <br/>
           <br/>
       </div>
-
-      <LoadImg
-        className={styles.not_support_img}
-        style={{ display: isMobile ? 'block' : 'none'}}
-        src='static/UltraCustodian_2020/uc_splash_not_support.png' 
-        alt='Game not supported'
-        width={800}
-        height={600}
-      />     
-
-      { !isMobile && <>
             <div className={`page-flex flex-column p-rel ${styles.game_frame_container}`}>
             <iframe                
                 className={styles.game_frame}
-                id='uc-game'
-                title="UC demo"                
-                src='static/UltraCustodian_2020/index.html'
+                id='pd-game'
+                title="Pipe Dream"
+                src='static/PipeDream/index.html'
+                sandbox='x'
             ></iframe>            
-        </div>
-        </>
-       }
-
-        <h3 className='tx-cen'>Press P to pause</h3>
-        <br/>          
+        </div>     
         
         <AttentionSection
             color={'var(--background, #CCC)'}
@@ -94,4 +76,4 @@ const UcPage = () => {
   )
 }
 
-export default UcPage
+export default PdPage

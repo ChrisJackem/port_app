@@ -53,18 +53,18 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h1>Programming</h1>
           <p>Self taught and formally accredited programmer</p>            
-          <button className={`chip-a link `} >GitHub</button>            
+          <button className={`chip-a link `}>GitHub</button>
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_parent.svg" alt="parenthasis icon">
-          <h1>Programming</h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, reprehenderit!</p>            
+          <h1>Games</h1>
+          <p>I make web-based games and apps</p>            
           <button className={`chip-a link `} >GitHub</button>            
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web.svg" alt="web icon">
-          <h1>Web Design</h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At, tempore? Esse nulla hic mollitia pariatur doloribus cupiditate fugiat voluptas quam?</p>
+          <h1>Design</h1>
+          <p>I love to create, especially with HTTP.</p>
           <button className={`chip-a link `} >Work</button>  
           </IconFrame>
       </section>

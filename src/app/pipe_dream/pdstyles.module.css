@@ -1,0 +1,20 @@
+.main_container{
+
+}
+
+.game_frame_container{
+    /* width: 810px; height: 610px; */
+    /* overflow: visible; */
+}
+
+.game_frame{
+    width: 810px; height: 610px;
+    outline: none;
+    border: none;
+}
+
+.not_support_img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}

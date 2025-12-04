@@ -1,0 +1,19 @@
+.link_container{
+    z-index: 1;    
+    color: var(--foreground, #FFF);
+    padding: 8px;
+    padding-right: 0px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+.link_container::after{
+    z-index: -1;
+    background-color: var(--darkest, #000);
+    clip-path: polygon(
+        0 30px, 20px 10px, 65% 10px, 68% 0px, 100% 0px,
+        100% 100%, 0 100%
+    );
+}

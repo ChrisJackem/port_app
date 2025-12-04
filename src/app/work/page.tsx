@@ -100,9 +100,9 @@ const WorkPage = () => {
             <WorkContainer title='Vandal'
                 link={{ text: 'Go', href: 'https://walls-e3b59.web.app', cta_text: 'Goto Vandal' }}
                 content={[
-                    { title: 'logo', url: 'static/images/work/vandal/vandal_logo.png' },                    
+                    { title: 'logo', url: 'static/images/work/vandal/vandal_logo.png' },
                     { title: 'promo', url: 'static/images/work/vandal/vandal_promo_1.png' },
-                    { title: 'stall', url: 'static/images/work/vandal/vandal_stall.png', text: 'Robust drawing tools' },                    
+                    { title: 'stall', url: 'static/images/work/vandal/vandal_stall.png', text: 'Robust drawing tools' },               
                     { title: 'delete', url: 'static/images/work/vandal/vandal_delete.png',  text: 'Built-in moderation' }
             ]}>
                 <div className='blurb_title'>
@@ -110,10 +110,11 @@ const WorkPage = () => {
                     <p>Online vandalism simulator</p>
                 </div>
                 <p>
-                    Vandal is an online vector drawing app. Users are registered and logged in automatically using Google Firebase cookies.
+                    Vandal is an online vector drawing app. Users are registered and logged in automatically using cookies.
                     Users can choose between 4 different drawing tools and can customize the shape fill color and stroke color/size to almost anything they want. Thanks to the Undo feature, mistakes and tweaking your drawing are very easy.
-                    As well as being able to draw whatever you want, you can remove anyone&apos;s drawing anytime, making this app self moderating. 
+                    As well as being able to draw whatever you want, you can remove anyone&apos;s drawing anytime, making this app self moderating.
                 </p>
+                <p>Powered by Google Firebase</p>
                 <div className="feature_box">
                     <h5 className="t-green">Features</h5>
                     <ul>
@@ -129,30 +130,36 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Ultra Custodian'
-                link={{ text: 'Play', href: 'google.com' }}
+                link={{ text: 'Play', href: '/uc', local: true }}
                 content={[
-                    { title: 'test', url: 'static/images/work/test/test1.png' },
-                    { title: 'test2', 
-                        url: 'static/images/work/test/test2.png',
-                        text: 'This is working' 
-                    },
-                    { title: 'test3', url: 'static/images/work/test/test3.png' },
-                    { title: 'Beei',
-                        url: 'static/images/work/test2/cat3.jpg', 
-                        embedId:'J63mfimO5qE'
-                    },
-                    { title: 'Beef',
-                        url: 'static/images/work/test2/cat2.jpg', 
-                        embedId:'aAGaNgkBdgc'
-                    }
+                    { title: 'test', url: 'static/images/work/ultracus/ultra_promo0.png' },                   
+                    { title: 'test', url: 'static/images/work/ultracus/ultra_promo1.png' },                   
+                    { title: 'test3', url: 'static/images/work/ultracus/ultra_promo2.png' },
+                    
             ]}>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, deleniti?</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci ad sint, rerum doloremque suscipit natus sit eaque in modi quia animi? Cum aliquam quo omnis dignissimos labore rem nulla reprehenderit mollitia, aperiam debitis distinctio eaque, expedita tempora perferendis. Iure, ducimus.</p>
+                 <div className='blurb_title'>
+                    <h2>Ultra Custodian</h2>
+                    <p>Janitorial simulator</p>
+                </div>
+                <p>This is a web build for a project I made in 2012 with Unity, written in C#. A solid game theory demo game with many features including progression, easter eggs, unlockables and more.</p>
+                <br/>
+                <p>Ultra Custodian is a first-person janitor game where the goal is to clean the school every day using all the tools you have access to. The more you clean, the more money you will earn.
+                    Work hard and unlock more tools to clean more thoroughly. After you clean everything you can, clock out until the next day when the filth has accumulated again.
+                    Use cash to unlock the lockers to win money, tools, and wonderful secret prizes!
+                </p>
+                <br/>
+                <p>Ultra Custodian features 3 different game modes, including a thorough tutorial. Challenge yourself with cleaning the school while its on fire. Now that is dedication to your work!</p>               
+                <p></p>
+                <br/>
+                <div className="feature_box">
+                    <h5 className="t-green">Features</h5>
+                    <ul>
+                        <li>Unlockable tools, easter eggs, and more</li>
+                        <li>Laid back, no pressure style game loop</li>
+                        <li>Subtle life training for kids</li>                                          
+                    </ul>
+                </div>
+                <small><strong>Note:</strong> this will not work on mobile browsers</small>
             </WorkContainer>
 
             <WorkContainer title='Title'
