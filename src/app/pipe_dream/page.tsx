@@ -10,23 +10,13 @@ const PdPage = () => {
 
       <div>
         <h1>Pipe Dream</h1>
-        <p>A game I made in college that still has a special place in my heart. 
-          A solid demo game with progression, multiple game modes, easter eggs, a tutorial, unlockables (literally) and more. 
-          Works on desktop browsers.</p>
-          <br/>
-          <i><strong>Note:</strong> Turn down volume before you click the game</i>
-          <br/>
-          <br/>
+        <p>A web game I made with 100% vanilla JavaScript. This is the classic pipe dream game that everyone knows ported to normal HTML SPA.
+          Features a robust level editor you can use to make your own custom levels or even edit the originals. Choose any color of fluid to create your puzzles, and name the tiles to create a more immersive experience.
+
+        </p>          
       </div>
-            <div className={`page-flex flex-column p-rel ${styles.game_frame_container}`}>
-            {/* <iframe                
-                className={styles.game_frame}
-                id='pd-game'
-                title="Pipe Dream"
-                src='static/PipeDream/index.html'
-                sandbox='x'
-            ></iframe>  */}
-            <IFrameComponent src='static/PipeDream/index.html' />      
+            <div className={`page-flex flex-column p-rel ${styles.game_frame_container}`}>            
+            <IFrameComponent src='static/PipeDream/index.html'/>      
         </div>
     </div>
   )
