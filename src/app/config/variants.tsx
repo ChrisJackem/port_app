@@ -1,7 +1,7 @@
 // Variants for motion plugin
 
 export const PageVariants = {
-    hidden: { opacity: 0, x: 0, y: 10 },
+    hidden: { opacity: 0, x: -80, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0, y: 10 },
 }

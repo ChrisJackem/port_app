@@ -129,6 +129,35 @@ const WorkPage = () => {
                 <small><strong>Note:</strong> I do not condone vandalism, this was meant to replace actual vandalism</small>
             </WorkContainer>
 
+            <WorkContainer title='Pipe Dream'
+                link={{ text: 'Go', href: 'https://chrisjackem.github.io/pipe-dream/' }}
+                content={[
+                    { title: 'logo', url: 'static/images/work/pipedream/seo_promo_website.png' },
+            ]}>
+                <div className='blurb_title'>
+                    <h2>Pipe Dream</h2>
+                    <p>HTML Puzzle Game</p>
+                </div>
+                <p>
+                    Vandal is an online vector drawing app. Users are registered and logged in automatically using cookies.
+                    Users can choose between 4 different drawing tools and can customize the shape fill color and stroke color/size to almost anything they want. Thanks to the Undo feature, mistakes and tweaking your drawing are very easy.
+                    As well as being able to draw whatever you want, you can remove anyone&apos;s drawing anytime, making this app self moderating.
+                </p>
+                <p>Powered by Google Firebase</p>
+                <div className="feature_box">
+                    <h5 className="t-green">Features</h5>
+                    <ul>
+                        <li>Seamless, automatic login/register</li>
+                        <li>Vector drawings for speed and fidelity</li>
+                        <li>Any color fill and/or stroke</li>
+                        <li>12 slot undo queue</li>
+                        <li>Built-in moderation</li>
+                        <li>Detailed help</li>                        
+                    </ul>
+                </div> 
+                <small><strong>Note:</strong> I do not condone vandalism, this was meant to replace actual vandalism</small>
+            </WorkContainer>
+
             <WorkContainer title='Ultra Custodian'
                 link={{ text: 'Play', href: '/uc', local: true }}
                 content={[
