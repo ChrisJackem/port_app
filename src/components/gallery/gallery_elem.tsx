@@ -17,13 +17,12 @@ const Gallery = ({items} :{items: GalleryItem[]}) => {
     console.log(index)
     setSelected(items[index]);
   }
-
   return (
     <div className={styles.main_container}>
         <div className={styles.modal} style={{ display: selected === null ? 'none' : 'flex'}}>
           <button onClick={()=>setSelected(null)}>X</button>
           { selected && (
-          <img src={selected.src} alt={'selected image larger'} />)}
+          <LoadImg src={selected.src} alt={'selected image larger'} />)}
         </div>        
         { items.map( (item, i) => {
           return (

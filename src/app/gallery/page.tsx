@@ -21,7 +21,7 @@ const GalleryPage = () => {
             <p>A random assortment of images</p>            
       </section>
 
-      <div className={`paged ${styles.gallery}`}>
+      <div className={`paged ${styles.gallery}`} style={{ maxWidth: '1200'}}>
 
         <Gallery items={[
           {
@@ -57,8 +57,19 @@ const GalleryPage = () => {
             orient: 'square',
             src: 'static/images/gallery/deal.png',
           },
+          {
+            title: 'Test Title',
+            blerb: 'Test Tall',            
+            orient: 'tall',
+            src: 'static/images/gallery/christmas.gif',
+          },
 
-
+          {
+            title: 'Test Title',
+            blerb: 'Test Tall',            
+            orient: 'wide',
+            src: 'static/images/gallery/until.png',
+          },
 
         ]} />
 
