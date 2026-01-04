@@ -5,6 +5,7 @@ import React from 'react'
 import { PageVariants } from '../config/variants'
 import styles from './gallery.module.css'
 import { LoadImg } from '@/components/load_img/load_img'
+import Gallery from '@/components/gallery/gallery_elem'
 
 const GalleryPage = () => {
   return (
@@ -21,11 +22,51 @@ const GalleryPage = () => {
       </section>
 
       <div className={`paged ${styles.gallery}`}>
+
+        <Gallery items={[
+          {
+            title: 'Peg',
+            blerb: 'Test Blerb',
+            orient: 'wide',
+            src: 'static/images/gallery/peg_03.png',
+          },
+
+          {
+            title: 'Test Title',
+            blerb: 'Test Blerb',
+             orient: 'wide',
+            src: 'static/images/gallery/morning.gif',
+          },
+
+          {
+            title: 'Test Title',
+            blerb: 'Test Tall',
+            orient: 'tall',
+            src: 'static/images/gallery/gain_01.png',
+          },          
+          {
+            title: 'Test Title',
+            blerb: 'Test Tall',
+            orient: 'square',
+            src: 'static/images/gallery/nosferatu.gif',
+          },
+
+          {
+            title: 'Test Title',
+            blerb: 'Test Tall',            
+            orient: 'square',
+            src: 'static/images/gallery/deal.png',
+          },
+
+
+
+        ]} />
+
         {/* <LoadImg className={styles.item} style={{ span: 10 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>        
         <LoadImg className={styles.item} style={{ span: 20 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={200}/>        
         <LoadImg className={styles.item} style={{ span: 15 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>        
         <LoadImg className={styles.item} style={{ span: 2 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>    */}     
-        <div className={`${styles.item} ${styles.wide}`}>
+        {/* <div className={`${styles.item} ${styles.wide}`}>
           <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
         </div>
         <div className={`${styles.item} ${styles.square}`}>
@@ -43,7 +84,7 @@ const GalleryPage = () => {
         </div>
         <div className={`${styles.item} ${styles.square}`}>
           <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
+        </div> */}
         
 
   
