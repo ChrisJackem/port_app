@@ -1,5 +1,5 @@
 .main_container{
-    --size: 100px;    
+    --size: 20px;    
     display: grid;
     position: relative;
     grid-template-columns: repeat(auto-fill, minmax(var(--size), 1fr));
@@ -33,6 +33,7 @@
     border-top: 3px solid var(--accent, yellow);
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
     clip-path: polygon(
         0px 0px, 100% 0px, 
         100% calc(100% - 10px), calc(100% - 10px) 100%,
@@ -78,11 +79,24 @@
 }
 
 .item > img{
-    width: 100%;
-    object-fit: contain;
+    width: 100%;    
+    object-fit: fill;
+    /* object-fit: contain; */
 }
 
 .wide{
+    grid-column: span 15 / auto;
+    grid-row: span 10 / auto;
+}
+.square{
+    grid-column: span 10 / auto;
+    grid-row: span 10 / auto;
+}
+.tall{
+    grid-column: span 10 / auto;
+    grid-row: span 15 / auto;
+}
+/* .wide{
     grid-column: span 3 / auto;
     grid-row: span 2 / auto;
 }
@@ -94,7 +108,7 @@
     grid-column: span 2 / auto;
     grid-row: span 3 / auto;
 }
-
+ */
 @media screen and (max-width: 900px){
     .main_container{
         display: flex;

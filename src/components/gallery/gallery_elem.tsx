@@ -11,7 +11,8 @@ type GalleryItem ={
   src: string;
   title?: string;  
   blerb?:string;
-  orient: undefined | 'wide' | 'tall' | 'square';
+  dims: number[];
+  orient?: undefined | 'wide' | 'tall' | 'square';
 }
 
 const Gallery = ({items} :{items: GalleryItem[]}) => {
@@ -32,36 +33,39 @@ const Gallery = ({items} :{items: GalleryItem[]}) => {
             initial="hidden"
             animate="enter"
             exit="exit"
-          >
-            { selected && (
-              <motion.div
-                variants={GalleryVariants}
-                initial="hidden"
-                animate="enter"
-                exit="exit"
-                className={styles.modal_content}
-              >
-                <SvgBtn
-                  className={styles.dismiss}
-                  type={'x'}
-                  color={'var(--accent, yellow)'}
-                  onClick={()=>setSelected(null)}
-                />                
-                <LoadImg src={selected.src} alt={'selected image larger'} />
-                <div className={styles.modal_stats}>
-                <h2 className='tx-ac'>{selected.title}</h2>
-                { selected.blerb && (<i>{selected.blerb}</i>) }
-                </div>
-              </motion.div>
-            )}
+          >            
+            <motion.div
+              variants={GalleryVariants}
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              className={styles.modal_content}
+            >
+              <SvgBtn
+                className={styles.dismiss}
+                type={'x'}
+                color={'var(--accent, yellow)'}
+                onClick={()=>setSelected(null)}
+              />                
+              <LoadImg src={selected.src} alt={'selected image larger'} />
+              <div className={styles.modal_stats}>
+              <h2 className='tx-ac'>{selected.title}</h2>
+              { selected.blerb && (<i>{selected.blerb}</i>) }
+              </div>
+            </motion.div>            
           </motion.div>
           )}
         </AnimatePresence>
 
         { items.map( (item, i) => {
+          const style = {
+            gridColumn: `span ${item.dims[0]} / auto`,
+            gridRow: `span ${item.dims[1]} / auto`
+          }
           return (
             <div
-              className={`${styles.item} ${styles[item.orient || 'square']}`}
+              className={`${styles.item}`}
+              style={style}
               key={i.toString()}
               onClick={()=>handleClick(i)}
             >

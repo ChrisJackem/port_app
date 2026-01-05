@@ -18,7 +18,7 @@ const GalleryPage = () => {
     >
       <section className='paged'>
             <TypeHeader word='Gallery' />
-            <p>Click an image to view</p>            
+            <p>Drawings, designs, and other non-interactive things I made over the years</p>            
       </section>
 
       <div className={`paged ${styles.gallery}`} style={{ maxWidth: '1200'}}>
@@ -27,49 +27,110 @@ const GalleryPage = () => {
           {
             title: 'Peg',
             blerb: 'Peg Bundy distorted',
-            orient: 'wide',
+            dims: [20, 11],
             src: 'static/images/gallery/peg_03.png',
           },
-
-          {
-            title: 'Morning',
-            blerb: 'Motivational poster',
-             orient: 'wide',
-            src: 'static/images/gallery/morning.gif',
-          },
-
-          {
+           {
             title: 'Gain',
             blerb: 'Motivational poster',
-            orient: 'tall',
+            dims: [12, 18],
             src: 'static/images/gallery/gain_01.png',
-          },          
-          {
-            title: 'Blood Drive',
-            blerb: 'Blood Drive advertisement GIF',
-            orient: 'square',
-            src: 'static/images/gallery/nosferatu.gif',
           },
-
-          {
-            title: 'Procrastination',
+           
+           { 
+            title: 'Deal with it later',
             blerb: 'Sarcastic motivational poster',
-            orient: 'square',
+            dims: [20, 20],
             src: 'static/images/gallery/deal.png',
           },
           {
             title: 'Santa',
             blerb: 'Christmas card GIF',            
-            orient: 'tall',
+            dims: [12, 13],
             src: 'static/images/gallery/christmas.gif',
+          },
+         
+          {
+            title: 'Self Portrait with cheese',
+            blerb: 'Self portrait using McDonalds items',
+            dims: [12, 18],
+            src: 'static/images/gallery/burger2.png',
           },
 
           {
-            title: 'Sweat',
+            title: 'Morning',
+            blerb: 'Motivational poster',
+            dims: [20, 11],
+            src: 'static/images/gallery/morning.gif',
+          },
+          {
+            title: 'Until my body breaks',
             blerb: 'Motivational poster',            
-            orient: 'wide',
+            dims: [10, 7],
             src: 'static/images/gallery/until.png',
           },
+          {
+            title: 'Arbourous',
+            blerb: 'Character design drawing',            
+            dims: [10, 7],
+            src: 'static/images/gallery/ArborousPoster.jpg',
+          },
+
+          {
+            title: 'Blood Drive',
+            blerb: 'Blood Drive advertisement GIF',
+            dims: [20, 20],
+            src: 'static/images/gallery/nosferatu.gif',
+          },          
+          
+         
+          {
+            title: 'Rat Monkey',
+            blerb: '3d Model of the rat monkey from the movie "Brain Dead"',
+            dims: [12, 10],
+            src: 'static/images/gallery/rat.jpg',
+          },     
+          {
+            title: 'Nurse Ratched',
+            blerb: "If you didn't see the movie you won't get it",            
+            dims: [12, 10],
+            src: 'static/images/gallery/ratch.png',
+          },
+          {
+            title: 'War',
+            blerb: "Demoralization poster",            
+            dims: [10, 9],
+            src: 'static/images/gallery/neverEndingWar.png',
+          },
+          {
+            title: 'Ted',
+            blerb: '3d Model',            
+            dims: [22, 18],
+            src: 'static/images/gallery/ted.jpg',
+          }
+          
+          /*
+          {
+            title: 'Habit',
+            blerb: "colored pencil drawing",            
+            orient: 'tall',
+            src: 'static/images/gallery/habit.png',
+          },
+          
+          
+          
+          
+         
+         
+          
+          
+          {
+            title: 'Weapon of Hope',
+            blerb: 'Motivational poster',            
+            orient: 'wide',
+            src: 'static/images/gallery/hope.png',
+          },
+          , */
 
         ]} />
 
