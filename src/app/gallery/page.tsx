@@ -9,7 +9,7 @@ import Gallery from '@/components/gallery/gallery_elem'
 
 const GalleryPage = () => {
   return (
-    <motion.div id='work-main-container' 
+    <motion.div id='gallery-main-container' 
             className="page-container"
             variants={PageVariants}
             initial="hidden"
@@ -18,7 +18,7 @@ const GalleryPage = () => {
     >
       <section className='paged'>
             <TypeHeader word='Gallery' />
-            <p>A random assortment of images</p>            
+            <p>Click an image to view</p>            
       </section>
 
       <div className={`paged ${styles.gallery}`} style={{ maxWidth: '1200'}}>
@@ -33,7 +33,7 @@ const GalleryPage = () => {
 
           {
             title: 'Morning',
-            blerb: 'What a wonderful day to have a curse',
+            blerb: 'Motivational poster',
              orient: 'wide',
             src: 'static/images/gallery/morning.gif',
           },
@@ -53,7 +53,7 @@ const GalleryPage = () => {
 
           {
             title: 'Procrastination',
-            blerb: 'Pro-procrastination propaganda',            
+            blerb: 'Sarcastic motivational poster',
             orient: 'square',
             src: 'static/images/gallery/deal.png',
           },

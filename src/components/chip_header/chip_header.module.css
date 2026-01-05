@@ -9,6 +9,17 @@
     z-index: 2;
     font-size: x-large;
 }
+.chip_text_small{
+    padding: 5px 10px 5px 30px;
+    display: inline-block;
+    /* s */
+    z-index: 2;
+    letter-spacing: 1px;
+}
+
+#footer-aside div{
+    flex-direction: row-reverse;
+}
 .child_container{
     color: var(--darkest, #000);
     background-color: var(--foreground, #FFF);

@@ -13,10 +13,11 @@ const Footer = () => {
     <footer id='footer-container' className='flex psudo'>      
       
       <section id='footer-left' className='flex-child'>
-        <ChipHeader title='Jump to Page' childBg='rgba(255,255,255, 0.4)' fontSize={22}>
+        <ChipHeader title='Navigate' childBg='rgba(255,255,255, 0.4)' colTx={'var(--accent)'} fontSize={18}  size={'small'}>
           <div className='flex footer-links'>
             <LinkComponent name='Home' href='/home'/>
             <LinkComponent name='About' href='/about'/>
+            <LinkComponent name='Gallery' href='/gallery'/>
             <LinkComponent name='Work' href='/work'/>            
           </div>
         </ChipHeader>
@@ -36,7 +37,7 @@ const Footer = () => {
       </section>
 
       <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>
-        <ChipHeader title='Links' fontSize={22} childBg='rgba(255,255,255, 0.4)'>
+        <ChipHeader title='External Links' fontSize={18} childBg='rgba(255,255,255, 0.4)' colTx={'var(--accent)'} size={'small'}>
 
           <div className='flex'>
             <Link href='https://www.facebook.com/chris.jackem'>
@@ -54,8 +55,11 @@ const Footer = () => {
           </div>
 
         <br/>
+        <hr/>
+        <br/>
+
         <div className='flex footer-lib'>
-          <h4 style={{ width: '100%', marginBottom: 4 }}>This site is powered by</h4>
+          <h6 style={{ width: '100%', marginBottom: 4 }}>Built with</h6>
           <LoadImg src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
           <LoadImg src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
         </div>
