@@ -44,7 +44,6 @@ export const GalleryVariants = {
 }
 export const GalleryContainerVariants = {
     hidden: { opacity: 0 },
-    enter: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition:{ staggerChildren: 1, easeOut: 1, duration: 0.2 }
+    enter: { opacity: 1, transition:{ staggerChildren: 1, easeOut: 1, duration: 0.2 } },
+    exit: { opacity: 0 },    
 }

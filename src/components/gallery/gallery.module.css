@@ -17,7 +17,7 @@
     padding: 1rem;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
 }
 .modal_content{
     max-width: 100%;
@@ -60,7 +60,7 @@
     transition: all 200ms ease-out;
 }
 .item:hover{
-    transform: scale(1.05) rotate(1deg);
+    transform: scale(1.05) rotate(0.5deg);
 }
 
 .item > img{

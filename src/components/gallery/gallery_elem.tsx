@@ -28,6 +28,9 @@ const Gallery = ({items} :{items: GalleryItem[]}) => {
             className={styles.modal} 
             style={{ display: selected === null ? 'none' : 'flex'}}
             variants={GalleryContainerVariants}
+                            initial="hidden"
+                animate="enter"
+                exit="exit"
           >          
             { selected && (
               <motion.div
