@@ -1,5 +1,8 @@
 // Variants for motion plugin
 
+import { easeIn, easeOut } from "motion"
+import { transition } from "three/examples/jsm/tsl/display/TransitionNode.js"
+
 export const PageVariants = {
     hidden: { opacity: 0, x: -80, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -31,8 +34,17 @@ export const TypeVariant = {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
     },
-    /* child: {
-        initial: { y: '100%' },
-        animate: { y: 0 },
-    } */
+}
+
+////////////////// Gallery
+export const GalleryVariants = {
+    hidden: { opacity: 0, x: -350, y: 0 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 350, y: 0, transition: {duration: 0.15, easeIn: 1}},
+}
+export const GalleryContainerVariants = {
+    hidden: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition:{ staggerChildren: 1, easeOut: 1, duration: 0.2 }
 }

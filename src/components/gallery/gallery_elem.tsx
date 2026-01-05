@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { LoadImg } from '../load_img/load_img';
 import styles from './gallery.module.css';
+import { AnimatePresence, motion, stagger } from 'motion/react';
+import { GalleryContainerVariants, GalleryVariants } from '@/app/config/variants';
 
 
 type GalleryItem ={
@@ -19,11 +21,34 @@ const Gallery = ({items} :{items: GalleryItem[]}) => {
   }
   return (
     <div className={styles.main_container}>
-        <div className={styles.modal} style={{ display: selected === null ? 'none' : 'flex'}}>
-          <button onClick={()=>setSelected(null)}>X</button>
-          { selected && (
-          <LoadImg src={selected.src} alt={'selected image larger'} />)}
-        </div>        
+
+        <AnimatePresence>
+          { selected !== null && (
+          <motion.div 
+            className={styles.modal} 
+            style={{ display: selected === null ? 'none' : 'flex'}}
+            variants={GalleryContainerVariants}
+          >          
+            { selected && (
+              <motion.div
+                variants={GalleryVariants}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                className={styles.modal_content}
+              >
+                <button className={styles.close_btn} onClick={()=>setSelected(null)}>X</button>
+                <LoadImg src={selected.src} alt={'selected image larger'} />
+                <div className={styles.modal_stats}>
+                <h2>{selected.title}</h2>
+                { selected.blerb && (<p>{selected.blerb}</p>) }
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+          )}
+        </AnimatePresence>
+
         { items.map( (item, i) => {
           return (
             <div

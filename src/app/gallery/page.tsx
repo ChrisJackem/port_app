@@ -26,47 +26,47 @@ const GalleryPage = () => {
         <Gallery items={[
           {
             title: 'Peg',
-            blerb: 'Test Blerb',
+            blerb: 'Peg Bundy distorted',
             orient: 'wide',
             src: 'static/images/gallery/peg_03.png',
           },
 
           {
-            title: 'Test Title',
-            blerb: 'Test Blerb',
+            title: 'Morning',
+            blerb: 'What a wonderful day to have a curse',
              orient: 'wide',
             src: 'static/images/gallery/morning.gif',
           },
 
           {
-            title: 'Test Title',
-            blerb: 'Test Tall',
+            title: 'Gain',
+            blerb: 'Motivational poster',
             orient: 'tall',
             src: 'static/images/gallery/gain_01.png',
           },          
           {
-            title: 'Test Title',
-            blerb: 'Test Tall',
+            title: 'Blood Drive',
+            blerb: 'Blood Drive advertisement GIF',
             orient: 'square',
             src: 'static/images/gallery/nosferatu.gif',
           },
 
           {
-            title: 'Test Title',
-            blerb: 'Test Tall',            
+            title: 'Procrastination',
+            blerb: 'Pro-procrastination propaganda',            
             orient: 'square',
             src: 'static/images/gallery/deal.png',
           },
           {
-            title: 'Test Title',
-            blerb: 'Test Tall',            
+            title: 'Santa',
+            blerb: 'Christmas card GIF',            
             orient: 'tall',
             src: 'static/images/gallery/christmas.gif',
           },
 
           {
-            title: 'Test Title',
-            blerb: 'Test Tall',            
+            title: 'Sweat',
+            blerb: 'Motivational poster',            
             orient: 'wide',
             src: 'static/images/gallery/until.png',
           },
