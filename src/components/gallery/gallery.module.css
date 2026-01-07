@@ -84,34 +84,12 @@
     /* object-fit: contain; */
 }
 
-.wide{
-    grid-column: span 15 / auto;
-    grid-row: span 10 / auto;
-}
-.square{
-    grid-column: span 10 / auto;
-    grid-row: span 10 / auto;
-}
-.tall{
-    grid-column: span 10 / auto;
-    grid-row: span 15 / auto;
-}
-/* .wide{
-    grid-column: span 3 / auto;
-    grid-row: span 2 / auto;
-}
-.square{
-    grid-column: span 3 / auto;
-    grid-row: span 3 / auto;
-}
-.tall{
-    grid-column: span 2 / auto;
-    grid-row: span 3 / auto;
-}
- */
 @media screen and (max-width: 900px){
     .main_container{
+        --size: 1.5px;
+    }
+    /* .main_container{
         display: flex;
         flex-direction: column;
-    }
+    } */
 }

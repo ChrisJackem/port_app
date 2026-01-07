@@ -99,14 +99,20 @@ const GalleryPage = () => {
           {
             title: 'War',
             blerb: "Demoralization poster",            
-            dims: [10, 9],
+            dims: [12, 9],
             src: 'static/images/gallery/neverEndingWar.png',
           },
           {
             title: 'Ted',
             blerb: '3d Model',            
-            dims: [22, 18],
+            dims: [20, 15],
             src: 'static/images/gallery/ted.jpg',
+          },
+          {
+            title: 'Pipe dream promo',
+            blerb: 'Promotional image for a game',            
+            dims: [12, 6],
+            src: 'static/images/work/pipedream/seo_promo_website.png',
           }
           
           /*
