@@ -9,10 +9,10 @@
     letter-spacing: 0.5px;
 }
 .chip_text_small{
-    padding: 5px 10px 5px 30px;
+    padding: 5px 10px 5px 23px;
     display: inline-block;
     z-index: 2;
-    letter-spacing: 1px;
+    letter-spacing: 0.75px;
 }
 
 #footer-aside div{
