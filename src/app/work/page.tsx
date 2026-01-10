@@ -75,7 +75,7 @@ const WorkPage = () => {
                     { title: 'noter promo', url: 'static/images/work/noter/noter_logo.png',  embedId:'7NpmneoyLUA' }
             ]}>
                 <div className='blurb_title'>
-                    <h2>Noter Browser Extension</h2>
+                    <h3>Noter Browser Extension</h3>
                     <p>For Chromium Browsers</p>
                 </div>
                 <p>
@@ -106,7 +106,7 @@ const WorkPage = () => {
                     { title: 'delete', url: 'static/images/work/vandal/vandal_delete.png',  text: 'Built-in moderation' }
             ]}>
                 <div className='blurb_title'>
-                    <h2>Vandal</h2>
+                    <h3>Vandal</h3>
                     <p>Online vandalism simulator</p>
                 </div>
                 <p>
@@ -135,7 +135,7 @@ const WorkPage = () => {
                     { title: 'logo', url: 'static/images/work/pipedream/seo_promo_website.png' },
             ]}>
                 <div className='blurb_title'>
-                    <h2>Pipe Dream</h2>
+                    <h3>Pipe Dream</h3>
                     <p>HTML Puzzle Game</p>
                 </div>
                 <p>
@@ -167,7 +167,7 @@ const WorkPage = () => {
                     
             ]}>
                  <div className='blurb_title'>
-                    <h2>Ultra Custodian</h2>
+                    <h3>Ultra Custodian</h3>
                     <p>Janitorial simulator</p>
                 </div>
                 <p>This is a web build for a project I made in 2012 with Unity, written in C#. A solid game theory demo game with many features including progression, easter eggs, unlockables and more.</p>

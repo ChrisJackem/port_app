@@ -3,16 +3,14 @@
     position: relative;
 }
 .chip_text{
-    padding: 10px 20px 3px 30px;
+    padding: 5px 10px 3px 20px;
     display: inline-block;
-    font-weight: 500;
     z-index: 2;
-    font-size: x-large;
+    letter-spacing: 0.5px;
 }
 .chip_text_small{
     padding: 5px 10px 5px 30px;
     display: inline-block;
-    /* s */
     z-index: 2;
     letter-spacing: 1px;
 }

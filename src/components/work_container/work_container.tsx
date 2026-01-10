@@ -74,7 +74,7 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
       <ChipHeader 
         title={title}
         colBg='var(--darkest, #000)' 
-        colTx='var(--foreground, #FFF)'
+        colTx='var(--accent, yellow)'
         fontSize={28}
         style={{ marginBottom: 10 }}
       />
