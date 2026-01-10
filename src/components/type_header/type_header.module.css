@@ -8,7 +8,7 @@
 }
 
 .letter_container{
-    gap: 0px;
+    gap: 0px !important;
 }
 
 .reader_text{
