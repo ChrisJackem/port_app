@@ -113,61 +113,22 @@ const GalleryPage = () => {
             blerb: 'Promotional image for a game',            
             dims: [12, 6],
             src: 'static/images/work/pipedream/seo_promo_website.png',
-          }
-          
-          /*
-          {
-            title: 'Habit',
-            blerb: "colored pencil drawing",            
-            orient: 'tall',
-            src: 'static/images/gallery/habit.png',
           },
-          
-          
-          
-          
-         
-         
-          
           
           {
             title: 'Weapon of Hope',
             blerb: 'Motivational poster',            
-            orient: 'wide',
+            dims: [20, 16],
             src: 'static/images/gallery/hope.png',
           },
-          , */
+          {
+            title: 'Habit',
+            blerb: "colored pencil drawing",            
+            dims: [12, 15],
+            src: 'static/images/gallery/habit.png',
+          },         
 
-        ]} />
-
-        {/* <LoadImg className={styles.item} style={{ span: 10 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>        
-        <LoadImg className={styles.item} style={{ span: 20 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={200}/>        
-        <LoadImg className={styles.item} style={{ span: 15 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>        
-        <LoadImg className={styles.item} style={{ span: 2 }} src={'static/images/work/pipedream/seo_promo_website.png'} height={100}/>    */}     
-        {/* <div className={`${styles.item} ${styles.wide}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
-        <div className={`${styles.item} ${styles.square}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
-        <div className={`${styles.item} ${styles.tall}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
-        
-        <div className={`${styles.item} ${styles.square}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
-        <div className={`${styles.item} ${styles.wide}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div>
-        <div className={`${styles.item} ${styles.square}`}>
-          <LoadImg src='static/images/work/pipedream/seo_promo_website.png' />
-        </div> */}
-        
-
-  
-
-            
+        ]} />            
       </div>
 
     </motion.div>

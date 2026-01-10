@@ -80,8 +80,8 @@
 
 .item > img{
     width: 100%;    
-    object-fit: fill;
-    /* object-fit: contain; */
+    /* object-fit: fill; */
+    object-fit: contain;
 }
 
 @media screen and (max-width: 900px){
