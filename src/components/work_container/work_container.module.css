@@ -31,8 +31,8 @@
 
 /* Inner Container */
 .inner_container{
-    padding-top: 0;
     padding: 1.5rem;    
+    padding-top: 0.5rem;
 }
 
 .inner_container li{

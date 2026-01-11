@@ -32,3 +32,18 @@
 .feature_box{
     padding: 0.5rem;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: var(--f-blinker, inherit);
+    font-size: larger;
+    letter-spacing: 0.025rem;
+}
+
+h3{
+    font-size: 38px
+}

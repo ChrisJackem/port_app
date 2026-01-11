@@ -1,19 +1,19 @@
 .link{
-    --col: var(--background, #000);
+    --col: var(--darkest, #000);
     font-size: 22px;
     color: var(--col, #000);
     font-weight: 600;
-    transition: all 200ms ease-out;
+    transition: all 600ms ease-out;
     height: min-content;
     position: relative;
     padding: 1px;
-    letter-spacing: .015em;
+    /* letter-spacing: .015em; */
 }
 .link::after, .active::after{
     position: absolute; top: 0px; left: 0px; content: '';
     background-color: var(--col, #000);
     width: 100%; height: 100%;
-    transition: all 300ms ease-out;
+    transition: all 600ms ease-out;
 }
 
 .link:hover{
@@ -23,7 +23,7 @@
 
 .active{
     position: relative;
-    --col: var(--darkest, #CCC);
+    --col: var(--accent, #CCC);
 }
 
 .link::after{

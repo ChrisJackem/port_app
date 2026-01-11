@@ -75,8 +75,8 @@ const WorkPage = () => {
                     { title: 'noter promo', url: 'static/images/work/noter/noter_logo.png',  embedId:'7NpmneoyLUA' }
             ]}>
                 <div className='blurb_title'>
-                    <h3>Noter Browser Extension</h3>
-                    <p>For Chromium Browsers</p>
+                    <h3>Noter</h3>
+                    <p>Chromium Browser Extension</p>
                 </div>
                 <p>
                     Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.

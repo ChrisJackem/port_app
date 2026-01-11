@@ -19,7 +19,7 @@ export const IconFrame = ({ url, alt, children }: {
     const [status, data] = useImg(url);
     const isLoaded = status && status === STATUS.LOADED;
     return (
-        <div className={`psudo p-rel ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
+        <div className={`p-rel ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
             { !isLoaded 
                 ? <LoadingComponent />
                 : <>
@@ -31,6 +31,12 @@ export const IconFrame = ({ url, alt, children }: {
                     {children}                
                 </>
             }
+            
+            {/* <svg width="300" height="300" viewBox="0 0 300 300">
+                <rect width="300" height="300" fill="#ccc" opacity=".25"/>
+                <polygon points="0 300 0 287.5 162.5 287.5 187.5 275 300 275 300 300 0 300" fill="#999" opacity=".44"/>
+                <polygon points="0 0 300 0 300 25 250 25 237.5 12.5 0 12.5 0 0" fill="#999" opacity=".44"/>
+            </svg> */}
         </div>
     )
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <g id="c" data-name="Layer 2">
+    <g>
+      <rect width="300" height="300" fill="#ccc" opacity=".25" />
+      <polygon id="d" data-name="bottom_strip" points="0 300 0 287.5 162.5 287.5 187.5 275 300 275 300 300 0 300" fill="#999" opacity=".44"/>
+      <polygon id="e" data-name="top_strip" points="0 0 300 0 300 25 250 25 237.5 12.5 0 12.5 0 0" fill="#999" opacity=".44"/>
+    </g>
+  </g>
+</svg>

@@ -14,12 +14,12 @@ const SlideShowLink = ({ link }:{ link:SSlinkType }) => {
   return (
     <section className={`${styles.link_container}`}>
         
-        <div className={`tx-ac flex-column`} style={{ textAlign: 'center', gap: '2px' }}>          
+        <div className={`tx-ac flex-column`} style={{ textAlign: 'right', gap: '1px' }}>          
             { link.local 
               ? <></>
               : <>
-                <p>{ link.cta_text ? link.cta_text : 'Click to Play'}</p>
-                <small style={{ fontSize: '10px', color: 'var(--foreground, #FFF)', }}>(External Link)</small>
+                <p className={styles.link_heading}>{ link.cta_text ? link.cta_text : 'Click to Play'}</p>
+                <small className={styles.small_text}>(External Link)</small>
               </>
             }            
         </div>
