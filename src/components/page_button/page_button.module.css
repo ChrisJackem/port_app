@@ -34,7 +34,7 @@
     width: 100%; height: 100%;
     transform: scale(0.89);
     transform-origin: bottom right;
-    background-color: var(--foreground, #FFF);
+    background-color: var(--accent, #FFF);
     clip-path: inherit;
 }
 

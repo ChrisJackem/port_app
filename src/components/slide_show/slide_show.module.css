@@ -10,12 +10,13 @@
 .slide_text{
     position: absolute;
     z-index: 999999;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     top: 0; left: 0;
     color: var(--accent, yellow );
     background-color: var(--darkest);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
+    letter-spacing: -1px;
 }
 
 /* Container */

@@ -63,9 +63,9 @@ const WorkPage = () => {
             
             <WorkContainer title='Noter'
                 link={{
-                    text: 'Install',                   
+                    text: 'Go',                   
                     href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US",
-                    cta_text: 'Google Web Store'
+                    cta_text: 'Google Store'
                 }}
                 content={[
                     { title: 'logo', url: 'static/images/work/noter/noter_logo.png' },                    
@@ -98,7 +98,11 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Vandal'
-                link={{ text: 'Go', href: 'https://walls-e3b59.web.app', cta_text: 'Goto Vandal' }}
+                link={{ 
+                    text: 'Go',
+                    href: 'https://walls-e3b59.web.app', 
+                    cta_text: 'Vandalize' 
+                }}
                 content={[
                     { title: 'logo', url: 'static/images/work/vandal/vandal_logo.png' },
                     { title: 'promo', url: 'static/images/work/vandal/vandal_promo_1.png' },
@@ -130,36 +134,40 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Pipe Dream'
-                link={{ text: 'Go', href: 'https://chrisjackem.github.io/pipe-dream/' }}
+                link={{ 
+                    text: 'Go', 
+                    href: 'https://chrisjackem.github.io/pipe-dream/',
+                    cta_text: 'Play' 
+                }}
                 content={[
                     { title: 'logo', url: 'static/images/work/pipedream/seo_promo_website.png' },
+                    { title: 'logo', url: 'static/images/work/pipedream/pipe_promo_3.png', text: 'Challenging Levels' },
             ]}>
                 <div className='blurb_title'>
                     <h3>Pipe Dream</h3>
                     <p>HTML Puzzle Game</p>
                 </div>
                 <p>
-                    Vandal is an online vector drawing app. Users are registered and logged in automatically using cookies.
-                    Users can choose between 4 different drawing tools and can customize the shape fill color and stroke color/size to almost anything they want. Thanks to the Undo feature, mistakes and tweaking your drawing are very easy.
-                    As well as being able to draw whatever you want, you can remove anyone&apos;s drawing anytime, making this app self moderating.
+                   Pipe Dream is an HTML game you have played before if you are old enough or have ever played BioShock. Rearrange and rotate the pipes to direct the fluids to thier respective tanks.
+                   Beat the game to become the true plumber hero!
+                   <br/>
+                   <br/>
+                    Mobile / PC support. Pipe Dream is lightweight enough to run fast on even the oldest of devices.
+                    Multiple levels and even a level editor providing an eternity of gameplay.
                 </p>
-                <p>Powered by Google Firebase</p>
                 <div className="feature_box">
                     <h5 className="t-green">Features</h5>
                     <ul>
-                        <li>Seamless, automatic login/register</li>
-                        <li>Vector drawings for speed and fidelity</li>
-                        <li>Any color fill and/or stroke</li>
-                        <li>12 slot undo queue</li>
-                        <li>Built-in moderation</li>
-                        <li>Detailed help</li>                        
+                        <li>Mobile and PC browser support</li>
+                        <li>Level Editor</li>
+                        <li>Level Select</li>
+                        <li>Free</li>                         
                     </ul>
-                </div> 
-                <small><strong>Note:</strong> I do not condone vandalism, this was meant to replace actual vandalism</small>
+                </div>               
             </WorkContainer>
 
             <WorkContainer title='Ultra Custodian'
-                link={{ text: 'Play', href: '/uc', local: true }}
+                link={{ text: 'Go', href: '/uc', local: true, cta_text: 'Play' }}
                 content={[
                     { title: 'test', url: 'static/images/work/ultracus/ultra_promo0.png' },                   
                     { title: 'test', url: 'static/images/work/ultracus/ultra_promo1.png' },                   

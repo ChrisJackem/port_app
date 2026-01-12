@@ -20,12 +20,12 @@
 .link_heading{
     font-family: var(--f-blinker);
     font-weight: 100;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-size: 22px;
+    color: var(--accent, yellow);
 }
 .small_text{
     font-size: 10px;
-    color: var(--foreground, #FFF);
 }
 @media screen and (max-width: 900px) {
     .link_container{

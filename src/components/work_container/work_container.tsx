@@ -71,13 +71,6 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
 
   return (
     <section className={`p-rel ${styles.work_container}`} ref={container_ref}>
-      <ChipHeader 
-        title={title}
-        colBg='var(--darkest, #000)' 
-        colTx='var(--accent, yellow)'
-        fontSize={28}
-        style={{ marginBottom: 10 }}
-      />
       { slideState.status !== STATUS.LOADED
         ? <LoadingComponent height={ '400px'} />
         : <SlideShow 

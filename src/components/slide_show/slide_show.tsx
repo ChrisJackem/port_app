@@ -148,12 +148,12 @@ const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, i
                     />
                 ) }
                 
-                { activeSlide.text && ( 
+                { activeSlide.text && (
                     <motion.div 
-                        className={`chip-tl-br ${styles.slide_text}`}
+                        className={`chip-tl-br-md ${styles.slide_text}`}
                         initial={{ opacity: 0, x: 20}}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{    opacity: 0, x: 20 }}
+                        exit={{    opacity: 0, x: -20 }}
                         transition={{ duration: 0.1, ease: 'easeOut', type: 'tween' }}                          
                     >{activeSlide.text}</motion.div>
                 )}
