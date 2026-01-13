@@ -142,6 +142,8 @@ const WorkPage = () => {
                 content={[
                     { title: 'logo', url: 'static/images/work/pipedream/seo_promo_website.png' },
                     { title: 'logo', url: 'static/images/work/pipedream/pipe_promo_3.png', text: 'Challenging Levels' },
+                    { title: 'logo', url: 'static/images/work/pipedream/pipe_new_promo3.png' },
+                    { title: 'logo', url: 'static/images/work/pipedream/pipe_new_promo2.png', text: 'Level Editor' },
             ]}>
                 <div className='blurb_title'>
                     <h3>Pipe Dream</h3>
@@ -149,19 +151,22 @@ const WorkPage = () => {
                 </div>
                 <p>
                    Pipe Dream is an HTML game you have played before if you are old enough or have ever played BioShock. Rearrange and rotate the pipes to direct the fluids to thier respective tanks.
-                   Beat the game to become the true plumber hero!
-                   <br/>
-                   <br/>
+                   Beat the game to become the true plumber hero!                    
+                </p>
+                <br/>
+                <p>                   
                     Mobile / PC support. Pipe Dream is lightweight enough to run fast on even the oldest of devices.
-                    Multiple levels and even a level editor providing an eternity of gameplay.
+                    Pipe Dream uses the native drag and drop with a CSS grid for maximum compatability.
+                    Multiple levels and even a level editor providing an eternity of gameplay!
                 </p>
                 <div className="feature_box">
                     <h5 className="t-green">Features</h5>
                     <ul>
                         <li>Mobile and PC browser support</li>
+                        <li>Web based - no download</li>
                         <li>Level Editor</li>
                         <li>Level Select</li>
-                        <li>Free</li>                         
+                        <li>Free</li>
                     </ul>
                 </div>               
             </WorkContainer>
