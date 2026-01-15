@@ -162,7 +162,7 @@ const WorkPage = () => {
                 <div className="feature_box">
                     <h5 className="t-green">Features</h5>
                     <ul>
-                        <li>Mobile and PC browser support</li>
+                        <li>Mobile and PC browser support</li> 
                         <li>Web based - no download</li>
                         <li>Level Editor</li>
                         <li>Level Select</li>

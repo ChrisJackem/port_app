@@ -128,10 +128,9 @@ a {
     display: block;
     line-height: 1rem;
     font-size: 30px;
-    color: var(--foreground, #FFF);
-    letter-spacing: -0.06rem;
+    color: var(--accent, #FFF);
     font-weight: 400;
-    padding: 13px 20px 15px 20px;
+    padding: 0.25rem 0.5rem;
 }
 
 .absolute-fill{

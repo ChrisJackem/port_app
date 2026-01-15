@@ -52,6 +52,12 @@ const Footer = () => {
                 src='./static/images/footer/li_logo.svg'
               />
             </Link>
+            <Link href='https://github.com/ChrisJackem'>
+              <LoadImg 
+                className={'footer-external'} 
+                src='./static/images/footer/github_logo.svg'
+              />
+            </Link>
           </div>
 
         <br/>

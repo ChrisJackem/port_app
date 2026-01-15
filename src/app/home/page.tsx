@@ -9,6 +9,7 @@ import AttentionSection, { IMG_TYPES } from "@/components/attention_section/atte
 import { motion } from "motion/react";
 import { PageVariants } from "../config/variants";
 import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
+import Link from "next/link";
 
 
 /*********************************************************************************** Home Page  */
@@ -52,21 +53,27 @@ const HomePage = () => {
       <section className={'page_triple'}>
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h1>Programming</h1>
-          <p>Self taught and formally accredited programmer</p>            
-          <button className={`chip-a link `}>GitHub</button>
+          <p>Self taught with decades of programming experience</p>
+          < a className="" href={'https://github.com/ChrisJackem'} rel="noopener noreferrer">
+            <button className={`chip-a link `} >Github</button>
+          </a> 
         </IconFrame>        
 
-        <IconFrame url="static/images/icons/icon_parent.svg" alt="parenthasis icon">
+        <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h1>Games</h1>
           <p>I make web-based games and apps</p>            
-          <button className={`chip-a link `} >GitHub</button>            
+          <a className="" href={'/work'} target="_blank" rel="noopener noreferrer">
+            <button className={`chip-a link`} >Work</button>
+          </a>       
         </IconFrame>
 
-        <IconFrame url="static/images/icons/icon_web.svg" alt="web icon">
+        <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h1>Design</h1>
-          <p>I love to create, especially with HTTP.</p>
-          <button className={`chip-a link `} >Work</button>  
-          </IconFrame>
+          <p>Creation is my thing, especially animations and interactivity.</p>          
+          <a className="" href={'/gallery'} target="_blank" rel="noopener noreferrer">
+            <button className={`chip-a link `} >Gallery</button>
+          </a> 
+        </IconFrame>
       </section>
 
       <br/>
