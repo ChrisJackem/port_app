@@ -23,7 +23,7 @@
     }
 
 .child_container{    
-    padding: 100px 2rem 3rem 2rem;
+    padding: 100px 2rem 3rem 2rem !important;
     background-color: var(--foreground, #FFF);
     clip-path: polygon(
         0px 0px, calc(100% - 20px) 0px, 100% 20px,
