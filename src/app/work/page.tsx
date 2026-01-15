@@ -204,7 +204,7 @@ const WorkPage = () => {
                 <small><strong>Note:</strong> this will not work on mobile browsers</small>
             </WorkContainer>
 
-            <WorkContainer title='Title'
+            {/* <WorkContainer title='Title'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[
                     { title: 'test', url: 'static/images/work/test/test1.png' },
@@ -246,7 +246,7 @@ const WorkPage = () => {
                     <li>Get off there</li>
                 </ul>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, ipsam consectetur voluptates, doloribus saepe vitae quos sed asperiores tempore, atque repudiandae ratione accusamus quibusdam vero cupiditate. Provident totam alias obcaecati reiciendis porro necessitatibus veniam? Nostrum doloribus eligendi aliquid labore ut quas incidunt, quidem voluptate ipsum harum totam architecto nobis, consectetur porro! Molestias quod quam natus accusamus iusto qui ipsa, facilis neque voluptatem autem soluta! Cumque laborum illum nisi qui tempora, numquam repellendus tempore doloribus delectus recusandae excepturi deserunt exercitationem voluptate ipsam? Sed unde iure, illum laboriosam, in at odit eveniet, blanditiis hic maiores sapiente officia ipsa et velit eos eaque.</p>
-            </WorkContainer>
+            </WorkContainer> */}
         
         </Scroller>
 
