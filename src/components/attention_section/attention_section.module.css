@@ -46,7 +46,7 @@
         max-height: 50px;
     }
     .child_container{
-        padding: 1.25rem;
+        padding: 1.25rem !important;
         clip-path: polygon(/* Add another notch bottom left */
         0px 0px, calc(100% - 20px) 0px, 100% 20px,
         100% calc(100% - 20px), calc(100% - 20px) 100%,

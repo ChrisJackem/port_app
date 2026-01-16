@@ -78,7 +78,7 @@ const Typewriter = () => {
             ref={container_ref}
             className={styles.container}
         >            
-            <h2 className={styles.heading}>I Make</h2>
+            <h2 className={styles.heading}>I make</h2>
             <div className={styles.word_container}>
                 {renderWord}
                 <span className={styles.dash}>|</span>

@@ -127,10 +127,10 @@ a {
 .link{
     display: block;
     line-height: 1rem;
-    font-size: 30px;
+    font-size: 26px;
     color: var(--accent, #FFF);
     font-weight: 400;
-    padding: 0.25rem 0.5rem;
+    padding: 1rem 1.5rem;
 }
 
 .absolute-fill{

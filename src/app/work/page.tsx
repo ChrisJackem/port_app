@@ -204,6 +204,45 @@ const WorkPage = () => {
                 <small><strong>Note:</strong> this will not work on mobile browsers</small>
             </WorkContainer>
 
+            <WorkContainer title='Meme-O-Matic'
+                link={{ text: 'Go', href: 'https://meme-o-matic.web.app/', cta_text: 'Meme' }}
+                content={[
+                    { title: 'meme 1', url: 'static/images/work/meme/meme_01.png' },                   
+                    { title: 'meme 2', url: 'static/images/work/meme/meme_02.png' },                   
+                    { title: 'meme 3', url: 'static/images/work/meme/meme_03.png' },                   
+                    { title: 'meme 3', url: 'static/images/work/meme/meme_04.png' },                   
+                    
+                    
+            ]}>
+                 <div className='blurb_title'>
+                    <h3>Meme-O-Matic</h3>
+                    <p>Utility Web App</p>
+                </div>
+                <h4>Finally, you can create memes completely inside your browser!</h4>
+                <br/>
+                <p>
+                    This is a simple meme generation web app I created with React. Create your own memes for any occasion with your own personal touch.
+                    Many different colors and fonts are available at your fingertips. Create the next viral sensation or make your friends laugh at the inside joke.                    
+                </p>
+                <br/>
+                <p>
+                    In order to make a meme with this app, you need a base image to start. You can use an image from your device, copy / paste one in, or even use a URL.
+                    After you choose an image, add the message you want on top. You can change any aspect of the text at any time until you are happy. 
+                    Have as many text nodes as you want for really complicated messages or even a comic strip.
+                    When you are done, download your image to your device and spread it around the world!                                    
+                </p>
+
+                <div className="feature_box">
+                    <h5 className="t-green">Features</h5>
+                    <ul>
+                        <li>Upload, link, or paste images easily</li>
+                        <li>12 different radical fonts</li>
+                        <li>Resize and recolor any way you want</li>
+                        <li>FREE</li>                                          
+                    </ul>
+                </div>
+            </WorkContainer>
+
             {/* <WorkContainer title='Title'
                 link={{ text: 'Click', href: 'google.com' }}
                 content={[

@@ -54,25 +54,32 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h1>Programming</h1>
           <p>Self taught with decades of programming experience</p>
-          < a className="" href={'https://github.com/ChrisJackem'} rel="noopener noreferrer">
-            <button className={`chip-a link `} >Github</button>
-          </a> 
+          <Link 
+            className="" 
+            href={'https://github.com/ChrisJackem'} 
+            target="_blank" rel="noopener noreferrer"
+          >
+            <button
+              aria-label={"Github link opens in new tab"}
+              className={`chip-a link `} 
+            >Github</button>
+          </Link> 
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h1>Games</h1>
           <p>I make web-based games and apps</p>            
-          <a className="" href={'/work'} target="_blank" rel="noopener noreferrer">
-            <button className={`chip-a link`} >Work</button>
-          </a>       
+          <Link className="" href={'/work'}>
+            <button aria-label={"Games page"} className={`chip-a link`} >Work</button>
+          </Link>
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h1>Design</h1>
           <p>Creation is my thing, especially animations and interactivity.</p>          
-          <a className="" href={'/gallery'} target="_blank" rel="noopener noreferrer">
+          <Link className="" href={'/gallery'} aria-label={"Gallery page"} >
             <button className={`chip-a link `} >Gallery</button>
-          </a> 
+          </Link> 
         </IconFrame>
       </section>
 

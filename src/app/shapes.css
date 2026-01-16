@@ -92,7 +92,6 @@ transition: all 500ms ease-out;
         0 100%,
         0 15px
     );
-    padding: 20px 30px;
 }
 .chip-a.active{
     color: var(--accent, lime);
