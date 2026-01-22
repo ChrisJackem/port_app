@@ -9,8 +9,8 @@ import { STATUS, useImgs } from '@/hooks/useImg';
 import PageButton from '../page_button/page_button';
 
 // The images are all in the same dir, and 1 for each theme
-const theme_directoried = (s:string) => `static/images/theme_${s}.jpg`
-const theme_urls:string[] = Object.keys(THEMES).map( name => theme_directoried(name) );
+export const theme_directoried = (s:string) => `static/images/theme_${s}.jpg`
+export const theme_urls:string[] = Object.keys(THEMES).map( name => theme_directoried(name) );
 
 const ThemeBtns = () => {
     const {theme} = useContext(ThemeContext);

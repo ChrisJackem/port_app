@@ -20,6 +20,9 @@ export default function RootLayout({
   
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/svg+xml" href="static/images/icons/favicon.svg"></link>
+      </head>
       <body className={`${armata.className} ${blinker.variable}`}>
         <ThemeWrapper>
         <main className={`${styles.main_container}`}>

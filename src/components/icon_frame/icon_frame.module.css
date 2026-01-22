@@ -13,8 +13,7 @@
     gap: 1rem;
     --offset: 95%;
     min-height: 150px;
-    border-top: 4px solid var(--darkest, #000);
-    font-weight: 500;   
+    border-top: 4px solid var(--darkest, #000);   
 }
 .main_container button,
 .main_container h1,
