@@ -32,8 +32,7 @@ const Footer = () => {
         </ChipHeader>
 
 
-        <div className={'padded bg-faded tx-fg theme_container'}>
-          
+        <div className={'padded bg-faded tx-fg theme_container'}>          
           <h5 style={{ marginBottom: 5, color: 'white' }}>Change Theme</h5>
           <div className='flex' style={{ padding: '5px 0px'}}>
             <ThemeBtnFooter Theme={THEMES.Default} />
