@@ -41,7 +41,7 @@ const Footer = () => {
             <ThemeBtnFooter Theme={THEMES.Ocean} />
             <ThemeBtnFooter Theme={THEMES.Candy} />
           </div>
-        <AnimatePresence>
+        {/* <AnimatePresence>
           <motion.img
               className='theme_img'                    
               key={theme}
@@ -58,7 +58,7 @@ const Footer = () => {
               }
               layout
           />
-        </AnimatePresence>
+        </AnimatePresence> */}
         </div>
       </section>
 
