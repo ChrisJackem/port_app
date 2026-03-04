@@ -61,6 +61,45 @@ const WorkPage = () => {
 
         <Scroller>
             
+            <WorkContainer title='Flack'
+                link={{
+                    text: 'Go',                   
+                    href: "https://flack.cx",
+                    cta_text: 'Goto Flack'
+                }}
+                content={[
+                    { title: 'logo', url: 'static/images/work/flack/flack_logo.png' },                    
+                    { title: 'dashboard', url: 'static/images/work/flack/flack_dashboard.png', text: 'Easy to use interface' },                    
+                    { title: 'gui', url: 'static/images/work/flack/flack_wall.png', text: 'Masonry layout' },
+                    { title: 'crop', url: 'static/images/work/flack/flack_profile_image.png', text: 'Upload image crop/zoom' },
+            ]}>
+                <div className='blurb_title'>
+                    <h3>Flack</h3>
+                    <p>Social Media</p>
+                </div>                
+                <br/>
+                <p>
+                    Flack is an old-school styled social media with every feature you would expect in a social media app. Share videos and images with your friends and give them praise or flack on thier posts.
+                </p>
+                <br/>
+                <p>
+                    Completely ad-free, no tracking, and easy to use, with a detailed help page.
+                </p>
+                
+                <div className="feature_box">
+                    <h5 className="t-green">Features</h5>
+                    <ul>
+                        <li>No Tracking or data harvesting</li>
+                        <li>Ad-Free, even in embedded video</li>
+                        <li>Add, Delete, Block, Chat, and interact with friends</li>
+                        <li>YouTube and BitChute support</li>
+                        <li>Emoji Support, Emoji picker</li>
+                        <li>Bot Control with Recaptcha2.0</li>
+                        <li>Backend image resizing and formatting (space saving)</li>
+                    </ul>
+                </div>
+            </WorkContainer>
+
             <WorkContainer title='Noter'
                 link={{
                     text: 'Go',                   
@@ -101,7 +140,7 @@ const WorkPage = () => {
                 link={{ 
                     text: 'Go',
                     href: 'https://walls-e3b59.web.app', 
-                    cta_text: 'Vandalize' 
+                    cta_text: 'Visit Vandal' 
                 }}
                 content={[
                     { title: 'logo', url: 'static/images/work/vandal/vandal_logo.png' },
@@ -134,7 +173,7 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Meme-O-Matic'
-                link={{ text: 'Go', href: 'https://meme-o-matic.web.app/', cta_text: 'Meme' }}
+                link={{ text: 'Go', href: 'https://meme-o-matic.web.app/', cta_text: 'Visit Meme-O-Matic' }}
                 content={[
                     { title: 'meme 1', url: 'static/images/work/meme/meme_01.png' },                   
                     { title: 'meme 2', url: 'static/images/work/meme/meme_02.png' },                   
