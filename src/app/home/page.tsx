@@ -67,7 +67,7 @@ const HomePage = () => {
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
-          <h1>Games</h1>
+          <h1>Applications</h1>
           <p>I make web-based games and apps</p>            
           <Link className="" href={'/work'}>
             <button aria-label={"Games page"} className={`chip-a link`} >Work</button>
