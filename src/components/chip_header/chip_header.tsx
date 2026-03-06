@@ -16,7 +16,7 @@ type ChipHeaderProps = {
 const ChipHeader = ({ title, colBg, colTx, children, childBg, fontSize, size, style={} }: ChipHeaderProps) => {
     const background_color = colBg ? colBg : `var(--background, #999)`;
     const text_color = colTx ? colTx : `var(--foreground, #FFF)`;
-    const child_bg_color = childBg ? childBg : `var(--foreground, #FFF)`;
+    const child_bg_color = childBg ? childBg : `transparent`;
     return (
         <section style={style}>
             <div                

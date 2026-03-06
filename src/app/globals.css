@@ -12,6 +12,10 @@ button{
   cursor: pointer;
 }
 
+hr{
+  border: 1px var(--darkest) solid;
+}
+
 /********************** Background */
 .bg-bg{ background-color: var(--background, #000); }
 .bg-faded{ background-color: rgba(0,0,0, 0.4); }

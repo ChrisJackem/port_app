@@ -63,7 +63,13 @@ const Footer = () => {
       </section>
 
       <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>
-        <ChipHeader title='External Links' fontSize={18} childBg='rgba(255,255,255, 0.4)' colTx={'var(--accent)'} size={'small'}>
+        <ChipHeader 
+          title='External Links' 
+          fontSize={18} 
+          colBg='var(--darkest)'  
+          colTx='var(--foreground)' 
+          size='small'
+        >
 
           <div className='flex'>
             <Link href='https://www.facebook.com/chris.jackem'>
