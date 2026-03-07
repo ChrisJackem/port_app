@@ -23,7 +23,6 @@ const NavBar = () => {
       <nav 
         id="nav-bar"
         ref={nav_main}
-        className='anim-bg chip-tl-lg'
       >
         <div className='logo_container flex'>
           <StrokeLogo infinite={false}/> 

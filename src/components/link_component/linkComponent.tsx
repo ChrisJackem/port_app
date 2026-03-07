@@ -15,7 +15,7 @@ const LinkComponent = ({ name, href }: LinkProps) => {
     return (
         <Link
             href={href}
-            className={`button akira ${styles.link} ${isActive ? styles.active : ''}`}>
+            className={`akira shadow ${styles.link} ${isActive ? styles.active : ''}`}>
                 {name}
         </Link>
     )

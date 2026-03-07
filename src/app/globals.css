@@ -29,6 +29,9 @@
 .t-jumbo{ font-size: 42px; }
 .t-lg{ font-size: 32px; }
 
+.shadow{
+  text-shadow: #000 0px 0px 3px;
+}
 
 .psudo{
   position: relative;
@@ -175,6 +178,7 @@ a {
   }
 }
 
+/* TODO:: Move to work page if we don't need this elsewhere */
 .scroll-table{
     width: 100%;
     border-style: none;

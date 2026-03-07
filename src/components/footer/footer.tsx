@@ -18,7 +18,7 @@ const Footer = () => {
   if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
   
   return (
-    <footer id='footer-container' className='psudo flex'>      
+    <footer id='footer-container' className='psudo flex pixel_grad'>      
       
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
@@ -30,9 +30,9 @@ const Footer = () => {
             <LinkComponent name='Work' href='/work'/>
           </div>
         </div>
-        <div className={''}>          
-          <h5>Change Theme</h5>
-          <div className='flex'>
+        <div className={'footer_links'}>
+          <h4>Change Theme</h4>
+          <div className='flex '>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
             <ThemeBtnFooter Theme={THEMES.Sunset} />
@@ -66,10 +66,10 @@ const Footer = () => {
             </Link>
           </div>
 
-        {/* <br/>
-        <hr/>
-        <br/> */}
         <br/>
+        <hr/>
+        <br/>
+
         
 
         <div className='flex footer-lib flex-align-center flex-end'>
@@ -90,13 +90,7 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     const active = theme === Theme.name;
     return (
         <button
-            role='button'
-            className={`button ${active ? 'active-theme' : ''}`}
-            style={{
-              transition: 'all 200ms ease-out',
-              color : `${ active ? 'var(--accent, #CCC)' : 'inherit'}`,
-              fontWeight: 600 
-            }}
+            className={`akira ${active ? 'active-theme' : ''}`}            
             onClick={()=>SetTheme(Theme)}
         >{Theme.name}</button>
     )

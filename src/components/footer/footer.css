@@ -3,31 +3,43 @@
     padding: 1rem 2rem 0px 2rem;
     gap: 3rem;    
     background: var(--background, #ccc);
-    border-top: 3px double var(--background, #ccc);    
-    background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), transparent),
-        linear-gradient(to bottom, var(--foreground, #fff), 60%, transparent),
+    border-top: 6px solid var(--darkest, #ccc);    
+    background: radial-gradient( farthest-corner at top right, var(--foreground, #fff), transparent),
+        linear-gradient(to top, var(--foreground, #fff), 60%, transparent),
         url('/static/images/footer/pixels.png');
     background-blend-mode: lighten;
 }
 
 
 .footer_links{
-    color: black;
-    /* background: linear-gradient(to bottom right, var(--background, #ccc), 40%, transparent); */
+    color: black;     
+    /* background: linear-gradient(to bottom right, var(--background, #ccc), 20%, transparent); */
 }
-    .footer_links h5{
-        letter-spacing: 1.2px;
-        font-size: 22px;
+    .footer_links h4{
+        letter-spacing: 1.5px;
+        font-size: 18px;
         color: var(--foreground, yellow);
-        padding: 0.5rem;    
-        /* text-align: end; */
+        padding: 0.25rem;
+        padding-left: 1rem;
+        clip-path: polygon(
+            10px 0px, 100% 0px,
+            100% 100%, 0px 100%
+        );
+
+        font-style: italic;
+        background: linear-gradient(to right, var(--darkest, #000), transparent);
+
     }
     .footer_links div{
-        padding: 0.5rem 1rem 1rem 1rem;    
+               
     }
     .footer_links .button{
 
     }
+.footer_links button,
+.footer_links Link{
+    color: var(--darkest, #000);
+}
 
 #footer-left{
     
