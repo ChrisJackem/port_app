@@ -76,7 +76,7 @@ const Typewriter = () => {
     return (
         <section
             ref={container_ref}
-            className={styles.container}            
+            className={`t-jumbo ${styles.container}`}            
         >            
             <h2 className={styles.heading}>I make</h2>
             <div className={`akira ${styles.word_container}`} aria-hidden="true">

@@ -8,8 +8,8 @@
 }
 /* For opacity the BG is .psudo */
 .main_container::after{
-    opacity: 0.25;    
-    background: linear-gradient(to top, var(--accent, #ccc), 40%, var(--foreground, #FFF));
+    opacity: 1;    
+    background: linear-gradient(to top, var(--accent, #ccc), 40%, transparent);
 }
 
 .main_container button{    

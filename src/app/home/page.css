@@ -9,8 +9,8 @@
     padding: 3px 4px 3px 50px;
     gap: 0.5rem;
     z-index: 1;    
-    background: var(--midground);
-    color: var(--darkest, #FFF);
+    background: var(--darkest, #000);
+    color: var(--foreground, #FFF);
     font-size: large;
     margin: 40px 0px;
 }
@@ -24,7 +24,6 @@
 @media only screen and (max-width: 600px) {
     .feature-header{
         font-size: 14px;
-        padding: 3px 5px;
-        margin-bottom: 20px;
+        padding: 3px 5px;        
     }
 }

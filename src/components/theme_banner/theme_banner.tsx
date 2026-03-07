@@ -61,7 +61,7 @@ const ThemeBanner = () => {
             <br/>
             <i>Theme can also be changed at the the bottom of every page.</i>   
         </div>
-        <div  className={`flex ${styles.theme_btns}`}>         
+        <div className={`flex ${styles.theme_btns}`}>         
             <ThemeBtn Theme={THEMES.Default} />           
             <ThemeBtn Theme={THEMES.Forest} />               
             <ThemeBtn Theme={THEMES.Sunset} />
@@ -75,8 +75,9 @@ const ThemeBanner = () => {
 export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
-        <button className={`button ${styles.theme_btn}`}
-            /* active={theme === Theme.name} */
+        <button 
+            className={`button invert ${styles.theme_btn}`}
+            style={{ backgroundColor: theme === Theme.name ? `var(--accent)` : 'var(--foreground)'}}
             onClick={()=>SetTheme(Theme)}
         >
             {Theme.name}

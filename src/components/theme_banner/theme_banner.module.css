@@ -16,7 +16,7 @@
 }
 .container::after{
     z-index: 1;
-    background: linear-gradient(to bottom left, var(--darkest), transparent);    
+    background: linear-gradient(to bottom left, var(--darkest), 40%, transparent);    
 }
 
 .theme_label{
@@ -26,8 +26,7 @@
     z-index: 3;
 }
 .theme_icon{ 
-    grid-area: icon;
-    
+    grid-area: icon;    
 }
 .theme_icon img{
     object-fit: cover;
@@ -56,8 +55,11 @@
 @media screen and (max-width: 600px) {
     .container{
         padding: 1rem;
-        margin: 2.5rem 0px;
+        margin: 1rem 0px;
         display: flex;
         flex-direction: column;
+    }
+    .theme_icon{
+        display: none !important;
     }
 }
