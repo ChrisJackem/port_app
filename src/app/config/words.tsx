@@ -21,7 +21,7 @@ export const WORDS = [
     "Drawings",
     "Applications",
     "Movies",
-    "Motion Graphics",
+    "Graphics",
     "Composites",
     "Coffee"
 ]

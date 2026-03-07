@@ -19,7 +19,7 @@ const ThemeBtns = () => {
     if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
     return ( 
     <div id='theme-main-container'>
-        <div id="theme-container">            
+        {/* <div id="theme-container">            
             <AnimatePresence>
                 <motion.img
                     id="theme-img"
@@ -40,7 +40,7 @@ const ThemeBtns = () => {
                 />
             </AnimatePresence>
             <span id='active-theme-text'>Active: {theme}</span>
-        </div>            
+        </div>   */}          
             <div id='btn-container' className={`flex chip-tl-box `}>                  
                 <ThemeBtn Theme={THEMES.Default} />           
                 <ThemeBtn Theme={THEMES.Forest} />               

@@ -30,10 +30,10 @@ const NavBar = () => {
           <small className='small-txt'>ChrisJackem.com</small>       
         </div>
         <ul className='flex nav-ul'>
-          <LinkComponent name='Home' href='/home'/>
-          <LinkComponent name='About' href='/about'/>
-          <LinkComponent name='Gallery' href='/gallery'/>
-          <LinkComponent name='Work' href='/work'/>
+          <LinkComponent name='HOME' href='/home'/>
+          <LinkComponent name='ABOUT' href='/about'/>
+          <LinkComponent name='GALLERY' href='/gallery'/>
+          <LinkComponent name='WORK' href='/work'/>
         </ul>
       </nav>
       <PathButton threshold={navHeight}/>

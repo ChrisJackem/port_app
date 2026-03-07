@@ -15,7 +15,7 @@ const LinkComponent = ({ name, href }: LinkProps) => {
     return (
         <Link
             href={href}
-            className={`${blinker.className} ${styles.link} ${isActive ? styles.active : ''}`}>
+            className={`akira ${styles.link} ${isActive ? styles.active : ''}`}>
                 {name}
         </Link>
     )

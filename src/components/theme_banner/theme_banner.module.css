@@ -1,0 +1,62 @@
+.container{    
+    width: 100%;
+    padding: 4rem 20%;
+    overflow: hidden;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content;
+    grid-template-areas: 
+    "icon text"
+    "btns btns";
+    transition: all 1s ease-out;
+    border: 3px double var(--accent, #000);
+    border-left: 0px; border-right: 0px;
+    background-color: var(--background, #000);
+}
+.container::after{
+    z-index: 1;
+    background: linear-gradient(to bottom left, var(--darkest), transparent);    
+}
+
+.theme_label{
+    z-index: 2;
+}
+.container > div{
+    z-index: 3;
+}
+.theme_icon{ 
+    grid-area: icon;
+    
+}
+.theme_icon img{
+    object-fit: cover;
+    
+}
+
+.theme_img{    
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 100%; height: 100%;
+    object-fit: cover;    
+}
+.theme_text{ 
+    grid-area: text;
+    color: var(--foreground, #FFF);
+}
+.theme_btns{ 
+    grid-area: btns;
+    padding: 2rem;
+    justify-content: center;
+}
+.theme_btn{
+
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+}

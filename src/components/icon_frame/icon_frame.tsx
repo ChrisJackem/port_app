@@ -17,7 +17,7 @@ export const IconFrame = ({ url, alt, children }: {
     const [status, data] = useImg(url);
     const isLoaded = status && status === STATUS.LOADED;
     return (
-        <div className={`p-rel psudo ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
+        <div className={`p-rel psudo flex-column ${isLoaded ?'': styles.inactive} ${styles.main_container}`}>
             { !isLoaded 
                 ? <LoadingComponent />
                 : <>

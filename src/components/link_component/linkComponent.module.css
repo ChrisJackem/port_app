@@ -1,6 +1,6 @@
 .link{
-    --col: var(--darkest, #000);
-    font-size: 20px;
+    --col: var(--foreground, #000);
+    font-size: 16px;
     color: var(--col, #000);
     transition: all 600ms ease-out;
     height: min-content;
@@ -19,7 +19,7 @@
  */
 .active{
     position: relative;
-    --col: var(--background, #CCC);
+    --col: var(--accent, #CCC);
 }
 
 .link::after{

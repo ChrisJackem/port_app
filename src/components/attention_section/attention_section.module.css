@@ -1,10 +1,12 @@
 .container{
+    margin: 4rem auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0.5rem !important;
+    padding: 0px !important;
     transition: all 200ms ease-out;
     background: none;
     transition: all 200ms ease-out;
+    border-bottom: 2px solid var(--background, #ccc);
 }
     .container::after{
         z-index: -1;    
@@ -18,23 +20,34 @@
     justify-content: center;
     padding: 1rem;
 }
+.imaged::after{
+    background: var(--background, #CCC);
+    background: linear-gradient(to bottom, var(--midground), var(--background));
+    opacity: 0.5;
+}
     .imaged > img{
         max-height: 200px;
+         z-index: 1;
     }
 
-.child_container{    
-    padding: 100px 2rem 3rem 2rem !important;
-    background-color: var(--foreground, #FFF);
-    clip-path: polygon(
-        0px 0px, calc(100% - 20px) 0px, 100% 20px,
-        100% calc(100% - 20px), calc(100% - 20px) 100%,
-        0px 100%
-    );
+.child_container{
+    padding: 100px 2rem 2rem 2rem !important;
+    background-color: var(--foreground, #FFF); 
+}
+
+.child_container h4{
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.child_container::after{
+    background-color: var(--background, #ccc);
+    opacity: 0.05;
 }
 
 @media screen and (max-width: 600px) {
     .container{
-        padding: 0.25rem !important;
+        margin: 0.75rem 1rem;        
         grid-template-columns: 1fr;
         grid-template-rows: min-content 1fr;
     }
@@ -46,12 +59,7 @@
         max-height: 50px;
     }
     .child_container{
-        padding: 1.25rem !important;
-        clip-path: polygon(/* Add another notch bottom left */
-        0px 0px, calc(100% - 20px) 0px, 100% 20px,
-        100% calc(100% - 20px), calc(100% - 20px) 100%,
-        20px 100%, 0px calc(100% - 20px)
-    );
+        padding: 1.25rem !important;        
     }
     
 }

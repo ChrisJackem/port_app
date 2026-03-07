@@ -1,5 +1,4 @@
-.main_container{
-    padding: 0.5rem 0.15rem 0 0.5rem;
+.main_container{    
     min-height: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr min-content;
@@ -11,7 +10,6 @@
     color: black;
     background-color: var(--foreground, #FFF);
     color: var(--text, #000);
-    border-right: 3px solid var(--darkest, #000);
     position: relative;
     padding-top: 1.5rem;
 }

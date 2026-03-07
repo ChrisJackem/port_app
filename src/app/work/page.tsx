@@ -33,7 +33,7 @@ const WorkPage = () => {
             icon_url={IMG_TYPES.EXCLAIM}
             supressInitial={true}
         >
-            <h2 style={{ marginBottom: '15px' }}>Scroll Control</h2>
+            <h4 style={{ marginBottom: '15px' }}>Scroll Control</h4>
             <p>This page features custom scroll controls. This is meant to display individual elements filling the viewport the entire time. 
                 As well as <strong>scroll snapping,</strong> you can navigate without scrolling or swiping. Turning off controls will disable snapping and buttons.
             </p>

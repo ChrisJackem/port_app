@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import { PageVariants } from "../config/variants";
 import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 import Link from "next/link";
+import ThemeBanner from "@/components/theme_banner/theme_banner";
 
 
 /*********************************************************************************** Home Page  */
@@ -54,43 +55,34 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h1>Programming</h1>
           <p>Self taught with decades of programming experience</p>
-          <Link 
-            className="" 
+          <Link className="" 
             href={'https://github.com/ChrisJackem'} 
             target="_blank" rel="noopener noreferrer"
           >
-            <button
-              aria-label={"Github link opens in new tab"}
-              className={`chip-a link `} 
-            >Github</button>
+            <button aria-label="Github external link" className='button'>Github</button>
           </Link> 
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h1>Applications</h1>
-          <p>I make web-based games and apps</p>            
+          <p>I make web-based full stack apps and games</p>            
           <Link className="" href={'/work'}>
-            <button aria-label={"Games page"} className={`chip-a link`} >Work</button>
+            <button aria-label={"Games page"} className='button'>Work</button>
           </Link>
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h1>Design</h1>
-          <p>Creation is my thing, especially animations and interactivity.</p>          
-          <Link className="" href={'/gallery'} aria-label={"Gallery page"} >
-            <button className={`chip-a link `} >Gallery</button>
+          <p>I love to design and create and experienced in every medium</p>       
+          <Link href='/gallery' aria-label="Gallery page">
+            <button aria-label="Gallery page" className='button'>Gallery</button>            
           </Link> 
         </IconFrame>
       </section>
 
-      <br/>
-      <div className="divider-1"></div>
-      <br />
-
-
-      <div className={`paged feature-header flex`}>        
+      <div className={`feature-header flex`}>        
           <SVG_GEAR />
-          <h2>Website Features</h2>        
+          <h3>Website Features</h3>
       </div>
 
       <section className="padded">
@@ -99,23 +91,18 @@ const HomePage = () => {
           bgOpacity={0.6} 
           icon_url={IMG_TYPES.CACHE}
         >
-          <h2>Custom Image Cache</h2>
-          <br/>
+          <h4>Custom Image Cache</h4>          
           <p>This site uses a <strong>custom image cache system</strong> for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
           <br/><br/>
           <CacheReaderLoading />
         </AttentionSection>
       </section>
       
-      <section className="page_double">
-        <div className="flex home_text">
-          <h2>Website Theme</h2>
-          <p>You can change the colors of the entire site any time you want. 
-            Your choice will be saved to localStorage and so when you come back later your theme will still be active.</p>
-          <i>Theme can also be changed at the the bottom of every page.</i>   
-        </div>
+      {/* <section id='theme-page' >
+        
         <ThemeBtns />
-      </section>
+      </section> */}
+      <ThemeBanner />
 
       <section className="padded">
         <AttentionSection 
@@ -123,8 +110,7 @@ const HomePage = () => {
           bgOpacity={0.6} 
           icon_url={IMG_TYPES.SCROLL}          
         >
-          <h2>Scroll to Top</h2>
-          <br/>
+          <h4>Scroll to Top</h4>          
           <p>Incase you haven&apos;t noticed, you can click the stripe at the top to instantly scroll up to the top for easier navigation.</p>
           <br/>
           <i>You can also navigate using the menu at the bottom of every page.</i>

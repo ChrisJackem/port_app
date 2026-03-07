@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { armata, blinker } from "./config/fonts";
+import { armata, blinker, akira, libreFranklin } from "./config/fonts";
 import "./globals.css";
-import "./shapes.css";
 import styles from "./layout.module.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
@@ -23,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/svg+xml" href="static/images/icons/favicon.svg"></link>
       </head>
-      <body className={`${armata.className} ${blinker.variable}`}>
+      <body className={`${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
         <ThemeWrapper>
         <main className={`${styles.main_container}`}>
           <NavBar/>

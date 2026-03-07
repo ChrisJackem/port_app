@@ -39,11 +39,11 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
             style={containerStyle}
             aria-hidden={true}
         >          
-            <motion.div className={`flex ${styles.imaged}`} variants={SlamVariantsLeft}>
+            <motion.div className={`flex psudo ${styles.imaged}`} variants={SlamVariantsLeft}>
                 <LoadImg src={icon_url} alt={'attention image'}></LoadImg>
             </motion.div>
 
-            <motion.div className={`padded p-rel ${styles.child_container}`} variants={SlamVariantsRight}>
+            <motion.div className={`padded p-rel psudo ${styles.child_container}`} variants={SlamVariantsRight}>
                 {children}
             </motion.div>
 

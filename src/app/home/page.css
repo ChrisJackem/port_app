@@ -1,20 +1,30 @@
 /* Home Page CSS */
 
 .home_text{
-    align-content: center;
+    /* align-content: center; */
 }
 
 .feature-header{    
     align-items: center;
+    padding: 3px 4px 3px 50px;
     gap: 0.5rem;
-    z-index: 1;
-    flex-wrap: wrap;
+    z-index: 1;    
+    background: var(--midground);
+    color: var(--darkest, #FFF);
+    font-size: large;
+    margin: 40px 0px;
 }
 
 .feature-header svg{    
     height: 25px; width: 25px;
 }
 
-@media only screen and (max-width: 900px) {
-    
+
+
+@media only screen and (max-width: 600px) {
+    .feature-header{
+        font-size: 14px;
+        padding: 3px 5px;
+        margin-bottom: 20px;
+    }
 }

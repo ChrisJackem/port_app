@@ -76,10 +76,10 @@ const Typewriter = () => {
     return (
         <section
             ref={container_ref}
-            className={styles.container}
+            className={styles.container}            
         >            
             <h2 className={styles.heading}>I make</h2>
-            <div className={styles.word_container}>
+            <div className={`akira ${styles.word_container}`} aria-hidden="true">
                 {renderWord}
                 <span className={styles.dash}>|</span>
             </div>
