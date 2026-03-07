@@ -1,32 +1,39 @@
 
 #footer-container{    
-    position: relative;
-    padding: 50px 0 0 20px; 
-    background-color: var(--midground, #CCC);
-    clip-path: polygon(0 12px, 30px 12px, 40px 0, calc(100% - 20px) 0, 100% 0, 100% 100%, 0 100%);
-    border-right: 3px solid var(--darkest, #000);
-    transition: all 200ms ease-out;
+    padding: 1rem 2rem 0px 2rem;
+    gap: 3rem;    
+    background: var(--background, #ccc);
+    border-top: 3px double var(--background, #ccc);    
+    background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), transparent),
+        linear-gradient(to bottom, var(--foreground, #fff), 60%, transparent),
+        url('/static/images/footer/pixels.png');
+    background-blend-mode: lighten;
 }
 
-#footer-container:after{    
-    height: 16px;
-    background-color: var(--midground);
-    border-bottom: 2px solid var(--foreground, #FFF);
-    transition: inherit;
+
+.footer_links{
+    color: black;
+    /* background: linear-gradient(to bottom right, var(--background, #ccc), 40%, transparent); */
 }
-#footer-container:before{
-    height: 60px;
-    top: 19px;
-    background-color: var(--darkest);
-    clip-path: polygon(0 0, 100% 0, 100% 5px, 80% 5px, 77% 12px, 20px 12px, 0 30px);
-}
+    .footer_links h5{
+        letter-spacing: 1.2px;
+        font-size: 22px;
+        color: var(--foreground, yellow);
+        padding: 0.5rem;    
+        /* text-align: end; */
+    }
+    .footer_links div{
+        padding: 0.5rem 1rem 1rem 1rem;    
+    }
+    .footer_links .button{
+
+    }
 
 #footer-left{
-    position: relative;    
+    
 }
-
-#footer-left, #footer-aside{
-    margin-right: 1rem;
+#footer-right{
+    flex-grow: 1;
 }
 
 .footer-external{
@@ -36,6 +43,7 @@
 
 .footer-lib{
     gap: 0.25rem;
+    font-size: 16px;
 }
 
 .footer-lib > img{
@@ -55,11 +63,7 @@
     position: relative;
     overflow: hidden;
     height: min-content;
-    clip-path: polygon(
-        0px 0px, 100% 0px,
-        100% calc(100% - 20px), calc(100% - 20px) 100%,
-        0px 100%
-    );
+   
 }
 
 
@@ -81,8 +85,9 @@
     z-index: -1;
 }
 
-@media screen and (min-width: 900px){
-    #footer-left, #footer-aside{
-        margin-right: 1rem;
+@media screen and (max-width: 900px){
+    #footer-left, #footer-right{
+        width: 100%;
     }
+
 }

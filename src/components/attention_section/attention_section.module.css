@@ -1,8 +1,10 @@
 .container{
+    width: clamp(500px, 100vw);
+    overflow-x: hidden;
     margin: 4rem auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0px !important;
+    
     transition: all 200ms ease-out;
     background: none;
     transition: all 200ms ease-out;
@@ -32,7 +34,7 @@
 
 .child_container{
     padding: 100px 2rem 2rem 2rem !important;
-    background-color: var(--foreground, #FFF); 
+    background-color: var(--foreground, #FFF);
 }
 
 .child_container h4{
@@ -47,6 +49,7 @@
 
 @media screen and (max-width: 600px) {
     .container{
+        width: 1fr;
         margin: 0.75rem 1rem;        
         grid-template-columns: 1fr;
         grid-template-rows: min-content 1fr;

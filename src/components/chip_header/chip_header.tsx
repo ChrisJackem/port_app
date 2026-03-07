@@ -17,6 +17,15 @@ const ChipHeader = ({ title, colBg, colTx, children, childBg, fontSize, size, st
     const background_color = colBg ? colBg : `var(--background, #999)`;
     const text_color = colTx ? colTx : `var(--foreground, #FFF)`;
     const child_bg_color = childBg ? childBg : `transparent`;
+
+
+    return (
+        <section>
+            { children && children}
+        </section>
+    )
+
+
     return (
         <section style={style}>
             <div                

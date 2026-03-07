@@ -18,60 +18,34 @@ const Footer = () => {
   if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
   
   return (
-    <footer id='footer-container' className='flex psudo'>      
+    <footer id='footer-container' className='psudo flex'>      
       
-      <section id='footer-left' className='flex-child'>
-        <ChipHeader title='Navigate' childBg='rgba(255,255,255, 0.4)' colTx={'var(--accent)'} fontSize={18}  size={'small'}>
-          
-          <div className='flex footer-links'>
+      <section id='footer-left' className='flex-column'>        
+        <div className='footer_links'>
+          <h4 className='t-bg'>Navigate</h4>
+          <div className='flex'>
             <LinkComponent name='Home' href='/home'/>
             <LinkComponent name='About' href='/about'/>
             <LinkComponent name='Gallery' href='/gallery'/>
-            <LinkComponent name='Work' href='/work'/>            
+            <LinkComponent name='Work' href='/work'/>
           </div>
-        </ChipHeader>
-
-
-        <div className={'padded bg-faded tx-fg theme_container'}>          
-          <h5 style={{ marginBottom: 5, color: 'white' }}>Change Theme</h5>
-          <div className='flex' style={{ padding: '5px 0px'}}>
+        </div>
+        <div className={''}>          
+          <h5>Change Theme</h5>
+          <div className='flex'>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
             <ThemeBtnFooter Theme={THEMES.Sunset} />
             <ThemeBtnFooter Theme={THEMES.Ocean} />
             <ThemeBtnFooter Theme={THEMES.Candy} />
-          </div>
-        {/* <AnimatePresence>
-          <motion.img
-              className='theme_img'                    
-              key={theme}
-              initial={{ x: 0, y: 0, opacity: 0 }}
-              animate={{ x: 0, y: 0, opacity: 1 }}
-              exit={{ x: -400, y: 0, opacity: 0 }}
-              transition={{ duration: .4, type: 'tween' }}
-              alt={`Active theme image: ${theme}`}
-              width={400} 
-              height={355}
-              src={ typeof data === 'string'
-                  ? data
-                  : data.get(theme_directoried(theme))
-              }
-              layout
-          />
-        </AnimatePresence> */}
+          </div>        
         </div>
       </section>
 
-      <aside id='footer-aside' className='flex-column flex-child chip-tl-md'>
-        <ChipHeader 
-          title='External Links' 
-          fontSize={18} 
-          colBg='var(--darkest)'  
-          colTx='var(--foreground)' 
-          size='small'
-        >
-
-          <div className='flex'>
+      <aside id='footer-right' className='flex-column'>
+        
+        <div>
+          <div className='flex flex-end'>
             <Link href='https://www.facebook.com/chris.jackem'>
               <LoadImg 
                 className={'footer-external'} 
@@ -92,17 +66,19 @@ const Footer = () => {
             </Link>
           </div>
 
-        <br/>
+        {/* <br/>
         <hr/>
+        <br/> */}
         <br/>
+        
 
-        <div className='flex footer-lib'>
-          <h6 style={{ width: '100%', marginBottom: 4 }}>Built with</h6>
+        <div className='flex footer-lib flex-align-center flex-end'>
+          <p>Built with:</p>
           <LoadImg src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
           <LoadImg src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
         </div>
 
-        </ChipHeader>
+        </div>
       </aside>
       <div className='footer-copy chip-tl'>&copy; 2025 Chris Jackem</div>
     </footer>
@@ -113,16 +89,16 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     const active = theme === Theme.name;
     return (
-        <div
+        <button
             role='button'
-            className={`pointer ${active ? 'active-theme' : ''}`}
+            className={`button ${active ? 'active-theme' : ''}`}
             style={{
               transition: 'all 200ms ease-out',
               color : `${ active ? 'var(--accent, #CCC)' : 'inherit'}`,
               fontWeight: 600 
             }}
             onClick={()=>SetTheme(Theme)}
-        >{Theme.name}</div>
+        >{Theme.name}</button>
     )
 }
 
