@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { STATUS, useImgs } from '@/hooks/useImg';
 import LoadingComponent from '../loading_component/loading_component';
 import { theme_directoried, theme_urls } from '../themeBtns/themeBtns';
+import { StrokeLogo } from '../loading_component/loading_component';
 
 const Footer = () => {
   const {theme} = useContext(ThemeContext);
@@ -18,7 +19,14 @@ const Footer = () => {
   if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
   
   return (
-    <footer id='footer-container' className='psudo flex pixel_grad'>      
+    <footer id='footer-container' className='psudo flex'>      
+      
+      <section id='footer-logo-container'>
+
+          <StrokeLogo infinite={false}/>
+          <small>chrisjackem.com</small>
+    
+      </section>
       
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
@@ -48,19 +56,19 @@ const Footer = () => {
           <div className='flex flex-end'>
             <Link href='https://www.facebook.com/chris.jackem'>
               <LoadImg 
-                className={'footer-external'} 
+                className={'footer-icon'} 
                 src='./static/images/footer/fb_logo.svg'
               />
             </Link>
             <Link href='https://www.linkedin.com/in/christopher-jackem-128b04187/'>
               <LoadImg 
-                className={'footer-external'} 
+                className={'footer-icon'} 
                 src='./static/images/footer/li_logo.svg'
               />
             </Link>
             <Link href='https://github.com/ChrisJackem'>
               <LoadImg 
-                className={'footer-external'} 
+                className={'footer-icon'} 
                 src='./static/images/footer/github_logo.svg'
               />
             </Link>
@@ -74,8 +82,8 @@ const Footer = () => {
 
         <div className='flex footer-lib flex-align-center flex-end'>
           <p>Built with:</p>
-          <LoadImg src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
-          <LoadImg src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
+          <LoadImg className={'footer-icon'} src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
+          <LoadImg className={'footer-icon'} src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
         </div>
 
         </div>

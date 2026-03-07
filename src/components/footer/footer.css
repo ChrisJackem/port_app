@@ -1,43 +1,45 @@
 
 #footer-container{    
-    padding: 1rem 2rem 0px 2rem;
-    gap: 3rem;    
+    padding: 50px 2rem 0px 2rem;
+    gap: 2rem;    
     background: var(--background, #ccc);
-    border-top: 6px solid var(--darkest, #ccc);    
+    border-top: 3px solid var(--darkest, #ccc);    
     background: radial-gradient( farthest-corner at top right, var(--foreground, #fff), transparent),
         linear-gradient(to top, var(--foreground, #fff), 60%, transparent),
         url('/static/images/footer/pixels.png');
     background-blend-mode: lighten;
+    flex-wrap: wrap;
 }
 
 
 .footer_links{
-    color: black;     
-    /* background: linear-gradient(to bottom right, var(--background, #ccc), 20%, transparent); */
+    color: black;
+    
 }
-    .footer_links h4{
-        letter-spacing: 1.5px;
-        font-size: 18px;
-        color: var(--foreground, yellow);
-        padding: 0.25rem;
-        padding-left: 1rem;
-        clip-path: polygon(
-            10px 0px, 100% 0px,
-            100% 100%, 0px 100%
-        );
+.footer_links h4{
+    letter-spacing: 1.5px;
+    font-size: 18px;
+    color: var(--foreground, yellow);
+    padding: 0.25rem;
+    padding-left: 1rem;
+    clip-path: polygon(
+        10px 0px, 100% 0px,
+        100% 100%, 0px 100%
+    );
+    font-style: italic;
+    background: linear-gradient(to right, var(--darkest, #000), transparent);
 
-        font-style: italic;
-        background: linear-gradient(to right, var(--darkest, #000), transparent);
+}
 
-    }
-    .footer_links div{
-               
-    }
-    .footer_links .button{
-
-    }
-.footer_links button,
-.footer_links Link{
+#footer-logo-container{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    top: -12px;
+    left: 35px;
+    gap: 5px;    
+    font-size: large;
+    font-weight: 700;
     color: var(--darkest, #000);
 }
 
@@ -48,16 +50,10 @@
     flex-grow: 1;
 }
 
-.footer-external{
+.footer-icon{
     width: 40px;
-    height: 40px;
+    max-height: 40px;
 }
-
-.footer-lib{
-    gap: 0.25rem;
-    font-size: 16px;
-}
-
 .footer-lib > img{
     max-height: 30px;
 }
@@ -78,17 +74,13 @@
    
 }
 
-
-.active-theme{
-    transform: scale(1.1);
-}
-
 .theme_img{
     position: absolute;
     top: 0px; left: 0px; width: 100%;    
     z-index: -2;
     opacity: 0.25;
 }
+
 .theme_container::before{
     content: ''; position: absolute; top: 0px; left: 0px;
     width: 100%; height: 100%;
@@ -100,6 +92,9 @@
 @media screen and (max-width: 900px){
     #footer-left, #footer-right{
         width: 100%;
+    }
+    .footer-logo-text{
+        display: none;
     }
 
 }

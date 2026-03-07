@@ -1,10 +1,9 @@
 .container{
-    width: clamp(500px, 100vw);
     overflow-x: hidden;
     margin: 4rem auto;
     display: grid;
+    padding: 0px;
     grid-template-columns: 1fr 1fr;
-    
     transition: all 200ms ease-out;
     background: none;
     transition: all 200ms ease-out;
