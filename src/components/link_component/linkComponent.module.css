@@ -5,7 +5,6 @@
     transition: all 600ms ease-out;
     height: min-content;
     position: relative;
-    padding: 1px;
 }
 .link::after, .active::after{
     position: absolute; top: 0px; left: 0px; content: '';
@@ -20,6 +19,7 @@
 .active{
     position: relative;
     --col: var(--accent, #CCC);
+    transform: scale(1.1);
 }
 
 .link::after{

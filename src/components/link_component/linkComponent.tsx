@@ -7,15 +7,16 @@ import { blinker } from '@/app/config/fonts';
 type LinkProps = {
     name: string;
     href: string;
+    className?:string;
 }
 
-const LinkComponent = ({ name, href }: LinkProps) => {
+const LinkComponent = ({ name, href, className }: LinkProps) => {
     const pathName = usePathname();
     const isActive:string = pathName === href ? 'active' : ''
     return (
         <Link
             href={href}
-            className={`akira shadow ${styles.link} ${isActive ? styles.active : ''}`}>
+            className={`akira ${className && className} ${styles.link} ${isActive ? styles.active : ''}`}>
                 {name}
         </Link>
     )

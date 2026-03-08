@@ -22,25 +22,23 @@ const Footer = () => {
     <footer id='footer-container' className='psudo flex'>      
       
       <section id='footer-logo-container'>
-
           <StrokeLogo infinite={false}/>
-          <small>chrisjackem.com</small>
-    
+          <small>chrisjackem.com</small>    
       </section>
       
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
           <h4 className='t-bg'>Navigate</h4>
-          <div className='flex'>
-            <LinkComponent name='Home' href='/home'/>
-            <LinkComponent name='About' href='/about'/>
-            <LinkComponent name='Gallery' href='/gallery'/>
-            <LinkComponent name='Work' href='/work'/>
+          <div className='flex footer-button-container'>
+            <LinkComponent className={`button`} name='Home' href='/home'/>
+            <LinkComponent className={`button`} name='About' href='/about'/>
+            <LinkComponent className={`button`} name='Gallery' href='/gallery'/>
+            <LinkComponent className={`button`} name='Work' href='/work'/>
           </div>
         </div>
         <div className={'footer_links'}>
           <h4>Change Theme</h4>
-          <div className='flex '>
+          <div className='flex footer-button-container'>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
             <ThemeBtnFooter Theme={THEMES.Sunset} />
@@ -98,7 +96,11 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     const active = theme === Theme.name;
     return (
         <button
-            className={`akira ${active ? 'active-theme' : ''}`}            
+            className={`button ${active ? 'active-theme' : ''}`}
+            style={{ 
+              color: active ? 'var(--accent, yellow)' : 'var(--foreground)',
+              transform: `scale(${active ? '1.1': '1'})`
+            }}         
             onClick={()=>SetTheme(Theme)}
         >{Theme.name}</button>
     )

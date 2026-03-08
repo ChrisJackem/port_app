@@ -1,25 +1,27 @@
 
 #footer-container{    
-    padding: 50px 2rem 0px 2rem;
+    padding: 60px 2rem 0px 2rem;
     gap: 2rem;    
     background: var(--background, #ccc);
     border-top: 3px solid var(--darkest, #ccc);    
     background: radial-gradient( farthest-corner at top right, var(--foreground, #fff), transparent),
-        linear-gradient(to top, var(--foreground, #fff), 60%, transparent),
-        url('/static/images/footer/pixels.png');
+        linear-gradient(to top, var(--foreground, #fff), 60%, transparent);/*,
+         url('/static/images/footer/pixels.png'); */
     background-blend-mode: lighten;
     flex-wrap: wrap;
 }
 
+#footer-left, #footer-right{
+    flex-grow: 1;
+}
 
 .footer_links{
-    color: black;
-    
+    color: black;    
 }
 .footer_links h4{
     letter-spacing: 1.5px;
-    font-size: 18px;
-    color: var(--foreground, yellow);
+    font-size: 22px;
+    color: var(--background, yellow);
     padding: 0.25rem;
     padding-left: 1rem;
     clip-path: polygon(
@@ -27,8 +29,12 @@
         100% 100%, 0px 100%
     );
     font-style: italic;
-    background: linear-gradient(to right, var(--darkest, #000), transparent);
+    background: linear-gradient(to right, var(--midground, #000), transparent);
+}
 
+.footer-button-container{
+    gap: 0.5rem;
+    padding: .5rem;
 }
 
 #footer-logo-container{
@@ -40,14 +46,8 @@
     gap: 5px;    
     font-size: large;
     font-weight: 700;
-    color: var(--darkest, #000);
-}
-
-#footer-left{
-    
-}
-#footer-right{
-    flex-grow: 1;
+    color: var(--accent, #000);
+    text-shadow: #000 0px 0px 3px;
 }
 
 .footer-icon{
@@ -67,34 +67,9 @@
     background-color: var(--background, #000);
     color: var(--foreground, #FFF);
 }
-.theme_container{
-    position: relative;
-    overflow: hidden;
-    height: min-content;
-   
-}
-
-.theme_img{
-    position: absolute;
-    top: 0px; left: 0px; width: 100%;    
-    z-index: -2;
-    opacity: 0.25;
-}
-
-.theme_container::before{
-    content: ''; position: absolute; top: 0px; left: 0px;
-    width: 100%; height: 100%;
-    background-color: #5e5e5e;
-    opacity: 0.75;
-    z-index: -1;
-}
 
 @media screen and (max-width: 900px){
     #footer-left, #footer-right{
         width: 100%;
     }
-    .footer-logo-text{
-        display: none;
-    }
-
 }
