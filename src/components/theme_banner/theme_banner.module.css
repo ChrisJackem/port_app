@@ -21,6 +21,16 @@
 
 .theme_label{
     z-index: 2;
+    top: -5px;
+    left: -5px;
+    padding: 0.25rem 0.5rem;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid var(--darkest, #000);
+    color: var(--darkest, #000);
+    width: min-content;
+    height: min-content;
+    background-color: var(--foreground, #FFF);
 }
 .container > div{
     z-index: 3;
@@ -49,7 +59,7 @@
     justify-content: center;
 }
 .theme_btn{
-
+    
 }
 
 @media screen and (max-width: 600px) {

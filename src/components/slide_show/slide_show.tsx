@@ -123,6 +123,7 @@ const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, i
                 className={`bg-ac ${styles.progress_bar}`}               
                 ref={scope}
             ></div>
+
             { inView && videoIds !== undefined && 
                 videoIds.map((id, i)=> (
                     <YoutubeEmbed 
@@ -131,12 +132,13 @@ const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, i
                         visible={activeSlide.embedId === id}
                     />
                 ) )
-            }            
+            }
+                     
             <AnimatePresence>
                 <>
                 { !activeSlide.embedId && ( 
                     <motion.img
-                        className={`chip-tl-box p-abs ${styles.slideshow_image_main}`} 
+                        className={`p-abs ${styles.slideshow_image_main}`} 
                         height={`${hero_height}px`}
                         key={activeSlideIndex}
                         initial={{ opacity: 0, x: -100 }}
@@ -150,7 +152,7 @@ const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, i
                 
                 { activeSlide.text && (
                     <motion.div 
-                        className={`chip-tl-br-md ${styles.slide_text}`}
+                        className={`${styles.slide_text}`}
                         initial={{ opacity: 0, x: 20}}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{    opacity: 0, x: -20 }}

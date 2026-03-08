@@ -12,7 +12,7 @@ const CacheReader = ({}) => {
 
   return (
     <section className={styles.container}>
-      <p className={styles.count}>count: {count}</p>
+      <p className={styles.count}>Count: {count}</p>
       <div className={styles.inner}>
         { count > 0 && Array(count).fill(0).map((_, i) => (
             <div 

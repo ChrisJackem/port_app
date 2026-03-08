@@ -28,6 +28,7 @@
 
 .t-jumbo{ font-size: 42px; }
 .t-lg{ font-size: 32px; }
+.bg-ac{ background-color: var(--accent, yellow);}
 
 .shadow{
   text-shadow: #000 0px 0px 3px;
@@ -50,18 +51,22 @@
 button{
   cursor: pointer;
   outline: none;
-  background: transparent;
+  /* background: transparent; */
   border: none;
 }
 
 .button{
+  border-radius: 0.25rem;
   transition: all 200ms ease-out;
-  padding: 0.45rem;
+  padding: 0.45rem 0.65rem;
   font-size: 18px;
   letter-spacing: 0.5px;
   color: var(--foreground, #000);
   background-color: var(--background, #000);
   font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.button:hover{
+  transform: translateY(-2) scale(1.06);
 }
 .button.invert{
   color: var(--darkest, #000);
@@ -70,7 +75,7 @@ button{
 
 
 hr{
-  border: 1px var(--background) solid;
+  border: 2px var(--background) solid;
  /*  opacity: 0.35; */
 }
 
@@ -90,7 +95,7 @@ body {
 }
 
 
-::-webkit-scrollbar { width: 6px; } 
+::-webkit-scrollbar { width: 8px; } 
 ::-webkit-scrollbar-track { background: var(--background, #000); }
 ::-webkit-scrollbar-thumb { 
   background-color: var(--accent, yellow); 

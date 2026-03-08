@@ -33,7 +33,7 @@ const ThemeBanner = () => {
             />
         </AnimatePresence>      
         <div className={`p-rel ${styles.theme_icon}`}>
-            <span className={`p-abs ${styles.theme_label}`}>Active: {theme}</span>
+            <span className={`p-abs ${styles.theme_label}`}>Active:&nbsp;{theme}</span>
             <AnimatePresence>
             <motion.img
                 className={`p-abs`}                   

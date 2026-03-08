@@ -70,7 +70,7 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
   }, [isInView, content]);
 
   return (
-    <section className={`p-rel ${styles.work_container}`} ref={container_ref}>
+    <section className={`${styles.work_container}`} ref={container_ref}>
       { slideState.status !== STATUS.LOADED
         ? <LoadingComponent height={ '400px'} />
         : <SlideShow 
@@ -79,10 +79,12 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
             slides={slideState.slides}
             link={link}
         />
-      }      
+      }
       
       <div className={`${styles.outer_container}`}>
-        <div className={`${styles.inner_container}`}>{children}</div>
+        <div className={`${styles.inner_container}`}>
+          {children}
+        </div>
       </div>
 
     </section>
