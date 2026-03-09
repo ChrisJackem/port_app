@@ -28,16 +28,16 @@ const Footer = () => {
       
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
-          <h4 className='t-bg'>Navigate</h4>
+          <h4 className='t-bg'>NAVIGATE</h4>
           <div className='flex footer-button-container'>
-            <LinkComponent className={`button`} name='Home' href='/home'/>
-            <LinkComponent className={`button`} name='About' href='/about'/>
-            <LinkComponent className={`button`} name='Gallery' href='/gallery'/>
-            <LinkComponent className={`button`} name='Work' href='/work'/>
+            <LinkComponent className={`button`} name='HOME' href='/home'/>
+            <LinkComponent className={`button`} name='ABOUT' href='/about'/>
+            <LinkComponent className={`button`} name='GALLERY' href='/gallery'/>
+            <LinkComponent className={`button`} name='WORK' href='/work'/>
           </div>
         </div>
         <div className={'footer_links'}>
-          <h4>Change Theme</h4>
+          <h4>THEME</h4>
           <div className='flex footer-button-container'>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
@@ -96,13 +96,13 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     const active = theme === Theme.name;
     return (
         <button
-            className={`button ${active ? 'active-theme' : ''}`}
+            className={`button ${active && 'active'}`}
             style={{ 
-              color: active ? 'var(--accent, yellow)' : 'var(--foreground)',
-              transform: `scale(${active ? '1.1': '1'})`
+              backgroundColor: active ? 'var(--accent, yellow)' : 'var(--foreground)',
+              /* transform: `scale(${active ? '1.1': '1'})` */
             }}         
             onClick={()=>SetTheme(Theme)}
-        >{Theme.name}</button>
+        >{Theme.name.toLowerCase()}</button>
     )
 }
 

@@ -82,7 +82,7 @@ const HomePage = () => {
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />
-          <h3>Website Features</h3>
+          <h3>WEBSITE FEATURES</h3>
       </div>
 
       <section className="padded">
@@ -91,17 +91,13 @@ const HomePage = () => {
           bgOpacity={0.6} 
           icon_url={IMG_TYPES.CACHE}
         >
-          <h4>Custom Image Cache</h4>          
+          <h4>CUSTOM IMAGE CACHE</h4>          
           <p>This site uses a <strong>custom image cache system</strong> for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
           <br/><br/>
           <CacheReaderLoading />
         </AttentionSection>
-      </section>
+      </section>      
       
-      {/* <section id='theme-page' >
-        
-        <ThemeBtns />
-      </section> */}
       <ThemeBanner />
 
       <section className="padded">
@@ -110,7 +106,7 @@ const HomePage = () => {
           bgOpacity={0.6} 
           icon_url={IMG_TYPES.SCROLL}          
         >
-          <h4>Scroll to Top</h4>          
+          <h4>SCROLL TO TOP</h4>          
           <p>Incase you haven&apos;t noticed, you can click the stripe at the top to instantly scroll up to the top for easier navigation.</p>
           <br/>
           <i>You can also navigate using the menu at the bottom of every page.</i>

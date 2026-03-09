@@ -55,7 +55,7 @@ const ThemeBanner = () => {
             
         </div>
         <div className={`${styles.theme_text}`}>
-            <h4 className='t-lg'>Website Theme</h4>
+            <h4 className='t-lg'>WEBSITE THEME</h4>
             <p>You can change the colors of the entire site any time you want. 
             Your choice will be saved to localStorage and so when you come back later your theme will still be active.</p>
             <br/>
@@ -76,11 +76,11 @@ export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
         <button 
-            className={`button invert ${styles.theme_btn}`}
-            style={{ backgroundColor: theme === Theme.name ? `var(--accent)` : 'var(--foreground)'}}
+            className={`button invert ${(theme === Theme.name) && 'active'}`}
+            /* style={{ backgroundColor: theme === Theme.name ? `var(--accent)` : 'var(--foreground)'}} */
             onClick={()=>SetTheme(Theme)}
         >
-            {Theme.name}
+            {Theme.name.toLowerCase()}
         </button>
     )
 }

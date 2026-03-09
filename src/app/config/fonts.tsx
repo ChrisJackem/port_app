@@ -1,4 +1,4 @@
-import { Armata, Blinker, Libre_Franklin } from 'next/font/google';
+import { Armata, Blinker, Libre_Franklin, Zalando_Sans_Expanded } from 'next/font/google';
 import localFont from 'next/font/local'
 
 /******** Font Definition File ********************
@@ -10,8 +10,8 @@ import localFont from 'next/font/local'
  * Use --f-blinker variable where you need it quickly
  */
 
-export const akira = localFont({
-  src: '../../../public/font/AkiraExpanded.otf',
+export const akira = Zalando_Sans_Expanded({
+  weight: ['400', '700', '900'],
   variable: "--f-akira"
 })
 

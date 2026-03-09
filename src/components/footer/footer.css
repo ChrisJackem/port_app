@@ -8,7 +8,7 @@
         linear-gradient(to top, var(--foreground, #fff), 60%, transparent);/*,
          url('/static/images/footer/pixels.png'); */
     background-blend-mode: lighten;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
 }
 
 #footer-left, #footer-right{
@@ -19,22 +19,34 @@
     color: black;    
 }
 .footer_links h4{
-    letter-spacing: 1.5px;
-    font-size: 22px;
-    color: var(--background, yellow);
+    letter-spacing: -0.2px;
+    font-size: 20px;
+    color: var(--accent, yellow);
     padding: 0.25rem;
     padding-left: 1rem;
     clip-path: polygon(
         10px 0px, 100% 0px,
         100% 100%, 0px 100%
     );
-    font-style: italic;
-    background: linear-gradient(to right, var(--midground, #000), transparent);
+    font-style: italic;   
+    border-bottom: 1px solid var(--accent, yellow);
+    border-top-left-radius: 1rem;
 }
+
+.footer_links h4,
+.footer-button-container{
+    transition: all 200ms ease-out;
+    padding-left: 1rem !important;
+    max-width: 700px;
+    background: linear-gradient(to right, var(--background, 70%, #000), transparent);
+}
+
 
 .footer-button-container{
     gap: 0.5rem;
-    padding: .5rem;
+    padding: 1rem;
+    border-bottom-left-radius: 0.35rem;
+    /* background: radial-gradient(circle at top left, var(--background), 40%, transparent); */
 }
 
 #footer-logo-container{
