@@ -26,7 +26,7 @@
         z-index: 9999;
         height: 48px;
         top: calc(100% - 48px);
-        width: 96%;
+        width: calc(100% - 2rem);;
         background: linear-gradient(to top, var(--darkest, #000), 60%, transparent);
     }
 
