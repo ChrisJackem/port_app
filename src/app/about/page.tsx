@@ -8,6 +8,7 @@ import styles from './page.module.css';
 import Kid from '@/components/animations/kid/kid';
 import Schem from '@/components/animations/schem/schem';
 import Link from 'next/link';
+import PageBanner from '@/components/page_banner/page_banner';
 
 /*********************************************************************************** About Page  */
 
@@ -22,10 +23,15 @@ const AboutPage = () => {
         exit="exit"
         className="about-container"
     >
-        <section className='paged'>
+        <PageBanner 
+            title={'ABOUT'}
+            bg={'static/images/pixels_2.png'}
+            content={'A little bit about me and what I do.'}
+        />
+        {/* <section className='paged'>
             <TypeHeader word='About' />
-            <p>A little bit about me and what I do.</p>
-        </section>
+            <p></p>
+        </section> */}
 
         <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>

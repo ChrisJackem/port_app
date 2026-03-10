@@ -19,8 +19,7 @@
 }
 .letter{
     display: inline-block;
-    font-family: var(--f-blinker, inherit);
-    font-size: 50px;
-    font-weight: bold;
+    font-family: var(--f-akira, inherit);
     z-index: 99;
+    color: var(--accent, yellow);
 }

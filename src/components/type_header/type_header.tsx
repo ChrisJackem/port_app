@@ -16,20 +16,16 @@ const TypeHeader = ({ word }:{ word:string }) => {
         animate='animate'
         transition={{ duration: 0, delayChildren: stagger(0.2, { startDelay: 0.2 }) }}        
     >
-        {/* Robot text */}
         <h1 className={`p-abs ${styles.reader_text}`}>{word}</h1>
 
-        <div className={`flex ${styles.letter_container}`}
-        >
+        <div className={`flex ${styles.letter_container}`}>
             { word.split('').map(( letter, i )=>(
                 <motion.div
-                    className={`${styles.letter}`}
+                    className={`t-jumbo ${styles.letter}`}
                     variants={TypeVariant.child}
                     key={i}
                     aria-hidden={true}
-                >
-                    {letter}
-                </motion.div>
+                >{letter}</motion.div>
             ))}
         </div>
     </motion.section>

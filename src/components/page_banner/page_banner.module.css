@@ -1,0 +1,32 @@
+.container{
+    margin-top: -1rem;
+    padding: 80px 0px 10px 1rem;
+    background-blend-mode: multiply;
+    border-bottom: 2px solid var(--accent, yellow);
+    transition: all 1s ease-out;
+    animation: morf 10s infinite;
+    /* background: linear-gradient(to top right, var(--background, #000), 40%, transparent); */
+}
+/* @keyframes morf{
+    0%{
+        background-blend-mode: color-burn;
+        
+    }
+    100%{
+        background-blend-mode: multiply;
+    }
+} */
+
+.inner_container{
+    padding: 1rem !important;
+    color: var(--foreground, #FFF);
+}
+.title{
+
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        padding: 1rem;
+    }
+}
