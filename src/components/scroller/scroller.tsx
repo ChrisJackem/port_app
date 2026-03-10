@@ -5,7 +5,7 @@
 import React, { useEffect, useRef, Children, useState } from 'react';
 import useRefs from '@/hooks/useRefs';
 import styles from './scroller.module.css';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, scale } from 'motion/react';
 import SvgBtn from '../svg_btns/svg_btns';
 
 const TIMEOUT = 200;
@@ -16,9 +16,9 @@ const COLOR_DARKEST = 'var(--darkest, #000)';
 
 // Animations Toolbar
 const variantsToolbar = {
-  initial: { opacity: 0, y: -100 },
-  hidden: { opacity: 0, y:  -100 },
-  enter: { opacity: 1, y: 0 }
+  initial: { opacity: 0, scale: 1.2 },
+  hidden: { opacity: 0, scale: 1.2 },
+  enter: { opacity: 1,  scale: 1 }
 }
 
 /**
@@ -110,8 +110,16 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
     }
 
     return (
-        <>   
-        <AnimatePresence>
+        <>  
+            { React.Children.toArray(children).map((child, i) => {
+                if (!child) return null;
+                return <div
+                    className={styles.scroll_container}                    
+                    ref={el => { if (el) setRef(el, i.toString()); }}
+                    key={i}
+                >{child}</div>
+            } ) }
+            <AnimatePresence>
             { (!hideTools) && (<motion.div className={`flex ${styles.scroll_tools}`}
                 key={'tool-bar'}
                 variants={variantsToolbar}              
@@ -120,10 +128,10 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 exit='hidden'
                 layout
             >   
-                <SvgBtn type={userHideTools ? 'x' : 'scroll'}
+                {/* <SvgBtn type={userHideTools ? 'x' : 'scroll'}
                     onClick={()=>setUserHideTools(userHideTools => !userHideTools)}
                     color={COLOR_ACCENT}                         
-                />
+                /> */}
                 { userHideTools && (<>
                     <SvgBtn type={'prev'}
                         onClick={()=>scrollJump(true)}
@@ -138,15 +146,6 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                 </>)}
             </motion.div>) }
             </AnimatePresence>
-            
-            { React.Children.toArray(children).map((child, i) => {
-                if (!child) return null;
-                return <div
-                    className={styles.scroll_container}                    
-                    ref={el => { if (el) setRef(el, i.toString()); }}
-                    key={i}
-                >{child}</div>
-            } ) }
         </>
     )
 }

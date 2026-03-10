@@ -23,7 +23,7 @@
         background: linear-gradient(to top, var(--darkest), 65%, transparent);
     }
     .work_container::after{
-        z-index: 9999;
+        z-index: 1;
         height: 48px;
         top: calc(100% - 48px);
         width: calc(100% - 2rem);;
@@ -44,8 +44,12 @@
     padding-top: 0.5rem;
 }
 
-
 .inner_container li{
     list-style: square;
     margin-left: 2rem;
+}
+
+.inner_container h3,
+.inner_container h4{
+    font-size: 32px;
 }

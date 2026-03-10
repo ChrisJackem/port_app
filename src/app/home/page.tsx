@@ -53,29 +53,29 @@ const HomePage = () => {
 
       <section className={'page_triple'}>
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
-          <h1>Programming</h1>
+          <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>
           <Link className="" 
             href={'https://github.com/ChrisJackem'} 
             target="_blank" rel="noopener noreferrer"
           >
-            <button aria-label="Github external link" className='button'>Github</button>
+            <button aria-label="Github external link" className='button dark'>github</button>
           </Link> 
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
-          <h1>Applications</h1>
+          <h2>APPLICATIONS</h2>
           <p>I make web-based full stack apps and games</p>            
           <Link className="" href={'/work'}>
-            <button aria-label={"Games page"} className='button'>Work</button>
+            <button aria-label={"Games page"} className='button dark'>work</button>
           </Link>
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
-          <h1>Design</h1>
+          <h2>DESIGN</h2>
           <p>I love to design and create and experienced in every medium</p>       
           <Link href='/gallery' aria-label="Gallery page">
-            <button aria-label="Gallery page" className='button'>Gallery</button>            
+            <button aria-label="Gallery page" className='button dark'>gallery</button>            
           </Link> 
         </IconFrame>
       </section>

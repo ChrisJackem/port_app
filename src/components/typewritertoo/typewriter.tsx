@@ -82,10 +82,8 @@ const Typewriter = () => {
             <div className={`${styles.word_container}`} aria-hidden="true">
                 {renderWord}
                 <span className={styles.dash}>|</span>
-            </div>
-            
+            </div>            
             <hr style={{ margin: '1rem 0px'}}/>
-
             <p>There is no good question with a one word answer</p>
         </section>
     )

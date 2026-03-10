@@ -18,7 +18,9 @@ const WorkPage = () => {
         animate="enter"
         exit="exit"
     >
-        <section className='paged'>
+        <section className='paged'
+            style={{ borderBottom: '2px solid var(--background, #ccc)'}}
+        >
             <TypeHeader word='Work' />
             <motion.div
             >
@@ -26,8 +28,9 @@ const WorkPage = () => {
             </motion.div>   
         </section>
 
+
     <div id='work-work-container' className='flex flex-column'>
-        <AttentionSection
+        {/* <AttentionSection
             color={'var(--background, #CCC)'}
             bgOpacity={0.5}
             icon_url={IMG_TYPES.EXCLAIM}
@@ -57,7 +60,7 @@ const WorkPage = () => {
             </table>
             <br/>
             <i>If controls are not visible yet, scroll down some more.</i>
-        </AttentionSection>
+        </AttentionSection> */}
 
         <Scroller>
             
@@ -178,15 +181,13 @@ const WorkPage = () => {
                     { title: 'meme 1', url: 'static/images/work/meme/meme_01.png' },                   
                     { title: 'meme 2', url: 'static/images/work/meme/meme_02.png' },                   
                     { title: 'meme 3', url: 'static/images/work/meme/meme_03.png' },                   
-                    { title: 'meme 3', url: 'static/images/work/meme/meme_04.png' },                   
-                    
-                    
+                    { title: 'meme 3', url: 'static/images/work/meme/meme_04.png' },                    
             ]}>
                  <div className='blurb_title'>
                     <h3>Meme-O-Matic</h3>
                     <p>Utility Web App</p>
                 </div>
-                <h4>Finally, you can create memes completely inside your browser!</h4>
+                <h5>Finally, you can create memes completely inside your browser!</h5>
                 <br/>
                 <p>
                     This is a simple meme generation web app I created with React. Create your own memes for any occasion with your own personal touch.

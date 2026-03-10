@@ -86,7 +86,7 @@ const Footer = () => {
 
         </div>
       </aside>
-      <div className='footer-copy chip-tl'>&copy; 2025 Chris Jackem</div>
+      <div className='footer-copy chip-tl'>&copy; 2025 CHRIS JACKEM</div>
     </footer>
   )
 }
@@ -99,8 +99,10 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
             className={`button ${active && 'active'}`}
             style={{ 
               backgroundColor: active ? 'var(--accent, yellow)' : 'var(--foreground)',
+              fontSize: '16px',
+              padding: '0.25rem 0.5rem'
               /* transform: `scale(${active ? '1.1': '1'})` */
-            }}         
+            }}
             onClick={()=>SetTheme(Theme)}
         >{Theme.name.toLowerCase()}</button>
     )
