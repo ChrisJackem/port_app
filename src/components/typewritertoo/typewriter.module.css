@@ -1,6 +1,6 @@
 .container{
     width: 40%;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     
 }
 
@@ -30,9 +30,9 @@
 @media screen and (max-width: 600px){
     .container{
         width: 100%;
-       margin-bottom: 2rem;
+        margin-bottom: 2rem;
     }
     .word_container, .dash, .heading{
-        font-size: 32px;    
+        font-size: 32px;
     }
 }
