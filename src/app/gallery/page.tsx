@@ -6,6 +6,7 @@ import { PageVariants } from '../config/variants'
 import styles from './gallery.module.css'
 import { LoadImg } from '@/components/load_img/load_img'
 import Gallery from '@/components/gallery/gallery_elem'
+import PageBanner from '@/components/page_banner/page_banner'
 
 const GalleryPage = () => {
   return (
@@ -16,10 +17,13 @@ const GalleryPage = () => {
             animate="enter"
             exit="exit"
     >
-      <section className='paged'>
+     {/*  <section className='paged'>
             <TypeHeader word='Gallery' />
             <p>Drawings, designs, and other non-interactive things I made over the years</p>            
-      </section>
+      </section> */}
+
+      <PageBanner title='GALLERY'
+            content='Drawings, designs, and other non-interactive things I made over the years' />
 
       <div className={`paged ${styles.gallery}`} style={{ maxWidth: '1200'}}>
 
@@ -33,7 +37,7 @@ const GalleryPage = () => {
            {
             title: 'Gain',
             blerb: 'Motivational poster',
-            dims: [12, 18],
+            dims: [11, 18],
             src: 'static/images/gallery/gain_01.png',
           },
            

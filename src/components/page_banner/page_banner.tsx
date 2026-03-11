@@ -1,29 +1,22 @@
 import React from 'react'
 import styles from './page_banner.module.css'
 import TypeHeader from '../type_header/type_header';
+import { motion } from 'motion/react';
+import { BannerVariants } from '@/app/config/variants';
 
-type PageBannerProps = {
-    bg: string;
+type PageBannerProps = {    
     title: string;
     content: string;
 }
 
-
-
-const PageBanner = ({bg, title, content}: PageBannerProps) => {
-
-    const BG = `
-    url(${bg}),
-    linear-gradient(to top right, var(--darkest, #000), 80%, var(--accent, #ccc)),
-    linear-gradient(to bottom, rgba(255,255,255, 0.3),10%, transparent )
-        `
-
+const PageBanner = ({title, content}: PageBannerProps) => {
     return (
-        <section className={`${styles.container}`}
-            style={{ background:BG }}
+        <section 
+            className={`${styles.container}`}
+            
+            
         >
-            <div className={`paged ${styles.inner_container}`}>
-                {/* <h1 className={`${styles.title}`}>{title}</h1> */}
+            <div className={`paged ${styles.inner_container}`}>                
                 <TypeHeader word={title} />
                 <p>{content}</p>
             </div>

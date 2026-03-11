@@ -8,6 +8,7 @@ import SvgBtn from '@/components/svg_btns/svg_btns'
 import { motion } from 'motion/react'
 import { PageVariants } from '../config/variants'
 import TypeHeader from '@/components/type_header/type_header'
+import PageBanner from '@/components/page_banner/page_banner'
 
 const WorkPage = () => {
   return (
@@ -18,7 +19,7 @@ const WorkPage = () => {
         animate="enter"
         exit="exit"
     >
-        <section className='paged'
+       {/*  <section className='paged'
             style={{ borderBottom: '2px solid var(--background, #ccc)'}}
         >
             <TypeHeader word='Work' />
@@ -26,7 +27,10 @@ const WorkPage = () => {
             >
                 The following is some of my most recent personal projects. 
             </motion.div>   
-        </section>
+        </section> */}
+
+        <PageBanner title='WORK'
+            content='The following is some of my most recent personal projects.' />
 
 
     <div id='work-work-container' className='flex flex-column'>

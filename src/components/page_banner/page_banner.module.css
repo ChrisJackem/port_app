@@ -1,21 +1,25 @@
 .container{
-    margin-top: -1rem;
+    margin-top: -2rem;
     padding: 80px 0px 10px 1rem;
-    background-blend-mode: multiply;
+    background-blend-mode: multiply;    
     border-bottom: 2px solid var(--accent, yellow);
     transition: all 1s ease-out;
-    animation: morf 10s infinite;
-    /* background: linear-gradient(to top right, var(--background, #000), 40%, transparent); */
+    animation: morf 1s infinite;
+    background: 
+        url('/static/images/pixels.png'),
+        linear-gradient(to top right, var(--darkest, #000), 70%, var(--accent, #ccc));
 }
-/* @keyframes morf{
-    0%{
-        background-blend-mode: color-burn;
-        
+
+@keyframes morf{
+/*     0%{
+        background-size: contain;
+            
     }
     100%{
-        background-blend-mode: multiply;
-    }
-} */
+       background-size: cover;
+            
+    } */
+}
 
 .inner_container{
     padding: 1rem !important;

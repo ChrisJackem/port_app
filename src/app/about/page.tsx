@@ -23,16 +23,9 @@ const AboutPage = () => {
         exit="exit"
         className="about-container"
     >
-        <PageBanner 
-            title={'ABOUT'}
-            bg={'static/images/pixels_2.png'}
-            content={'A little bit about me and what I do.'}
-        />
-        {/* <section className='paged'>
-            <TypeHeader word='About' />
-            <p></p>
-        </section> */}
-
+        <PageBanner title='ABOUT'
+            content={'A little bit about me and what I do.'} />
+        
         <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>
                 <World />

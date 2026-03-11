@@ -1,12 +1,11 @@
 /* work page css */
 
 #work-main-container{
-    /* gap: 2rem; */
-    /* padding: 1rem;     */
-    padding: 0px 1rem 3rem 1rem;
+    
 }
 #work-work-container{
     gap: 3rem;
+    padding: 1rem;
 }
 
 .time-divider{

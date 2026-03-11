@@ -4,8 +4,14 @@ import { easeIn, easeOut } from "motion"
 import { transition } from "three/examples/jsm/tsl/display/TransitionNode.js"
 
 export const PageVariants = {
-    hidden: { opacity: 0, x: -80, y: 0 },
+    hidden: { opacity: 0, x: 0, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: 10 },
+}
+
+export const BannerVariants = {
+    hidden: { opacity: 0, x: 0 },
+    enter: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: 0, y: 10 },
 }
 
