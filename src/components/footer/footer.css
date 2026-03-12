@@ -41,12 +41,23 @@
     max-width: 700px;
 }
 
-
 .footer-button-container{
     gap: 0.5rem;
     padding: 1rem;
     background: var(--midground, #ccc);
     background: linear-gradient(to bottom right, var(--background, #000), 30%, transparent);
+}
+
+.footer-theme-btn{
+    font-size: 16px;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--foreground, #FFF);
+}
+.footer-theme-btn.active{
+    background-color: var(--accent, yellow);
+}
+.footer-theme-btn.active:hover{
+    color: var(--darkest, #000);
 }
 
 #footer-logo-container{

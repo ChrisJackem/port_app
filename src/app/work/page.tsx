@@ -70,7 +70,7 @@ const WorkPage = () => {
             
             <WorkContainer title='Flack'
                 link={{
-                    text: 'Go',                   
+                    text: 'GO',                   
                     href: "https://flack.cx",
                     cta_text: 'Goto Flack'
                 }}
@@ -109,7 +109,7 @@ const WorkPage = () => {
 
             <WorkContainer title='Noter'
                 link={{
-                    text: 'Go',                   
+                    text: 'GO',                   
                     href: "https://chromewebstore.google.com/detail/noter/febdhbfmobmdhhffbepbajikpnjokhmc?hl=en-US",
                     cta_text: 'Google Store'
                 }}
@@ -145,7 +145,7 @@ const WorkPage = () => {
 
             <WorkContainer title='Vandal'
                 link={{ 
-                    text: 'Go',
+                    text: 'GO',
                     href: 'https://walls-e3b59.web.app', 
                     cta_text: 'Visit Vandal' 
                 }}
@@ -180,7 +180,11 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Meme-O-Matic'
-                link={{ text: 'Go', href: 'https://meme-o-matic.web.app/', cta_text: 'Visit Meme-O-Matic' }}
+                link={{ 
+                    text: 'GO', 
+                    href: 'https://meme-o-matic.web.app/', 
+                    cta_text: 'Visit Meme-O-Matic' 
+                }}
                 content={[
                     { title: 'meme 1', url: 'static/images/work/meme/meme_01.png' },                   
                     { title: 'meme 2', url: 'static/images/work/meme/meme_02.png' },                   
@@ -218,7 +222,7 @@ const WorkPage = () => {
 
             <WorkContainer title='Pipe Dream'
                 link={{ 
-                    text: 'Go', 
+                    text: 'GO', 
                     href: 'https://chrisjackem.github.io/pipe-dream/',
                     cta_text: 'Play' 
                 }}
@@ -255,7 +259,12 @@ const WorkPage = () => {
             </WorkContainer>
 
             <WorkContainer title='Ultra Custodian'
-                link={{ text: 'Go', href: '/uc', local: true, cta_text: 'Play' }}
+                link={{ 
+                    text: 'GO', 
+                    href: '/uc', 
+                    local: true, 
+                    cta_text: 'Play'
+                }}
                 content={[
                     { title: 'test', url: 'static/images/work/ultracus/ultra_promo0.png' },                   
                     { title: 'test', url: 'static/images/work/ultracus/ultra_promo1.png' },                   

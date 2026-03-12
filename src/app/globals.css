@@ -34,6 +34,7 @@
   text-transform: uppercase;
 }
 .t-lg{ font-size: 32px; }
+.t-bld{ font-weight: 900 !important;}
 
 
 .bg-ac{ background-color: var(--accent, yellow);}
@@ -56,36 +57,26 @@
   width: 100%; height: 100%;
 }
 
+/**************************** Buttons */
 button{
   cursor: pointer;
-  outline: none;
-  /* background: transparent; */
+  outline: none;  
   border: none;
 }
 
 .button{
   position: relative;
   transition: all 200ms ease-out;
-  padding: 0.45rem 0.65rem;
+  padding: 0.5rem;
   font-size: 18px;
   letter-spacing: -0.25px;  
   font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 700;
   color: var(--background, #000);
   border-radius: 3px;
-  border: 1px solid var(--background, #000);  
-  /* background: linear-gradient( to bottom right, var(--midground, #000),  var(--foreground, #FFF) ); */
+  border: 1px solid var(--background, #000);
 }
 
-/* .button::before{
-  content: '';  
-  z-index: 0;
-  position: absolute;
-  top: 0px; left: 0px;
-  width: 100%; height: 100%;
-  background: linear-gradient( to bottom right, var(--darkest, #000),  transparent );
-  opacity: 0.1;  
-} */
 .button.dark{
   color: var(--foreground, #FFF);
   border-color: var(--darkest, #000);
@@ -95,7 +86,9 @@ button{
   background-color: var(--accent, yellow) !important;
 }
 .button:hover{
-  background-color: var(--midground, #ccc);
+  color: var(--accent, yellow);
+  background-color: var(--background, #ccc);
+  border-color: var(--accent, yellow);
 }
 
 .button.invert{
@@ -103,16 +96,13 @@ button{
   background-color: var(--foreground, #FFF);
 }
 
-
-hr{
-  border: 1px var(--background) solid;
- /*  opacity: 0.35; */
-}
-
 html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+
+hr{ border: 1px var(--background) solid; }
+.hr{ margin: 1rem 0px; }
 
 h1, h2, h3, h4, h5, h6, .akira{
   font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

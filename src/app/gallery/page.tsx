@@ -23,7 +23,7 @@ const GalleryPage = () => {
       </section> */}
 
       <PageBanner title='GALLERY'
-            content='Drawings, designs, and other non-interactive things I made over the years' />
+            content='Some samples of designs and other graphics' />
 
       <div className={`paged ${styles.gallery}`} style={{ maxWidth: '1200'}}>
 
@@ -50,7 +50,7 @@ const GalleryPage = () => {
           {
             title: 'Santa',
             blerb: 'Christmas card GIF',            
-            dims: [12, 13],
+            dims: [11, 11],
             src: 'static/images/gallery/christmas.gif',
           },
          
@@ -64,26 +64,26 @@ const GalleryPage = () => {
           {
             title: 'Morning',
             blerb: 'Motivational poster',
-            dims: [20, 11],
+            dims: [19, 11],
             src: 'static/images/gallery/morning.gif',
           },
-          {
+         /*  {
             title: 'Until my body breaks',
             blerb: 'Motivational poster',            
-            dims: [10, 7],
+            dims: [19, 12],
             src: 'static/images/gallery/until.png',
-          },
-          {
+          }, */
+         /*  {
             title: 'Arbourous',
             blerb: 'Character design drawing',            
             dims: [10, 7],
             src: 'static/images/gallery/ArborousPoster.jpg',
-          },
+          }, */
 
           {
             title: 'Blood Drive',
             blerb: 'Blood Drive advertisement GIF',
-            dims: [20, 20],
+            dims: [19, 17],
             src: 'static/images/gallery/nosferatu.gif',
           },          
           
@@ -94,7 +94,7 @@ const GalleryPage = () => {
             dims: [12, 10],
             src: 'static/images/gallery/rat.jpg',
           },     
-          {
+          /* {
             title: 'Nurse Ratched',
             blerb: "If you didn't see the movie you won't get it",            
             dims: [12, 10],
@@ -105,8 +105,8 @@ const GalleryPage = () => {
             blerb: "Demoralization poster",            
             dims: [12, 9],
             src: 'static/images/gallery/neverEndingWar.png',
-          },
-          {
+          }, */
+         /*  {
             title: 'Ted',
             blerb: '3d Model',            
             dims: [20, 15],
@@ -130,7 +130,7 @@ const GalleryPage = () => {
             blerb: "colored pencil drawing",            
             dims: [12, 15],
             src: 'static/images/gallery/habit.png',
-          },         
+          },      */    
 
         ]} />            
       </div>

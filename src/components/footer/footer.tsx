@@ -74,9 +74,7 @@ const Footer = () => {
 
         <br/>
         <hr/>
-        <br/>
-
-        
+        <br/>        
 
         <div className='flex footer-lib flex-align-center flex-end'>
           <p>Built with:</p>
@@ -96,13 +94,7 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
     const active = theme === Theme.name;
     return (
         <button
-            className={`button ${active && 'active'}`}
-            style={{ 
-              backgroundColor: active ? 'var(--accent, yellow)' : 'var(--foreground)',
-              fontSize: '16px',
-              padding: '0.25rem 0.5rem'
-              /* transform: `scale(${active ? '1.1': '1'})` */
-            }}
+            className={`button footer-theme-btn ${active && 'active'}`}
             onClick={()=>SetTheme(Theme)}
         >{Theme.name.toLowerCase()}</button>
     )

@@ -5,6 +5,8 @@
     transition: all 600ms ease-out;
     height: min-content;
     position: relative;
+    font-style: italic;
+    padding: 0.2rem 1rem;
 }
 .link::after, .active::after{
     position: absolute; top: 0px; left: 0px; content: '';

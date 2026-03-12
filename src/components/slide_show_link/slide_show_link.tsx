@@ -14,15 +14,17 @@ const SlideShowLink = ({ link }:{ link:SSlinkType }) => {
   return (
     <section className={`${styles.link_container}`}>
         
-        <div className={`flex-column`} style={{ textAlign: 'right', gap: '1px' }}>
-          <p className={styles.link_heading}>{ link.cta_text ? link.cta_text : 'Click to Play'}</p>   
+        <div className={`flex-column`} style={{ textAlign: 'right', gap: '1px' }}>          
           { !link.local && <small className={styles.small_text}>(External Link)</small> }            
         </div>
 
         { link.local
-            ? <Link href={link.href}>{ (<PageButton>{link.text}</PageButton>) }</Link>
+            ? <Link href={link.href}>{ (
+              <button className='button t-cap bg-ac  t-bld'>{link.text}</button>
+            ) }</Link>
             : <a className="" href={link.href} target="_blank" rel="noopener noreferrer">
-                <PageButton>{link.text}</PageButton>
+                {/* <PageButton>{link.text}</PageButton> */}
+                <button className='button t-cap bg-ac t-bld'>{link.text}</button>
               </a>
         }
     </section>

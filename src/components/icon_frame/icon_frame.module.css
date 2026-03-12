@@ -14,6 +14,9 @@
 
 .main_container button{    
     margin-top: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 22px;
+    font-style: italic;
 }
 
 .main_container h1,
@@ -21,7 +24,7 @@
 .main_container h3,
 .main_container h4{
     font-family: var(--f-akira);
-    font-size: 20px;
+    font-size: 22px;
     color: var(--darkest, #000);
     letter-spacing: 0.65px;    
 }

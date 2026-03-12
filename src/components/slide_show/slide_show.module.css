@@ -52,6 +52,7 @@
 
 .progress_bar{
     background: var(--accent, yellow);
+    background: linear-gradient(to left, var(--accent, yellow), 10%, transparent);
     height: 2px;
 }
 
@@ -63,11 +64,9 @@
 }
 
 
-
-
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     .slideshow_container{
-        padding-top: 300px !important;
+        padding-top: 305px !important;
     }
     .slideshow_image_main{
         height: 300px;
@@ -77,6 +76,5 @@
     }
     .link_container{
         margin-left: unset;
-
     }
 }
