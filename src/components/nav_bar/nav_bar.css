@@ -76,6 +76,7 @@
     .nav-ul{
         margin-right: auto;
         justify-content: center;
+        gap: 0.5rem;
     }
     .link{
         font-size: 26px;

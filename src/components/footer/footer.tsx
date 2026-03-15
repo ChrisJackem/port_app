@@ -12,6 +12,7 @@ import { STATUS, useImgs } from '@/hooks/useImg';
 import LoadingComponent from '../loading_component/loading_component';
 import { theme_directoried, theme_urls } from '../themeBtns/themeBtns';
 import { StrokeLogo } from '../loading_component/loading_component';
+import SvgBtn, { SVG_FB, SVG_GH, SVG_LI } from '../svg_btns/svg_btns';
 
 const Footer = () => {
   const {theme} = useContext(ThemeContext);
@@ -48,27 +49,30 @@ const Footer = () => {
         </div>
       </section>
 
-      <aside id='footer-right' className='flex-column'>
-        
-        <div>
+      <aside id='footer-right' className='flex-column'>        
+        <div>    
+
           <div className='flex flex-end'>
             <Link href='https://www.facebook.com/chris.jackem'>
-              <LoadImg 
+              {/* <LoadImg 
                 className={'footer-icon'} 
                 src='./static/images/footer/fb_logo.svg'
-              />
+              /> */}
+              <SVG_FB classname='footer-icon' final_color='var(--accent, yellow)'/>
             </Link>
             <Link href='https://www.linkedin.com/in/christopher-jackem-128b04187/'>
-              <LoadImg 
+             {/*  <LoadImg 
                 className={'footer-icon'} 
                 src='./static/images/footer/li_logo.svg'
-              />
+              /> */}
+              <SVG_LI classname='footer-icon' />
             </Link>
             <Link href='https://github.com/ChrisJackem'>
-              <LoadImg 
+              {/* <LoadImg 
                 className={'footer-icon'} 
                 src='./static/images/footer/github_logo.svg'
-              />
+              /> */}
+              <SVG_GH classname='footer-icon'/>
             </Link>
           </div>
 

@@ -20,11 +20,10 @@ const SlideShowLink = ({ link }:{ link:SSlinkType }) => {
 
         { link.local
             ? <Link href={link.href}>{ (
-              <button className='button t-cap bg-ac  t-bld'>{link.text}</button>
+              <button className={`button ${styles.link_btn}`}>{link.text}</button>
             ) }</Link>
-            : <a className="" href={link.href} target="_blank" rel="noopener noreferrer">
-                {/* <PageButton>{link.text}</PageButton> */}
-                <button className='button t-cap bg-ac t-bld'>{link.text}</button>
+            : <a className="" href={link.href} target="_blank" rel="noopener noreferrer">               
+                <button className={`button ${styles.external} ${styles.link_btn}`}>{link.text}</button>
               </a>
         }
     </section>
