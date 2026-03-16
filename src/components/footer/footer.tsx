@@ -74,10 +74,9 @@ const Footer = () => {
         <hr/>
         <br/>        
 
-        <div className='flex footer-lib flex-align-center flex-end'>
-          <p>Built with:</p>
-          <LoadImg className={'footer-icon'} src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
-          <LoadImg className={'footer-icon'} src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
+        <div className='flex footer-lib flex-align-center flex-end'>          
+          <LoadImg className={'footer-icon'} width={600} height={228} src='./static/images/footer/framerLogo.png' alt='Framer motion logo'></LoadImg>
+          <LoadImg className={'footer-icon'} width={502} height={501} src='./static/images/footer/nextLogo.png' alt='Next logo'></LoadImg>
         </div>
 
         </div>

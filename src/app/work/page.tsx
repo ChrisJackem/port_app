@@ -154,7 +154,8 @@ const WorkPage = () => {
                     <h2>Meme-O-Matic</h2>
                     <p>Utility Web App</p>
                 </div>
-                <h3>Finally, you can create memes completely inside your browser!</h3>
+                <strong>Finally, you can create memes completely inside your browser!</strong>
+                <br/>
                 <br/>
                 <p>
                     This is a simple meme generation web app I created with React. Create your own memes for any occasion with your own personal touch.

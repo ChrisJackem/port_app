@@ -40,8 +40,7 @@
 
 /* Inner Container */
 .inner_container{
-    padding: 1.5rem;    
-    padding-top: 0.5rem;
+    padding: 1.5rem;
 }
 
 .inner_container li{
@@ -49,7 +48,9 @@
     margin-left: 2rem;
 }
 
-.inner_container h3,
-.inner_container h4{
+.inner_container h2{
     font-size: 32px;
+}
+.inner_container h3{
+    font-size: 22px;
 }
