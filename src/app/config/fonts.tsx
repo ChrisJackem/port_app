@@ -1,18 +1,12 @@
 import { Armata, Blinker, Libre_Franklin, Zalando_Sans_Expanded } from 'next/font/google';
 import localFont from 'next/font/local'
 
-/******** Font Definition File ********************
- * 
- * Default:
- * body -> armata font className
- *      -> var(--f-blinker)
- * 
- * Use --f-blinker variable where you need it quickly
- */
+/******** Font Definition File ********************/
 
 export const akira = Zalando_Sans_Expanded({
   weight: ['400', '700', '900'],
-  variable: "--f-akira"
+  variable: "--f-akira",
+  fallback: ['impact', 'system-ui'],
 })
 
 export const libreFranklin = Libre_Franklin({

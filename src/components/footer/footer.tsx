@@ -30,12 +30,12 @@ const Footer = () => {
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
           <h4 className='t-bg'>NAVIGATE</h4>
-          <div className='flex footer-button-container'>
+          <ul className='flex list-style-none footer-button-container'>
             <LinkComponent className={`button`} name='HOME' href='/home'/>
             <LinkComponent className={`button`} name='ABOUT' href='/about'/>
             <LinkComponent className={`button`} name='GALLERY' href='/gallery'/>
             <LinkComponent className={`button`} name='WORK' href='/work'/>
-          </div>
+          </ul>
         </div>
         <div className={'footer_links'}>
           <h4>THEME</h4>
@@ -53,25 +53,19 @@ const Footer = () => {
         <div>    
 
           <div className='flex flex-end'>
-            <Link href='https://www.facebook.com/chris.jackem'>
-              {/* <LoadImg 
-                className={'footer-icon'} 
-                src='./static/images/footer/fb_logo.svg'
-              /> */}
+            <Link
+              aria-label='My FaceBook profile'            
+              href='https://www.facebook.com/chris.jackem'>              
               <SVG_FB classname='footer-icon' final_color='var(--accent, yellow)'/>
             </Link>
-            <Link href='https://www.linkedin.com/in/christopher-jackem-128b04187/'>
-             {/*  <LoadImg 
-                className={'footer-icon'} 
-                src='./static/images/footer/li_logo.svg'
-              /> */}
+            <Link 
+              aria-label='My LinkedIn profile'
+              href='https://www.linkedin.com/in/christopher-jackem-128b04187/'>             
               <SVG_LI classname='footer-icon' />
             </Link>
-            <Link href='https://github.com/ChrisJackem'>
-              {/* <LoadImg 
-                className={'footer-icon'} 
-                src='./static/images/footer/github_logo.svg'
-              /> */}
+            <Link
+              aria-label='My GitHub profile'
+              href='https://github.com/ChrisJackem'>              
               <SVG_GH classname='footer-icon'/>
             </Link>
           </div>

@@ -40,12 +40,19 @@ const HomePage = () => {
       <section className="page-flex">              
         <TypewriterLoading />
 
-       <LoadImg
+       {/* <LoadImg
           style={{ margin: '0 auto'}}       
           width={300}
           height={300}
           alt={"portrait drawing"}
           src={"static/images/portrait_02.svg"}
+        /> */}
+        <img
+          fetchPriority="high"
+          alt='vector self portrait'
+          width='300px'
+          height='300px'
+          src='static/images/portrait_02.svg'
         />
       </section>
 
@@ -55,7 +62,8 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>
-          <Link className="" 
+          <Link
+            aria-label="My GitHub profile"
             href={'https://github.com/ChrisJackem'} 
             target="_blank" rel="noopener noreferrer"
           >
@@ -66,7 +74,10 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h2>APPLICATIONS</h2>
           <p>I make web-based full stack apps and games</p>            
-          <Link className="" href={'/work'}>
+          <Link
+            href='/work' 
+            aria-label="Work page"
+          >
             <button aria-label={"Games page"} className='button dark'>work</button>
           </Link>
         </IconFrame>
@@ -74,7 +85,10 @@ const HomePage = () => {
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h2>DESIGN</h2>
           <p>I love to design and create and experienced in every medium</p>       
-          <Link href='/gallery' aria-label="Gallery page">
+          <Link 
+            href='/gallery' 
+            aria-label="Gallery page"
+          >
             <button aria-label="Gallery page" className='button dark'>gallery</button>            
           </Link> 
         </IconFrame>

@@ -6,7 +6,7 @@
     transition: all 1s ease-out;
     animation: morf 1s infinite;
     background: 
-        url('/static/images/pixels.png'),
+        url('/static/images/pixels.webp'),
         linear-gradient(to top right, var(--darkest, #000), 70%, var(--accent, #ccc));
 }
 

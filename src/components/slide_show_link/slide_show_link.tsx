@@ -22,7 +22,7 @@ const SlideShowLink = ({ link }:{ link:SSlinkType }) => {
             ? <Link href={link.href}>{ (
               <button className={`button ${styles.link_btn}`}>{link.text}</button>
             ) }</Link>
-            : <a className="" href={link.href} target="_blank" rel="noopener noreferrer">               
+            : <a aria-label={link.cta_text} href={link.href} target="_blank" rel="noopener noreferrer">               
                 <button className={`button ${styles.external} ${styles.link_btn}`}>{link.text}</button>
               </a>
         }

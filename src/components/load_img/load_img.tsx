@@ -7,9 +7,10 @@ import LoadingComponent from "../loading_component/loading_component";
  * 
  * @param * normal attributes will be passed onto normal img tag
  * @param src this url will be fetched
- * @param children shown while loading 
+ * @param children shown while loading
+ * @param priority
  */
-export const LoadImg = ({ src, className, alt, style, height, width}:{
+export const LoadImg = ({ src, className, alt, style, height, width }:{
     src:string;    
     className?: string;
     alt?: string;

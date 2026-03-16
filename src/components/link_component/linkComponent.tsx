@@ -14,11 +14,14 @@ const LinkComponent = ({ name, href, className }: LinkProps) => {
     const pathName = usePathname();
     const isActive:string = pathName === href ? 'active' : ''
     return (
-        <Link
-            href={href}
-            className={`akira ${className && className} ${styles.link} ${isActive ? styles.active : ''}`}>
+        <li>
+            <Link
+                href={href}
+                className={`akira ${className && className} ${styles.link} ${isActive ? styles.active : ''}`}
+            >
                 {name}
-        </Link>
+            </Link>
+        </li>
     )
 }
 

@@ -7,7 +7,7 @@
     background-size: 60px;
     background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), var(--background, #ccc)),
         linear-gradient(to bottom, var(--darkest, #ccc), transparent),
-         url('/static/images/footer/pixels.png');
+         url('/static/images/pixels.webp');
     background-blend-mode: screen;
     flex-wrap: wrap;    
 }
