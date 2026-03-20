@@ -32,17 +32,21 @@ const AboutPage = () => {
             </AnimContainer>
             <div>
                 <h2>From New England</h2>
-                <p>I was born in Connecticut in the early days of the internet.  
-                    From an early age I was interested in web design and the world wide web.
-                </p>                
+                <p>I was born in Connecticut in the early days of the internet.</p>
+                <br/>
+                <p>I was a very artistic kid, attending TAG after school programs and being active in the art scene. I even sold a few paintings at art exhibitions in my area.</p>
+                <br/>
+                <p>My other passions were technology, which exploded when I was coming of age. In High School, I attended trade school for 2 years to learn electrical engineering.</p>
             </div>
         </section>
 
         <section className={`page_double ${styles.section_container}`}>
             <div>
                 <h2>Taught myself to Code</h2>
-                <p>I learned how to code at a very early age. Computers were so new, so there was little utility. I made my own websites and games for myself.
-                </p>                
+                <p>I learned how to code at a very early age on a 486. Computers were so new, so there was little utility. I made my own websites and games for myself.
+                </p>
+                <br/>
+                Since then, I have recieved a formal education, which at that point was almost a formality. I learn more every day, and I wouldn't have it any other way.
             </div>            
             <Kid />            
         </section>
@@ -51,7 +55,7 @@ const AboutPage = () => {
             <Schem />
             <div className='padded'>
                 <h2>I make stuff</h2>
-                <p>I am always making web apps, games and other utilities. Some samples are here in the 
+                <p>I am always making web apps, games, utilities, and many other artistic and technical things including traditional mediums. Some samples are here in the 
                     <strong>
                         <Link className="" href='/work'> work </Link> 
                     </strong>

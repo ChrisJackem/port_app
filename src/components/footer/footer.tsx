@@ -81,7 +81,7 @@ const Footer = () => {
 
         </div>
       </aside>
-      <div className='footer-copy chip-tl'>&copy; 2025 CHRIS JACKEM</div>
+      <div className='footer-copy'>&copy; 2025 CHRIS JACKEM</div>
     </footer>
   )
 }
