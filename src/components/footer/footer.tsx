@@ -33,7 +33,7 @@ const Footer = () => {
           <ul className='flex list-style-none footer-button-container'>
             <LinkComponent className={`button`} name='HOME' href='/home'/>
             <LinkComponent className={`button`} name='ABOUT' href='/about'/>
-            <LinkComponent className={`button`} name='GALLERY' href='/gallery'/>
+            {/* <LinkComponent className={`button`} name='GALLERY' href='/gallery'/> */}
             <LinkComponent className={`button`} name='WORK' href='/work'/>
           </ul>
         </div>

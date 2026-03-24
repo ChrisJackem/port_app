@@ -31,7 +31,7 @@ const NavBar = () => {
         <ul className='flex nav-ul'>
           <LinkComponent name='HOME' href='/home'/>
           <LinkComponent name='ABOUT' href='/about'/>
-          <LinkComponent name='GALLERY' href='/gallery'/>
+          {/* <LinkComponent name='GALLERY' href='/gallery'/> */}
           <LinkComponent name='WORK' href='/work'/>
         </ul>
       </nav>
