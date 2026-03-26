@@ -179,11 +179,11 @@ const SlideShow = ({ title, inView, slides, link=undefined }:{  title: string, i
                         key={i.toString()}
                         onClick={()=> imgBtnHandler(i)}
                     >
-                        <img
+                        {/* <img
                             className={styles.img_btn}
                             alt={`Slideshow Image #${i}.`}
                             src={slides[i].data}
-                        ></img>
+                        ></img> */}
                     </button>
                 ))}
                 
