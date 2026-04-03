@@ -36,24 +36,14 @@ const HomePage = () => {
       animate="enter"
       exit="exit"
     >
+      <section
+        id="home-splash" 
+        className="page-flex"
+      >
+        <div id="home-blurb">
+          <TypewriterLoading />
 
-      <section className="page-flex">              
-        <TypewriterLoading />
-
-       {/* <LoadImg
-          style={{ margin: '0 auto'}}       
-          width={300}
-          height={300}
-          alt={"portrait drawing"}
-          src={"static/images/portrait_02.svg"}
-        /> */}
-        <img
-          fetchPriority="high"
-          alt='vector self portrait'
-          width='300px'
-          height='300px'
-          src='static/images/portrait_02.svg'
-        />
+        </div>
       </section>
 
       <br/>
