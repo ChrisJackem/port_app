@@ -11,6 +11,8 @@ import { PageVariants } from "../config/variants";
 import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 import Link from "next/link";
 import ThemeBanner from "@/components/theme_banner/theme_banner";
+import LineHeader from "@/components/line_header/line_header";
+import Mesh from "@/components/Mesh/mesh";
 
 
 /*********************************************************************************** Home Page  */
@@ -28,8 +30,8 @@ const CacheReaderLoading = dynamic(
 const HomePage = () => {
   return (
     <motion.div 
-      id='home-container' 
-      className="home-container page-container"
+      id='home_container' 
+      className="page-container"
       key="home"
       variants={PageVariants}
       initial="hidden"
@@ -38,12 +40,17 @@ const HomePage = () => {
     >
       <section
         id="home-splash" 
-        className="page-flex"
+        className="page_double page-hero"
       >
-        <div id="home-blurb">
-          <TypewriterLoading />
-
+        <div id="home_blurb" className="flex flex-align-center">
+          <div className="flex-column">
+            <LineHeader text={'creative engineering portfolio'} />
+            <TypewriterLoading />            
+            <br/>
+            <button aria-label="Gallery page" className='button dark'>gallery</button>
+          </div>
         </div>
+        <Mesh />
       </section>
 
       <br/>

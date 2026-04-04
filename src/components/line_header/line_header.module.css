@@ -1,0 +1,15 @@
+.container{
+    margin-left: 50px;
+    position: relative;
+    color: var(--accent, yellow);
+    font-size: 12px;
+}
+.container::before{
+    width: 40px;
+    height: 2px;
+    content: "";
+    background-color: var(--accent);
+    position: absolute;
+    top: 50%;
+    left: -50px;
+}

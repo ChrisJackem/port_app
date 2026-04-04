@@ -22,11 +22,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/svg+xml" href="static/images/icons/favicon.svg"></link>
       </head>
-      <body className={`${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
+      <body className={`bg-bg ${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
         <ThemeWrapper>
         <main className={`${styles.main_container}`}>
           <NavBar/>
-          <div className={`${styles.child_container}`}>          
+          <div className={`bg-bg t-txt ${styles.child_container}`}>          
               {children}            
           </div>
         </main>

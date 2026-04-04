@@ -1,7 +1,14 @@
 /* Home Page CSS */
 
-.home_text{
-    /* align-content: center; */
+.home_blerb{
+    width: 100%;
+}
+
+#home-splash{
+    
+}
+#home-splash > div{
+    min-height: 500px;
 }
 
 .feature-header{    

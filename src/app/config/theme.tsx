@@ -16,11 +16,11 @@ export type ThemesType = {
 export const THEMES: ThemesType = {
     Default: {
         name: "Default",
-        text: "#000",
-        darkest: "#000",
-        background: "#3b3b3bff",
+        text: "#FFF",
+        darkest: "#111111",
+        background: "#1d1d1d",
         midground: "#999999",
-        foreground: "#FFF",
+        foreground: "#242424",
         accent: "#dbf227",
     },
     Dark: {

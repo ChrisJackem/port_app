@@ -7,9 +7,6 @@
     transition: background-color 500ms;
 }
 .child_container{
-    color: black;
-    background-color: var(--foreground, #FFF);
-    color: var(--text, #000);
     position: relative;
     padding-top: 1.5rem;
 }

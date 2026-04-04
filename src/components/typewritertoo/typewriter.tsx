@@ -74,17 +74,12 @@ const Typewriter = () => {
     };
 
     return (
-        <section
-            ref={container_ref}
-            className={`${styles.container}`}            
-        >            
-            <h2 className={`${styles.heading}`}>I make</h2>
-            <div className={`${styles.word_container}`} aria-hidden="true">
+        <section ref={container_ref} className={`${styles.container}`} >            
+            <h2 className={`t-jumbo ${styles.heading}`}>I make</h2>
+            <div className={`t-jumbo t-it ${styles.word_container}`} aria-hidden="true">
                 {renderWord}
                 <span className={styles.dash}>|</span>
-            </div>            
-            <hr style={{ margin: '1rem 0px'}}/>
-            <p>There is no good question with a one word answer</p>
+            </div>
         </section>
     )
 }

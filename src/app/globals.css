@@ -2,9 +2,9 @@
   --darkest: #000;
   --background: #3d3d3d;
   --midground: #999999;
-  --foreground: #FFF;
+  --foreground: #272727;
   --accent: #dbf227;
-  --text: #000;
+  --text: #FFF;
 }
 
 /* Screen Reader Only */
@@ -24,20 +24,24 @@
 .p-abs{ position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
 
 /********************** Text */
-.t-cap{ text-transform: capitalize;}
+.t-txt{ color: var(--text)}
+.t-cap{ text-transform: uppercase;}
 .t-low{ text-transform: lowercase;}
 .t-bg{ color: var(--background, #ccc)}
 .t-accent{ color: var(--accent, yellow); }
 .t-jumbo{ 
-  font-size: 42px;
+  font-size: 5vw;
+  font-size: clamp(20px, 5vw, 60px);
   font-weight: 900;
   text-transform: uppercase;
 }
 .t-lg{ font-size: 32px; }
 .t-bld{ font-weight: 900 !important;}
-
+.t-it{ font-style: italic;}
 
 .bg-ac{ background-color: var(--accent, yellow);}
+.bg-mg{ background-color: var(--midground, #ccc);}
+.bg-bg{ background-color: var(--background, #000);}
 
 .shadow{
   text-shadow: #000 0px 0px 3px;
@@ -61,7 +65,9 @@
   list-style: none;
 }
 
+/**************************************/
 /**************************** Buttons */
+/**************************************/
 button{
   cursor: pointer;
   outline: none;  
@@ -160,20 +166,6 @@ a {
   line-height: 3rem;
 }
 
-/* Pages */
-.page-container{
-  padding: 1rem 0;
-}
-
-.page-flex,
-.page_double, 
-.page_triple, 
-.paged{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 .page-flex{
   gap: 1rem;
   display: flex;
@@ -183,9 +175,23 @@ a {
   justify-content: space-around;
 }
 
+.page-container{
+  margin: 3rem 0px;
+}
+
+.page-hero{
+  background: var(--background, #000);
+  background: radial-gradient(circle at 5%, var(--darkest), 10%,  var(--background), 90%, var(--foreground));
+  border-bottom: 2px solid var(--darkest, #000);
+}
+
+.page_single{
+  padding: 2rem;
+}
 .page_double, .page_triple{
     display: grid;
-    gap: 1.25rem;
+    padding: 2rem;
+    gap: 2rem;    
     grid-template-rows: max-content;
 }
 
@@ -195,17 +201,23 @@ a {
 .page_triple{    
     grid-template-columns: repeat(3, 1fr);
 }
+.page_third{
+  grid-template-columns: 1fr 33%;
+}
 
 @media only screen and (max-width: 900px) {
   .page_double{
     
   }
-  .page_triple, .page_double{
+  .page_triple, .page_double, .page_third{
         grid-template-rows: repeat(min-content);
         grid-template-columns: 1fr;
   }
   .page-flex{
     flex-direction: column;
+  }
+  .t-jumbo{ 
+    font-size: 46px;
   }
 }
 
