@@ -82,7 +82,7 @@ button{
   letter-spacing: -0.25px;  
   font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 700;
-  color: var(--background, #000);
+  color: +var(--background, #000);
   border-radius: 3px;
   border: 1px solid var(--background, #000);
 }
@@ -190,7 +190,7 @@ a {
 }
 .page_double, .page_triple{
     display: grid;
-    padding: 2rem;
+    /*padding: 2rem;*/
     gap: 2rem;    
     grid-template-rows: max-content;
 }
