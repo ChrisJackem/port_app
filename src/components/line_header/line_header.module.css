@@ -3,6 +3,8 @@
     position: relative;
     color: var(--accent, yellow);
     font-size: 12px;
+    font-weight: bold;
+    font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .container::before{
     width: 40px;
@@ -12,4 +14,10 @@
     position: absolute;
     top: 50%;
     left: -50px;
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        font-size: 8px;
+    }
 }

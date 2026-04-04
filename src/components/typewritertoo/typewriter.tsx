@@ -75,7 +75,7 @@ const Typewriter = () => {
 
     return (
         <section ref={container_ref} className={`${styles.container}`} >            
-            <h2 className={`t-jumbo ${styles.heading}`}>I make</h2>
+            <h2 className={`t-jumbo t-it ${styles.heading}`}>I make</h2>
             <div className={`t-jumbo t-it ${styles.word_container}`} aria-hidden="true">
                 {renderWord}
                 <span className={styles.dash}>|</span>

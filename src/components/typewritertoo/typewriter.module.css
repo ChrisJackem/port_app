@@ -1,6 +1,6 @@
 .container{
     width: 100%;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .heading{
@@ -10,7 +10,6 @@
 .word_container, .dash, .heading{
     font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: 900;
-/*     font-size: 46px;   */  
     letter-spacing: -2px;
     text-transform: uppercase;
 }
@@ -20,7 +19,6 @@
     animation: cursor-blink 1.5s steps(2) infinite;
     margin-left: 4px;
     opacity: 0.5;
-
 }
 
 @keyframes cursor-blink {

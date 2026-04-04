@@ -28,16 +28,28 @@
 .t-cap{ text-transform: uppercase;}
 .t-low{ text-transform: lowercase;}
 .t-bg{ color: var(--background, #ccc)}
-.t-accent{ color: var(--accent, yellow); }
+.t-ac{ color: var(--accent, yellow); }
 .t-jumbo{ 
   font-size: 5vw;
-  font-size: clamp(20px, 5vw, 60px);
+  font-size: clamp(12px, 5vw, 60px);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.t-tiny{ 
+  font-size: 0.01vw;
+  font-size: clamp(12px, 5vw, 60px);
   font-weight: 900;
   text-transform: uppercase;
 }
 .t-lg{ font-size: 32px; }
 .t-bld{ font-weight: 900 !important;}
 .t-it{ font-style: italic;}
+.t-vs{ line-height: 1.4rem;}
+.t-shout{
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 2.2rem;
+}
 
 .bg-ac{ background-color: var(--accent, yellow);}
 .bg-mg{ background-color: var(--midground, #ccc);}
@@ -76,19 +88,20 @@ button{
   cursor: pointer;
   outline: none;  
   border: none;
+  pointer-events: all;
 }
 
 .button{
   position: relative;
   transition: all 200ms ease-out;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   font-size: 18px;
   letter-spacing: -0.25px;
   background-color: var(--background, #000);
-  font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: var(--f-lexend), 'Arial Narrow Bold', sans-serif;
   font-weight: 700;
   color: var(--text, #000);
-  border-radius: 3px;
+  /* border-radius: 999px; */
   border: 1px solid var(--background, #000);
 }
 
@@ -98,8 +111,12 @@ button{
   background-color: var(--background, #ccc);
 }
 .button.active{
+  color: var(--darkest, #000) !important;
   background-color: var(--accent, yellow) !important;
 }
+
+
+
 .button:hover{
   color: var(--accent, yellow);
   background-color: var(--background, #ccc);
@@ -186,11 +203,19 @@ a {
 
 .page-hero{
   background: var(--background, #000);
-  background: radial-gradient(circle at 5%, var(--darkest), 10%,  var(--background), 90%, var(--foreground));
+  background: radial-gradient(circle at 5%, var(--darkest), 60%,  var(--background), 90%, transparent);
   border-bottom: 2px solid var(--darkest, #000);
+  /* border-top: 2px solid var(--darkest, #000); */
+  overflow: hidden;
 }
 .page-hero > div{
   z-index: 2;
+}
+
+
+.page-center{
+  max-width: 800px;
+  margin: 0px auto;
 }
 
 .page_single{

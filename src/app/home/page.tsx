@@ -21,10 +21,13 @@ const TypewriterLoading = dynamic(
     ()=> import('@/components/typewritertoo/typewriter'),
     { loading: ()=> <LoadingComponent />}
 )
-
 const CacheReaderLoading = dynamic(
     ()=> import("@/components/cache_reader/cache_reader"),
     { loading: ()=> <LoadingComponent />}
+)
+const MeshLoading = dynamic(
+    ()=> import("@/components/Mesh/mesh"),
+    { loading: ()=> <Mesh />}
 )
 
 const HomePage = () => {
@@ -44,21 +47,48 @@ const HomePage = () => {
       >
         <div id="home_blurb" className="flex flex-align-center">
           <div className="flex-column padded">
-            <LineHeader text={'creative engineering portfolio'} />
-            <TypewriterLoading />            
+            <LineHeader text='What I do' />
+            <TypewriterLoading />
+            <p className="t-vs">
+              I make all kinds of things. This is my website where I showcase some of my recent and favorite digital content.
+            </p>            
             <br/>
             <div className="flex">
-              <button aria-label="Gallery page" className='button dark'>gallery</button>
-              <button aria-label="Gallery page" className='button '>gallery</button>
+              <button aria-label="Gallery page" className='button active'>work</button>
             </div>
           </div>          
         </div>
-        <Mesh />          
+        <MeshLoading />
       </section>
 
       <br/>
 
-      <section className={'page_triple'}>
+      <section className="page-center padded page_double">
+        <div>
+          <p className="t-shout">     
+            <strong>I specialize in web apps. </strong>          
+            However I can handle any aspect of almost any project from the metal to the final product.
+          </p>
+          <br/>
+          <small className="t-ac">I even make a mean chicken parm</small>
+          <br/>
+          <br/>
+          <div className="flex ">
+            <p>X</p>
+            <p>X</p>
+            <p>X</p>
+          </div>
+        </div>
+        <img
+          fetchPriority="high"
+          alt='vector self portrait'
+          width='300px'
+          height='300px'
+          src='static/images/portrait_02.svg'
+        />
+      </section>
+
+      <section className={'page_triple page-container'}>
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>
@@ -99,7 +129,7 @@ const HomePage = () => {
           <h3>WEBSITE FEATURES</h3>
       </div>
 
-      <section className="padded">
+      {/* <section className="padded">
         <AttentionSection 
           color={'var(--background, #CCC)'}
           bgOpacity={0.6} 
@@ -125,7 +155,7 @@ const HomePage = () => {
           <br/>
           <i>You can also navigate using the menu at the bottom of every page.</i>
         </AttentionSection>
-      </section>
+      </section> */}
            
     </motion.div>
   );

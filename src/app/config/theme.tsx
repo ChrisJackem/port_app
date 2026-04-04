@@ -52,11 +52,11 @@ export const THEMES: ThemesType = {
     },
     Ocean: {
         name: "Ocean",
-        text: "#022c43",
+        text: "#ffffff",
         darkest: "#022c43",
-        background: "#115173",
+        background: "#041720",
         midground: "#ffd700",
-        foreground: "#e1e1e1",
+        foreground: "#012233",
         accent: "#21e6c1",
     },
     Candy: {

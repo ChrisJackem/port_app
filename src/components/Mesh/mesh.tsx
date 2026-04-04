@@ -39,10 +39,10 @@ function Box(props: ThreeElements['mesh'] & { hovered: boolean; mouseMove: { x: 
     if (!props.hovered) {
       ref.current.rotation.x += delta * 0.02;
       ref.current.rotation.y += delta * 0.01;
-      /* velocityRef.current = { x: 0, y: 0 } */
+      velocityRef.current = { x: 0, y: 0 }
     } else {
-      const targetX = props.mouseMove.y * 0.5;
-      const targetY = props.mouseMove.x * 0.5;
+      const targetX = props.mouseMove.y * 0.4;
+      const targetY = props.mouseMove.x * 0.4;
       velocityRef.current.x += (targetX - ref.current.rotation.x) * 0.1;
       velocityRef.current.y += (targetY - ref.current.rotation.y) * 0.1;
       ref.current.rotation.x += velocityRef.current.x * delta;
@@ -66,7 +66,7 @@ function Box(props: ThreeElements['mesh'] & { hovered: boolean; mouseMove: { x: 
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.7 : 1}
+      scale={clicked ? 1: 1.7}
       onClick={handleClick}>      
       <dodecahedronGeometry  args={[1, 1]}/>
       <shaderMaterial 
@@ -96,7 +96,7 @@ const Mesh = () => {
   
   return (
     <Canvas 
-      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '1', opacity: 0.12}}
+      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
       onPointerMove={handleMouseMove}
       onPointerEnter={() => hover(true)}
       onPointerLeave={() => hover(false)}>

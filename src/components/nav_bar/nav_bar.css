@@ -1,27 +1,25 @@
-#nav-container{
-    z-index: 99;
-    position: relative;
-}
+
 #nav-bar{        
-    padding: 1rem 2rem 1rem 1rem;    
-    background: linear-gradient(to right, var(--midground), var(--background));/* var(--midground, #6d6d6d); */
-    color: black;
-    display: flex;
-    gap: 1rem;
-    justify-content: right;
+    padding: 1rem;
+    z-index: 99;
+    background: var(--background);
+    justify-content: space-between;
     align-items: center;
-    position: relative;    
+    filter: drop-shadow(0px 5px 10px var(--darkest))
 }
 
 .logo_container{
-    height: min-content;
-    gap: 0.5rem;
-    height: 50px;
-    overflow: hidden;
+    height: 20px;
+    color: var(--text, #fff);
+    transform-origin: top left;
+    transform: scale(0.45);
+    opacity: 0.85;
 }
+
+
     .small-txt{
-        color: var(--darkest, #000);
         font-weight: bold;
+        font-size: 0.75rem;
         letter-spacing: 2px;
         animation: logoFade 800ms ease-out 2100ms forwards;        
         opacity: 0;
@@ -34,9 +32,9 @@
 
 .nav-ul{
     list-style-type: none;
-    margin-left: auto;
+    /* margin-left: auto; */
     gap: 1rem;
-    align-self: flex-end;
+    align-self: center;
 }
 .nav-ul a{
     font-size: 18px;
@@ -47,34 +45,13 @@
     transform: scale(1.05);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {    
     #nav-bar{
         padding: 1rem;
-        background: linear-gradient(to bottom, var(--midground), var(--background));
-    }
-
-    .small-txt{
-        margin: auto 0px;
-        font-size: 14px;
-    }
-    
-    #nav-bar{
-        padding: 1rem;
-        flex-wrap: wrap;
-        gap: 5px;       
-    }
-
-    .logo_container{
-        margin-bottom: 1rem;
-        width: 100%;
-        justify-content: center;
-        align-content: center;
-    }
-    #nav-bar button{
-        width: 150px;
+        /* justify-content: center; */
+        gap: 1rem;       
     }
     .nav-ul{
-        margin-right: auto;
         justify-content: center;
         gap: 0.5rem;
     }

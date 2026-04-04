@@ -17,7 +17,7 @@ const LinkComponent = ({ name, href, className }: LinkProps) => {
         <li>
             <Link
                 href={href}
-                className={`akira ${className && className} ${styles.link} ${isActive ? styles.active : ''}`}
+                className={`${className && className} ${styles.link} ${isActive ? styles.active : ''}`}
             >
                 {name}
             </Link>

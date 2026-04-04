@@ -8,7 +8,10 @@
     
 }
 #home-splash > div{
-    min-height: 500px;
+    min-height: 600px;
+    background: linear-gradient(to right, var(--darkest), 80%, transparent);
+    pointer-events: none;
+    /* background-color: var(--darkest, #000); */
 }
 
 .feature-header{    
@@ -33,4 +36,8 @@
         font-size: 14px;
         padding: 3px 5px;        
     }
+    #home-splash > div{
+        min-height: 500px;
+    }
+
 }

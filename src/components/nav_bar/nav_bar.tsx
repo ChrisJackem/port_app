@@ -19,24 +19,25 @@ const NavBar = () => {
   }, [nav_main]);
 
   return (
-    <div id="nav-container">
-      <nav 
-        id="nav-bar"
-        ref={nav_main}
-      >
+
+      <nav id="nav-bar" ref={nav_main} className='flex'>
+        
         <div className='logo_container flex'>
-          <StrokeLogo infinite={false}/> 
-          <small className='small-txt'>ChrisJackem.com</small>       
+          <StrokeLogo infinite={false}/>          
         </div>
+        
         <ul className='flex nav-ul'>
-          <LinkComponent name='HOME' href='/home'/>
-          <LinkComponent name='ABOUT' href='/about'/>
+          <LinkComponent name='Home' href='/home'/>
+          <LinkComponent name='About' href='/about'/>
           {/* <LinkComponent name='GALLERY' href='/gallery'/> */}
-          <LinkComponent name='WORK' href='/work'/>
+          <LinkComponent name='Work' href='/work'/>
         </ul>
+        <div>
+          <p>OK</p>
+        </div>
       </nav>
-      <PathButton threshold={navHeight}/>
-    </div>
+      
+
   );
 }
 

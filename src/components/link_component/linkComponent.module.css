@@ -1,12 +1,12 @@
 .link{
-    --col: var(--foreground, #000);
+    --col: var(--midground, #000);
     font-size: 16px;
     color: var(--col, #000);
     transition: all 600ms ease-out;
     height: min-content;
     position: relative;
-    font-style: italic;
     padding: 0.25rem 1.1rem 0.25rem 1rem;
+    font-weight: bold;
 }
 .link::after, .active::after{
     position: absolute; top: 0px; left: 0px; content: '';
