@@ -37,7 +37,15 @@ export default function MeshDodec(props: MeshDodecProps) {
   const shaderRef = useRef<THREE.ShaderMaterial>(null!)
   const [clicked, click] = useState(false)
   const velocityRef = useRef({ x: 0, y: 0 })
+
+  function Render() {
+    // Takes over the render-loop, the user has the responsibility to render
+    useFrame(({ gl, scene, camera }) => {
+      gl.render(scene, camera)
+    }, 1)
+  }
   
+
   useFrame((state, delta) => {
     if (!props.hovered) {
       ref.current.rotation.x += delta * 0.02;
