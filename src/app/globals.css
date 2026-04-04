@@ -43,6 +43,10 @@
 .bg-mg{ background-color: var(--midground, #ccc);}
 .bg-bg{ background-color: var(--background, #000);}
 
+
+/********************** box */
+.padded{ padding: 3rem }
+
 .shadow{
   text-shadow: #000 0px 0px 3px;
 }
@@ -88,7 +92,7 @@ button{
 }
 
 .button.dark{
-  color: var(--foreground, #FFF);
+  color: var(--accent, #FFF);
   border-color: var(--darkest, #000);
   background-color: var(--background, #ccc);
 }
@@ -183,6 +187,9 @@ a {
   background: var(--background, #000);
   background: radial-gradient(circle at 5%, var(--darkest), 10%,  var(--background), 90%, var(--foreground));
   border-bottom: 2px solid var(--darkest, #000);
+}
+.page-hero > div{
+  z-index: 2;
 }
 
 .page_single{

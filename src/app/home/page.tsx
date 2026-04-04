@@ -40,17 +40,18 @@ const HomePage = () => {
     >
       <section
         id="home-splash" 
-        className="page_double page-hero"
+        className="page_double page-hero p-rel"
       >
         <div id="home_blurb" className="flex flex-align-center">
-          <div className="flex-column">
+          <div className="flex-column padded">
             <LineHeader text={'creative engineering portfolio'} />
             <TypewriterLoading />            
             <br/>
             <button aria-label="Gallery page" className='button dark'>gallery</button>
           </div>
+          
         </div>
-        <Mesh />
+        <Mesh />          
       </section>
 
       <br/>
