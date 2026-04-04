@@ -12,7 +12,7 @@ import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 import Link from "next/link";
 import ThemeBanner from "@/components/theme_banner/theme_banner";
 import LineHeader from "@/components/line_header/line_header";
-import Mesh from "@/components/Mesh/mesh";
+import Mesh from "@/components/mesh/mesh";
 
 
 /*********************************************************************************** Home Page  */
@@ -26,8 +26,8 @@ const CacheReaderLoading = dynamic(
     { loading: ()=> <LoadingComponent />}
 )
 const MeshLoading = dynamic(
-    ()=> import("@/components/Mesh/mesh"),
-    { loading: ()=> <Mesh />}
+    ()=> import("@/components/mesh/mesh"),
+    { loading: ()=> <Mesh type={'dodec'}/>}
 )
 
 const HomePage = () => {
@@ -58,7 +58,7 @@ const HomePage = () => {
             </div>
           </div>          
         </div>
-        <MeshLoading />
+        <MeshLoading type={'dodec'}/>
       </section>
 
       <br/>
@@ -67,7 +67,8 @@ const HomePage = () => {
         
         <div className=" border-left flex flex-column-left" style={{ 
           gap: '0.25rem', 
-          paddingLeft: '1.8rem',          
+          paddingLeft: '1.8rem', 
+          justifyContent: 'center'         
         }}>
           <p className="t-shout">     
             <strong>I specialize in web apps. </strong>          

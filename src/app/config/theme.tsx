@@ -34,12 +34,12 @@ export const THEMES: ThemesType = {
     },
     Forest: {
         name: "Forest",
-        text: "#2a190cff",
-        darkest: "#184d47",
-        background: "#96bb7c",
-        midground: "#f3e9dd",
-        foreground: "#fff",
-        accent: "#cdffa6ff",
+        text: "#ffffff",
+        darkest: "#0b2421",
+        background: "#2d5a3d",
+        midground: "#1a3a27",
+        foreground: "#0f1f15",
+        accent: "#7fb069ff",
     },
     Sunset: {
         name: "Sunset",

@@ -1,93 +1,19 @@
-import * as THREE from 'three'
-import { createRoot } from 'react-dom/client'
-import React, { useRef, useState } from 'react'
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 
-const vertexShader = `
-  varying vec3 vPosition;
-  varying vec3 vNormal;
+import React, { useEffect, useRef, useState } from 'react'
+import { Canvas } from '@react-three/fiber'
+import MeshDodec from './mesh_dodec'
+import MeshBoxes from './mesh_boxes'
+import { motion, useInView } from 'motion/react';
 
-  void main() {
-    vPosition = position;
-    vNormal = normalize(normalMatrix * normal);
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`
-
-const fragmentShader = `
-  varying vec3 vPosition;
-  varying vec3 vNormal;
-
-  void main() {
-    vec3 normal = normalize(vNormal);
-    float edge = abs(dot(normal, vec3(0.0, 0.0, 1.0)));
-    edge = smoothstep(0.3, 0.7, edge);
-    vec3 color = vec3(vPosition * 0.5 + 0.5);
-    color = mix(vec3(0.0), color, edge);
-    gl_FragColor = vec4(color, 1.0);
-  }
-`
-
-function Box(props: ThreeElements['mesh'] & { hovered: boolean; mouseMove: { x: number; y: number } }) {
-  const ref = useRef<THREE.Mesh>(null!)
-  const shaderRef = useRef<THREE.ShaderMaterial>(null!)
-  const [clicked, click] = useState(false)
-  const [shaderColor, setShaderColor] = useState({ r: 0.2, g: 0.2, b: 0.2 })
-  const velocityRef = useRef({ x: 0, y: 0 })
-  
-  useFrame((state, delta) => {
-    if (!props.hovered) {
-      ref.current.rotation.x += delta * 0.02;
-      ref.current.rotation.y += delta * 0.01;
-      if (Math.abs(velocityRef.current.x) > 360 || Math.abs(velocityRef.current.y) > 360){
-        velocityRef.current = { x: 0, y: 0 }
-      }
-    } else {
-      const targetX = props.mouseMove.y * 0.4;
-      const targetY = props.mouseMove.x * 0.4;
-      velocityRef.current.x += (targetX - ref.current.rotation.x) * 0.1;
-      velocityRef.current.y += (targetY - ref.current.rotation.y) * 0.1;
-      ref.current.rotation.x += velocityRef.current.x * delta;
-      ref.current.rotation.y += velocityRef.current.y * delta;
-      velocityRef.current.x *= 0.95;
-      velocityRef.current.y *= 0.95;
-    }
-  })
-  
-  const handleClick = () => {
-    click(!clicked)
-    const randomColor = { r: Math.random(), g: Math.random(), b: Math.random() }
-    setShaderColor(randomColor)
-    console.log(JSON.stringify(randomColor))
-    if (shaderRef.current) {
-      shaderRef.current.uniforms.uColor.value.set(randomColor.r, randomColor.g, randomColor.b)
-    }
-  }
-
-  return (
-    <mesh
-      {...props}
-      ref={ref}
-      scale={clicked ? 1: 1.7}
-      onClick={handleClick}>      
-      <dodecahedronGeometry  args={[1, 1]}/>
-      <shaderMaterial 
-        ref={shaderRef}
-        vertexShader={vertexShader} 
-        fragmentShader={fragmentShader} 
-        wireframe={true}
-        uniforms={{
-          uColor: { value: new THREE.Color(shaderColor.r, shaderColor.g, shaderColor.b) }
-        }}
-      />
-    </mesh>
-  )
+type MeshProps = {
+  type: 'dodec' | 'boxes' | undefined
 }
 
-
-const Mesh = () => {
+const Mesh = (props:MeshProps) => {
   const [hovered, hover] = useState(false)
+  const container_ref = useRef(null)
   const [mouseMove, setMouseMove] = useState({ x: 0, y: 0 })
+  const isInView = useInView(container_ref);
   
   const handleMouseMove = (event: React.PointerEvent) => {
     setMouseMove({
@@ -95,9 +21,23 @@ const Mesh = () => {
       y: (event.clientY / window.innerHeight) * 2 - 1
     })
   }
+
+/*  useEffect(() => {
+    // Stop the animation loop
+    renderer.setAnimationLoop(null);
+
+    // To restart later
+    renderer.setAnimationLoop(() => {
+      renderer.render(scene, camera);
+}, [isInView]) */
+
   
-  return (
-    <Canvas 
+  
+  return (    
+    <Canvas
+      ref={container_ref}
+      className='canvas'
+      /* override*/
       style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
       onPointerMove={handleMouseMove}
       onPointerEnter={() => hover(true)}
@@ -105,8 +45,18 @@ const Mesh = () => {
         <ambientLight intensity={Math.PI / 1.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.9} intensity={Math.PI * 100 } />
         <pointLight position={[-10, -10, -10]} decay={0.4} intensity={Math.PI } />
-        <Box position={[.2, 0, 3.1]} hovered={hovered} mouseMove={mouseMove} />            
-             
+        {props.type === 'dodec' && 
+          <MeshDodec 
+            hovered={hovered} 
+            mouseMove={mouseMove} 
+            position={[.2, 0, 3.1]} 
+          />}
+        {props.type === 'boxes' && 
+          <MeshBoxes
+            hovered={hovered} 
+            mouseMove={mouseMove} 
+            position={[.2, 0, 3.1]} 
+          />}        
     </Canvas>
   )
 }
