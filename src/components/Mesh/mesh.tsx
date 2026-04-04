@@ -39,7 +39,9 @@ function Box(props: ThreeElements['mesh'] & { hovered: boolean; mouseMove: { x: 
     if (!props.hovered) {
       ref.current.rotation.x += delta * 0.02;
       ref.current.rotation.y += delta * 0.01;
-      velocityRef.current = { x: 0, y: 0 }
+      if (Math.abs(velocityRef.current.x) > 360 || Math.abs(velocityRef.current.y) > 360){
+        velocityRef.current = { x: 0, y: 0 }
+      }
     } else {
       const targetX = props.mouseMove.y * 0.4;
       const targetY = props.mouseMove.x * 0.4;

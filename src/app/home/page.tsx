@@ -63,29 +63,35 @@ const HomePage = () => {
 
       <br/>
 
-      <section className="page-center padded page_double">
-        <div>
+      <section className="page-center padded page_double page-container">
+        
+        <div className=" border-left flex flex-column-left" style={{ 
+          gap: '0.25rem', 
+          paddingLeft: '1.8rem',          
+        }}>
           <p className="t-shout">     
             <strong>I specialize in web apps. </strong>          
             However I can handle any aspect of almost any project from the metal to the final product.
           </p>
           <br/>
           <small className="t-ac">I even make a mean chicken parm</small>
-          <br/>
-          <br/>
+          <br/>          
           <div className="flex ">
             <p>X</p>
             <p>X</p>
             <p>X</p>
           </div>
         </div>
+
         <img
+          style={{ marginLeft: 'auto'}}
           fetchPriority="high"
           alt='vector self portrait'
           width='300px'
           height='300px'
           src='static/images/portrait_02.svg'
         />
+        
       </section>
 
       <section className={'page_triple page-container'}>

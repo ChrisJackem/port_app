@@ -59,6 +59,9 @@
 /********************** box */
 .padded{ padding: 3rem }
 
+.border-left{ border-left: 2px solid var(--accent, yellow)}
+.border-right{ border-right: 2px solid var(--accent, yellow)}
+
 .shadow{
   text-shadow: #000 0px 0px 3px;
 }
@@ -114,8 +117,6 @@ button{
   color: var(--darkest, #000) !important;
   background-color: var(--accent, yellow) !important;
 }
-
-
 
 .button:hover{
   color: var(--accent, yellow);
@@ -176,7 +177,11 @@ a {
   gap: 1rem;
 }
 .flex{ flex-wrap: wrap; }
-.flex-column{ flex-direction: column; }
+.flex-column, .flex-column-left{ flex-direction: column; }
+.flex-column-left{ 
+  justify-content: left;
+  text-align: left; 
+}
 .flex-child{ flex: 1 1 auto; }
 .flex-end{ justify-content: flex-end;}
 .flex-align-center{ align-items: center;}
@@ -198,7 +203,8 @@ a {
 }
 
 .page-container{
-  margin: 3rem 0px;
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
 }
 
 .page-hero{
@@ -211,7 +217,6 @@ a {
 .page-hero > div{
   z-index: 2;
 }
-
 
 .page-center{
   max-width: 800px;
