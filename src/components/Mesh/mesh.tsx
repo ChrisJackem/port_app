@@ -9,7 +9,7 @@ const vertexShader = `
 
   void main() {
     vPosition = position;
-    vNormal = normal;
+    vNormal = normalize(normalMatrix * normal);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `
@@ -17,14 +17,13 @@ const vertexShader = `
 const fragmentShader = `
   varying vec3 vPosition;
   varying vec3 vNormal;
-  uniform vec3 uColor;
 
   void main() {
     vec3 normal = normalize(vNormal);
     float edge = abs(dot(normal, vec3(0.0, 0.0, 1.0)));
     edge = smoothstep(0.3, 0.7, edge);
-    vec3 color = uColor;
-    color = mix(uColor, color, edge);
+    vec3 color = vec3(vPosition * 0.5 + 0.5);
+    color = mix(vec3(0.0), color, edge);
     gl_FragColor = vec4(color, 1.0);
   }
 `
@@ -97,7 +96,7 @@ const Mesh = () => {
   
   return (
     <Canvas 
-      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '1', opacity: 0.5}}
+      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '1', opacity: 0.12}}
       onPointerMove={handleMouseMove}
       onPointerEnter={() => hover(true)}
       onPointerLeave={() => hover(false)}>
@@ -105,6 +104,7 @@ const Mesh = () => {
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.9} intensity={Math.PI * 100 } />
         <pointLight position={[-10, -10, -10]} decay={0.4} intensity={Math.PI } />
         <Box position={[.2, 0, 3.1]} hovered={hovered} mouseMove={mouseMove} />            
+             
     </Canvas>
   )
 }

@@ -47,9 +47,11 @@ const HomePage = () => {
             <LineHeader text={'creative engineering portfolio'} />
             <TypewriterLoading />            
             <br/>
-            <button aria-label="Gallery page" className='button dark'>gallery</button>
-          </div>
-          
+            <div className="flex">
+              <button aria-label="Gallery page" className='button dark'>gallery</button>
+              <button aria-label="Gallery page" className='button '>gallery</button>
+            </div>
+          </div>          
         </div>
         <Mesh />          
       </section>
