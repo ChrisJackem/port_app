@@ -1,6 +1,7 @@
 'use client'
 import './footer.css'
 import React, { useContext } from 'react'
+import { usePathname } from 'next/navigation';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
 import ChipHeader from '../chip_header/chip_header'
 import { THEMES, ThemeType } from '@/app/config/theme';
@@ -32,15 +33,18 @@ const Footer = () => {
         <div className='footer_links'>
           {/* <h4 >NAV</h4> */}
           <ul className='flex list-style-none footer-button-container'>
-            <LinkComponent className={``} name='Home' href='/home'/>
-            <LinkComponent className={``} name='About' href='/about'/>
+            {/* <LinkComponent className={``} name='Home' href='/home'/> */}
+            <LinkFooter name='Home' href='/home'/>
+            <LinkFooter name='About' href='/about'/>
+            <LinkFooter name='Work' href='/work'/>
+            {/* <LinkComponent className={``} name='About' href='/about'/> */}
             {/* <LinkComponent className={`button`} name='GALLERY' href='/gallery'/> */}
-            <LinkComponent className={``} name='Work' href='/work'/>
+            {/* <LinkComponent className={``} name='Work' href='/work'/> */}
           </ul>
         </div>
         <div className={'footer_links'}>
-          {/* <h4>THEME</h4> */}
           <LineHeader text='Theme' />
+          <br/>
           <div className='flex footer-button-container'>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />
@@ -96,6 +100,18 @@ const ThemeBtnFooter = ({ Theme }: {Theme: ThemeType}) => {
             className={`button footer-theme-btn ${active && 'active'}`}
             onClick={()=>SetTheme(Theme)}
         >{Theme.name.toLowerCase()}</button>
+    )
+}
+
+const LinkFooter = ({ name, href }: { name: string, href: string }) => {
+    const pathname = usePathname();
+    const isActive:string = pathname === href ? 'active' : ''
+    return (
+        <li>
+            <Link href={href} className={`footer-link ${isActive ? "active" : ""}`}>
+                {name}
+            </Link>
+        </li>
     )
 }
 
