@@ -1,14 +1,15 @@
 
 import React, { useEffect, useRef, useState } from 'react'
-/* import MeshDodec from './mesh_dodec'
-import MeshBoxes from './mesh_boxes' */ 
+import MeshDodec from './mesh_dodec'
+/* import MeshBoxes from './mesh_boxes'  */
 import { useInView } from 'motion/react';
-/* import { Canvas, useThree } from '@react-three/fiber' */
+import { Canvas, useThree } from '@react-three/fiber'
 
 
 const STYLE = {width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}
 
 type MeshProps = {
+  mouseMove: { x: number; y: number; };
   type: 'dodec' | 'boxes' | undefined
 }
 
@@ -21,7 +22,9 @@ type CustomCanvasProps = {
 const Mesh = (props:MeshProps) => {
     const container_ref = useRef(null)
     const [mouseMove, setMouseMove] = useState({ x: 0, y: 0 })
-    const isInView = useInView(container_ref);
+    const [hovered, setHovered] = useState(false)
+    const canvasRef = useRef<HTMLCanvasElement | null>(null)
+    const isInView = useInView(canvasRef);
   
   const handleMouseMove = (event: React.PointerEvent) => {
     setMouseMove({
@@ -30,14 +33,37 @@ const Mesh = (props:MeshProps) => {
     })
   }
   
-  return (       
-    <div ref={container_ref} style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}>
-      <CustomCanvas
-        type={props.type}
-        mouseMove={mouseMove}
-        onMouseMove={handleMouseMove}
-      />
-    </div>
+  return (     
+    
+    <Canvas
+      ref={canvasRef}
+      className='canvas'
+      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
+      /* ref={canvasRef} */
+      /* mouseMove={mouseMove}
+      onMouseMove={handleMouseMove} */
+    >
+      { isInView && <>
+          <ambientLight intensity={Math.PI / 1.5} />
+          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.9} intensity={Math.PI * 100 } />
+          <pointLight position={[-10, -10, -10]} decay={0.4} intensity={Math.PI } />
+          
+          {props.type === 'dodec' &&  
+            <MeshDodec 
+              hovered={hovered}
+              mouseMove={props.mouseMove} 
+              position={[.2, 0, 3.1]} 
+            />}
+
+         {/*  {props.type === 'boxes' &&
+            <MeshBoxes
+              hovered={hovered} 
+              mouseMove={props.mouseMove} 
+              position={[.2, 0, 3.1]} 
+            />}   */}
+
+          </>}
+    </Canvas>
   )
 }
 
@@ -45,13 +71,15 @@ type RenderLoopControllerProps = {
   targetRef: React.RefObject<HTMLCanvasElement | null>
 }
 
-function CustomCanvas(props: CustomCanvasProps){
+/* function CustomCanvas(props: CustomCanvasProps){
   const [hovered, hover] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const isInView = useInView(canvasRef)
 
+  return (
 
-  return null
+  ) */
+
   /* return (
     <Canvas      
       className='canvas'
@@ -83,7 +111,7 @@ function CustomCanvas(props: CustomCanvasProps){
 
           </>}
     </Canvas>
-    ) */
-}
+    ) 
+}*/
 
 export default Mesh
