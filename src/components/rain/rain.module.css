@@ -1,0 +1,7 @@
+.rain{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    overflow-wrap: break-word;
+    height: 150px;
+
+}

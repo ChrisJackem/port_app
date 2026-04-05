@@ -14,6 +14,7 @@ import ThemeBanner from "@/components/theme_banner/theme_banner";
 import LineHeader from "@/components/line_header/line_header";
 import Mesh2 from "@/components/mesh2/mesh2";
 import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
+import Rain from "@/components/rain/rain";
 
 
 /*********************************************************************************** Home Page  */
@@ -59,9 +60,7 @@ const HomePage = () => {
             </div>
           </div>          
         </div>
-        <div className="" style={{ textAlign: 'right'}}>
-
-        </div>
+        
         <Mesh2 />
       </section>
 
@@ -135,7 +134,14 @@ const HomePage = () => {
         </IconFrame>
       </section>
 
-
+      <section 
+        style={{ 
+          borderBottom: '2px solid var(--darkest, #000)'
+        }}
+        className="page-container page-center padded "
+      >
+        <Rain str='010001001111010101001000100111101010100111010001001111010101001110111' />
+      </section>
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />

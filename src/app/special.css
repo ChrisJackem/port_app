@@ -40,6 +40,10 @@
 /********************** Backgrounds */
 .bg-ac{ background-color: var(--accent, yellow);}
 .bg-mg{ background-color: var(--midground, #ccc);}
+.bg-txt{ 
+  background-color: var(--text, #ccc);
+  color: var(--background, #000);
+}
 .bg-bg{ background-color: var(--background, #000);}
 .bg-d-to-bg{
     background: linear-gradient(to top left, var(--darkest), 50%, var(--background) );
