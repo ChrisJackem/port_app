@@ -47,6 +47,9 @@
 .bg-dk-fade{
     background: linear-gradient(to bottom, var(--darkest), 90%, transparent );
 }
+.bg-fade{
+  background: linear-gradient(to right, var(--darkest), 80%, transparent);
+}
 
 
 /********************** box */

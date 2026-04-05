@@ -5,8 +5,8 @@
 }
 
 .skill-triple{
-    padding: 3rem 4rem 2rem 6rem;
-    margin-top: 1rem !important;    
+    padding: 3rem 4rem 2rem 4rem;
+    margin-top: 0px !important;
 }
 
 
@@ -14,8 +14,7 @@
     
 }
 #home-splash > div{
-    min-height: 600px;
-    background: linear-gradient(to right, var(--darkest), 80%, transparent);
+    min-height: 600px;    
     pointer-events: none;
     /* background-color: var(--darkest, #000); */
 }

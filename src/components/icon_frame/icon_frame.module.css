@@ -4,13 +4,9 @@
     align-items: center;
     gap: 0.5rem;
     min-height: 150px;
-    border-bottom: 3px solid var(--background, #ccc);
-    /* background-color: var(--darkest, #000); */
+    /* border-bottom: 3px solid var(--background, #ccc); */
     color: var(--text, #FFF);
-    border-bottom: 1px solid var(--midground);
-    border-radius: 0.5rem;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    /* border-bottom: 1px solid var(--midground); */
 }
 /* For opacity the BG is .psudo */
 /* .main_container::after{

@@ -46,7 +46,7 @@ const HomePage = () => {
         id="home-splash" 
         className="page_double page-hero p-rel"
       >
-        <div id="home_blurb" className="flex flex-align-center">
+        <div id="home_blurb" className="flex flex-align-center bg-fade">
           <div className="flex-column padded">
             <LineHeader text='What I do' />
             <TypewriterLoading />
@@ -59,7 +59,9 @@ const HomePage = () => {
             </div>
           </div>          
         </div>
-        {/* <MeshLoading type={'dodec'}/> */}
+        <div className="" style={{ textAlign: 'right'}}>
+
+        </div>
         <Mesh2 />
       </section>
 

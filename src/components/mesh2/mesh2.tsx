@@ -1,12 +1,15 @@
 import { Canvas } from '@react-three/fiber'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useContext, useState } from 'react'
 import { useInView } from 'react-intersection-observer';
 import { useFrame } from '@react-three/fiber';
+import { ThemeContext } from '../theme_wrapper/theme_wrapper';
+import { THEMES } from '@/app/config/theme';
 
 
 const DodecahedronMesh = () => {
     const meshRef = useRef<any>(null);
-
+    const {theme} = useContext(ThemeContext);
+    
     useFrame(() => {
         if (meshRef.current) {
             meshRef.current.rotation.x += 0.002;
@@ -20,7 +23,7 @@ const DodecahedronMesh = () => {
             scale={5.5}
         >
             <dodecahedronGeometry args={[1, 0]} />
-            <meshPhongMaterial color="#ff6b6b" wireframe={true} />
+            <meshPhongMaterial color={THEMES[theme]['accent']} wireframe={true} />
         </mesh>
     );
 };
@@ -33,7 +36,11 @@ const Mesh2 = () => {
     }, [isInView]);
 
     return (
-        <div ref={container_ref}>
+        <div 
+            ref={container_ref} 
+            className='fill' 
+            style={{zIndex: 0}}
+        >
             <Canvas               
                 className='canvas'
                 style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
