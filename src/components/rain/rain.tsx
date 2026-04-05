@@ -23,20 +23,17 @@ const Rain = ({url}:{url:string}) => {
     }, [isInView])
 
     return (
-        <div>
+        <div className={styles.container}>
+
             <div 
                 className={styles.rain}
                 ref={ref}
-                style={{ backgroundImage: `url('/static/${url}')` }}
-            >
-            
+                style={{ '--bg': `url('/static/${url}')` } as React.CSSProperties}
+            >                        
             </div>
-            <div 
-                className={styles.rain}
-                ref={ref}
-                style={{ backgroundImage: `url('/static/${url}')` }}
-            >
-            
+            <div className={styles.text}>
+                <h1>SPACER</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, obcaecati?</p>
             </div>
         </div>        
     )

@@ -1,8 +1,38 @@
+.container{
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+    background: linear-gradient( var(--darkest, #fff), transparent );
+    color: var(--background, #ccc);
+    min-height: 300px;
+}
+.text{
+    position: relative;
+    z-index: 1;
+}
+
 .rain{
-    background-repeat: repeat-y;
-    animation: gradient 1s linear infinite forwards;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 01;
+    background-repeat: repeat;
+    animation: gradient 59s linear infinite forwards;
     background-size: 100% 50%;
-    height:100px;
+    height:2000px; 
+    opacity: 1;   
+    background: linear-gradient(to top right, var(--text),90%, transparent),  var(--bg);
+    background-blend-mode: color-dodge;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 4rem;
+    }
+    .rain{
+        height:500px;
+    }
 }
 
 @keyframes gradient {

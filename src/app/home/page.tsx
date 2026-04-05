@@ -136,7 +136,7 @@ const HomePage = () => {
 
       <section 
         style={{ borderBottom: '2px solid var(--darkest, #000)' }}
-        className="page-container page-center padded "
+        className="page-container padded "
       >
         <Rain url='images/pixels.png' />
       </section>
