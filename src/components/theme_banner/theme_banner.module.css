@@ -1,6 +1,6 @@
 .container{    
     width: 100%;
-    padding: 4rem 20%;
+    padding: 5rem 20%;
     overflow: hidden;
     display: grid;
     gap: 1rem;
@@ -27,7 +27,7 @@
     font-size: 16px;
     font-weight: 600;
     border: 2px solid var(--darkest, #000);
-    color: var(--darkest, #000);
+    /* color: var(--f, #000); */
     width: min-content;
     height: min-content;
     background-color: var(--foreground, #FFF);
@@ -51,7 +51,7 @@
 }
 .theme_text{ 
     grid-area: text;
-    color: var(--foreground, #FFF);
+    color: var(--text, #FFF);
 }
 .theme_btns{ 
     grid-area: btns;
@@ -64,8 +64,8 @@
 
 @media screen and (max-width: 600px) {
     .container{
-        padding: 1rem;
-        margin: 1rem 0px;
+        padding: 2rem;
+        margin: 2rem 0px;
         display: flex;
         flex-direction: column;
     }

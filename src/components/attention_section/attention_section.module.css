@@ -20,12 +20,13 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    background: var(--midground, #ccc);
 }
-.imaged::after{
+/* .imaged::after{
     background: var(--background, #CCC);
     background: linear-gradient(to bottom, var(--midground), var(--background));
     opacity: 0.5;
-}
+} */
     .imaged > img{
         max-height: 200px;
          z-index: 1;
@@ -37,7 +38,8 @@
 }
 
 .child_container h4{
-    font-size: 22px;
+    font-size: 32px;
+    font-weight: 1000;
     margin-bottom: 5px;
 }
 
@@ -49,7 +51,7 @@
 @media screen and (max-width: 600px) {
     .container{
         width: 1fr;
-        margin: 0.75rem 1rem;        
+        margin: 3rem 0.5rem;        
         grid-template-columns: 1fr;
         grid-template-rows: min-content 1fr;
     }

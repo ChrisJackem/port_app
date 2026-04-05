@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import styles from './rain.module.css'
 import { useInView } from "motion/react";
 import { inView } from 'motion';
 
-const Rain = ({url}:{url:string}) => {
+const Rain = ({url, children }:{url:string, children: ReactNode}) => {
     
     const intervl = useRef(0);
     const ref = useRef(null);
@@ -24,7 +24,6 @@ const Rain = ({url}:{url:string}) => {
 
     return (
         <div className={styles.container}>
-
             <div 
                 className={styles.rain}
                 ref={ref}
@@ -32,8 +31,7 @@ const Rain = ({url}:{url:string}) => {
             >                        
             </div>
             <div className={styles.text}>
-                <h1>SPACER</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, obcaecati?</p>
+                {children}
             </div>
         </div>        
     )

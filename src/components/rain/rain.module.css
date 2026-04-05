@@ -2,7 +2,7 @@
     position: relative;
     overflow: hidden;
     padding: 3rem;
-    background: linear-gradient( var(--darkest, #fff), transparent );
+    background: var(--midground, #fff);
     color: var(--background, #ccc);
     min-height: 300px;
 }
@@ -16,14 +16,15 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    z-index: 01;
+    height: 100%;
+    z-index: 10;
     background-repeat: repeat;
     animation: gradient 59s linear infinite forwards;
-    background-size: 100% 50%;
-    height:2000px; 
+    background-size: 100% 50%;   
     opacity: 1;   
-    background: linear-gradient(to top right, var(--text),90%, transparent),  var(--bg);
-    background-blend-mode: color-dodge;
+    background: var(--bg), 
+        linear-gradient(to top right, var(--midground, #000),90%, transparent);
+    background-blend-mode: multiply;
 }
 
 @media (max-width: 600px) {
@@ -31,7 +32,7 @@
         padding: 4rem;
     }
     .rain{
-        height:500px;
+       /*  animation: gradient 2s linear infinite forwards;  */       
     }
 }
 

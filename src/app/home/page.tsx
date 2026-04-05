@@ -134,19 +134,22 @@ const HomePage = () => {
         </IconFrame>
       </section>
 
-      <section 
+      {/* <section 
         style={{ borderBottom: '2px solid var(--darkest, #000)' }}
-        className="page-container padded "
+        className=" "
       >
-        <Rain url='images/pixels.png' />
-      </section>
+        <Rain url='images/pixels.png'>
+          <h1>OK</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis animi et pariatur aliquam consequatur minima iusto voluptatibus unde exercitationem neque! </p>
+        </Rain>
+      </section> */}
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />
-          <h3>WEBSITE FEATURES</h3>
+          <h2>WEBSITE FEATURES</h2>
       </div>
 
-      {/* <section className="padded">
+      <section className="page-center">
         <AttentionSection 
           color={'var(--background, #CCC)'}
           bgOpacity={0.6} 
@@ -161,7 +164,7 @@ const HomePage = () => {
       
       <ThemeBanner />
 
-      <section className="padded">
+      <section className="page-center">
         <AttentionSection 
           color={'var(--background, #CCC)'} 
           bgOpacity={0.6} 
@@ -172,7 +175,7 @@ const HomePage = () => {
           <br/>
           <i>You can also navigate using the menu at the bottom of every page.</i>
         </AttentionSection>
-      </section> */}
+      </section>
            
     </motion.div>
   );
