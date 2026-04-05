@@ -35,7 +35,7 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
             animate={isInView ? 'seen' : 'unseen'}
             exit='unseen'
             transition= {{ delayChildren: 0.2 }}
-            className={`paged ${styles.container}`}
+            className={`paged featured ${styles.container}`}
             style={containerStyle}
             aria-hidden={true}
         >          
@@ -46,7 +46,7 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
             <motion.div className={`p-rel psudo ${styles.child_container}`} variants={SlamVariantsRight}>
                 {children}
             </motion.div>
-
+            
         </motion.section>
     )
 }

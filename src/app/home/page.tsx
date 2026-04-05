@@ -146,7 +146,7 @@ const HomePage = () => {
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />
-          <h2>WEBSITE FEATURES</h2>
+          <h1>WEBSITE FEATURES</h1>
       </div>
 
       <section className="page-center">

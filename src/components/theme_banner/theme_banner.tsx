@@ -76,7 +76,7 @@ export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
         <button 
-            className={`button invert ${(theme === Theme.name) && 'active'}`}
+            className={`button ${(theme === Theme.name) && 'active'}`}
             /* style={{ backgroundColor: theme === Theme.name ? `var(--accent)` : 'var(--foreground)'}} */
             onClick={()=>SetTheme(Theme)}
         >

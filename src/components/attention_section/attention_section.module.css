@@ -49,9 +49,9 @@
 }
 
 @media screen and (max-width: 600px) {
-    .container{
+    .container{       
         width: 1fr;
-        margin: 3rem 0.5rem;        
+        margin: 4.5rem 0rem;        
         grid-template-columns: 1fr;
         grid-template-rows: min-content 1fr;
     }
@@ -63,7 +63,7 @@
         max-height: 50px;
     }
     .child_container{
-        padding: 1.25rem !important;        
+        padding: 3rem 1.25rem 1.25rem 1.25rem!important;       
     }
     
 }
