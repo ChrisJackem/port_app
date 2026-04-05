@@ -26,10 +26,10 @@ const CacheReaderLoading = dynamic(
     ()=> import("@/components/cache_reader/cache_reader"),
     { loading: ()=> <LoadingComponent />}
 )
-const MeshLoading = dynamic(
+/* const MeshLoading = dynamic(
     ()=> import("@/components/mesh/mesh"),
     { loading: ()=> <Mesh type={'dodec'}/>} 
-)
+) */
 
 const HomePage = () => {
   return (
@@ -59,7 +59,8 @@ const HomePage = () => {
             </div>
           </div>          
         </div>
-        <MeshLoading type={'dodec'}/>
+        {/* <MeshLoading type={'dodec'}/> */}
+        <Mesh type={'dodec'}/>
       </section>
 
       <br/>
