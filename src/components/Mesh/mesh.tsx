@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import MeshDodec from './mesh_dodec'
 import MeshBoxes from './mesh_boxes'
 import { useInView } from 'motion/react';
-import { Canvas, useThree } from '@react-three/fiber'
+/* import { Canvas, useThree } from '@react-three/fiber' */
 
 
 const STYLE = {width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}
@@ -50,11 +50,13 @@ function CustomCanvas(props: CustomCanvasProps){
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const isInView = useInView(canvasRef)
 
-  return (
+
+  return null
+  /* return (
     <Canvas      
       className='canvas'
       ref={canvasRef}
-      /* override*/
+     
       style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
       onPointerMove={props.onMouseMove}
       onPointerEnter={() => hover(true)}
@@ -81,7 +83,7 @@ function CustomCanvas(props: CustomCanvasProps){
 
           </>}
     </Canvas>
-    )
+    ) */
 }
 
 export default Mesh
