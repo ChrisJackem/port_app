@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import MeshDodec from './mesh_dodec'
 /* import MeshBoxes from './mesh_boxes'  */
 import { useInView } from 'motion/react';
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 
 
 const STYLE = {width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}

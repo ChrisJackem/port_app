@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
-import { useFrame, ThreeElements } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 
 const vertexShader = `
   varying vec3 vPosition;
@@ -27,10 +27,10 @@ const fragmentShader = `
   }
 `
 
-type MeshDodecProps = ThreeElements['mesh'] & { 
-  hovered: boolean, 
-  mouseMove: { x: number, y: number } 
+type MeshDodecProps = {
+
 }
+
 
 export default function MeshDodec(props: MeshDodecProps) {
   const ref = useRef<THREE.Mesh>(null!)
@@ -47,10 +47,10 @@ export default function MeshDodec(props: MeshDodecProps) {
   
 
   useFrame((state, delta) => {
-    if (!props.hovered) {
+    /* if (!props.hovered) { */
       ref.current.rotation.x += delta * 0.02;
       ref.current.rotation.y += delta * 0.01;
-    } else {
+    /* } else {
       if ( Math.abs(ref.current.rotation.y) > 0.5 || Math.abs(ref.current.rotation.x) > 0.5 ){
         velocityRef.current = { x: 0, y: 0 }
         ref.current.rotation.y = 0;
@@ -66,7 +66,7 @@ export default function MeshDodec(props: MeshDodecProps) {
       
       velocityRef.current.x *= 0.95;
       velocityRef.current.y *= 0.95;
-    }
+    } */
   })
   
   const handleClick = () => {
