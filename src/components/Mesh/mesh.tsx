@@ -32,7 +32,7 @@ const Mesh = (props:MeshProps) => {
   }
   
   return (       
-    <div ref={container_ref} style={STYLE}>
+    <div ref={container_ref} style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}>
       <CustomCanvas
         type={props.type}
         mouseMove={mouseMove}
@@ -56,7 +56,7 @@ function CustomCanvas(props: CustomCanvasProps){
       className='canvas'
       ref={canvasRef}
       /* override*/
-      style={STYLE}
+      style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
       onPointerMove={props.onMouseMove}
       onPointerEnter={() => hover(true)}
       onPointerLeave={() => hover(false)}>
