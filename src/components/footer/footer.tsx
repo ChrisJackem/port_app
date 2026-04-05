@@ -13,6 +13,8 @@ import LoadingComponent from '../loading_component/loading_component';
 import { theme_directoried, theme_urls } from '../themeBtns/themeBtns';
 import { StrokeLogo } from '../loading_component/loading_component';
 import SvgBtn, { SVG_FB, SVG_GH, SVG_LI } from '../svg_btns/svg_btns';
+import LineHeader from '../line_header/line_header';
+
 
 const Footer = () => {
   const {theme} = useContext(ThemeContext);
@@ -21,7 +23,6 @@ const Footer = () => {
   
   return (
     <footer id='footer-container' className='psudo flex'>      
-      
       <section id='footer-logo-container'>
           <StrokeLogo infinite={false}/>
           <small>chrisjackem.com</small>    
@@ -29,16 +30,17 @@ const Footer = () => {
       
       <section id='footer-left' className='flex-column'>        
         <div className='footer_links'>
-          <h4 className='t-bg'>NAVIGATE</h4>
+          {/* <h4 >NAV</h4> */}
           <ul className='flex list-style-none footer-button-container'>
-            <LinkComponent className={`button`} name='HOME' href='/home'/>
-            <LinkComponent className={`button`} name='ABOUT' href='/about'/>
+            <LinkComponent className={``} name='Home' href='/home'/>
+            <LinkComponent className={``} name='About' href='/about'/>
             {/* <LinkComponent className={`button`} name='GALLERY' href='/gallery'/> */}
-            <LinkComponent className={`button`} name='WORK' href='/work'/>
+            <LinkComponent className={``} name='Work' href='/work'/>
           </ul>
         </div>
         <div className={'footer_links'}>
-          <h4>THEME</h4>
+          {/* <h4>THEME</h4> */}
+          <LineHeader text='Theme' />
           <div className='flex footer-button-container'>
             <ThemeBtnFooter Theme={THEMES.Default} />
             <ThemeBtnFooter Theme={THEMES.Forest} />

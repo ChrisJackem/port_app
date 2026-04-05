@@ -10,13 +10,21 @@
     "icon text"
     "btns btns";
     transition: all 1s ease-out;
-    border-top: 3px double var(--accent, #000);
-    border-bottom: 1px solid var(--accent, #000);
+    border-top: 3px double var(--darkest, #000);
+    border-bottom: 1px solid var(--darkest, #000);
     background-color: var(--background, #000);
 }
 .container::after{
     z-index: 1;
     background: linear-gradient(to bottom left, var(--darkest), 40%, transparent);    
+}
+
+.heading{
+    font-size: 44px;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 1rem;
+    color: var(--accent, yellow)
 }
 
 .theme_label{
