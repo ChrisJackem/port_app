@@ -8,11 +8,12 @@
     z-index: 2;
     left: 2px;
     top: 0px;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     text-orientation: sideways;
     height: max-content;
     font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: clamp(12px, 2vw, 16px);
+    font-weight: 900;
     color: var(--midground, #ccc);
     padding: 0.5rem 0.1rem;
 }

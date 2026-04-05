@@ -25,7 +25,7 @@
     gap: 0.5rem;
     z-index: 1;    
     background: var(--darkest, #000);
-    color: var(--foreground, #FFF);
+    /* color: var(--foreground, #FFF); */
     font-size: large;
     margin: 40px 0px;
 }

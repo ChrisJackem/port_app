@@ -135,12 +135,10 @@ const HomePage = () => {
       </section>
 
       <section 
-        style={{ 
-          borderBottom: '2px solid var(--darkest, #000)'
-        }}
+        style={{ borderBottom: '2px solid var(--darkest, #000)' }}
         className="page-container page-center padded "
       >
-        <Rain str='010001001111010101001000100111101010100111010001001111010101001110111' />
+        <Rain url='images/pixels.png' />
       </section>
 
       <div className={`feature-header flex`}>        

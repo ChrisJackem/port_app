@@ -49,7 +49,7 @@
     background: linear-gradient(to top left, var(--darkest), 50%, var(--background) );
 }
 .bg-dk-fade{
-    background: linear-gradient(to bottom, var(--darkest), 90%, transparent );
+    background: linear-gradient(to bottom, var(--darkest), 85%, transparent );
 }
 .bg-fade{
   background: linear-gradient(to right, var(--darkest), 80%, transparent);
