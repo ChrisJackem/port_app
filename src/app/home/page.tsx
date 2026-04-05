@@ -12,7 +12,7 @@ import { SVG_GEAR } from "@/components/svg_btns/svg_btns";
 import Link from "next/link";
 import ThemeBanner from "@/components/theme_banner/theme_banner";
 import LineHeader from "@/components/line_header/line_header";
-import Mesh from "@/components/mesh/mesh";
+import Mesh2 from "@/components/mesh2/mesh2";
 import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
 
 
@@ -60,7 +60,7 @@ const HomePage = () => {
           </div>          
         </div>
         {/* <MeshLoading type={'dodec'}/> */}
-        <Mesh type="dodec"/>
+        <Mesh2 />
       </section>
 
       <br/>

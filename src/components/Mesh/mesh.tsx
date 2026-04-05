@@ -32,16 +32,17 @@ const Mesh = (props:MeshProps) => {
       y: (event.clientY / window.innerHeight) * 2 - 1
     })
   }
+
+  return null;
   
-  return (     
+/*   return (     
     
     <Canvas
       ref={canvasRef}
       className='canvas'
       style={{width: '100%', height: '100%', position: 'absolute', zIndex: '0', opacity: 0.8}}
-      /* ref={canvasRef} */
-      /* mouseMove={mouseMove}
-      onMouseMove={handleMouseMove} */
+
+
     >
       { isInView && <>
           <ambientLight intensity={Math.PI / 1.5} />
@@ -55,16 +56,11 @@ const Mesh = (props:MeshProps) => {
               position={[.2, 0, 3.1]} 
             />}
 
-         {/*  {props.type === 'boxes' &&
-            <MeshBoxes
-              hovered={hovered} 
-              mouseMove={props.mouseMove} 
-              position={[.2, 0, 3.1]} 
-            />}   */}
+         
 
           </>}
     </Canvas>
-  )
+  ) */
 }
 
 type RenderLoopControllerProps = {
