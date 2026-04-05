@@ -1,0 +1,22 @@
+.container{
+    position: relative;    
+    width: 5%;
+}
+.text{
+    position: absolute;
+    z-index: 2;
+    left: 2px;
+    top: 0px;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    height: max-content;
+    font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: clamp(12px, 3vw, 18px);
+    color: var(--accent, yellow);
+    background-color: var(--darkest);
+    padding: 0.5rem 0.1rem;
+}
+.hr{
+    border-bottom: 2px solid var(--darkest, yellow);
+}

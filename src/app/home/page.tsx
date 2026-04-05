@@ -13,6 +13,7 @@ import Link from "next/link";
 import ThemeBanner from "@/components/theme_banner/theme_banner";
 import LineHeader from "@/components/line_header/line_header";
 import Mesh from "@/components/mesh/mesh";
+import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
 
 
 /*********************************************************************************** Home Page  */
@@ -63,8 +64,7 @@ const HomePage = () => {
 
       <br/>
 
-      <section className="page-center padded page_double page-container">
-        
+      <section className="page-center padded page_double page-container">        
         <div className=" border-left flex flex-column-left" style={{ 
           gap: '0.25rem', 
           paddingLeft: '1.8rem', 
@@ -83,7 +83,6 @@ const HomePage = () => {
             <p>X</p>
           </div>
         </div>
-
         <img
           style={{ marginLeft: 'auto'}}
           fetchPriority="high"
@@ -92,10 +91,12 @@ const HomePage = () => {
           height='300px'
           src='static/images/portrait_02.svg'
         />
-        
       </section>
 
-      <section className={'page_triple page-container'}>
+      <LineHeaderHoriz text={"SKILLSET SYNOPSIS A"}/>
+
+      <section className={'page_triple page-container p-rel skill-triple bg-dk-fade'}>
+        
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>
@@ -104,7 +105,7 @@ const HomePage = () => {
             href={'https://github.com/ChrisJackem'} 
             target="_blank" rel="noopener noreferrer"
           >
-            <button aria-label="Github external link" className='button dark'>github</button>
+            <button aria-label="Github external link" className='button active'>github</button>
           </Link> 
         </IconFrame>        
 
@@ -115,7 +116,7 @@ const HomePage = () => {
             href='/work' 
             aria-label="Work page"
           >
-            <button aria-label={"Games page"} className='button dark'>work</button>
+            <button aria-label={"Games page"} className='button active'>work</button>
           </Link>
         </IconFrame>
 
@@ -126,10 +127,12 @@ const HomePage = () => {
             href='/gallery' 
             aria-label="Gallery page"
           >
-            <button aria-label="Gallery page" className='button dark'>gallery</button>            
+            <button aria-label="Gallery page" className='button active'>gallery</button>            
           </Link> 
         </IconFrame>
       </section>
+
+
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />

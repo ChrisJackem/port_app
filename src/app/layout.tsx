@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { armata, blinker, akira, libreFranklin } from "./config/fonts";
 import "./globals.css";
+import "./special.css";
 import styles from "./layout.module.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";

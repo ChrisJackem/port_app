@@ -4,6 +4,12 @@
     width: 100%;
 }
 
+.skill-triple{
+    padding: 3rem 4rem 2rem 6rem;
+    margin-top: 1rem !important;    
+}
+
+
 #home-splash{
     
 }
@@ -39,5 +45,7 @@
     #home-splash > div{
         min-height: 500px;
     }
-
+    .skill-triple{
+        padding: 2rem;
+    }
 }

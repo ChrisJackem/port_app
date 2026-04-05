@@ -5,12 +5,18 @@
     gap: 0.5rem;
     min-height: 150px;
     border-bottom: 3px solid var(--background, #ccc);
+    /* background-color: var(--darkest, #000); */
+    color: var(--text, #FFF);
+    border-bottom: 1px solid var(--midground);
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 /* For opacity the BG is .psudo */
-.main_container::after{
+/* .main_container::after{
     opacity: 1;    
     background: linear-gradient(to top, var(--accent, #ccc), 40%, transparent);
-}
+} */
 
 .main_container button{    
     margin-top: 0.75rem;
@@ -25,7 +31,7 @@
 .main_container h4{
     font-family: var(--f-akira);
     font-size: 22px;
-    color: var(--darkest, #000);
+    /* color: var(--darkest, #000); */
     letter-spacing: 0.65px;    
 }
 
