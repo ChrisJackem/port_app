@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+/* import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
 import { useFrame, ThreeElements } from '@react-three/fiber'
 
@@ -72,4 +72,4 @@ export default function MeshBoxes(props: ThreeElements['mesh'] & { hovered: bool
       />
     </mesh>
   )
-}
+} */
