@@ -7,11 +7,11 @@
     background-size: 60px;
     background-color: var(--darkest, #000);
     border-top: 2px solid var(--midground, #FFF);
-    /* background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), var(--background, #ccc)),
+    background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), var(--background, #ccc)),
         linear-gradient(to bottom, var(--darkest, #ccc), transparent),
-         url('/static/images/pixels.webp'); */
-/*     background-blend-mode: screen;
-    filter: drop-shadow(0px, 0px, 5px, var(--darkest)); */
+         url('/static/images/pixels.webp'); 
+     background-blend-mode: multiply;
+    filter: drop-shadow(0px, 0px, 5px, var(--darkest));
     flex-wrap: wrap;    
 }
 
@@ -24,6 +24,10 @@
 .footer-link{
     font-size: 30px;
     font-weight: bolder;
+    transition: all 600ms ease-out;
+}
+.footer-link:hover{
+    color: var(--midground, #ccc);
 }
 .footer-link.active{
     color: var(--accent, yellow);
@@ -73,6 +77,7 @@
     font-weight: 600; 
     text-align: right;
     padding: 3px;
+    color: var(--midground, #ccc);
 }
 
 @media screen and (max-width: 900px){
