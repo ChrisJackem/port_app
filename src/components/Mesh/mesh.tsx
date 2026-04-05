@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef, useState } from 'react'
-/* import { Canvas } from '@react-three/fiber' */
 import MeshDodec from './mesh_dodec'
 import MeshBoxes from './mesh_boxes'
 import { useInView } from 'motion/react';

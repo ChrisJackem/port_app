@@ -1,7 +1,7 @@
 // Variants for motion plugin
 
 import { easeIn, easeOut } from "motion"
-import { transition } from "three/examples/jsm/tsl/display/TransitionNode.js"
+/* import { transition } from "three/examples/jsm/tsl/display/TransitionNode.js" HUH ?? */ 
 
 export const PageVariants = {
     hidden: { opacity: 0, x: 0, y: 0 },
