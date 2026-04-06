@@ -1,6 +1,6 @@
 .container{    
     width: 100%;
-    padding: 5rem 20%;
+    padding: 6rem 20%;
     overflow: hidden;
     display: grid;
     gap: 1rem;
@@ -10,8 +10,8 @@
     "icon text"
     "btns btns";
     transition: all 1s ease-out;
-    border-top: 3px double var(--darkest, #000);
-    border-bottom: 1px solid var(--darkest, #000);
+    border-top: 1px solid var(--accent, #000);
+    border-bottom: 3px double var(--accent, #000);
     background-color: var(--background, #000);
 }
 .container::after{
@@ -66,13 +66,13 @@
     padding: 2rem;
     justify-content: center;
 }
-.theme_btn{
-    
+.theme_btn:not(.active){
+    border: 1px solid var(--midground, #ccc);
 }
 
 @media screen and (max-width: 600px) {
     .container{
-        padding: 2rem;
+        padding: 4rem 2rem;
         margin: 2rem 0px;
         display: flex;
         flex-direction: column;

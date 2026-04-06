@@ -76,8 +76,7 @@ export const ThemeBtn = ({ Theme }: {Theme: ThemeType}) => {
     const { theme, SetTheme } = useContext(ThemeContext);
     return (
         <button 
-            className={`button ${(theme === Theme.name) && 'active'}`}
-            /* style={{ backgroundColor: theme === Theme.name ? `var(--accent)` : 'var(--foreground)'}} */
+            className={`${styles.theme_btn} button${(theme === Theme.name) ? ' active' : ""}`}            
             onClick={()=>SetTheme(Theme)}
         >
             {Theme.name.toLowerCase()}
