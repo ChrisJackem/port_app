@@ -23,7 +23,9 @@ const NavBar = () => {
       <nav id="nav-bar" ref={nav_main} className='flex'>
         
         <div className='logo_container flex'>
-          <StrokeLogo infinite={false}/>          
+          <StrokeLogo infinite={false}/>
+          <small className={''}>chrisjackem.com</small>
+            
         </div>
         
         <ul className='flex nav-ul'>
@@ -33,7 +35,7 @@ const NavBar = () => {
           <LinkComponent name='Work' href='/work'/>
         </ul>
         <div>
-          <p>OK</p>
+          
         </div>
       </nav>
       

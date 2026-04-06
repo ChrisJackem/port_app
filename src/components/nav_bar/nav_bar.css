@@ -10,17 +10,15 @@
 }
 
 .logo_container{
-    height: 20px;
+    height: 40px;
     color: var(--text, #fff);
     transform-origin: top left;
-    transform: scale(0.45);
-    opacity: 0.85;
+    transform: scale(0.8);
+    
 }
-
-
     .small-txt{
-        font-weight: bold;
-        font-size: 0.75rem;
+        font-weight: 500;
+        font-size: 0.8rem;
         letter-spacing: 2px;
         animation: logoFade 800ms ease-out 2100ms forwards;        
         opacity: 0;
@@ -38,7 +36,7 @@
     align-self: center;
 }
 .nav-ul a{
-    font-size: 18px;
+    font-size: 20px;
     padding: 0.15rem 0.25rem;
 }
 

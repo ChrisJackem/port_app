@@ -15,6 +15,7 @@ import { theme_directoried, theme_urls } from '../themeBtns/themeBtns';
 import { StrokeLogo } from '../loading_component/loading_component';
 import SvgBtn, { SVG_FB, SVG_GH, SVG_LI } from '../svg_btns/svg_btns';
 import LineHeader from '../line_header/line_header';
+import IframeFooter from '../i_frame_footer/i_frame_footer';
 
 
 const Footer = () => {
@@ -54,6 +55,11 @@ const Footer = () => {
           </div>        
         </div>
       </section>
+
+      <div>
+        <h2>LETS TALK</h2>
+        {/* <IframeFooter url={'https://flack.cx/signup'}/> */}
+      </div>
 
       <aside id='footer-right' className='flex-column'>        
         <div>    

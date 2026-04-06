@@ -20,9 +20,8 @@
     gap: 2rem;
 }
 
-
 .footer-link{
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bolder;
     transition: all 600ms ease-out;
 }
@@ -35,7 +34,7 @@
 
 .footer-theme-btn{
     font-size: 16px;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.75rem;
     background-color: var(--foreground, #FFF);
 }
 
@@ -83,5 +82,8 @@
 @media screen and (max-width: 900px){
     #footer-left, #footer-right{
         width: 100%;
+    }
+    .footer-link{
+        font-size: 24px;
     }
 }
