@@ -22,7 +22,7 @@ type ScrollTrigger = {
     callback?: Function;
 }
 
-const ScrollMeter = ({triggers, children}:{triggers?:ScrollTrigger[], children?: ReactNode[]}) => {
+const ScrollMeter = ({triggers, className, children}:{triggers?:ScrollTrigger[], className?:string, children?: ReactNode[]}) => {
     const [scroll, setScroll] = useState<number>(0);
     const triggered = useRef<Set<number>>(new Set());// ids of triggered triggers
 
@@ -49,7 +49,7 @@ const ScrollMeter = ({triggers, children}:{triggers?:ScrollTrigger[], children?:
         });
     };
 
-    const debouncedScroll = useDebounce(handleScroll, 200);
+    const debouncedScroll = useDebounce(handleScroll, 300);
 
     React.useEffect(() => {
         window.addEventListener('scroll', debouncedScroll);

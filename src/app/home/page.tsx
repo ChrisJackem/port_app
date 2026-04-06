@@ -69,15 +69,16 @@ const HomePage = () => {
         <Mesh2 />
 
         {/* <aside className="hero-meter"> */}
-          <ScrollMeter 
+          <ScrollMeter
+            className={''}
             triggers={[              
               { id: 0, start: 10, end: 20, color: 'var(--midground, #000)'},
               { id: 1, start: 20, end: 30, color: 'var(--text, yellow)'},
               { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)'}
             ]}          
           >
-            <p>Initialized</p>
-            <p>Optimizing Scroll Trajectory...</p>
+            <p>0</p>
+            <p>1</p>
             <FlackPopup />
           </ScrollMeter> 
           
