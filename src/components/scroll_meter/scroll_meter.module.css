@@ -1,10 +1,14 @@
 .container{
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    z-index: 100;
+    bottom: 4px;
+    right: 8px;
     width: 100%;
     display: flex;
+    align-items: center;
     gap: 12px;
+    padding: 0.25rem;
+    font-size: 12px;
 }
 
 .meter{
@@ -16,11 +20,18 @@
     border-top: none;
 }
 
+.bar{
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.3;
+    height: 60%;
+}
+
 .needle{
     transition: left 200ms ease-out;
     position: absolute;
     left: var(--left);
-    top: 0px;
+    top: -4px;
     width: 15px;
-    height: 30px;
+    height: 25px;
 }

@@ -16,6 +16,7 @@ import Mesh2 from "@/components/mesh2/mesh2";
 import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
 import Rain from "@/components/rain/rain";
 import ScrollMeter from "@/components/scroll_meter/scroll_meter";
+import { useState } from "react";
 
 
 /*********************************************************************************** Home Page  */
@@ -34,6 +35,7 @@ const CacheReaderLoading = dynamic(
 ) */
 
 const HomePage = () => {
+  const [showPop, setShowPop] = useState(false);
   return (
     <motion.div 
       id='home_container' 
@@ -65,9 +67,20 @@ const HomePage = () => {
         
         <Mesh2 />
 
-        <aside className="hero-meter">
-          <ScrollMeter />
-        </aside>
+        {/* <aside className="hero-meter"> */}
+          <ScrollMeter 
+            triggers={[
+              { start: 60, end: 100, color: 'var(--accent, yellow)',
+                callback: ()=>{
+                  setShowPop(true)
+                }
+              }
+            ]}          
+          /> 
+          { showPop && (
+            <p className="fixed-modal">This text has been triggered.</p>  
+          )}
+        {/* </aside> */}
 
       </section>
 

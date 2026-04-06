@@ -1,7 +1,13 @@
-import { Armata, Blinker, Libre_Franklin, Zalando_Sans_Expanded } from 'next/font/google';
+import { Armata, Blinker, Libre_Franklin, Zalando_Sans_Expanded, Atkinson_Hyperlegible_Mono } from 'next/font/google';
 import localFont from 'next/font/local'
 
 /******** Font Definition File ********************/
+export const atkin = Atkinson_Hyperlegible_Mono({
+  weight: ['400'],
+  subsets: ['latin'],
+  fallback: ['arial', 'system-ui'],
+})
+
 
 export const akira = Zalando_Sans_Expanded({
   weight: ['400', '700', '900'],
