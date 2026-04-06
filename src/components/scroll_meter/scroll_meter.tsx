@@ -15,36 +15,41 @@ const useDebounce = (callback: () => void, delay: number) => {
 };
 
 type ScrollTrigger = {
+    id: number,
     start: number;
     end: number;
     color?:string;
     callback?: Function;
 }
 
-const ScrollMeter = ({triggers, update}:{triggers?:ScrollTrigger[], update?: Function}) => {
+const ScrollMeter = ({triggers, children}:{triggers?:ScrollTrigger[], children?: ReactNode[]}) => {
     const [scroll, setScroll] = useState<number>(0);
+    const triggered = useRef<Set<number>>(new Set());// ids of triggered triggers
 
     const handleScroll = () => {
         const new_scroll = Math.floor((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
         if (triggers){
-            const trig = triggers.filter( t => t.start <= new_scroll && new_scroll < t.end );
-            if ( trig.length ){
-                //console.log(JSON.stringify(trig));
-                trig.forEach( t => t.callback && t.callback() );
-                
-            }                
-        }
-        if ( update ){
-            update();
-        }
-        //console.log(new_scroll)
+            const trigged = triggers.filter( t => t.start <= new_scroll && new_scroll < t.end );
+            const triggeredIds = new Set(trigged.map( t => t.id ));
+
+            // Look for untriggers
+            const untriggered = Array.from(triggered.current).filter( id => !triggeredIds.has(id) );
+            if (untriggered.length){
+                console.log('untrigger', untriggered)
+                untriggered.forEach( id => triggered.current.delete(id) );
+            }
+            if ( trigged.length ){
+                console.log(JSON.stringify(trigged));
+                triggered.current = triggeredIds;
+                trigged.forEach( t => t.callback && t.callback() );                
+            }                            
+        }        
         setScroll( old_scroll => {
-            //const direction = `${old_scroll > new_scroll ? "UP" : "DOWN"}`
-            return new_scroll;
+            return Math.floor(new_scroll);
         });
     };
 
-    const debouncedScroll = useDebounce(handleScroll, 300);
+    const debouncedScroll = useDebounce(handleScroll, 200);
 
     React.useEffect(() => {
         window.addEventListener('scroll', debouncedScroll);
@@ -56,19 +61,26 @@ const ScrollMeter = ({triggers, update}:{triggers?:ScrollTrigger[], update?: Fun
             <small>{scroll.toFixed(8)}</small>
             <div className={styles.meter}>
                 { triggers && 
-                <div>
-                    {triggers.map((trigger, index) => (
-                        <div
-                            key={index}
-                            className={styles.bar}
-                            style={{                                
-                                left: `${trigger.start}%`,
-                                width: `${trigger.end - trigger.start}%`,
-                                backgroundColor: trigger.color || 'transparent',                                
-                            }}
-                        />
-                    ))}
-                </div> }
+                    <div>
+                        {triggers.map((trigger, index) => (
+                            <div
+                                key={index}
+                                className={styles.bar}
+                                style={{                                
+                                    left: `${trigger.start}%`,
+                                    width: `${trigger.end - trigger.start}%`,
+                                    backgroundColor: trigger.color || 'transparent',                                
+                                }}
+                            />
+                        ))}
+                    </div> 
+                }
+
+                { triggered.current.size > 0 && children && 
+                    <div>
+                        {children.map( (child, index) => (triggered.current.has(index) && child) || null )}    
+                    </div>
+                }
 
                 <div 
                     className={styles.needle} 
@@ -78,7 +90,11 @@ const ScrollMeter = ({triggers, update}:{triggers?:ScrollTrigger[], update?: Fun
                 </div>
             </div>
 
-            <p className=''>|||</p>
+            <p className=''>
+                {triggers && triggers.map((_, index) => (
+                    <span key={index}>|</span>
+                ))}
+            </p>
 
         </section>
     )

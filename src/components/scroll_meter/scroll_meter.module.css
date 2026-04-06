@@ -6,15 +6,24 @@
     width: 100%;
     display: flex;
     align-items: center;
+    height: min-content;
     gap: 12px;
     padding: 0.25rem;
     font-size: 12px;
+}
+
+.docked{
+    position: fixed;
+    z-index: 9999;
+    top: 100px;
+    left: 0px;
 }
 
 .meter{
     position: relative;
     --left: 50%;
     height: 20px;
+    padding: 0px 4px;
     flex-grow: 1;
     border: 2px solid var(--text, #FFF);
     border-top: none;

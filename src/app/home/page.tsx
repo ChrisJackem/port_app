@@ -17,6 +17,7 @@ import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_hori
 import Rain from "@/components/rain/rain";
 import ScrollMeter from "@/components/scroll_meter/scroll_meter";
 import { useState } from "react";
+import FlackPopup from "@/components/flack_popup/flack_popup";
 
 
 /*********************************************************************************** Home Page  */
@@ -69,17 +70,17 @@ const HomePage = () => {
 
         {/* <aside className="hero-meter"> */}
           <ScrollMeter 
-            triggers={[
-              { start: 60, end: 100, color: 'var(--accent, yellow)',
-                callback: ()=>{
-                  setShowPop(true)
-                }
-              }
+            triggers={[              
+              { id: 0, start: 10, end: 20, color: 'var(--midground, #000)'},
+              { id: 1, start: 20, end: 30, color: 'var(--text, yellow)'},
+              { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)'}
             ]}          
-          /> 
-          { showPop && (
-            <p className="fixed-modal">This text has been triggered.</p>  
-          )}
+          >
+            <p>Initialized</p>
+            <p>Optimizing Scroll Trajectory...</p>
+            <FlackPopup />
+          </ScrollMeter> 
+          
         {/* </aside> */}
 
       </section>
