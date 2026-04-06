@@ -34,6 +34,11 @@
 }
 
 
+.hero-meter{
+    position: relative;
+}
+
+
 
 @media only screen and (max-width: 600px) {
     .feature-header{
@@ -46,4 +51,5 @@
     .skill-triple{
         padding: 2rem;
     }
+
 }

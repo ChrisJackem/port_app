@@ -56,8 +56,9 @@ const Footer = () => {
         </div>
       </section>
 
-      <div>
-        <h2>LETS TALK</h2>
+      <div className="">
+        <h2 className='t-boxed'>LETS TALK</h2>
+        <p className='padded-smaller'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, rerum!</p>
         {/* <IframeFooter url={'https://flack.cx/signup'}/> */}
       </div>
 

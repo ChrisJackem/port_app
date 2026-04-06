@@ -7,6 +7,7 @@ export type ThemeType = {
     foreground: string;
     midground: string;
     accent: string;
+    accentB: string;
 }
 
 export type ThemesType = {
@@ -22,6 +23,7 @@ export const THEMES: ThemesType = {
         midground: "#999",
         foreground: "#242424",
         accent: "#dbf227",
+        accentB: "#c21f21",
     },
     Dark: {
         name: "Dark",
@@ -31,6 +33,7 @@ export const THEMES: ThemesType = {
         midground: "#282828",
         foreground: "#131313",
         accent: "#27e4f2",
+        accentB: "#27e4f2",
     },
     Forest: {
         name: "Forest",
@@ -40,6 +43,7 @@ export const THEMES: ThemesType = {
         midground: "#1a3a27",
         foreground: "#0f1f15",
         accent: "#7fb069",
+        accentB: "#7fb069",
     },
     Sunset: {
         name: "Sunset",
@@ -49,6 +53,7 @@ export const THEMES: ThemesType = {
         midground: "#ffb86b",
         foreground: "#fff",
         accent: "#ff0",
+        accentB: "#ff0",
     },
     Ocean: {
         name: "Ocean",
@@ -58,6 +63,7 @@ export const THEMES: ThemesType = {
         midground: "#ffd700",
         foreground: "#012233",
         accent: "#21e6c1",
+        accentB: "#21e6c1",
     },
     Candy: {
         name: "Candy",
@@ -67,5 +73,6 @@ export const THEMES: ThemesType = {
         midground: "#faffd8",
         foreground: "#fff",
         accent: "#d8ffb3",
+        accentB: "#d8ffb3",
     },
 };

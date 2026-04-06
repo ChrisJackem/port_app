@@ -1,0 +1,26 @@
+.container{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.meter{
+    position: relative;
+    --left: 50%;
+    height: 20px;
+    flex-grow: 1;
+    border: 2px solid var(--text, #FFF);
+    border-top: none;
+}
+
+.needle{
+    transition: left 200ms ease-out;
+    position: absolute;
+    left: var(--left);
+    top: 0px;
+    width: 15px;
+    height: 30px;
+}

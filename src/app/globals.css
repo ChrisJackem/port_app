@@ -4,6 +4,7 @@
   --midground: #999999;
   --foreground: #272727;
   --accent: #dbf227;
+  --accentB: #f2272a;
   --text: #FFF;
 }
 
@@ -39,7 +40,7 @@
 button{
   cursor: pointer;
   outline: none;  
-  border: none;
+  border: 1px solid var(--midground, #ccc);
   pointer-events: all;
   border-radius: 4px;
 }
@@ -55,16 +56,17 @@ button{
   font-weight: 700;
   color: var(--text, #000);
   /* border-radius: 999px; */
-  border: 1px solid var(--background, #000);
+  /* border: 1px solid var(--background, #000); */
 
 }
 
 .button.dark{
   color: var(--accent, #FFF);
-  border-color: var(--darkest, #000);
+  /* border-color: var(--darkest, #000); */
   background-color: var(--background, #ccc);
 }
 .button.active{
+  border-color: var(--accent, yellow);
   color: var(--darkest, #000) !important;
   background-color: var(--accent, yellow) !important;
 }

@@ -15,6 +15,7 @@ import LineHeader from "@/components/line_header/line_header";
 import Mesh2 from "@/components/mesh2/mesh2";
 import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
 import Rain from "@/components/rain/rain";
+import ScrollMeter from "@/components/scroll_meter/scroll_meter";
 
 
 /*********************************************************************************** Home Page  */
@@ -57,11 +58,17 @@ const HomePage = () => {
             <br/>
             <div className="flex">
               <button aria-label="Gallery page" className='button active'>work</button>
+              <button aria-label="Gallery page" className='button'>Lets Talk</button>
             </div>
           </div>          
         </div>
         
         <Mesh2 />
+
+        <aside className="hero-meter">
+          <ScrollMeter />
+        </aside>
+
       </section>
 
       <br/>
@@ -133,16 +140,6 @@ const HomePage = () => {
           </Link> 
         </IconFrame>
       </section>
-
-      {/* <section 
-        style={{ borderBottom: '2px solid var(--darkest, #000)' }}
-        className=" "
-      >
-        <Rain url='images/pixels.png'>
-          <h1>OK</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis animi et pariatur aliquam consequatur minima iusto voluptatibus unde exercitationem neque! </p>
-        </Rain>
-      </section> */}
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />
