@@ -34,6 +34,10 @@
   z-index: 0;
 }
 
+.m-left{ margin-left: 2rem;}
+
+.line-spaced{ line-height: 1.25rem;}
+
 /**************************************/
 /**************************** Buttons */
 /**************************************/
@@ -69,6 +73,15 @@ button{
   border-color: var(--accent, yellow);
   color: var(--darkest, #000) !important;
   background-color: var(--accent, yellow) !important;
+}
+
+.button.accentB{
+  color: var(--accentB, green);
+  border-color: var(--accentB, green) !important;
+}
+.button.accentB:hover{
+  color: var(--darkest, green);
+  background-color: var(--accentB, green);
 }
 
 .button:hover{
