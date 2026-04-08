@@ -132,8 +132,6 @@
 .page-hero{
   background: var(--background, #000);
   background: radial-gradient(circle at 5%, var(--darkest), 60%,  var(--background), 90%, transparent);
-  border-bottom: 2px solid var(--darkest, #000);
-  /* border-top: 2px solid var(--darkest, #000); */
   overflow: hidden;
 }
 .page-hero > div{
@@ -178,11 +176,13 @@
   background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), url('/static/images/dot.svg');
 }
 .striped{ 
-  background-size: 10px;
-  background: linear-gradient(to right, transparent, 10px,  var(--background, #ccc)), url('/static/images/stripes_sm.svg');
+  background: linear-gradient(to right, transparent, 10px,  var(--background, #ccc) 60%), url('/static/images/stripes_sm.svg');
   background-repeat: repeat;
-  background-blend-mode: luminosity;
-  background-repeat: repeat;
+}
+
+.blur-under{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 

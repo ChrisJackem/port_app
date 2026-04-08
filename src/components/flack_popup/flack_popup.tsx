@@ -6,7 +6,7 @@ import LineHeader from '../line_header/line_header';
 const FlackPopup = () => {
   return (
     <section className={`fixed-modal ${styles.container}`}>
-        <div className={styles.inner_container}>
+        <div className={`${styles.inner_container}`}>
             <div className={styles.image_container}>
                 <LoadImg
                     className={styles.image}                    
@@ -31,7 +31,6 @@ const FlackPopup = () => {
                     <button className='button active'>Sign Up</button>
                     <button className='button accentB'>Dismiss</button>
                 </div>
-                <small>*Sign up right from this website.</small>
             </div>
         </div>
     </section>

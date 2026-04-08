@@ -54,13 +54,7 @@ const Footer = () => {
             <ThemeBtnFooter Theme={THEMES.Candy} />
           </div>        
         </div>
-      </section>
-
-      <div className="">
-        <h2 className='t-boxed'>LETS TALK</h2>
-        <p className='padded-smaller'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, rerum!</p>
-        {/* <IframeFooter url={'https://flack.cx/signup'}/> */}
-      </div>
+      </section>      
 
       <aside id='footer-right' className='flex-column'>        
         <div>    
