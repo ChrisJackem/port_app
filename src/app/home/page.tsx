@@ -18,6 +18,7 @@ import Rain from "@/components/rain/rain";
 import ScrollMeter from "@/components/scroll_meter/scroll_meter";
 import { useState } from "react";
 import FlackPopup from "@/components/flack_popup/flack_popup";
+import LetsBuild from "@/components/lets_build/lets_build";
 
 
 /*********************************************************************************** Home Page  */
@@ -188,6 +189,10 @@ const HomePage = () => {
           <i>You can also navigate using the menu at the bottom of every page.</i>
         </AttentionSection>
       </section>
+
+      <hr className="bg-ac"/>
+
+        <LetsBuild />
            
     </motion.div>
   );

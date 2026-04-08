@@ -1,0 +1,31 @@
+<svg width="1000" height="500" viewBox="0 0 1000 500">
+  <defs>
+    <linearGradient id="d" x1="925.89" y1="55.03" x2=".73" y2="478.56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stopColor="#666"/>
+      <stop offset="1" stopColor="#000"/>
+    </linearGradient>
+  </defs>
+  <g id="c" data-name="Layer 1">
+    <g>
+      <rect width="1000" height="500" fill="url(#d)"/>
+      <g>
+        <polygon points="988.5 488.5 199 488.5 199 475 201 475 201 486.5 986.5 486.5 986.5 475 988.5 475 988.5 488.5" fill="#b4ee40"/>
+        <rect x="249" y="475" width="2" height="12.5" fill="#b4ee40"/>
+        <rect x="836.5" y="475" width="2" height="12.5" fill="#b4ee40"/>
+        <rect x="499" y="475" width="2" height="12.5" fill="#b4ee40"/>
+        <rect x="874" y="475" width="2" height="12.5" fill="#b4ee40"/>
+        <rect x="211.5" y="475" width="2" height="12.5" fill="#b4ee40"/>
+      </g>
+      <path d="M123.5,487.5c0,4.22-.21,8.39-.63,12.5h3.01c.41-4.11.62-8.28.62-12.5,0-69.75-56.75-126.5-126.5-126.5v3c68.1,0,123.5,55.4,123.5,123.5Z" fill="#b4ee40"/>
+      <path d="M80.06,491.5c0,2.87-.14,5.7-.41,8.5h1.95c.26-2.8.4-5.63.4-8.5,0-47.42-36.78-86-82-86v2.04c44.14,0,80.06,37.67,80.06,83.96Z" fill="#b4ee40"/>
+      <rect x="24" width="2" height="500" fill="#b4ee40"/>
+      <rect x="36.5" y="200" width="2" height="300" fill="#b4ee40"/>
+      <g>
+        <rect x="981.33" y="12.5" width=".99" height="74.37" fill="#b4ee40"/>
+        <rect x="977.61" y="12.5" width=".99" height="49.58" fill="#b4ee40"/>
+        <rect x="973.89" y="12.5" width=".99" height="18.59" fill="#b4ee40"/>
+        <rect x="970.18" y="12.5" width=".99" height="68.17" fill="#b4ee40"/>
+      </g>
+    </g>
+  </g>
+</svg>

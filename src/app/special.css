@@ -4,6 +4,7 @@
 .p-abs{ position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
 
 /********************** Text */
+.t-right{ text-align: right;}
 .t-txt{ color: var(--text)}
 .t-cap{ text-transform: uppercase;}
 .t-low{ text-transform: lowercase;}
@@ -12,7 +13,13 @@
 .t-ital{ font-style: italic;}
 .t-jumbo{ 
   font-size: 5vw;
-  font-size: clamp(12px, 5vw, 60px);
+  font-size: clamp(12px, 5vw, 64px);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.t-jumbo-md{ 
+  font-size: 5vw;
+  font-size: clamp(28px, 6vw, 56px);
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -38,12 +45,22 @@
   color: var(--accent, #000);
   border-bottom: 1px solid  var(--accent);
 }
+.t-sideways{
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
 .t-accentB{ color: var(--accentB, green); }
 
 .heavy{
   font-weight: bold;
   font-size: 52px;
   line-height: 3rem;
+}
+
+.centered{
+  display: grid;
+  place-items: center;
 }
 
 /********************** Backgrounds */
@@ -97,9 +114,6 @@
   width: 100%; height: 100%;
 }
 
-
-
-
 .page-flex{
   gap: 1rem;
   display: flex;
@@ -111,7 +125,7 @@
 
 .page-container{
   margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+  /* margin-bottom: 3rem !important; */
 }
 
 .page-hero{
@@ -148,6 +162,14 @@
 }
 .page_third{
   grid-template-columns: 1fr 33%;
+}
+
+
+.lets-build{
+  min-height: 500px;
+  border-bottom: 2px solid var(--accent, yellow);
+  background-size: cover;
+  background: url('/static/lets_build.svg'), var(--acccent, yellow);
 }
 
 @media only screen and (max-width: 900px) {

@@ -29,9 +29,9 @@ const FlackPopup = () => {
                 <br/>                
                 <div className='flex'>
                     <button className='button active'>Sign Up</button>
-                    <button className='button '>Dismiss</button>
+                    <button className='button accentB'>Dismiss</button>
                 </div>
-                <small>Sign up right from this website.</small>
+                <small>*Sign up right from this website.</small>
             </div>
         </div>
     </section>

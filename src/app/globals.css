@@ -4,7 +4,7 @@
   --midground: #999999;
   --foreground: #272727;
   --accent: #dbf227;
-  --accentB: #f2272a;
+  --accentB: #ca2528;
   --text: #FFF;
 }
 
@@ -100,8 +100,8 @@ html, body {
   overflow-x: hidden;
 }
 
-/* hr{ border: 1px var(--background) solid; }
-.hr{ margin: 1rem 0px; } */
+ hr{ border-top: 2px var(--text) solid; }
+
 
 h1, h2, h3, h4, h5, h6, .akira{
   font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -109,8 +109,8 @@ h1, h2, h3, h4, h5, h6, .akira{
 }
 
 body {
-  color: black; color: var(--text);
-  background: var(--background, #3d3d3d);  
+  /* color: black; color: var(--text);
+  background: var(--background, #3d3d3d);   */
   font-family: Arial, Helvetica, sans-serif;
 }
 
