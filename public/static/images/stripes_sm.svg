@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="62.5" height="62.5" viewBox="0 0 62.5 62.5">
+  <g opacity="0.5">
+      <polygon points="62.5 2.21 62.5 0 60.29 0 62.5 2.21" fill="#fff"/>
+      <polygon points="0 60.29 0 62.5 2.21 62.5 0 60.29" fill="#fff"/>
+      <polygon points="0 33.49 0 37.96 24.54 62.5 29.01 62.5 0 33.49" fill="#fff"/>
+      <polygon points="0 6.7 0 11.16 51.34 62.5 55.8 62.5 0 6.7" fill="#fff"/>
+      <polygon points="0 15.63 0 20.1 42.4 62.5 46.87 62.5 0 15.63" fill="#fff"/>
+      <polygon points="0 24.56 0 29.03 33.47 62.5 37.94 62.5 0 24.56" fill="#fff"/>
+      <polygon points="6.68 62.5 11.14 62.5 0 51.36 0 55.82 6.68 62.5" fill="#fff"/>
+      <polygon points="0 42.43 0 46.89 15.61 62.5 20.07 62.5 0 42.43" fill="#fff"/>
+      <polygon points="37.96 0 33.49 0 62.5 29.01 62.5 24.54 37.96 0" fill="#fff"/>
+      <polygon points="29.03 0 24.56 0 62.5 37.94 62.5 33.47 29.03 0" fill="#fff"/>
+      <polygon points="62.5 61.87 62.5 60.27 2.23 0 0 0 0 .63 0 2.23 60.27 62.5 62.5 62.5 62.5 61.87" fill="#fff"/>
+      <polygon points="55.82 0 51.36 0 62.5 11.14 62.5 6.68 55.82 0" fill="#fff"/>
+      <polygon points="46.89 0 42.43 0 62.5 20.07 62.5 15.61 46.89 0" fill="#fff"/>
+      <polygon points="20.1 0 15.63 0 62.5 46.87 62.5 42.4 20.1 0" fill="#fff"/>
+      <polygon points="11.17 0 6.7 0 62.5 55.8 62.5 51.33 11.17 0" fill="#fff"/>
+    
+  </g>
+</svg>

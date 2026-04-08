@@ -124,7 +124,8 @@
 }
 
 .page-container{
-  margin-top: 3rem !important;
+  /* margin-top: 3rem !important; */
+  padding-top: 3rem;
   /* margin-bottom: 3rem !important; */
 }
 
@@ -172,6 +173,20 @@
   background: url('/static/lets_build.svg'), var(--acccent, yellow);
 }
 
+.dotted{
+  background-size: 10px 10px;
+  background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), url('/static/images/dot.svg');
+}
+.striped{ 
+  background-size: 10px;
+  background: linear-gradient(to right, transparent, 10px,  var(--background, #ccc)), url('/static/images/stripes_sm.svg');
+  background-repeat: repeat;
+  background-blend-mode: luminosity;
+  background-repeat: repeat;
+}
+
+
+/********************************************************* Mobile */
 @media only screen and (max-width: 900px) {
   .page_double{
     

@@ -9,10 +9,6 @@
     background-repeat: repeat;
 }
 .child_container{
-    position: relative;
-    padding-top: 1.5rem;
-    background-size: 10px 10px;
-    background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), url('../../public/static/images/dot.svg');
-
+    position: relative;   
 }
 

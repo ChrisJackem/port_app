@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <motion.div 
       id='home_container' 
-      className="page-container"
+      className="dotted page-container"
       key="home"
       variants={PageVariants}
       initial="hidden"
