@@ -9,6 +9,7 @@
     border-bottom: 1px dashed var(--midground);
     /* border-right: 2px dotted var(--midground); */
     box-shadow: var(--darkest) 2px 3px 20px;
+    margin-bottom: 3rem;
 }
 
 .mesh_container{    

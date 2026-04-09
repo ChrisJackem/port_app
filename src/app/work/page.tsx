@@ -19,10 +19,9 @@ const WorkPage = () => {
         initial="hidden"
         animate="enter"
         exit="exit"
-    >      
+    >
 
-    <PageBanner title='WORK'
-        content='The following is some of my most recent personal projects.' />
+    <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
 
     <div id='work-work-container' className='flex flex-column'>
 

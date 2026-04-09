@@ -3,10 +3,10 @@
     padding: 1rem;
     z-index: 99;
     background: var(--darkest);
-    border-bottom: 2px solid var(--foreground, #fff);
+    border-bottom: 2px solid var(--midground, #fff);
     justify-content: space-between;
     align-items: center;
-    filter: drop-shadow(0px 5px 10px var(--darkest))
+    filter: drop-shadow(0px 5px 15px rgba(0,0,0, 0.5))
 }
 
 .logo_container{

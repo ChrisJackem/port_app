@@ -35,7 +35,7 @@ const AttentionSection = ({children, icon_url, color, bgOpacity=1, supressInitia
             animate={isInView ? 'seen' : 'unseen'}
             exit='unseen'
             transition= {{ delayChildren: 0.2 }}
-            className={`paged featured ${styles.container}`}
+            className={`paged ${styles.container}`}
             style={containerStyle}
             aria-hidden={true}
         >          

@@ -181,20 +181,6 @@ a {
     width: 30px;
 }
 
-.featured{
-  position: relative;
-}
-.featured::after{
-  z-index: 99999;
-  content: "XXXX";
-  font-size: large;
-  position: fixed;
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  top: 0px;
-  right: 0px;
-}
 
 .fixed-modal{
   position: fixed;
