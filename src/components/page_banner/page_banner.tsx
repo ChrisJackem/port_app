@@ -12,24 +12,24 @@ type PageBannerProps = {
 
 const PageBanner = ({title, content}: PageBannerProps) => {
     return (
-        <section className={`flex dotted ${styles.container}`}>
+        <section className={`flex bg-conical-tl-dotted ${styles.container}`}>
+            <div aria-hidden="true" className={styles.left_dec}>
+                <h1>/////////////////////////////////////</h1>
+                <p style={{opacity: 0.3}}>####### Christopher Jackem personal website sub page {title} hero start ########</p>
+            </div>
+            <div aria-hidden="true" className={`t-ac ${styles.right_dec}`}>
+                <h1>\\\\</h1>
+                <p style={{opacity: 0.2}}>^^^ Christopher Jackem personal website sub page {title} hero end</p>
+            </div>
             <div className={styles.mesh_container}>
                 <MeshBox />
-            </div>
-
-            
+            </div>           
             
             <div className={`flex-column  ${styles.inner_container}`}>                
                 <TypeHeader word={title} />
-                <hr /* className={'border-bottom'} *//>
+                <hr />
                 <p>{content}</p>
             </div>
-            {/* <div className={''}>
-                <p>///fdfgh////////////////</p>
-                <p>///fdfgh////////////////</p>
-                <p>///fdfgh////////////////</p>
-                <p>///fdfgh////////////////</p>
-            </div> */}
         </section>
     )
 }

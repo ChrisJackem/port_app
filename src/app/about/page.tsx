@@ -10,6 +10,7 @@ import Schem from '@/components/animations/schem/schem';
 import Link from 'next/link';
 import PageBanner from '@/components/page_banner/page_banner';
 
+
 /*********************************************************************************** About Page  */
 
 const AboutPage = () => {
@@ -21,7 +22,7 @@ const AboutPage = () => {
         initial="hidden"
         animate="enter" 
         exit="exit"
-        className="about-container"
+        className={"page-container"}
     >
         <PageBanner title='ABOUT'
             content={'A little bit about me and what I do.'} />

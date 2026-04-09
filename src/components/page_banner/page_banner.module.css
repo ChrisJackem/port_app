@@ -1,18 +1,14 @@
 .container{
     position: relative;
-    margin-top: -2rem;
     padding: 1rem 2rem;
-    /* border-bottom: 2px solid var(--darkest, #000); */
     transition: all 1s ease-out;
     min-height: 400px;    
-    /* background:  */
-    /* linear-gradient(to left, var(--midground, #000), 30%, var(--darkest)); 
-      url('/static/images/stripes_sm.svg'); */
-    background-blend-mode: hue;
     gap: 2rem;
     justify-content: center;
     overflow: visible;
-    background-color: rgba(0,0,0, 0.4);
+    border-bottom: 1px dashed var(--midground);
+    /* border-right: 2px dotted var(--midground); */
+    box-shadow: var(--darkest) 2px 3px 20px;
 }
 
 .mesh_container{    
@@ -25,12 +21,36 @@
     padding: 2rem;
 }
 
+.left_dec, .right_dec{
+    position: absolute;
+    color: var(--midground, #ccc);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;    
+}
+.left_dec{    
+    top: -12px;
+    left: 0px;    
+    opacity: 0.2;
+}
+.right_dec{
+    position: absolute;
+    top: 90%;
+    right: 0px;
+    opacity: 0.2;
+}
+
 
 @media screen and (max-width: 600px){
     .container{
         padding: 1rem;
         gap: 1px;
     }
+    .mesh_container{    
+        /* transform: scale(1.6, 1.2);    */
+        width: 100%;
+        height: 100px;
+    }
+
     .inner_container{
         padding-top: 1rem;
         width: 100%;

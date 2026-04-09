@@ -9,7 +9,8 @@
 .t-cap{ text-transform: uppercase;}
 .t-low{ text-transform: lowercase;}
 .t-bg{ color: var(--background, #ccc)}
-.t-ac{ color: var(--accent, yellow); }
+.t-ac{ color: var(--accent, yellow) !important; }
+.t-acb{ color: var(--accentB, yellow) !important; }
 .t-ital{ font-style: italic;}
 .t-jumbo{ 
   font-size: 5vw;
@@ -79,6 +80,11 @@
 }
 .bg-fade{
   background: linear-gradient(to right, var(--darkest), 80%, transparent);
+}
+.bg-conical-tl-dotted{
+  background-size: cover;
+  background: conic-gradient( from 45deg at 0% 0%, var(--darkest),  transparent),
+    url('/static/images/dot.svg');
 }
 
 

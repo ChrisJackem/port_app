@@ -35,9 +35,11 @@ const MeshBox = () => {
     }, [isInView]);
 
     return (
-        <div ref={container_ref} className={`${styles.container}`}>
+        <div ref={container_ref} className={`${styles.container}`}>            
             <Canvas               
-                className={`canvas ${styles.canvas}`}>
+                className={`${styles.canvas}`}
+                style={{ width: '100%', height: '100%' }}
+            >
                 { isInView && <>                    
                     <ambientLight intensity={Math.PI / 1.6} />
                     <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.8} intensity={Math.PI * 100 } />
