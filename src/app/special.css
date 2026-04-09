@@ -140,7 +140,7 @@
 .page-hero{
   background: var(--background, #000);
   background: radial-gradient(circle at 5%, var(--darkest), 60%,  var(--background), 90%, transparent);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .page-hero > div{
   z-index: 2;
@@ -222,7 +222,7 @@
 .accent-psudo{
     position: relative;
 }
-.accent-psudo::after{
+.accent-psudo::after, .accent-psudo:before{
     position: absolute;
     font-family: var(--f-akira);
     writing-mode: vertical-rl;

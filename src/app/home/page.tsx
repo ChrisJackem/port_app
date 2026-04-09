@@ -53,8 +53,7 @@ const HomePage = () => {
         className="page_double page-hero p-rel accent-psudo"  
         data-psudo={'//////////////'}
       >
-        <div id="home_blurb" className="flex flex-align-center bg-fade accent-psudo" 
-        data-psudo={'//////////////'}>
+        <div id="home_blurb" className="flex flex-align-center bg-fade accent-psudo" data-psudo={'||||'}>
           <div className="flex-column padded">
             <LineHeader text='What I do' />
             <TypewriterLoading />

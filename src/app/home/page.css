@@ -8,18 +8,27 @@
 }
 #home_blurb{
     width: 100%;
-    overflow: visible !important;
+    /* overflow: visible !important; */
 }
-#home_blurb::after{
-    top: -10px;
+#home_blurb::before, #home_blurb::after{
+   
     left: -15px;
-    z-index: 5;
-    color: var(--midground, #000);
     font-size: 32px;
     font-weight: 600;
-    height: 100%;
-    /* border-left: 2px solid var(--accent); */
+}
+
+#home_blurb::after{
     opacity: 0.25;
+     color: var(--midground, #000);
+    top: -10px;
+    left: -15px;
+    z-index: 5;    
+}
+#home_blurb::before{
+    font-size: 52px;
+    color: var(--darkest, #000);    
+    top: 95%;
+    opacity: 1;
 }
 
 .skill-triple{

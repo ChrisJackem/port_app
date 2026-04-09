@@ -9,6 +9,7 @@ import Kid from '@/components/animations/kid/kid';
 import Schem from '@/components/animations/schem/schem';
 import Link from 'next/link';
 import PageBanner from '@/components/page_banner/page_banner';
+import LetsBuild from '@/components/lets_build/lets_build';
 
 
 /*********************************************************************************** About Page  */
@@ -64,6 +65,7 @@ const AboutPage = () => {
                 </p>                
             </div>
         </section>
+        <LetsBuild />
     </motion.div>
   )
 }

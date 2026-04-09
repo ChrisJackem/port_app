@@ -9,6 +9,7 @@ import { motion } from 'motion/react'
 import { PageVariants } from '../config/variants'
 //import TypeHeader from '@/components/type_header/type_header'
 import PageBanner from '@/components/page_banner/page_banner'
+import LetsBuild from '@/components/lets_build/lets_build'
 
 const WorkPage = () => {
   return (
@@ -257,6 +258,8 @@ const WorkPage = () => {
             </WorkContainer>
         
         </Scroller>
+
+        <LetsBuild />
 
     </div>
     </motion.div>

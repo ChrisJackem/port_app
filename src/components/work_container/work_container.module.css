@@ -15,6 +15,7 @@
     transform: scale(0.9);
     transition: 600ms ease-out;
     opacity: 0.25;
+    ::-webkit-scrollbar { width: 2px; } 
 }
 .active{
     transform: scale(1);

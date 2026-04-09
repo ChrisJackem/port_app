@@ -35,10 +35,9 @@
     font-size: 16px;
     font-weight: 600;
     border: 2px solid var(--darkest, #000);
-    /* color: var(--f, #000); */
     width: min-content;
     height: min-content;
-    background-color: var(--foreground, #FFF);
+    background-color: var(--background, #FFF);
 }
 .container > div{
     z-index: 3;
