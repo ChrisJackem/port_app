@@ -1,16 +1,16 @@
 
 #footer-container{    
-    padding: 3rem 2rem 0px 90px;
+    padding: 3rem 2rem 0px 100px;
     gap: 2rem;    
     background: var(--background, #ccc);
     border-top: 3px solid var(--darkest, #ccc);
     background-size: 60px;
-    background-color: var(--darkest, #000);
+    /* background-color: var(--darkest, #000); */
     border-top: 2px solid var(--midground, #FFF);
-    background: radial-gradient( farthest-corner at top left, var(--foreground, #fff), var(--background, #ccc)),
-        linear-gradient(to bottom, var(--darkest, #ccc), transparent),
-         url('/static/images/pixels.webp'); 
-     background-blend-mode: multiply;
+    background: /* radial-gradient( farthest-corner at top left, var(--foreground, #fff), var(--background, #ccc)), */
+        linear-gradient(to bottom, var(--darkest, #ccc), rgba(50, 50,50, 0.9)),
+         url('/static/images/grid.svg'); 
+     background-blend-mode: luminosity;
     filter: drop-shadow(0px 0px 5px var(--darkest));
     flex-wrap: wrap;    
 }
@@ -54,11 +54,13 @@
 
 #footer-logo-container small{
     writing-mode: sideways-rl;
-    font-weight: 500;
+    /* font-weight: 900; */
     letter-spacing: 0.5px;
-    font-size: 12px;
+    font-size: 16px;
+    /* font-style: italic; */
     font-family: var(--f-akira);
-    color: var(--accent, yellow);
+    color: var(--text, yellow);
+    position: relative;
 }
 
 .footer-icon{

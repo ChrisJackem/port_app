@@ -1,7 +1,25 @@
 /* Home Page CSS */
+#home-splash{
 
-.home_blerb{
+}
+#home-splash::after{
+    top: 100%;
+    right: 100%;
+}
+#home_blurb{
     width: 100%;
+    overflow: visible !important;
+}
+#home_blurb::after{
+    top: -10px;
+    left: -15px;
+    z-index: 5;
+    color: var(--midground, #000);
+    font-size: 32px;
+    font-weight: 600;
+    height: 100%;
+    /* border-left: 2px solid var(--accent); */
+    opacity: 0.25;
 }
 
 .skill-triple{

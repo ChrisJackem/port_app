@@ -26,8 +26,9 @@ const Footer = () => {
   return (
     <footer id='footer-container' className='psudo flex'>      
       <section id='footer-logo-container'>
-          <StrokeLogo infinite={false}/>
-          <small>chrisjackem.com</small>    
+          <StrokeLogo infinite={false}/>          
+          <small>chrisjackem.com</small>
+          {/* <div>///////////////////////</div> */}
       </section>
       
       <section id='footer-left' className='flex-column'>        

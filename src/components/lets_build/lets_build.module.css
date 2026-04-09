@@ -1,4 +1,18 @@
 .container{
+    /* border-right: 2px solid var(--text); */
+}
+.container:after{
+    top: 70%;
+    right: 12px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: var(--text);
+    height: 50px;
+    opacity: 0.2;
+    
+}
+
+.container_inner{
     position: relative;
     max-width: 1200px;
 }

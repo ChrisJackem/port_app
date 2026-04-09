@@ -21,6 +21,8 @@
     padding: 2rem;
 }
 
+
+
 .left_dec, .right_dec{
     position: absolute;
     color: var(--midground, #ccc);

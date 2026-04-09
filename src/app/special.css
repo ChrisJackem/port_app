@@ -179,6 +179,7 @@
   background: url('/static/lets_build.svg'), var(--acccent, yellow);
 }
 
+/******************************************** Backgrounds **/
 .dotted{
   background-size: 10px 10px;
   background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), 
@@ -197,9 +198,36 @@
   background-repeat: repeat;
 }
 
+.gridded{
+  background: 
+    linear-gradient(
+      to right, 
+      transparent,
+      var(--background, #ccc) 8px,      
+      rgba(0, 0, 0, 0.7),
+      var(--darkest)  
+      ),
+
+    url('/static/images/grid.svg');
+  background-repeat: repeat;
+}
+
 .blur-under{
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+}
+
+
+/****************** accents */
+.accent-psudo{
+    position: relative;
+}
+.accent-psudo::after{
+    position: absolute;
+    font-family: var(--f-akira);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    content: attr(data-psudo);
 }
 
 

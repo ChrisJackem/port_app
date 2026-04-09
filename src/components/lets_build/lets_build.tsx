@@ -3,8 +3,8 @@ import styles from './lets_build.module.css'
 
 const LetsBuild = () => {
   return (
-    <div className='striped'>
-        <section className={`padded paged page-container page-center ${styles.container}`}>
+    <div className={`striped accent-psudo ${styles.container}`} data-psudo={'//////////////'}>
+        <section className={`padded paged page-container page-center ${styles.container_inner}`}>
         {/*  <div className={'t-sideways p-abs t-jumbo'}>//</div> */}
             <div className="t-right">
                 

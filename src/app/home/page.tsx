@@ -50,9 +50,11 @@ const HomePage = () => {
     >
       <section
         id="home-splash" 
-        className="page_double page-hero p-rel"
+        className="page_double page-hero p-rel accent-psudo"  
+        data-psudo={'//////////////'}
       >
-        <div id="home_blurb" className="flex flex-align-center bg-fade">
+        <div id="home_blurb" className="flex flex-align-center bg-fade accent-psudo" 
+        data-psudo={'//////////////'}>
           <div className="flex-column padded">
             <LineHeader text='What I do' />
             <TypewriterLoading />
@@ -70,7 +72,7 @@ const HomePage = () => {
         <MeshLoading />
 
         {/* <aside className="hero-meter"> */}
-          <ScrollMeter
+          {<ScrollMeter
             className={''}
             triggers={[              
               { id: 0, start: 10, end: 20, color: 'var(--midground, #000)'},
@@ -80,8 +82,8 @@ const HomePage = () => {
           >
             <p>0</p>
             <p>1</p>
-            <FlackPopup />
-          </ScrollMeter> 
+            {/* <FlackPopup /> */}
+          </ScrollMeter> }
           
         {/* </aside> */}
 

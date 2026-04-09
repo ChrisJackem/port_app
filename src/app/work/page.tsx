@@ -13,7 +13,7 @@ import PageBanner from '@/components/page_banner/page_banner'
 const WorkPage = () => {
   return (
     <motion.div id='work-main-container' 
-        className="page-container"
+        className="page-container gridded"
         variants={PageVariants}
         initial="hidden"
         animate="enter"

@@ -22,7 +22,7 @@ const AboutPage = () => {
         initial="hidden"
         animate="enter" 
         exit="exit"
-        className={"page-container"}
+        className={"page-container gridded"}
     >
         <PageBanner title='ABOUT'
             content={'A little bit about me and what I do.'} />

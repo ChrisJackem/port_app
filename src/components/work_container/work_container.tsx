@@ -70,7 +70,7 @@ const WorkContainer = ({ title, content, children, link }: WorkContainerProps) =
   }, [isInView, content]);
 
   return (
-    <section className={`${styles.work_container}`} ref={container_ref}>
+    <section className={`${styles.work_container} ${isInView ? styles.active : ''}`} ref={container_ref}>
       { slideState.status !== STATUS.LOADED
         ? <LoadingComponent height={ '400px'} />
         : <SlideShow 
