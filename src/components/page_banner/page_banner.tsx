@@ -16,9 +16,12 @@ const PageBanner = ({title, content}: PageBannerProps) => {
             <div className={styles.mesh_container}>
                 <MeshBox />
             </div>
+
+            
             
             <div className={`flex-column  ${styles.inner_container}`}>                
                 <TypeHeader word={title} />
+                <hr /* className={'border-bottom'} *//>
                 <p>{content}</p>
             </div>
             {/* <div className={''}>

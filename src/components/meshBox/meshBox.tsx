@@ -21,7 +21,7 @@ const BoxMesh = () => {
     return (
         <mesh ref={meshRef} scale={8.5}>
             <boxGeometry/>
-            <meshBasicMaterial color={THEMES[theme]['accent']} wireframe={true} />
+            <meshBasicMaterial color={THEMES[theme]['text']} wireframe={true} />
         </mesh>
     );
 };

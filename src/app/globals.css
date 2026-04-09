@@ -100,7 +100,7 @@ html, body {
   overflow-x: hidden;
 }
 
- hr{ border-top: 2px var(--text) solid; }
+ /* hr{ border-top: 2px var(--text) solid; } */
 
 
 h1, h2, h3, h4, h5, h6, .akira{
