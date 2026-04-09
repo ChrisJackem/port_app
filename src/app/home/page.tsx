@@ -31,10 +31,10 @@ const CacheReaderLoading = dynamic(
     ()=> import("@/components/cache_reader/cache_reader"),
     { loading: ()=> <LoadingComponent />}
 )
-/* const MeshLoading = dynamic(
-    ()=> import("@/components/mesh/mesh"),
-    { loading: ()=> <Mesh type={'dodec'}/>} 
-) */
+const MeshLoading = dynamic(
+    ()=> import("@/components/mesh2/mesh2"),
+    { loading: ()=> <Mesh2 />} 
+)
 
 const HomePage = () => {
   const [showPop, setShowPop] = useState(false);
@@ -67,7 +67,7 @@ const HomePage = () => {
           </div>          
         </div>
         
-        <Mesh2 />
+        <MeshLoading />
 
         {/* <aside className="hero-meter"> */}
           <ScrollMeter

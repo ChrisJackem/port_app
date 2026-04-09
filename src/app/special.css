@@ -88,11 +88,13 @@
 .canvas{ 
   width: 100%;
   height: 100%;
-  position: absolute;
+/*   position: absolute;
   z-index: 0;
-  opacity: 0.8; 
+  opacity: 0.8;  */
+  display: block;
 }
 
+.border-bottom{ border-bottom: 2px solid var(--accent, yellow)}
 .border-left{ border-left: 2px solid var(--accent, yellow)}
 .border-right{ border-right: 2px solid var(--accent, yellow)}
 
@@ -173,10 +175,19 @@
 
 .dotted{
   background-size: 10px 10px;
-  background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), url('/static/images/dot.svg');
+  background: linear-gradient(to right, transparent, 20px, var(--background, #ccc), 95%, transparent), 
+    url('/static/images/dot.svg');
 }
+
+.dot-down{
+  background-size: 10px 10px;
+  background: linear-gradient(to bottom, transparent, 50%, var(--background, #ccc)), 
+    url('/static/images/dot.svg');
+}
+
 .striped{ 
-  background: linear-gradient(to right, transparent, 10px,  var(--background, #ccc) 60%), url('/static/images/stripes_sm.svg');
+  background: linear-gradient(to right, transparent, 10px,  var(--background, #ccc)), 
+    url('/static/images/stripes_sm.svg');
   background-repeat: repeat;
 }
 
@@ -188,9 +199,7 @@
 
 /********************************************************* Mobile */
 @media only screen and (max-width: 900px) {
-  .page_double{
-    
-  }
+
   .page_triple, .page_double, .page_third{
         grid-template-rows: repeat(min-content);
         grid-template-columns: 1fr;

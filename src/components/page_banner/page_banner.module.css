@@ -1,36 +1,37 @@
 .container{
+    position: relative;
     margin-top: -2rem;
-    padding: 80px 0px 10px 1rem;
-    background-blend-mode: multiply;    
-    border-bottom: 2px solid var(--accent, yellow);
+    padding: 1rem 2rem;
+    /* border-bottom: 2px solid var(--darkest, #000); */
     transition: all 1s ease-out;
-    animation: morf 1s infinite;
-    background: 
-        url('/static/images/pixels.webp'),
-        linear-gradient(to top right, var(--darkest, #000), 70%, var(--accent, #ccc));
+    min-height: 400px;    
+    /* background:  */
+    /* linear-gradient(to left, var(--midground, #000), 30%, var(--darkest)); 
+      url('/static/images/stripes_sm.svg'); */
+    background-blend-mode: hue;
+    gap: 2rem;
+    overflow: visible;
+    background-color: rgba(0,0,0, 0.4);
 }
 
-@keyframes morf{
-/*     0%{
-        background-size: contain;
-            
-    }
-    100%{
-       background-size: cover;
-            
-    } */
+.mesh_container{    
+   transform: scale(1.1);   
 }
 
 .inner_container{
-    padding: 1rem !important;
-    color: var(--foreground, #FFF);
+    /* background-color: var(--darkest);  */     
+    justify-content: flex-end;
+    padding: 2rem;
 }
-.title{
 
-}
 
 @media screen and (max-width: 600px){
     .container{
         padding: 1rem;
+        gap: 1px;
+    }
+    .inner_container{
+        padding-top: 1rem;
+        width: 100%;
     }
 }

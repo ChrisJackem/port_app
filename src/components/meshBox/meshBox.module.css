@@ -1,0 +1,19 @@
+.container{
+    width: 500px;
+    height: 400px;
+    display: block;
+    
+}
+.canvas{
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* border: 1px solid var(--midground, yellow); */
+}
+@media screen and (max-width: 600px){
+    .container{
+        width: 500px;
+        height: 200px;
+    }
+
+}
