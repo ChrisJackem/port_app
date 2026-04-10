@@ -15,6 +15,12 @@ export const BannerVariants = {
     exit: { opacity: 0, x: 0, y: 10 },
 }
 
+export const ModalVariants = {
+    hidden: { opacity: 0, x: -80 },
+    enter: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: -80 },
+}
+
 ////////////////////////// Slam Animation
 export const SlamVariantsContainer = {   
     /* seen: { opacity: 1 },

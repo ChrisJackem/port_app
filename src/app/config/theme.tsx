@@ -47,11 +47,11 @@ export const THEMES: ThemesType = {
     },
     Sunset: {
         name: "Sunset",
-        text: "#000",
+        text: "#FFF",
         darkest: "#2d0633",
         background: "#ff6e40",
         midground: "#ffb86b",
-        foreground: "#fff",
+        foreground: "#ff6e40",
         accent: "#ff0",
         accentB: "#ff0",
     },

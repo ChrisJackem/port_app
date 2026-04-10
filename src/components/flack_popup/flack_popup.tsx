@@ -3,7 +3,7 @@ import styles from './flack_popup.module.css';
 import { LoadImg } from '../load_img/load_img';
 import LineHeader from '../line_header/line_header';
 
-const FlackPopup = () => {
+const FlackPopup = ({onDismiss, onDismissForever}: {onDismiss: () => void, onDismissForever: () => void}) => {
   return (
     <section className={`fixed-modal ${styles.container}`}>
         <div className={`${styles.inner_container}`}>
@@ -28,8 +28,9 @@ const FlackPopup = () => {
                 </ul>                
                 <br/>                
                 <div className='flex'>
-                    <button className='button active'>Sign Up</button>
-                    <button className='button accentB'>Dismiss</button>
+                    <button  className='button active'>Sign Up</button>
+                    <button onClick={onDismiss} className='button accentB'>Dismiss</button>
+                    <small onClick={onDismissForever}>Dismiss this popup forever</small>
                 </div>
             </div>
         </div>

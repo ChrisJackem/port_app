@@ -28,8 +28,8 @@
 
 .child_container h4{
     font-size: clamp( 22px, 2vw, 48px);    
-    font-weight: 1000;
-    margin-bottom: 5px;
+    font-weight: black;
+    margin-bottom: 8px;
 }
 
 /* .child_container::after{

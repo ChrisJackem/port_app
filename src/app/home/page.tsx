@@ -16,9 +16,10 @@ import Mesh2 from "@/components/mesh2/mesh2";
 import { LineHeaderHoriz } from "@/components/line_header_horiz/line_header_horiz";
 import Rain from "@/components/rain/rain";
 import ScrollMeter from "@/components/scroll_meter/scroll_meter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlackPopup from "@/components/flack_popup/flack_popup";
 import LetsBuild from "@/components/lets_build/lets_build";
+import Modal from "@/components/modal/modal";
 
 
 /*********************************************************************************** Home Page  */
@@ -36,24 +37,57 @@ const MeshLoading = dynamic(
     { loading: ()=> <Mesh2 />} 
 )
 
+
+
 const HomePage = () => {
   const [showPop, setShowPop] = useState(false);
+  const [dismissedPop, setDismissedPop] = useState(false);
+
+  useEffect( ()=> {
+    if (window.localStorage.getItem('dismissed')==='true'){
+      setDismissedPop(true)
+    }
+  }, [])
+
+  function handleDismiss(){
+    window.localStorage.setItem('dismissed', 'true');
+    setDismissedPop(true);
+    setShowPop(false);
+  }
+
   return (
     <motion.div 
       id='home_container' 
-      className="dotted page-container"
+      className="dotted page-container p-rel"
       key="home"
       variants={PageVariants}
       initial="hidden"
       animate="enter"
       exit="exit"
     >
+
+      {/* <img
+          id={'home-sprite'}
+          className=''
+          src={'/static/images/hex.svg'}
+          alt={'hexagon decoration'}
+        /> */}
+
+      <Modal 
+        id={'Lets Talk'} 
+        isOpen={showPop && !dismissedPop}
+      >
+      <FlackPopup 
+        onDismiss={()=> setShowPop(false)} 
+        onDismissForever={handleDismiss}/>
+      </Modal>
+
       <section
         id="home-splash" 
-        className="page_double page-hero p-rel accent-psudo"  
-        data-psudo={'//////////////'}
-      >
-        <div id="home_blurb" className="flex flex-align-center bg-fade accent-psudo" data-psudo={'||||'}>
+        className="page_double page-hero p-rel"
+        >
+        
+        <div id="home_blurb" className="flex flex-align-center bg-fade">
           <div className="flex-column padded">
             <LineHeader text='What I do' />
             <TypewriterLoading />
@@ -62,30 +96,26 @@ const HomePage = () => {
             </p>            
             <br/>
             <div className="flex">
-              <button aria-label="Gallery page" className='button active'>work</button>
-              <button aria-label="Gallery page" className='button'>Lets Talk</button>
+              <button aria-label="Gallery page" className='button active'>work</button>              
+              { !dismissedPop && 
+                <button aria-label="Gallery page" onClick={()=> setShowPop(true)} className='button'>Lets Talk</button> }
             </div>
           </div>          
         </div>
         
         <MeshLoading />
 
-        {/* <aside className="hero-meter"> */}
-          {<ScrollMeter
+          <ScrollMeter
             className={''}
             triggers={[              
-              { id: 0, start: 10, end: 20, color: 'var(--midground, #000)'},
-              { id: 1, start: 20, end: 30, color: 'var(--text, yellow)'},
-              { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)'}
+              { id: 0, start: 10, end: 20, color: 'var(--midground, #000)', callback: ()=>{setShowPop(false)}},
+              { id: 1, start: 20, end: 30, color: 'var(--text, yellow)', callback: ()=>{setShowPop(false)}},
+              { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)', callback: ()=>{setShowPop(true)}},
+              { id: 3, start: 81, end: 99, color: 'var(--accentB, yellow)', callback: ()=>{setShowPop(false)}}
             ]}          
-          >
-            <p>0</p>
-            <p>1</p>
-            {/* <FlackPopup /> */}
-          </ScrollMeter> }
+          >            
+          </ScrollMeter>
           
-        {/* </aside> */}
-
       </section>
 
       <br/>
@@ -194,6 +224,8 @@ const HomePage = () => {
       <hr className="bg-ac"/>
 
         <LetsBuild />
+
+        
            
     </motion.div>
   );
