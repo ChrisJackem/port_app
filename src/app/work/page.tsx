@@ -25,7 +25,7 @@ const WorkPage = () => {
 
     <div id='work-work-container' className='flex flex-column'>
 
-        <Scroller>
+        {/* <Scroller>
             
             <WorkContainer title='Flack'
                 link={{
@@ -256,7 +256,7 @@ const WorkPage = () => {
                 <small><strong>Note:</strong> this will not work on mobile browsers</small>
             </WorkContainer>
         
-        </Scroller>
+        </Scroller> */}
 
         <LetsBuild />
 
