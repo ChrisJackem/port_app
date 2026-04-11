@@ -1,6 +1,6 @@
-import React, { ReactNode, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import styles from './work_slideshow.module.css'
-import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut } from 'motion/react';
+import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView } from 'motion/react';
 import useParallax from '@/hooks/useParalax';
 
 type SlideImage = {
@@ -15,34 +15,31 @@ type WorkSlideShowProps = {
 
 const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
     const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(images[0]);
-    const container_ref = useRef<HTMLElement>(null);
-    
-/*     const { scrollYProgress: scrollYProgressMove } = useScroll({
-        target: container_ref,
-        offset: ["end start", "center start"]
-    })
+    const container_ref = useRef<HTMLElement>(null);    
+    const isInView = useInView(container_ref, { amount: 0.25 })
 
-     const { scrollYProgress } = useScroll({
-        target: container_ref,
-        offset: ["start start", "end end"]
-    }) */
-    const paralaxScreen = useParallax(  [-20, 20] )
-    const paralaxText = useParallax(  [-50, 50] )
-    
-    //const moveContainer = useTransform( scrollYProgressMove, [0, 1], [-200, 0] )
-    //const opacContainer = useTransform( scrollYProgressMove, [0, 1], [0, 1] )
+    // Parallax
+    const paralaxScreen = useParallax([-30, 30]);
+    const paralaxText = useParallax([-30, 70]);
+    const moveContainerZ = useParallax([-100, 0], container_ref, ['end start', 'end center']);
+    const opacContainer = useParallax([0, 1], container_ref, ['end start', 'end center']);
 
-    /* const test = useParallax( container_ref, [-200, 200]); */
-    const moveContainerZ = useParallax( [-100, 0], container_ref, ['end start', 'end center'])
-    const opacContainer = useParallax(  [0, 1], container_ref, ['end start', 'end center'])
-
+    const InView = useEffect( ()=> {
+        if (container_ref.current) {
+            if (isInView) {
+                container_ref.current.classList.add(styles.active);
+            } else {
+                container_ref.current.classList.remove(styles.active);
+            }
+        }
+    }, [isInView]);
 
     return (
         <section className={styles.main_container} ref={container_ref}>
-            <motion.div className={styles.container} style={{ 
+            <motion.div className={styles.container} 
+                style={{ 
                 transform: useMotionTemplate`translate3d( 0,0, ${moveContainerZ}px )`,
                 opacity: useMotionTemplate`${opacContainer}`
-
                 }}>
                 <motion.div className={styles.image_container} style={{ transform: useMotionTemplate`translate( -2px, ${paralaxScreen}px )`}}>
                     { currentImage && 
