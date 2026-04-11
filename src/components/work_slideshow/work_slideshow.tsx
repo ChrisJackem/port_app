@@ -1,6 +1,7 @@
 import React, { ReactNode, useRef, useState } from 'react'
 import styles from './work_slideshow.module.css'
-import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut } from 'motion/react'
+import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut } from 'motion/react';
+import useParallax from '@/hooks/useParalax';
 
 type SlideImage = {
     src: string,
@@ -14,28 +15,32 @@ type WorkSlideShowProps = {
 
 const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
     const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(images[0]);
-    const container_ref = useRef(null);
+    const container_ref = useRef<HTMLElement>(null);
     
-    const { scrollYProgress: scrollYProgressMove } = useScroll({
+/*     const { scrollYProgress: scrollYProgressMove } = useScroll({
         target: container_ref,
-        offset: ["end start", "start start"]
+        offset: ["end start", "center start"]
     })
 
      const { scrollYProgress } = useScroll({
         target: container_ref,
         offset: ["start start", "end end"]
-    })
-    const paralaxScreen = useTransform( scrollYProgress, [0, 1], [-30, 30], { clamp: false } )
-    const paralaxText = useTransform( scrollYProgress, [0, 1], [-40, 40], { clamp: false } )
+    }) */
+    const paralaxScreen = useParallax(  [-20, 20] )
+    const paralaxText = useParallax(  [-50, 50] )
     
-    const moveContainer = useTransform( scrollYProgressMove, [0, 1], [-200, 0] )
-    const opacContainer = useTransform( scrollYProgressMove, [0, 1], [0, 1] )
+    //const moveContainer = useTransform( scrollYProgressMove, [0, 1], [-200, 0] )
+    //const opacContainer = useTransform( scrollYProgressMove, [0, 1], [0, 1] )
+
+    /* const test = useParallax( container_ref, [-200, 200]); */
+    const moveContainerZ = useParallax( [-100, 0], container_ref, ['end start', 'end center'])
+    const opacContainer = useParallax(  [0, 1], container_ref, ['end start', 'end center'])
 
 
     return (
         <section className={styles.main_container} ref={container_ref}>
             <motion.div className={styles.container} style={{ 
-                transform: useMotionTemplate`translate3d( 0,0, ${moveContainer}px )`,
+                transform: useMotionTemplate`translate3d( 0,0, ${moveContainerZ}px )`,
                 opacity: useMotionTemplate`${opacContainer}`
 
                 }}>
@@ -54,10 +59,10 @@ const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
 
                 <motion.div className={styles.child_container} style={{ transform: useMotionTemplate`translateY( ${paralaxText}px )`}} >
                     {children}           
-                <div className={styles.cta}>
+                <motion.div className={styles.cta} >
                     <button className='button active'>Click</button>
                     <button className='button'>Click</button>
-                </div>
+                </motion.div>
 
                 </motion.div>
 
