@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import styles from './work_slideshow.module.css'
-import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView } from 'motion/react';
+import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView, useMotionValueEvent } from 'motion/react';
 import useParallax from '@/hooks/useParalax';
 
 type SlideImage = {
@@ -12,17 +12,25 @@ type WorkSlideShowProps = {
     children: ReactNode,
     images: SlideImage[],
 }
+type ScrollConfig = {
+    scroll: number;
+    image: number;
+    text: number;
+}
 
 const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
     const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(images[0]);
     const container_ref = useRef<HTMLElement>(null);    
-    const isInView = useInView(container_ref, { amount: 0.25 })
+    const isInView = useInView(container_ref, { amount: 0.25 });
+    const { scrollYProgress } = useScroll({target: container_ref, offset: ['end start', 'end center']});
+    const { scrollYProgress: master } = useScroll({target: container_ref, offset: ['start center', 'end center']});
+    const paralaxScreen = useParallax(master, [-40, 40]);
+    const paralaxText = useParallax(master, [-70, 70]);
+    const moveContainerZ = useParallax(scrollYProgress,[-100, 0] );
+    const opacContainer = useParallax(scrollYProgress, [0, 1] );
 
-    // Parallax
-    const paralaxScreen = useParallax([-30, 30]);
-    const paralaxText = useParallax([-30, 70]);
-    const moveContainerZ = useParallax([-100, 0], container_ref, ['end start', 'end center']);
-    const opacContainer = useParallax([0, 1], container_ref, ['end start', 'end center']);
+    const [scroll, setScroll] = useState<ScrollConfig | undefined>();
+
 
     const InView = useEffect( ()=> {
         if (container_ref.current) {

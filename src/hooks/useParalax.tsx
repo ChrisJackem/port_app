@@ -1,12 +1,11 @@
-import { useScroll, useTransform } from "motion/react";
+import { MotionValue, useScroll, useTransform } from "motion/react";
 
 export default function useParallax(
-    distance: number[], 
-    ref?: React.RefObject<HTMLElement | null>, 
-    offset?:any, 
-    inputs?:number[]
+    value: MotionValue<number>,
+    distance: number[],    
+
 ) {
-    const {scrollYProgress} = useScroll( ref && offset && { target: ref, offset: offset });
+    //const {scrollYProgress} = useScroll( ref && offset && { target: ref, offset: offset });
       
-    return useTransform(scrollYProgress, inputs || [0, 1], [...distance], {clamp: true} );
+    return useTransform(value, [0, 1], [distance[0], distance[1]], {clamp: true} );
 }
