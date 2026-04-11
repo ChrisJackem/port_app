@@ -10,6 +10,7 @@ import { PageVariants } from '../config/variants'
 //import TypeHeader from '@/components/type_header/type_header'
 import PageBanner from '@/components/page_banner/page_banner'
 import LetsBuild from '@/components/lets_build/lets_build'
+import WorkSlideShow from '@/components/work_slideshow/work_slideshow'
 
 const WorkPage = () => {
   return (
@@ -21,11 +22,73 @@ const WorkPage = () => {
         exit="exit"
     >
 
-    <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
+        <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
 
-    <div id='work-work-container' className='flex flex-column'>
+        
+        <WorkSlideShow images={[
+            {   src: 'static/images/work/flack/flack_logo.png',
+                alt: 'alt text' }
+            ]}>
+            
+                <h2>FLACK</h2>
+                <small>Social Media</small>
+                
+                <br/>
+                <hr/>
+                <br/>
 
-        {/* <Scroller>
+                <p>
+                    Flack is an old-school styled social media with every feature you would expect in a social media app. Share videos and images with your friends and give them praise or flack on thier posts.
+                </p>
+                <br/>
+                <p>
+                    Completely ad-free, no tracking, and easy to use, with a detailed help page.
+                </p>
+                
+                <div className="feature_box">
+                    <h3 className="t-green">Features</h3>
+                    <ul>
+                        <li>No Tracking or data harvesting</li>
+                        <li>Ad-Free, even in embedded video</li>
+                        <li>Add, Delete, Block, Chat, and interact with friends</li>
+                        <li>YouTube and BitChute support</li>
+                        <li>Emoji Support, Emoji picker</li>
+                        <li>Bot Control with Recaptcha2.0</li>
+                        <li>Backend image resizing and formatting (space saving)</li>
+                    </ul>
+                </div>
+        </WorkSlideShow>
+
+        <WorkSlideShow images={[
+            {   src: 'static/images/work/flack/flack_logo.png',
+                alt: 'alt text' }
+            ]}>
+            <h1>Inner</h1>
+            <hr/>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <p>lorem100</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+        </WorkSlideShow>
+
+        <WorkSlideShow images={[
+            {   src: 'static/images/work/flack/flack_logo.png',
+                alt: 'alt text' }
+            ]}>
+            <h1>Inner</h1>
+            <hr/>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <p>lorem100</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+        </WorkSlideShow>
+
+        <LetsBuild />
+
+
+    {/*<div id='work-work-container' className='flex flex-column'>
+
+         <Scroller>
             
             <WorkContainer title='Flack'
                 link={{
@@ -256,11 +319,12 @@ const WorkPage = () => {
                 <small><strong>Note:</strong> this will not work on mobile browsers</small>
             </WorkContainer>
         
-        </Scroller> */}
+        </Scroller> 
 
-        <LetsBuild />
+        
 
-    </div>
+    </div>*/}
+        
     </motion.div>
   )
 }
