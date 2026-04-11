@@ -7,6 +7,7 @@ import useRefs from '@/hooks/useRefs';
 import styles from './scroller.module.css';
 import { AnimatePresence, motion, scale } from 'motion/react';
 import SvgBtn from '../svg_btns/svg_btns';
+import { LineHeaderHoriz } from '../line_header_horiz/line_header_horiz';
 
 const TIMEOUT = 200;
 const MIN_DISTANCE = 300;
@@ -117,7 +118,10 @@ const Scroller: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
                     className={styles.scroll_container}                    
                     ref={el => { if (el) setRef(el, i.toString()); }}
                     key={i}
-                >{child}</div>
+                >
+                    <LineHeaderHoriz text={"|"}/>
+                    {child}
+                </div>
             } ) }
             <AnimatePresence>
             { (!hideTools) && (<motion.div className={`flex ${styles.scroll_tools}`}

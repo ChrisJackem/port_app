@@ -24,7 +24,7 @@ const WorkPage = () => {
 
         <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
 
-        
+
         <WorkSlideShow images={[
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
@@ -82,6 +82,8 @@ const WorkPage = () => {
             <p>lorem100</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
         </WorkSlideShow>
+
+
 
         <LetsBuild />
 
