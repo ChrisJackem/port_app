@@ -22,13 +22,7 @@ const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
     const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(images[0]);
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
-    const { scrollYProgress } = useScroll({target: container_ref, offset: ['end start', 'end center']});
-    const { scrollYProgress: master } = useScroll({target: container_ref, offset: ['start center', 'end center']});
-    const paralaxScreen = useParallax(master, [-40, 40]);
-    const paralaxText = useParallax(master, [-70, 70]);
-    const moveContainerZ = useParallax(scrollYProgress,[-100, 0] );
-    const opacContainer = useParallax(scrollYProgress, [0, 1] );
-
+    const { paralaxScreen, paralaxText, moveContainerZ, opacContainer } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });
     const [scroll, setScroll] = useState<ScrollConfig | undefined>();
 
 
@@ -44,12 +38,8 @@ const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
 
     return (
         <section className={styles.main_container} ref={container_ref}>
-            <motion.div className={styles.container} 
-                style={{ 
-                transform: useMotionTemplate`translate3d( 0,0, ${moveContainerZ}px )`,
-                opacity: useMotionTemplate`${opacContainer}`
-                }}>
-                <motion.div className={styles.image_container} style={{ transform: useMotionTemplate`translate( -2px, ${paralaxScreen}px )`}}>
+            <motion.div className={styles.container} style={{ z: moveContainerZ, opacity: opacContainer }}>
+                <motion.div className={styles.image_container} style={{ y: paralaxScreen }}>
                     { currentImage && 
                         <AnimatePresence>
                             <motion.img                        
@@ -62,7 +52,7 @@ const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
                     <SlideControls />
                 </motion.div>
 
-                <motion.div className={styles.child_container} style={{ transform: useMotionTemplate`translateY( ${paralaxText}px )`}} >
+                <motion.div className={styles.child_container} style={{ y: paralaxText }} >
                     {children}           
                 <motion.div className={styles.cta} >
                     <button className='button active'>Click</button>
