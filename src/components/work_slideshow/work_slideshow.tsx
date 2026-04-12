@@ -2,74 +2,90 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import styles from './work_slideshow.module.css'
 import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView, useMotionValueEvent } from 'motion/react';
 import useParallax from '@/hooks/useParalax';
+import useLoadImg, {LoadImage, SlideImage} from '@/hooks/useLoadImg';
 
-type SlideImage = {
-    id: number,
-    src: string,
-    alt: string,
-    text?:string
+type SlideState = {
+    is_playing: boolean;
+    play_speed: number;
+    images?: LoadImage[];
+    current_image?: LoadImage | undefined;
 }
 
 const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideImage[] }) => {
-    const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(undefined);
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
     const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });
-
-    const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
-    const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-        const { naturalHeight, naturalWidth } = e.currentTarget;
-        console.log(`loaded ${e}`)
-        setDimensions({ height: naturalHeight, width: naturalWidth });
-    };
+    
+    //const [currentImage, setCurrentImage] = useState<LoadImage>();
+    const { imagesLoaded, loadAllImages } = useLoadImg(images);
+    const [slideState, setSlideState] = useState<SlideState>({ is_playing: true, play_speed: 3 })
 
     const InView = useEffect( ()=> {
         if (container_ref.current) {
             if (isInView) {
+                if (!imagesLoaded.length){
+                    loadAllImages();
+                }
                 container_ref.current.classList.add(styles.active);
             } else {
+                setSlideState( state => ({ ...state, is_playing: false }));
                 container_ref.current.classList.remove(styles.active);
             }
         }
     }, [isInView]);
 
+    // Load first
+    const ImageLoaded = useEffect( ()=> {
+        if ( imagesLoaded.length ){
+            setSlideState( s => ({
+                ...s, 
+                images: imagesLoaded,
+                current_image: imagesLoaded[0]
+            }))
+            //setCurrentImage( imagesLoaded[0] )
+        }        
+    }, [imagesLoaded]);
+
+
     return (
         <section className={styles.main_container} ref={container_ref}>
             <motion.div className={styles.container} style={{ z: contY, opacity: contO }}>
-                <motion.div 
-                    className={styles.image_container}                     
-                    style={{ 
-                        y: screenY,
-                        aspectRatio: `${dimensions.width} / ${dimensions.height}`,
-                        paddingTop: `${(dimensions.height / dimensions.width) * 100}%`,
-                    }}
-                >
-                    <AnimatePresence>
-                        { currentImage 
-                        ? (<motion.img
-                            onLoad={handleImageLoad}
-                            key={currentImage.id}
-                            initial={{ opacity: 0, x: -30}}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{    opacity: 0, x: 30 }}
-                            transition={{ duration: 0.4, ease: 'easeOut', type: 'tween' }}
-                            className={`${styles.hero_image}`}                        
-                            alt={`Active theme image: ${currentImage.alt}`}      
-                            src={currentImage.src}
-                            width={1000}
-                            height={600}
-                            />)
-                        : (<div>Loading</div>)
+                
+                { slideState.current_image && (
+                    <motion.div 
+                        className={styles.image_container}                     
+                        style={{ 
+                            y: screenY,
+                            aspectRatio: `${slideState.current_image.dimensions[0]} / ${slideState.current_image.dimensions[1]}`,
+                            paddingTop: `${(slideState.current_image.dimensions[0] / slideState.current_image.dimensions[1]) * 100}%`,
+                        }}
+                    >
+                        <AnimatePresence>
+                            { slideState.current_image 
+                                ? (<motion.img                                
+                                    key={slideState.current_image.id}
+                                    initial={{ opacity: 0, x: -30}}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{    opacity: 0, x: 30 }}
+                                    transition={{ duration: 0.4, ease: 'easeOut', type: 'tween' }}
+                                    className={`${styles.hero_image}`}                        
+                                    alt={`Active theme image: ${slideState.current_image.alt}`}      
+                                    src={slideState.current_image.src}
+                                    width={1000}
+                                    height={600}
+                                    />)
+                                : (<div>Loading</div>)
+                            }
+                        </AnimatePresence>
+                        { imagesLoaded.length > 1 
+                            ? ( <SlideControls             
+                                _slideState={slideState}
+                                onSlideUpdate={setSlideState}
+                                />) 
+                            : (<div>|</div>) 
                         }
-                    </AnimatePresence>
-                    { images.length > 1 
-                        ? ( <SlideControls 
-                            slides={images}
-                            onUserUpdate={setCurrentImage}
-                            />) 
-                        : (<div>|</div>) 
-                    }
-                </motion.div>
+                    </motion.div>) 
+                }
 
                 <motion.div className={styles.child_container} style={{ y: textY }} >
                     {children}           
@@ -87,35 +103,82 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
 }
 
 
-const SlideControls = ({slides, onUserUpdate}: {slides: SlideImage[], onUserUpdate:Function}) => {
-    const activeId = useRef<number>(0);
-    const [slide, setSlide] = useState<SlideImage>(slides[activeId.current]);
-
-    function changeSlide(
-        advance:number | null = 1, // or
-        change: number | null = null
-    ){
-        if (advance !== null){
-            activeId.current = (activeId.current + advance + slides.length) % slides.length;
-        }else if (change  !== null){            
-            activeId.current = change;
-        }else{
-            console.error(`changeSlide error: nothing`)
-            return;
+const SlideControls = ({ _slideState, onSlideUpdate}: { _slideState: SlideState, onSlideUpdate:Function }) => {
+    
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const target = event.target;
+        const name = target.name;     
+        let value: any = target.value;
+        
+        switch(target.type){
+            case 'checkbox': 
+                value = target.checked;
+                if (name == 'is_playing'){
+                    // change play mode
+                }
+            break;
+            case 'radio':
+                if (name == 'current_image'){
+                    value = _slideState.images?.filter( i => i.id == value )[0];
+                }
+            break;
+            case 'range':
+                
+            break;
         }
-        setSlide( slides[activeId.current] );
-        onUserUpdate( slides[activeId.current] );
+
+        // set main state[name] = value
+        if (_slideState.hasOwnProperty(name)){
+            onSlideUpdate( (s: SlideState) => ({ ...s, [name]:value }) );
+            console.log(`change: ${name} - ${value}`);
+        }else{
+            console.error(`slideState has no prop: ${name}\n${JSON.stringify(_slideState)}`)
+        }
     }
 
     return (
-        <div className={styles.controls}>
-            <div>{slide.id}</div>
-            <button className='button' onClick={()=>changeSlide(null,0)}>0</button>
-            <button className='button' onClick={()=>changeSlide(null,1)}>1</button>
-            <button className='button' onClick={()=>changeSlide(null,2)}>2</button>
-            <button className='button' onClick={()=>changeSlide(-1)}>&lt;</button>
-            <button className='button' onClick={()=>changeSlide(1)}>&gt;</button>
-        </div>
+        <form className={styles.controls}>            
+            <label htmlFor="is_playing">Auto-play slides</label>
+            <input 
+                id="is_playing"
+                name="is_playing" 
+                type="checkbox" 
+                checked={_slideState.is_playing} 
+                onChange={onChange} 
+                title="Toggle automatic slide playback"
+            />
+
+            <fieldset>
+                <legend>Slide Selection</legend>
+                {_slideState.images?.map((slide, index) => (
+                    <label key={slide.id}>
+                        <input
+                            type="radio"
+                            name="current_image"
+                            value={slide.id}                           
+                            onChange={onChange}
+                            checked={_slideState.current_image?.id == slide.id}
+                        />
+                        Slide {index + 1}
+                    </label>
+                ))}
+            </fieldset>
+
+            <label htmlFor="play_speed">Play Speed</label>
+            <input
+                id="play_speed"
+                name="play_speed"
+                type="range"
+                min="1"
+                max="4"
+                step="1"
+                value={_slideState.play_speed ?? 1}
+                onChange={onChange}
+                title="Adjust slide playback speed"
+            />
+            <span>{(_slideState.play_speed ?? 1)}x</span>
+
+        </form>
     )
 }
 

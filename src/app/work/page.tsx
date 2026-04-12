@@ -26,12 +26,13 @@ const WorkPage = () => {
 
 
         <WorkSlideShow images={[
-            {   id: 0, src: 'static/images/work/flack/flack_logo.png',
+            {    src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' },
-            {   id: 1, src: 'static/images/work/flack/flack_dashboard.png',
+            {   src: 'static/images/work/flack/flack_dashboard.png',
                 alt: 'alt text' },
-            {   id: 2, src: 'static/images/work/flack/flack_logo.png',
+            {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
+           
             ]}>
             
                 <h2>FLACK</h2>
@@ -64,9 +65,9 @@ const WorkPage = () => {
         </WorkSlideShow>
 
         <WorkSlideShow images={[
-            {   id: 0, src: 'static/images/work/flack/flack_logo.png',
+            {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' },
-            {   id: 1, src: 'static/images/work/flack/flack_logo.png',
+            {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
             ]}>
             <h1>Inner</h1>
@@ -78,7 +79,7 @@ const WorkPage = () => {
         </WorkSlideShow>
 
         <WorkSlideShow images={[
-            {   id: 0, src: 'static/images/work/flack/flack_logo.png',
+            {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
             ]}>
             <h1>Inner</h1>
