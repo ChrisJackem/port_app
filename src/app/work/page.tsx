@@ -65,6 +65,8 @@ const WorkPage = () => {
 
         <WorkSlideShow images={[
             {   id: 0, src: 'static/images/work/flack/flack_logo.png',
+                alt: 'alt text' },
+            {   id: 1, src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
             ]}>
             <h1>Inner</h1>

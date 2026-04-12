@@ -9,18 +9,9 @@ type SlideImage = {
     alt: string,
     text?:string
 }
-type WorkSlideShowProps = {
-    children: ReactNode,
-    images: SlideImage[],
-}
-type ScrollConfig = {
-    scroll: number;
-    image: number;
-    text: number;
-}
 
-const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
-    const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(images[0]);
+const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideImage[] }) => {
+    const [currentImage, setCurrentImage] = useState<SlideImage | undefined>(undefined);
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
     const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });
@@ -46,29 +37,31 @@ const WorkSlideShow = ({images, children}: WorkSlideShowProps) => {
         <section className={styles.main_container} ref={container_ref}>
             <motion.div className={styles.container} style={{ z: contY, opacity: contO }}>
                 <motion.div 
-                    className={styles.image_container} 
+                    className={styles.image_container}                     
                     style={{ 
-                        y: screenY, 
-                        paddingTop: "300px",
-                       /*  width: dimensions.width, 
-                        height: dimensions.height,           */              
+                        y: screenY,
+                        aspectRatio: `${dimensions.width} / ${dimensions.height}`,
+                        paddingTop: `${(dimensions.height / dimensions.width) * 100}%`,
                     }}
                 >
-                    { currentImage && 
-                        <AnimatePresence>
-                            <motion.img
-                                onLoad={handleImageLoad}
-                                key={currentImage.id}
-                                initial={{ opacity: 0, x: -30}}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{    opacity: 0, x: 30 }}
-                                transition={{ duration: 1, ease: 'easeOut', type: 'tween' }}                              
-                                className={`${styles.hero_image}`}                        
-                                alt={`Active theme image: ${currentImage.alt}`}      
-                                src={currentImage.src}
-                            />
-                        </AnimatePresence>
-                    }
+                    <AnimatePresence>
+                        { currentImage 
+                        ? (<motion.img
+                            onLoad={handleImageLoad}
+                            key={currentImage.id}
+                            initial={{ opacity: 0, x: -30}}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{    opacity: 0, x: 30 }}
+                            transition={{ duration: 0.4, ease: 'easeOut', type: 'tween' }}                              
+                            className={`${styles.hero_image}`}                        
+                            alt={`Active theme image: ${currentImage.alt}`}      
+                            src={currentImage.src}
+                            width={1000}
+                            height={600}
+                            />)
+                        : (<div>Loading</div>)
+                        }
+                    </AnimatePresence>
                     { images.length > 1 
                         ? ( <SlideControls 
                             slides={images}
@@ -117,11 +110,11 @@ const SlideControls = ({slides, onUserUpdate}: {slides: SlideImage[], onUserUpda
     return (
         <div className={styles.controls}>
             <div>{slide.id}</div>
-            <button className='button' onClick={()=>changeSlide(null,0)}>Button</button>
-            <button className='button' onClick={()=>changeSlide(null,1)}>Button</button>
-            <button className='button' onClick={()=>changeSlide(null,2)}>Button</button>
-            <button className='button' onClick={()=>changeSlide(-1)}>Button</button>
-            <button className='button' onClick={()=>changeSlide(1)}>Button</button>
+            <button className='button' onClick={()=>changeSlide(null,0)}>0</button>
+            <button className='button' onClick={()=>changeSlide(null,1)}>1</button>
+            <button className='button' onClick={()=>changeSlide(null,2)}>2</button>
+            <button className='button' onClick={()=>changeSlide(-1)}>&lt;</button>
+            <button className='button' onClick={()=>changeSlide(1)}>&gt;</button>
         </div>
     )
 }
