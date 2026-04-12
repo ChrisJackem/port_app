@@ -46,6 +46,9 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
         }        
     }, [imagesLoaded]);
 
+    const aspect_ratio = slideState?.current_image?.dimensions 
+        ? (slideState.current_image.dimensions[1] / slideState.current_image.dimensions[0]) 
+        : 1
 
     return (
         <section className={styles.main_container} ref={container_ref}>
@@ -54,11 +57,7 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
                 { slideState.current_image && (
                     <motion.div 
                         className={styles.image_container}                     
-                        style={{ 
-                            y: screenY,
-                            aspectRatio: `${slideState.current_image.dimensions[0]} / ${slideState.current_image.dimensions[1]}`,
-                            paddingTop: `${(slideState.current_image.dimensions[0] / slideState.current_image.dimensions[1]) * 100}%`,
-                        }}
+                        style={{ y: screenY, paddingTop: `${aspect_ratio * 100}%`, }}
                     >
                         <AnimatePresence>
                             { slideState.current_image 
