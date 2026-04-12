@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback } from "react";
 
-const useInterval = (callback, delay) => {
+const useInterval = (callback, delay, enabled = false) => {
   const callbackRef = useRef(callback);
   const intervalRef = useRef(0);
 
@@ -19,9 +19,13 @@ const useInterval = (callback, delay) => {
   }, []);
 
   useEffect(() => {
-    set();
+    if (enabled) {
+      set();
+    }else{
+      clear()
+    }
     return clear;
-  }, [delay, set, clear]);
+  }, [delay, set, clear, enabled]);
 
   return {
     clear,

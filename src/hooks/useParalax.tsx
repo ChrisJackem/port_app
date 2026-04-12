@@ -7,11 +7,11 @@ export default function useParallax({ ref }: { ref: RefObject<HTMLElement> } ){
     const { scrollYProgress } = useScroll({target: ref, offset: ['end start', 'end center']});
     const { scrollYProgress: master } = useScroll({target: ref, offset: ['start center', 'end center']});
     // Transform scroll
-    const paralaxScreen = useTrans(master, [-30, 30]);
-    const paralaxText = useTrans(master, [-60, 60]);
-    const moveContainerZ = useTrans(scrollYProgress,[-100, 0] );
-    const opacContainer = useTrans(scrollYProgress, [0, 1] );
-    return { paralaxScreen, paralaxText, moveContainerZ, opacContainer }
+    const screenY = useTrans(master, [-30, 30]);
+    const textY = useTrans(master, [-60, 60]);
+    const contY = useTrans(scrollYProgress,[-100, 0] );
+    const contO = useTrans(scrollYProgress, [0, 1] );
+    return { screenY, textY, contY, contO }
 }
 
 export function useTrans( value: MotionValue<number>, distance: number[] ) {
