@@ -81,38 +81,50 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
     const { start, stop, enabled } = useInterval(Tick,  slideState.play_speed );
 
     function Tick(){
+        //console.log('tick', slideState.play_speed)
         if (slideState.is_playing){
             dispatch({ type: 'TICK' });
         }
     };
+
+    // Update uneInterval when state or inView
+    // if we don't set play it will use state value
+    function SetPlayer(play?:boolean){
+        play = play === undefined ? slideState.is_playing : play;
+        //console.log(`setplayer: ${play}`)
+        if (play){
+            start();
+        }else{
+            stop();
+        }
+    }
     
-    // Effects
+    ///// Effects ///////
+    
+    // is_playing triggers Player
+    const PlayerEffect = useEffect( ()=> {    
+       if (!enabled) SetPlayer();       
+    }, [slideState.is_playing]);
+
     const InView = useEffect( ()=> {
-        console.log('view', isInView)
         if (isInView) {
             if ( imagesLoaded.length == 0 ){
                 loadAllImages();
+            }else if (imagesLoaded.length > 1){
+                SetPlayer();
             }
-            if (slideState.is_playing && !enabled) start();
-        } else {                
-            if (enabled) stop();            
+        } else {
+            // if animating turn off player
+            if (enabled && (imagesLoaded.length > 1) ) SetPlayer(false);            
         }
     }, [isInView]);
 
     const ImageLoaded = useEffect( ()=> {
         if ( imagesLoaded.length ){
             dispatch({ type: 'SET_IMAGES', payload: imagesLoaded });
+            SetPlayer();
         }        
     }, [imagesLoaded]);
-
-    // is_playing controls the interval
-    //const PlayerEffect = useEffect( ()=> {
-        /* if ( !slideState.is_playing && enabled.current ){
-            stop()
-        }else if (slideState.is_playing && !enabled.current){
-            start()
-        } */
-    //}, [slideState.is_playing]);
 
     // helper var
     const aspect_ratio = slideState?.current_image?.dimensions 
