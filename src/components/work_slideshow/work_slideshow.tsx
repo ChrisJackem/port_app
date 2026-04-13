@@ -35,7 +35,7 @@ function slideReducer(state: SlideState, action: SlideAction): SlideState {
                 };            
             }
             return state;
-        case 'SET_IMAGES':
+        case 'SET_IMAGES':            
             return {
                 ...state,
                 images: action.payload,
@@ -44,7 +44,7 @@ function slideReducer(state: SlideState, action: SlideAction): SlideState {
         case 'SET_PLAYING':
             return {
                 ...state,
-                is_playing: action.payload
+                is_playing: Boolean(action.payload)
             };
         case 'GO_TO_SLIDE':
             return {
@@ -67,7 +67,7 @@ function slideReducer(state: SlideState, action: SlideAction): SlideState {
     }
 }
 
-const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideImage[] }) => {
+const WorkSlideShow = ({name, images, children}: { name: string, children: ReactNode, images: SlideImage[] }) => {
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
     const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });    
@@ -136,7 +136,7 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
             <motion.div className={styles.container} style={{ z: contY, opacity: contO }}>
                 
                 { slideState.current_image && (
-                    <motion.div 
+                    <motion.div                    
                         className={styles.image_container}                     
                         style={{ y: screenY, paddingTop: `${aspect_ratio * 100}%`, }}
                     >
@@ -158,7 +158,8 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
                             }
                         </AnimatePresence>
                         { imagesLoaded.length > 1 
-                            ? ( <SlideControls             
+                            ? ( <SlideControls
+                                name={name}             
                                 _slideState={slideState}
                                 slideDispatch={dispatch}
                                 />) 

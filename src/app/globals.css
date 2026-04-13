@@ -138,7 +138,7 @@ a {
 }
 
 /************************** FLEX */
-.flex, .flex-column{
+.flex, .flex-column, .flex-column-left{
   display: flex;
   gap: 1rem;
 }

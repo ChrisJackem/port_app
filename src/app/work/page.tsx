@@ -25,7 +25,7 @@ const WorkPage = () => {
         <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
 
 
-        <WorkSlideShow images={[
+        <WorkSlideShow name={'flack'} images={[
             {    src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' },
             {   src: 'static/images/work/flack/flack_dashboard.png',
@@ -64,7 +64,7 @@ const WorkPage = () => {
                 </div>
         </WorkSlideShow>
 
-        <WorkSlideShow images={[
+        <WorkSlideShow  name={'test1'} images={[
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' },
             {   src: 'static/images/work/flack/flack_logo.png',
@@ -72,13 +72,10 @@ const WorkPage = () => {
             ]}>
             <h1>Inner</h1>
             <hr/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
-            <p>lorem100</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ex quidem perferendis aliquid quisquam. At adipisci quam sequi optio magnam!</p>
         </WorkSlideShow>
 
-        <WorkSlideShow images={[
+        <WorkSlideShow  name={'test2'}  images={[
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
             ]}>

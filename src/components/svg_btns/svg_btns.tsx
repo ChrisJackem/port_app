@@ -116,8 +116,4 @@ export const SVG_GH = ({ classname }: { classname:string }) => (
     </svg>
 );
 
-
-
-
-
 export default SvgBtn;

@@ -1,7 +1,8 @@
 import { SlideState } from "./work_slideshow";
+import styles from './work_slideshow_controls.module.css';
 
 
-const SlideControls = ({ _slideState, slideDispatch}: { _slideState: SlideState, slideDispatch:Function }) => {
+const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _slideState: SlideState, slideDispatch:Function }) => {
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
@@ -11,74 +12,95 @@ const SlideControls = ({ _slideState, slideDispatch}: { _slideState: SlideState,
         switch(target.type){
             case 'checkbox': 
                 value = target.checked;
-                if (name == 'is_playing'){
+                if ( name.includes('is_playing') ){
                     // change play mode
                     slideDispatch({type: 'SET_PLAYING', payload:value });
                     return;
                 }
             break;
             case 'radio':
-                if (name == 'current_image'){
+                if ( name.includes('current_image') ){
+                    // change slide in master
                     slideDispatch({type: 'GO_TO_SLIDE', payload:value });
                     return;
-                    //value = _slideState.images?.filter( i => i.id == value )[0];
                 }
             break;
             case 'range':
                 
             break;
         }
-
         // set main state[name] = value
         if (_slideState.hasOwnProperty(name)){            
             slideDispatch({type: 'SET', payload:{ key:name, val:value }});
-            //console.log(`change: ${name} - ${value}`);
         }else{
             console.error(`slideState has no prop: ${name}\n${JSON.stringify(_slideState)}`)
         }
     }
 
+    // Helpers
+    /* const play_style = { backgroundImage: _slideState.is_playing 
+                        ? "url('/static/images/icons/icon_pause.svg')" 
+                        : "url('/static/images/icons/icon_play.svg')" 
+                        } as React.CSSProperties */
+
     return (
-        <form style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.25rem'}}>            
-            <label htmlFor="is_playing">Auto-play slides</label>
-            <input 
-                id="is_playing"
-                name="is_playing" 
-                type="checkbox" 
-                checked={_slideState.is_playing} 
-                onChange={onChange} 
-                title="Toggle automatic slide playback"
-            />
+        <form className={`flex-column-left ${styles.form}`}>
+            <div className={`flex flex-align-center p-rel ${styles.control_container}`}>
+                <input
+                    id={`${name}is_playing`}
+                    className={`${styles.play_check}`}                    
+                    name="is_playing" 
+                    type="checkbox" 
+                    checked={_slideState.is_playing}
+                    onChange={onChange} 
+                    title="Toggle automatic slide playback"
+                />
+                <label 
+                    htmlFor={`${name}is_playing`}                    
+                    className={styles.label}
+                    style={{ backgroundImage: _slideState.is_playing 
+                        ? "url('/static/images/icons/icon_pause.svg')" 
+                        : "url('/static/images/icons/icon_play.svg')" 
+                        } as React.CSSProperties}
+                ></label>
 
-            <fieldset>
-                <legend>Slide Selection</legend>
-                {_slideState.images?.map((slide, index) => (
-                    <label key={slide.id}>
-                        <input
-                            type="radio"
-                            name="current_image"
-                            value={slide.id}                           
-                            onChange={onChange}
-                            checked={_slideState.current_image?.id == slide.id}
-                        />
-                        Slide {index + 1}
-                    </label>
-                ))}
-            </fieldset>
+                <fieldset className={`flex flex-align-center ${styles.fieldset}`}>
+                    {/* <legend > Title </legend> */}
+                    {_slideState.images?.map((slide, index) => (
+                        <label key={slide.id} htmlFor={`radio_${slide.id}`}>
+                            <input
+                                id={`radio_${slide.id}`}
+                                className={styles.radio}
+                                type="radio"
+                                name="current_image"
+                                value={slide.id}                           
+                                onChange={onChange}
+                                checked={_slideState.current_image?.id == slide.id}
+                            />
+                            
+                        </label>
+                    ))}
+                </fieldset>
 
-            <label htmlFor="play_speed">Play Speed</label>
-            <input
-                id="play_speed"
-                name="play_speed"
-                type="range"
-                min="1000"
-                max="6000"
-                step="1000"
-                value={_slideState.play_speed ?? 1000}
-                onChange={onChange}
-                title="Adjust slide playback speed"
-            />
-            <span>{(_slideState.play_speed ?? 1000)}x</span>
+            </div>
+
+            <div className={`flex ${styles.control_container}`}>
+                <label htmlFor="play_speed">speed</label>
+                <input
+                    id={`${name}play_speed`}
+                    name="play_speed"
+                    className={styles.range}
+                    type="range"
+                    min="1000"
+                    max="6000"
+                    step="1000"
+                    list="ticks"
+                    value={_slideState.play_speed ?? 1000}
+                    onChange={onChange}
+                    title="Adjust slide playback speed"
+                />
+                <small>{(_slideState.play_speed ?? 1000)}x</small>
+            </div>
 
         </form>
     )
