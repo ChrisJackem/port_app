@@ -1,11 +1,12 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useReducer } from 'react'
 import styles from './work_slideshow.module.css'
-import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView, useMotionValueEvent } from 'motion/react';
+import { AnimatePresence, motion, useInView } from 'motion/react';
 import useParallax from '@/hooks/useParalax';
 import useLoadImg, {LoadImage, SlideImage} from '@/hooks/useLoadImg';
 import useInterval from '@/hooks/useInterval';
+import SlideControls from './work_slideshow_controls';
 
-type SlideState = {
+export type SlideState = {
     progress: number;
     is_playing: boolean;
     play_speed: number;
@@ -13,60 +14,107 @@ type SlideState = {
     current_image?: LoadImage | undefined;
 }
 
+type SlideAction = 
+    | { type: 'TICK'; }
+    | { type: 'SET_IMAGES'; payload: LoadImage[] }
+    | { type: 'SET_PLAYING'; payload: boolean }
+    | { type: 'GO_TO_SLIDE'; payload: number }
+    | { type: 'SET';        payload: { key:any, val:any} };
+
+function slideReducer(state: SlideState, action: SlideAction): SlideState {
+    
+    switch (action.type) {
+        case 'TICK':
+            if (state.is_playing) {
+                const next_index = (state.progress + 1) % (state.images?.length || 1);
+                const next_image = state.images?.[next_index];
+                return {
+                    ...state,
+                    progress: next_index,
+                    current_image: next_image
+                };            
+            }
+            return state;
+        case 'SET_IMAGES':
+            return {
+                ...state,
+                images: action.payload,
+                current_image: action.payload[state.progress || 0]
+            };
+        case 'SET_PLAYING':
+            return {
+                ...state,
+                is_playing: action.payload
+            };
+        case 'GO_TO_SLIDE':
+            return {
+                ...state,
+                progress: Number(action.payload),
+                is_playing: false,
+                current_image: state.images?.[action.payload]
+            };
+        case 'SET':
+            if (!state.hasOwnProperty(action.payload.key)){
+                console.error(`SET error not found:\n ${action.payload.key}:${action.payload.val}`)
+                return state
+            }
+            return {
+                ...state,
+                [action.payload.key]: action.payload.val
+            }
+        default:
+            return state;
+    }
+}
+
 const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideImage[] }) => {
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
     const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });    
     const { imagesLoaded, loadAllImages } = useLoadImg(images);    
-    const [slideState, setSlideState] = useState<SlideState>({
+    const [slideState, dispatch] = useReducer(slideReducer, {
         progress: 0,
         is_playing: true, 
         play_speed: 2000 
     });
 
-    const { clear, reset, start, stop } = useInterval(Tick,  slideState.play_speed, false);
+    const { start, stop, enabled } = useInterval(Tick,  slideState.play_speed );
 
     function Tick(){
-        console.log('tick', slideState.play_speed);
-        //const 
-        setSlideState( (s) =>{
-            const next_index = (s.progress + 1) % (s.images?.length || 1);
-            const next_image = s.images?.[next_index]
-            return {
-                ...s,
-                progress: next_index,
-                current_image: next_image
-            };
-        })
+        if (slideState.is_playing){
+            dispatch({ type: 'TICK' });
+        }
     };
     
+    // Effects
     const InView = useEffect( ()=> {
-        if (container_ref.current) {
-            if (isInView) {
-                if ( imagesLoaded.length == 0 ){
-                    loadAllImages();
-                }else{
-                    start()
-                }
-                container_ref.current.classList.add(styles.active);
-            } else {                
-                stop();
-                setSlideState( state => ({ ...state, is_playing: false }));
-                container_ref.current.classList.remove(styles.active);
+        console.log('view', isInView)
+        if (isInView) {
+            if ( imagesLoaded.length == 0 ){
+                loadAllImages();
             }
+            if (slideState.is_playing && !enabled) start();
+        } else {                
+            if (enabled) stop();            
         }
     }, [isInView]);
 
     const ImageLoaded = useEffect( ()=> {
         if ( imagesLoaded.length ){
-            setSlideState( s => ({
-                ...s, 
-                images: imagesLoaded,
-                current_image: imagesLoaded[0]
-            }))
+            dispatch({ type: 'SET_IMAGES', payload: imagesLoaded });
         }        
-    }, [imagesLoaded, isInView]);
+    }, [imagesLoaded]);
 
+    // is_playing controls the interval
+    //const PlayerEffect = useEffect( ()=> {
+        /* if ( !slideState.is_playing && enabled.current ){
+            stop()
+        }else if (slideState.is_playing && !enabled.current){
+            start()
+        } */
+    //}, [slideState.is_playing]);
+
+    // helper var
     const aspect_ratio = slideState?.current_image?.dimensions 
         ? (slideState.current_image.dimensions[1] / slideState.current_image.dimensions[0]) 
         : 1
@@ -100,7 +148,7 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
                         { imagesLoaded.length > 1 
                             ? ( <SlideControls             
                                 _slideState={slideState}
-                                onSlideUpdate={setSlideState}
+                                slideDispatch={dispatch}
                                 />) 
                             : (<div>|</div>) 
                         }
@@ -119,86 +167,6 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
                 <div style={{ opacity: 0.3 }}></div>
             </motion.div>
         </section>
-    )
-}
-
-
-const SlideControls = ({ _slideState, onSlideUpdate}: { _slideState: SlideState, onSlideUpdate:Function }) => {
-    
-    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const target = event.target;
-        const name = target.name;     
-        let value: any = target.value;
-        
-        switch(target.type){
-            case 'checkbox': 
-                value = target.checked;
-                if (name == 'is_playing'){
-                    // change play mode
-                }
-            break;
-            case 'radio':
-                if (name == 'current_image'){
-                    value = _slideState.images?.filter( i => i.id == value )[0];
-                }
-            break;
-            case 'range':
-                
-            break;
-        }
-
-        // set main state[name] = value
-        if (_slideState.hasOwnProperty(name)){
-            onSlideUpdate( (s: SlideState) => ({ ...s, [name]:value }) );
-            console.log(`change: ${name} - ${value}`);
-        }else{
-            console.error(`slideState has no prop: ${name}\n${JSON.stringify(_slideState)}`)
-        }
-    }
-
-    return (
-        <form className={styles.controls}>            
-            <label htmlFor="is_playing">Auto-play slides</label>
-            <input 
-                id="is_playing"
-                name="is_playing" 
-                type="checkbox" 
-                checked={_slideState.is_playing} 
-                onChange={onChange} 
-                title="Toggle automatic slide playback"
-            />
-
-            <fieldset>
-                <legend>Slide Selection</legend>
-                {_slideState.images?.map((slide, index) => (
-                    <label key={slide.id}>
-                        <input
-                            type="radio"
-                            name="current_image"
-                            value={slide.id}                           
-                            onChange={onChange}
-                            checked={_slideState.current_image?.id == slide.id}
-                        />
-                        Slide {index + 1}
-                    </label>
-                ))}
-            </fieldset>
-
-            <label htmlFor="play_speed">Play Speed</label>
-            <input
-                id="play_speed"
-                name="play_speed"
-                type="range"
-                min="1000"
-                max="6000"
-                step="1000"
-                value={_slideState.play_speed ?? 1000}
-                onChange={onChange}
-                title="Adjust slide playback speed"
-            />
-            <span>{(_slideState.play_speed ?? 1000)}x</span>
-
-        </form>
     )
 }
 

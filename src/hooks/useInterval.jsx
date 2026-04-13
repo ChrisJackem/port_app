@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useCallback, useState } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 
-const useInterval = (callback, delay, enabled = false) => {
-  const isEnabled = useRef(enabled);
+const useInterval = (callback, delay) => {
+  const isEnabled = useRef(false);
   const callbackRef = useRef(callback);
   const intervalRef = useRef(0);
 
@@ -9,19 +9,18 @@ const useInterval = (callback, delay, enabled = false) => {
     callbackRef.current = callback;
   }, [callback]);
 
-  const set = useCallback(() => {
-    console.log(`delay: ${delay}`)
-    intervalRef.current = setInterval(() => callbackRef.current(), delay );
+  const set = useCallback(() => {    
+      intervalRef.current = setInterval(() => callbackRef.current(), delay );  
   }, [delay]);
 
-  const clear = useCallback(() => {
-    if (intervalRef.current) {
+  const clear = useCallback(() => {    
       clearInterval(intervalRef.current);
-    }
+      intervalRef.current = undefined
   }, [intervalRef]);
 
   const start = () => {
     isEnabled.current = true;
+    clear();
     set();
   };
 
@@ -37,16 +36,17 @@ const useInterval = (callback, delay, enabled = false) => {
       clear();
     }
     return clear;
-  }, [delay, set, clear]);
+  }, [delay, set, clear, isEnabled]);
 
   return {
-    clear,
     start,
     stop,
-    reset: () => {
+    reset:()=>{
       clear();
       set();
     },
+    enabled: isEnabled.current
   };
 };
+
 export default useInterval;
