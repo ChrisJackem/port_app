@@ -30,9 +30,9 @@ const MeshBox = () => {
     const { ref: container_ref, inView: isInView } = useInView();
     const {theme} = useContext(ThemeContext);
     
-    useEffect(() => {
+   /*  useEffect(() => {
         console.log(isInView)
-    }, [isInView]);
+    }, [isInView]); */
 
     return (
         <div ref={container_ref} className={`${styles.container}`}>            

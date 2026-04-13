@@ -3,8 +3,10 @@ import styles from './work_slideshow.module.css'
 import { AnimatePresence, motion, useScroll, useTransform, useMotionTemplate, easeOut, useInView, useMotionValueEvent } from 'motion/react';
 import useParallax from '@/hooks/useParalax';
 import useLoadImg, {LoadImage, SlideImage} from '@/hooks/useLoadImg';
+import useInterval from '@/hooks/useInterval';
 
 type SlideState = {
+    progress: number;
     is_playing: boolean;
     play_speed: number;
     images?: LoadImage[];
@@ -14,27 +16,47 @@ type SlideState = {
 const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideImage[] }) => {
     const container_ref = useRef<HTMLElement>(null);    
     const isInView = useInView(container_ref, { amount: 0.25 });
-    const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });
-    
-    //const [currentImage, setCurrentImage] = useState<LoadImage>();
-    const { imagesLoaded, loadAllImages } = useLoadImg(images);
-    const [slideState, setSlideState] = useState<SlideState>({ is_playing: true, play_speed: 3 })
+    const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });    
+    const { imagesLoaded, loadAllImages } = useLoadImg(images);    
+    const [slideState, setSlideState] = useState<SlideState>({
+        progress: 0,
+        is_playing: true, 
+        play_speed: 2000 
+    });
 
+    const { clear, reset, start, stop } = useInterval(Tick,  slideState.play_speed, false);
+
+    function Tick(){
+        console.log('tick', slideState.play_speed);
+        //const 
+        setSlideState( (s) =>{
+            const next_index = (s.progress + 1) % (s.images?.length || 1);
+            const next_image = s.images?.[next_index]
+            return {
+                ...s,
+                progress: next_index,
+                current_image: next_image
+            };
+        })
+    };
+    
     const InView = useEffect( ()=> {
         if (container_ref.current) {
             if (isInView) {
-                if (!imagesLoaded.length){
+                if ( imagesLoaded.length == 0 ){
                     loadAllImages();
+                }else{
+                    start()
                 }
                 container_ref.current.classList.add(styles.active);
-            } else {
+            } else {                
+                stop();
                 setSlideState( state => ({ ...state, is_playing: false }));
                 container_ref.current.classList.remove(styles.active);
             }
         }
     }, [isInView]);
 
-    // Load first
     const ImageLoaded = useEffect( ()=> {
         if ( imagesLoaded.length ){
             setSlideState( s => ({
@@ -42,9 +64,8 @@ const WorkSlideShow = ({images, children}: { children: ReactNode, images: SlideI
                 images: imagesLoaded,
                 current_image: imagesLoaded[0]
             }))
-            //setCurrentImage( imagesLoaded[0] )
         }        
-    }, [imagesLoaded]);
+    }, [imagesLoaded, isInView]);
 
     const aspect_ratio = slideState?.current_image?.dimensions 
         ? (slideState.current_image.dimensions[1] / slideState.current_image.dimensions[0]) 
@@ -168,14 +189,14 @@ const SlideControls = ({ _slideState, onSlideUpdate}: { _slideState: SlideState,
                 id="play_speed"
                 name="play_speed"
                 type="range"
-                min="1"
-                max="4"
-                step="1"
-                value={_slideState.play_speed ?? 1}
+                min="1000"
+                max="6000"
+                step="1000"
+                value={_slideState.play_speed ?? 1000}
                 onChange={onChange}
                 title="Adjust slide playback speed"
             />
-            <span>{(_slideState.play_speed ?? 1)}x</span>
+            <span>{(_slideState.play_speed ?? 1000)}x</span>
 
         </form>
     )

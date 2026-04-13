@@ -45,7 +45,7 @@ const useLoadImg = ( imagesInput:SlideImage[] ) => {
 
         try {
             const image = await Promise.race(proms);
-            console.log('RACE', JSON.stringify(image));
+            //console.log('RACE', JSON.stringify(image));
             if (image) setImagesLoaded([image]);        
        
             const images = await Promise.all(proms);
