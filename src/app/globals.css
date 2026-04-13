@@ -152,7 +152,7 @@ a {
 .flex-end{ justify-content: flex-end;}
 .flex-align-center{ align-items: center;}
 .flex-space{ justify-content: space-around;}
-
+.flex-grow{ flex-grow: 1;}
 
 /* TODO:: Move to work page if we don't need this elsewhere */
 .scroll-table{

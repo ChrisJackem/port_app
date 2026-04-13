@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { SlideState } from "./work_slideshow";
 import styles from './work_slideshow_controls.module.css';
 
@@ -43,9 +44,13 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                         : "url('/static/images/icons/icon_play.svg')" 
                         } as React.CSSProperties */
 
+    const progress_duration = (_slideState.play_speed ?? 1000) / 1000;
+
     return (
         <form className={`flex-column-left ${styles.form}`}>
+            
             <div className={`flex flex-align-center p-rel ${styles.control_container}`}>
+                
                 <input
                     id={`${name}is_playing`}
                     className={`${styles.play_check}`}                    
@@ -81,7 +86,16 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                         </label>
                     ))}
                 </fieldset>
-
+                
+                <div className={`flex-grow p-rel flex flex-align-center ${styles.bar_container}`}>
+                    <motion.div
+                        key={`${_slideState.current_image?.id ?? 'idle'}-${_slideState.play_speed}-${_slideState.is_playing}`}
+                        initial={{ width: 0 }}
+                        animate={{ width: _slideState.is_playing ? '30%' : 0 }}
+                        transition={{ duration: progress_duration, ease: 'linear' }}
+                        style={{ height: '4px', backgroundColor: 'var(--accent)' }}
+                    />
+                </div>
             </div>
 
             <div className={`flex ${styles.control_container}`}>
