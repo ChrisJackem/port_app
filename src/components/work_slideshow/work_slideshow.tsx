@@ -181,7 +181,7 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                 }
 
                 <motion.div className={styles.child_container} style={{ y: textY }} >
-                    {children}           
+                    {children}
                 <motion.div className={styles.cta} >
                     <button className='button active'>Click</button>
                     <button className='button'>Click</button>

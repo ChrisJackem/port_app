@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { SlideState } from "./work_slideshow";
 import styles from './work_slideshow_controls.module.css';
+import { CSSProperties } from 'react';
 
 
 const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _slideState: SlideState, slideDispatch:Function }) => {
@@ -71,33 +72,44 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
 
                 <fieldset className={`flex flex-align-center ${styles.fieldset}`}>
                     {/* <legend > Title </legend> */}
-                    {_slideState.images?.map((slide, index) => (
-                        <label key={slide.id} htmlFor={`radio_${slide.id}`}>
+                    {_slideState.images?.map((slide, index) => {
+                        const id = `${name}-${slide.id}-${index}`
+                        const is_checked = _slideState.current_image?.id == slide.id;
+                        const bg_color = `var(${is_checked ? '--accent' : '--text'}, #FFF)`;
+                        return (
+                        <div key={`${id}-radio-container`}>
                             <input
-                                id={`radio_${slide.id}`}
+                                id={`${id}-radio`}
                                 className={styles.radio}
                                 type="radio"
                                 name="current_image"
-                                value={slide.id}                           
+                                value={slide.id}
                                 onChange={onChange}
-                                checked={_slideState.current_image?.id == slide.id}
-                            />
+                                checked={is_checked}
+                                style={{ backgroundColor: bg_color }}
+                            />                            
+                            <label 
+                                htmlFor={`${id}-radio`} 
+                                className={`${styles.label}`}
+                               /*  style={{ "--bg": bg_color } as CSSProperties} */
+                            >&nbsp;</label>
                             
-                        </label>
-                    ))}
+                        </div>                        
+                    )})}
                 </fieldset>
                 
                 <div className={`flex-grow p-rel flex flex-align-center ${styles.bar_container}`}>
                     <motion.div
-                        key={`${_slideState.current_image?.id ?? 'idle'}-${_slideState.play_speed}-${_slideState.is_playing}`}
+                        key={`${name}-progress-${_slideState.current_image?.id}`}
                         initial={{ width: 0 }}
-                        animate={{ width: _slideState.is_playing ? '100%' : 0 }}
+                        animate={{ width: _slideState.is_playing ? '30%' : 0 }}
                         transition={{ duration: progress_duration, ease: 'linear' }}
                         style={{ height: '2px', backgroundColor: 'var(--accent)' }}
-                    />
+                    ></motion.div>
                 </div>
 
-                <div className={`flex flex-grow flex-nowrap`} style={{ gap: '0.5rem'}}>
+            </div>
+            <div className={`flex flex-grow flex-nowrap ${styles.control_container}`} style={{ gap: '0.5rem'}}>
                 <label htmlFor="play_speed"><small>speed</small></label>
                 <input
                     id={`${name}play_speed`}
@@ -113,7 +125,6 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                     title="Adjust slide playback speed"
                 />
                 <small>{(_slideState.play_speed ?? 1000)}x</small>
-            </div>
             </div>
 
             
