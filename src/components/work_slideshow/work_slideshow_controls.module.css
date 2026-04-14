@@ -1,3 +1,6 @@
+
+
+
 .form{
     padding: 0.5rem;
     gap: 0.25rem;
@@ -37,15 +40,13 @@
     width: calc(0.5 * var(--scale));
     height: calc(0.5 * var(--scale));
     cursor: pointer;
-    /* background: var(--accent); */
-    /* border-radius: 50%;
-    clip-path: circle(50%); */
     accent-color: var(--accent);
     color: var(--accent);
 }
 
 .bar_container{
     padding: 3px 0px;
+    
     /* border-left: 2px solid var(--accent); */
 
 }
@@ -53,12 +54,11 @@
     content: '';
     position: absolute;
     height: 4px;
-    width: 30%;
+    width: 100%; /* Sync with code */
     background-color: var(--midground);
     left: 0px;
     z-index: -1;
     opacity: 0.5;
-    /* border-right: 3px solid var(--accent); */
 }
 
 .range{

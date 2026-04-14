@@ -138,6 +138,7 @@ a {
 }
 
 /************************** FLEX */
+.flex-nowrap{ flex-wrap: nowrap !important; }
 .flex, .flex-column, .flex-column-left{
   display: flex;
   gap: 1rem;

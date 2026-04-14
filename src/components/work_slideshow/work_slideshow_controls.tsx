@@ -91,15 +91,14 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                     <motion.div
                         key={`${_slideState.current_image?.id ?? 'idle'}-${_slideState.play_speed}-${_slideState.is_playing}`}
                         initial={{ width: 0 }}
-                        animate={{ width: _slideState.is_playing ? '30%' : 0 }}
+                        animate={{ width: _slideState.is_playing ? '100%' : 0 }}
                         transition={{ duration: progress_duration, ease: 'linear' }}
-                        style={{ height: '4px', backgroundColor: 'var(--accent)' }}
+                        style={{ height: '2px', backgroundColor: 'var(--accent)' }}
                     />
                 </div>
-            </div>
 
-            <div className={`flex ${styles.control_container}`}>
-                <label htmlFor="play_speed">speed</label>
+                <div className={`flex flex-grow flex-nowrap`} style={{ gap: '0.5rem'}}>
+                <label htmlFor="play_speed"><small>speed</small></label>
                 <input
                     id={`${name}play_speed`}
                     name="play_speed"
@@ -115,6 +114,9 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                 />
                 <small>{(_slideState.play_speed ?? 1000)}x</small>
             </div>
+            </div>
+
+            
 
         </form>
     )

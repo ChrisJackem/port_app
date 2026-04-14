@@ -7,8 +7,8 @@ export default function useParallax({ ref }: { ref: RefObject<HTMLElement> } ){
     const { scrollYProgress } = useScroll({target: ref, offset: ['end start', 'end center']});
     const { scrollYProgress: master } = useScroll({target: ref, offset: ['start center', 'end center']});
     // Transform scroll
-    const screenY = useTrans(master, [-18, 18]);
-    const textY = useTrans(master, [-44, 44]);
+    const screenY = useTrans(master, [-22, 40]);
+    const textY = useTrans(master, [-36, 44]);
 
     const contY = useTrans(scrollYProgress,[-100, 0] );
     const contO = useTrans(scrollYProgress, [0, 1] );

@@ -156,6 +156,18 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                                     />)
                                 : (<div>Loading</div>)
                             }
+                            { slideState.current_image && slideState.current_image.text && (
+                                <motion.div 
+                                    key={`text-${slideState.current_image.id}`}
+                                    className={`p-abs ${styles.text}`}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                >
+                                    {slideState.current_image.text}
+                                </motion.div>
+                            ) }
                         </AnimatePresence>
                         { imagesLoaded.length > 1 
                             ? ( <SlideControls
