@@ -8,6 +8,7 @@
     /* --scale2: clamp(12px, 3vw, 18px); */
 }
 
+/* TODO :: MAKE GLOBAL STYLE */
 .play_check{
     display: none;
 }
@@ -36,11 +37,7 @@
     border: none;
     border-radius: 0.3rem;
 }
-
-.radio_label{
-
-}
-
+/* TODO :: MAKE GLOBAL STYLE */
 .radio{
     display: none;
     position: relative;
@@ -49,16 +46,10 @@
 .radio + .label{
     width: 14px;
     height: 14px;
-    /* width: var(--scale2);
-    height: var(--scale2); */
     padding: 0.55rem;
-/*     position: absolute; top: 0px; left: 0px; z-index: 1;*/
     background-color: var(--accent); 
     border-radius: 9999px;
 }
-
-
-
 
 .range{
     width: 100%;

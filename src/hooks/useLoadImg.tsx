@@ -40,14 +40,9 @@ const useLoadImg = ( imagesInput:SlideImage[] ) => {
     };
     
     // Triggered by consumer
-    async function loadAllImages (){
-        const proms = imagesInput.map(slideImage => loadImage(slideImage));
-
+    async function loadAllImages (){        
         try {
-            //const image = await Promise.race(proms);
-            //console.log('RACE', JSON.stringify(image));
-            //if (image) setImagesLoaded([image]);        
-       
+            const proms = imagesInput.map(slideImage => loadImage(slideImage));
             const images = await Promise.all(proms);
             setImagesLoaded(images);
         } catch (e) {

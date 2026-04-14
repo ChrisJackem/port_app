@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import './page.css'
-import WorkContainer from '@/components/work_container/work_container'
+//import WorkContainer from '@/components/work_container/work_container'
 import Scroller from '@/components/scroller/scroller'
 //import AttentionSection, {IMG_TYPES} from '@/components/attention_section/attention_section'
 import SvgBtn from '@/components/svg_btns/svg_btns'
@@ -35,15 +35,13 @@ const WorkPage = () => {
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
            
-            ]}>
-            
+            ]}>            
                 <h2>FLACK</h2>
                 <small>Social Media</small>
                 
                 <br/>
                 <hr/>
                 <br/>
-
                 <p>
                     Flack is an old-school styled social media with every feature you would expect in a social media app. Share videos and images with your friends and give them praise or flack on thier posts.
                 </p>
@@ -66,28 +64,59 @@ const WorkPage = () => {
                 </div>
         </WorkSlideShow>
 
-        <WorkSlideShow  name={'test1'} images={[
-            {   src: 'static/images/work/flack/flack_logo.png',
-                text: "SOME OTHER SHIT",
-                alt: 'alt text' },
-            {   src: 'static/images/work/flack/flack_logo.png',
-                alt: 'alt text' }
+        <WorkSlideShow  name={'Noter'} images={[
+            {   src: 'static/images/work/noter/noter_logo.png', alt: 'logo image' },
+            {   src: 'static/images/work/noter/noter_context.png', alt:  'right click image', text: 'Easy Right Click Menu' },
+            {   src: 'static/images/work/noter/noter_help.png', alt: 'help image', text: 'Detailed In-App help' },
             ]}>
-            <h1>Inner</h1>
-            <hr/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ex quidem perferendis aliquid quisquam. At adipisci quam sequi optio magnam!</p>
+            <div className='blurb_title'>
+                    <h2>Noter</h2>
+                    <p>Chromium Browser Extension</p>
+                </div>
+                <p>
+                    Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.
+                </p>
+                <br/>
+                <p>
+                    Doing some research? Noter logs the url you copied from for your references later. Getting code snippets off of Stack Overflow? You can edit the code right in the browser before you paste it into your project.
+                </p>
+                <div className="feature_box">
+                    <h3 className="t-green">Features</h3>
+                    <ul>
+                        <li>Easy 2-click functionality</li>
+                        <li>Create, Read, Update, Delete any snippet anytime</li>
+                        <li>Detailed help with diagrams</li>
+                        <li>URLs tracked along with snippets</li>
+                        <li>Works on all Chromium browsers</li>
+                    </ul>
+                </div>
         </WorkSlideShow>
 
-        <WorkSlideShow  name={'test2'}  images={[
+        <WorkSlideShow  name={'test2'} images={[
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
             ]}>
-            <h1>Inner</h1>
-            <hr/>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
-            <p>lorem100</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, officia!</p>
+            <div className='blurb_title'>
+                    <h2>Noter</h2>
+                    <p>Chromium Browser Extension</p>
+                </div>
+                <p>
+                    Noter is the easy way to copy text from a webpage. Noter allows you to extract snippets of text from the internet, edit them, and add them to your system clipboard easily.
+                </p>
+                <br/>
+                <p>
+                    Doing some research? Noter logs the url you copied from for your references later. Getting code snippets off of Stack Overflow? You can edit the code right in the browser before you paste it into your project.
+                </p>
+                <div className="feature_box">
+                    <h3 className="t-green">Features</h3>
+                    <ul>
+                        <li>Easy 2-click functionality</li>
+                        <li>Create, Read, Update, Delete any snippet anytime</li>
+                        <li>Detailed help with diagrams</li>
+                        <li>URLs tracked along with snippets</li>
+                        <li>Works on all Chromium browsers</li>
+                    </ul>
+                </div>
         </WorkSlideShow>
 
 
