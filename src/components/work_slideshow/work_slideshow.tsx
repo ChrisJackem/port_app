@@ -21,8 +21,7 @@ type SlideAction =
     | { type: 'GO_TO_SLIDE'; payload: number }
     | { type: 'SET';        payload: { key:any, val:any} };
 
-function slideReducer(state: SlideState, action: SlideAction): SlideState {
-    
+function slideReducer(state: SlideState, action: SlideAction): SlideState {    
     switch (action.type) {
         case 'TICK':
             if (state.is_playing) {
@@ -72,26 +71,19 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
     const isInView = useInView(container_ref, { amount: 0.25 });
     const { screenY, textY, contY, contO } = useParallax({ ref: container_ref as React.RefObject<HTMLElement> });    
     const { imagesLoaded, loadAllImages } = useLoadImg(images);    
-    const [slideState, dispatch] = useReducer(slideReducer, {
-        progress: 0,
-        is_playing: true, 
-        play_speed: 2000 
-    });
-
+    const [slideState, dispatch] = useReducer(slideReducer, { progress: 0, is_playing: true, play_speed: 2000 });
     const { start, stop, enabled } = useInterval(Tick,  slideState.play_speed );
 
     function Tick(){
-        //console.log('tick', slideState.play_speed)
         if (slideState.is_playing){
             dispatch({ type: 'TICK' });
         }
     };
 
-    // Update uneInterval when state or inView
-    // if we don't set play it will use state value
-    function SetPlayer(play?:boolean){
-        play = play === undefined ? slideState.is_playing : play;
-        //console.log(`setplayer: ${play}`)
+    function SetPlayer( play?:boolean ){
+        play = play === undefined 
+            ? slideState.is_playing 
+            : play;
         if (play){
             start();
         }else{
@@ -99,26 +91,26 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
         }
     }
     
-    ///// Effects ///////
-    
-    // is_playing triggers Player
-    const PlayerEffect = useEffect( ()=> {    
-       if (!enabled) SetPlayer();       
-    }, [slideState.is_playing]);
+    // is_playing wakes the player up
+    const PlayerEffect = useEffect( 
+        SetPlayer, [slideState.is_playing]);
 
     const InView = useEffect( ()=> {
         if (isInView) {
+            // load images on first view
             if ( imagesLoaded.length == 0 ){
                 loadAllImages();
+            // wake up player
             }else if (imagesLoaded.length > 1){
                 SetPlayer();
             }
         } else {
-            // if animating turn off player
+            // disappearing - if animating turn off player
             if (enabled && (imagesLoaded.length > 1) ) SetPlayer(false);            
         }
     }, [isInView]);
 
+    // After inView and loaded images - update state, wake player
     const ImageLoaded = useEffect( ()=> {
         if ( imagesLoaded.length ){
             dispatch({ type: 'SET_IMAGES', payload: imagesLoaded });
@@ -144,9 +136,9 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                             { slideState.current_image 
                                 ? (<motion.img                                
                                     key={slideState.current_image.id}
-                                    initial={{ opacity: 0, x: -30}}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    exit={{    opacity: 0, x: 30 }}
+                                    initial={{ opacity: 0, x: -20, scale: 1.15}}
+                                    animate={{ opacity: 1, x: 0, y: 0, scale: 1}}
+                                    exit={{    opacity: 0, x: 16,y: 8, scale: 0.8 }}
                                     transition={{ duration: 0.4, ease: 'easeOut', type: 'tween' }}
                                     className={`${styles.hero_image}`}                        
                                     alt={`Active theme image: ${slideState.current_image.alt}`}      
@@ -163,7 +155,7 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 10 }}
-                                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                                    transition={{ duration: 0.3, ease: 'easeOut', delay: 0.25 }}
                                 >
                                     {slideState.current_image.text}
                                 </motion.div>

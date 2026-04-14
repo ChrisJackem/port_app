@@ -4,7 +4,8 @@
 .form{
     padding: 0.5rem;
     gap: 0.25rem;
-    --scale: clamp(30px, 8vw, 38px);
+    --scale: clamp(30px, 5vw, 38px);
+    /* --scale2: clamp(12px, 3vw, 18px); */
 }
 
 .play_check{
@@ -12,12 +13,12 @@
 }
 
 .control_container{
-    padding: 0.5rem;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
     gap: 0.5rem;
     background: linear-gradient(to right, rgba(0,0,0, 0.5), transparent);
     font-size: small;
     border-radius: 0.25rem;
-    /* flex-wrap: nowrap; */
 }
 
 .label {
@@ -43,10 +44,14 @@
 .radio{
     display: none;
     position: relative;
+    padding: 1rem;
 }
 .radio + .label{
     width: 14px;
     height: 14px;
+    /* width: var(--scale2);
+    height: var(--scale2); */
+    padding: 0.55rem;
 /*     position: absolute; top: 0px; left: 0px; z-index: 1;*/
     background-color: var(--accent); 
     border-radius: 9999px;
@@ -54,45 +59,48 @@
 
 
 
+
 .range{
     width: 100%;
     margin: 0.5rem 0px;
-    height: 2px;
+    height: 3px;
     cursor: pointer;
-    accent-color: var(--accent);
+    accent-color: var(--text);
     -webkit-appearance: none;
     appearance: none;
-    background: var(--accent);
+    background: var(--midground);
 }
 
 .range::-webkit-slider-track{
-    height: 2px;
-    background: var(--accent);
+    height: 3px;
+    background: var(--midground);
     border-radius: 2px;
 }
 
 .range::-webkit-slider-thumb{
+    box-sizing: content-box;
     -webkit-appearance: none;
     appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--text);
+    /* border: 3px solid var(--darkest); */
     cursor: pointer;
 }
 
 .range::-moz-range-track{
     height: 2px;
-    background: var(--accent);
+    background: var(--midground);
     border-radius: 2px;
     border: none;
 }
 
 .range::-moz-range-thumb{
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--midground);
     cursor: pointer;
     border: none;
 }

@@ -77,25 +77,26 @@ const SlideControls = ({ name, _slideState, slideDispatch}: { name: string,  _sl
                         const is_checked = _slideState.current_image?.id == slide.id;
                         const bg_color = `var(${is_checked ? '--accent' : '--text'}, #FFF)`;
                         return (
-                        <div key={`${id}-radio-container`}>
-                            <input
-                                id={`${id}-radio`}
-                                className={styles.radio}
-                                type="radio"
-                                name="current_image"
-                                value={slide.id}
-                                onChange={onChange}
-                                checked={is_checked}
-                                style={{ backgroundColor: bg_color }}
-                            />                            
-                            <label 
-                                htmlFor={`${id}-radio`} 
-                                className={`${styles.label}`}
-                               /*  style={{ "--bg": bg_color } as CSSProperties} */
-                            >&nbsp;</label>
-                            
-                        </div>                        
-                    )})}
+                            <div key={`${id}-radio-container`}>
+                                <input
+                                    id={`${id}-radio`}
+                                    className={styles.radio}
+                                    type="radio"
+                                    name="current_image"
+                                    value={slide.id}
+                                    onChange={onChange}
+                                    checked={is_checked}
+                                    style={{ backgroundColor: bg_color }}
+                                />
+                                <label 
+                                    htmlFor={`${id}-radio`} 
+                                    className={`${styles.label}`}
+                                    style={{ backgroundColor: bg_color }}
+                                >&nbsp;
+                                </label>                                
+                            </div>
+                        )
+                    })}
                 </fieldset>
                 
                 <div className={`flex-grow p-rel flex flex-align-center ${styles.bar_container}`}>
