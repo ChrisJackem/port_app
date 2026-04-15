@@ -28,27 +28,30 @@ const variantsPin = {
 
 const World = () => {
   return (
-    <motion.div className={`p-rel ${styles.container}`}>
-        <motion.div
-            key={'world'}
-            className={`${styles.container}`}            
-            variants={variantsMap}
-        >
-            <LoadImg src={'static/images/animations/world.svg'}                 
+    <div>
+      <motion.div className={`p-rel ${styles.container}`}>
+          <motion.div
+              key={'world'}
+              className={`${styles.container}`}            
+              variants={variantsMap}
+          >
+              <LoadImg src={'static/images/animations/world.svg'}
+                alt={'world'}                 
                 className={styles.image}
-            />            
-        </motion.div>
+              />            
+          </motion.div>
 
-        <motion.div
-              key={'pin'}
-              variants={variantsPin}
-              className={`p-abs ${styles.pin}`}
-            >
-              <LoadImg src={'static/images/animations/pin.svg'}                   
-                  className={`${styles.pin_image}`}
-              />
-            </motion.div>
-    </motion.div>
+          <motion.div
+                key={'pin'}
+                variants={variantsPin}
+                className={`p-abs ${styles.pin}`}
+              >
+                <LoadImg src={'static/images/animations/pin.svg'}                   
+                    className={`${styles.pin_image}`}
+                />
+              </motion.div>
+      </motion.div>
+    </div>
   )
 }
 
