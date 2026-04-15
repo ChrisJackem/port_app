@@ -5,11 +5,12 @@ import TypeHeader from '@/components/type_header/type_header';
 import World from '@/components/animations/world/world';
 import AnimContainer from '@/components/animations/anim_container';
 import styles from './page.module.css';
-import Kid from '@/components/animations/kid/kid';
+import Kid, { KidSvg } from '@/components/animations/kid/kid';
 import Schem from '@/components/animations/schem/schem';
 import Link from 'next/link';
 import PageBanner from '@/components/page_banner/page_banner';
 import LetsBuild from '@/components/lets_build/lets_build';
+import TimelineScroller, { TimelineChild } from '@/components/timeline_scroller/timeline_scroller';
 
 
 /*********************************************************************************** About Page  */
@@ -27,8 +28,48 @@ const AboutPage = () => {
     >
         <PageBanner title='ABOUT'
             content={'A little bit about me and what I do.'} />
-        
-        <section className={`page_double ${styles.section_container}`}>
+
+        <div className={'page-container '}>            
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
+        </div>
+                 
+        <TimelineScroller>
+
+            <TimelineChild state={'under'}>
+                <KidSvg />
+            </TimelineChild>
+
+            <div className={'page-center'} style={{ marginTop: '3rem'}}>
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
+            </div> 
+            
+            <div className={'page-center'} style={{ marginTop: '3rem'}}>
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
+            </div>
+
+             <TimelineChild state={'under'}>
+                <KidSvg />
+            </TimelineChild>
+
+            <div className={'page-center'} style={{ marginTop: '3rem'}}>
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
+            </div> 
+            <div className={'page-center'} style={{ marginTop: '3rem'}}>
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
+            </div>
+
+            <TimelineChild state={'under'}>
+                <KidSvg />
+            </TimelineChild>
+            
+        </TimelineScroller>
+
+        {/* <section className={`page_double ${styles.section_container}`}>
             <AnimContainer>
                 <World />
             </AnimContainer>
@@ -64,7 +105,8 @@ const AboutPage = () => {
                     section.
                 </p>                
             </div>
-        </section>
+        </section> */}
+
         <LetsBuild />
     </motion.div>
   )

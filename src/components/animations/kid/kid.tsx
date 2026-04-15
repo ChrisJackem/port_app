@@ -7,17 +7,17 @@ import styles from './kid.module.css';
  */
 const Kid = () => {
   return (
-    <div className={`flex ${styles.svg_container}`}>
+    <section className={`flex ${styles.svg_container}`}>
         <KidSvg />
-    </div>
+    </section>
   )
 }
 
 export default Kid
 
-const KidSvg = ()=>{
+export const KidSvg = ()=>{
   return (    
-    <svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 400 400" className={styles.svg}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 400 400" className={styles.svg}>
       <defs>
         <linearGradient id="n" x1="260.2" y1="121.53" x2="40.55" y2="340.4" gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="#fff"/>

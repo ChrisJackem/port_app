@@ -38,15 +38,15 @@
 .text{
     position: absolute;
     left: 0.5rem;
-    top: -1.75rem;
+    top: -1.5em;
     width: 100%; 
     height: min-content;
     z-index: 99;
     font-family: var(--f-akira);    
     font-weight: 900;
-    font-size: larger;
-    padding: 0.5rem ;
-    /* background-color: var(--background);    */
+    font-size: larger;    
+    font-style: oblique;
+    /* text-decoration: underline; */
 }
 
 .controls{

@@ -29,9 +29,9 @@ const WorkPage = () => {
             {    src: 'static/images/work/flack/flack_logo.png',
                 text: 'Test text to check',
                 alt: 'alt text' },
-            {   src: 'static/images/work/flack/flack_dashboard.png',
+           /*  {   src: 'static/images/work/flack/flack_dashboard.png',
                 text: "A different kind of social media",
-                alt: 'alt text' },
+                alt: 'alt text' }, */
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
            

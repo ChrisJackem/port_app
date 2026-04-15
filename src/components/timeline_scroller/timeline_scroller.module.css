@@ -1,0 +1,8 @@
+.container{
+    margin: 2rem;
+    padding: 2rem;
+}
+.modal{
+    width: 100%;
+    height: min-content;
+}

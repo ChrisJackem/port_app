@@ -136,10 +136,10 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                             { slideState.current_image 
                                 ? (<motion.img                                
                                     key={slideState.current_image.id}
-                                    initial={{ opacity: 0, x: -20, scale: 1.15}}
-                                    animate={{ opacity: 1, x: 0, y: 0, scale: 1}}
-                                    exit={{    opacity: 0, x: 16,y: 8, scale: 0.8 }}
-                                    transition={{ duration: 0.4, ease: 'easeOut', type: 'tween' }}
+                                    initial={{ opacity: 0, x: -20, scale: 1.18, zIndex: 99, filter: 'blur(8px)' }}
+                                    animate={{ opacity: 1, x: 0, y: 0, scale: 1, zIndex: 1, filter: 'blur(0px)' }}
+                                    exit={{    opacity: 0, x: 16,y: 8, scale: 0.8,zIndex: -1, filter: 'blur(2px)' }}
+                                    transition={{ duration: 0.65, ease: 'easeOut', type: 'tween' }}
                                     className={`${styles.hero_image}`}                        
                                     alt={`Active theme image: ${slideState.current_image.alt}`}      
                                     src={slideState.current_image.src}
@@ -153,7 +153,7 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                                     key={`text-${slideState.current_image.id}`}
                                     className={`p-abs ${styles.text}`}
                                     initial={{ opacity: 0, x: -8, y: -4, scale: 1.1 }}
-                                    animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                                    animate={{ opacity: 0.85, x: 0, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, x: 8, y: 4, scale: 0.9 }}
                                     transition={{ duration: 0.3, ease: 'easeOut', delay: 0.5 }}
                                 >
