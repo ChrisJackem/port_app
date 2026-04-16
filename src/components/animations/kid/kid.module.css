@@ -10,9 +10,9 @@
 }
 
 .svg{
-    width: var(--width, 300px );
+    /* width: var(--width, 300px );
     height: var(--width, 300px );
-    overflow: hidden;
+    overflow: hidden; */
 }
 
 .light{ 
@@ -29,8 +29,8 @@
     animation: 10s infinite scroll; 
 }
 @keyframes scroll{
-    10%{ transform: translateY(-50px);}  
-    60%{ transform: translateY(50px);}
+    10%{ transform: translateY(-10px);}  
+    60%{ transform: translateY(10px);}
     100%{ transform: translateY(0px);}
 }
 

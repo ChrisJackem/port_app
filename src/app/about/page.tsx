@@ -38,9 +38,8 @@ const AboutPage = () => {
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, eius.</p>
             </div>
 
-            <TimelineChild state={'under'}>
+            <TimelineChild >
                 <AnimContainer>
-
                  <World />
                 </AnimContainer>
             </TimelineChild>
@@ -60,7 +59,7 @@ const AboutPage = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
             </div>
 
-            <TimelineChild state={'under'}>
+            <TimelineChild >
                 <KidSvg />
             </TimelineChild>
 
@@ -74,7 +73,7 @@ const AboutPage = () => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
             </div>
 
-           <TimelineChild state={'under'}>
+           <TimelineChild >
                 <Schem />
             </TimelineChild>
 

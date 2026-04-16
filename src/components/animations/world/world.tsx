@@ -1,6 +1,6 @@
 import { LoadImg } from '@/components/load_img/load_img'
 import React from 'react'
-import { motion } from 'motion/react';
+import { easeIn, easeInOut, easeOut, motion } from 'motion/react';
 import styles from './world.module.css';
 
 const variantsMap = {
@@ -11,24 +11,20 @@ const variantsMap = {
   animate: { 
       scale: 110,
       transition: {
-        duration: 1, 
-        delay: 2,
+        duration: 1.7, 
+        delay: 1.7,
+        ease: easeInOut
       } 
   },  
 }
 
 const variantsPin = {
-  initial: { y: -50, opacity: 0,
-    transition: { delay: 0, }
-   },
-  animate: { y: 0, opacity: 1,
-    transition: { delay: 3, } 
-  }
+  initial: { y: -50, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: { delay:3.2} },    
 }
 
 const World = () => {
-  return (
-    <div>
+  return (    
       <motion.div className={`p-rel ${styles.container}`}>
           <motion.div
               key={'world'}
@@ -51,7 +47,6 @@ const World = () => {
                 />
               </motion.div>
       </motion.div>
-    </div>
   )
 }
 

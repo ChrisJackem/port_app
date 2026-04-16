@@ -27,8 +27,8 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
     useEffect(getHeros, []);
    
     const scrollHandler = (e:any)=>{
+        const _scrollY = scrollY.get()
         if (refsByKey) {
-            const _scrollY = scrollY.get()
             Object.entries(refsByKey).forEach(([key, ref]) => {
                 const rect = ref.getBoundingClientRect();
                 const elementTop = rect.top + _scrollY;
@@ -37,9 +37,10 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                 if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
                     setVisibleIndex(parseInt(key))
                 }
-                setOutOfBounds(_scrollY < 500);
+                console.log()
             })
         }
+        setOutOfBounds(_scrollY < 500 || scrollYProgress.get() > 0.9);        
     }
     const debouncedScrollHandler = useDebounce(scrollHandler, 10)
     useEffect(()=>{
@@ -58,16 +59,37 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
         <section className={`p-rel ${styles.container}`} ref={container_ref} >
             <p>{visibleIndex}</p>            
             
-            <div className={`flex p-rel ${styles.modal_top}`}>
-                { Array.from(heroImages.entries()).map(([index, child]) => {
-                    return (<motion.button                             
-                        key={`button-${index}`}
-                        onClick={()=>handleTopClick(index+1)}
-                        className={`button ${visibleIndex == index+1 && 'active'}`}
-                        >{`Child ${index}`}</motion.button>
-                    )})}
+            <div className={`p-rel ${styles.modal_nav}`}>
+                <ol type="I" className={`flex flex-column ${styles.ol_nav}`}>
+                <AnimatePresence>
+                { !outOfBounds && Array.from(heroImages.entries()).map(([index, child]) => {
+                    return (
+                        <motion.li
+                            onClick={()=>handleTopClick(index+1)}
+                            initial={{ opacity: 0, x: 100}}
+                            animate={{ opacity: 1, x: 0}}
+                            exit={{ opacity: 0, x: 100}}
+                            transition={{ delay: 0.2, duration: 0.3, ease:easeIn }}
+                            className={`button ${visibleIndex == index+1 && 'active'} ${styles.list_nav}`} 
+                            key={`list-${index}`}
+                            role='button'
+                        >
+                            {/* <motion.button                             
+                                key={`button-${index}`}
+                                onClick={()=>handleTopClick(index+1)}
+                                initial={{ opacity: 0}}
+                                animate={{ opacity: 1}}
+                                exit={{ opacity: 0}}
+                                transition={{ delay: 0.2, duration: 0.3, ease:easeIn }}
+                                className={`button ${visibleIndex == index+1 && 'active'}`}
+                            >
+                                &nbsp;
+                            </motion.button> */}
+                        </motion.li>
+                )})}
+                </AnimatePresence>
+                </ol>
             </div>
-
             
                 <motion.div className={`${styles.modal}`}>
                 <AnimatePresence>
@@ -102,9 +124,8 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
 
 type TimelineState = 'visible'|'over'|'under'
 
-export const TimelineChild = ({children}: {state:TimelineState, children: ReactNode}) => { 
-    const [scrollState, setScrollState] = useState<TimelineState>('under');
-    return <>{children}</>
+export const TimelineChild = ({children}: {children: ReactNode}) => {
+    return (<>{children}</>);
 }
 
 export default TimelineScroller
