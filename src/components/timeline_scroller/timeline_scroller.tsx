@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, easeOut, motion, useMotionValue, useScroll, useTransform } from 'motion/react'
+import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
+import { AnimatePresence, easeIn, easeInOut, easeOut, motion, useMotionValue, useScroll, useTransform } from 'motion/react'
 import styles from './timeline_scroller.module.css'
 import useRefs from '@/hooks/useRefs'
 import useTimeout from '@/hooks/useTimeout'
@@ -13,6 +13,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
     const [heroImages, setHeroImages] = useState<Map<number, ReactNode>>(new Map());
     const { scrollY, scrollYProgress } = useScroll()
     const [visibleIndex, setVisibleIndex] = useState(-1);
+    const [outOfBounds, setOutOfBounds] = useState(true);
     
     const getHeros = ()=>{
         const heros = new Map();
@@ -27,14 +28,16 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
    
     const scrollHandler = (e:any)=>{
         if (refsByKey) {
-             Object.entries(refsByKey).forEach(([key, ref]) => {
+            const _scrollY = scrollY.get()
+            Object.entries(refsByKey).forEach(([key, ref]) => {
                 const rect = ref.getBoundingClientRect();
-                const elementTop = rect.top + scrollY.get();
+                const elementTop = rect.top + _scrollY;
                 const elementBottom = elementTop + rect.height;
-                const viewportCenter = scrollY.get() + window.innerHeight / 2;                
+                const viewportCenter = _scrollY + window.innerHeight / 2;                
                 if (viewportCenter >= elementTop && viewportCenter <= elementBottom) {
                     setVisibleIndex(parseInt(key))
                 }
+                setOutOfBounds(_scrollY < 500);
             })
         }
     }
@@ -65,23 +68,23 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                     )})}
             </div>
 
-            { scrollY.get() > 10 && scrollYProgress.get() < 0.99 && (
+            
                 <motion.div className={`${styles.modal}`}>
                 <AnimatePresence>
                     { Array.from(heroImages.entries()).map(([index, child]) => {
-                        if ( Math.abs(visibleIndex - index) > 1 ) return null;
+                        if ( Math.abs(visibleIndex - index) > 1 || outOfBounds)  return null;
                         return (
                             <motion.div key={`hero-${index}`}
-                                layout
-                                className={styles.hero_container}   
-                                initial={{ opacity: 0, scale: 1.2, filter: 'blur(8px)' }}                     
-                                animate={{ opacity: 1,  scale: 1, filter: 'blur(0px)' }}                     
-                                exit={{ opacity: 0, scale: 0.8, filter: 'blur(18px)'}}
-                                transition={{ delay: 0.2, duration: 0.35, ease: easeOut }}          
+                                layout                               
+                                className={`${styles.hero_container}`}   
+                                initial={{ opacity: 0, scale: 0.7, filter: 'blur(10px)', rotateY: 90, rotateX: -40, rotateZ: 20 }}                     
+                                animate={{ opacity: 1,  scale: 1.5, filter: 'blur(0px)' , rotateY: 0, rotateX: 0, rotateZ: 0 }}                     
+                                exit={{ opacity: 0, scale: 0.5, filter: 'blur(18px)', rotateY: 45, rotateX: 90, rotateZ: -20}}
+                                transition={{ delay: 0.2, duration: 1, ease:easeInOut }}          
                             >{child}</motion.div>
                     )}) }
                 </AnimatePresence>                
-            </motion.div>)}
+            </motion.div>
            
             <div className={styles.content}>
                 { React.Children.map(children, (child, i) => {

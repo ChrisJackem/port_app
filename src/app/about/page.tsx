@@ -39,7 +39,10 @@ const AboutPage = () => {
             </div>
 
             <TimelineChild state={'under'}>
+                <AnimContainer>
+
                  <World />
+                </AnimContainer>
             </TimelineChild>
 
             <div className={`page-center ${styles.content_container }`}>
