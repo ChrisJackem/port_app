@@ -11,7 +11,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
     const container_ref = useRef(null)
     const {refsByKey, setRef} = useRefs();
     const [heroImages, setHeroImages] = useState<Map<number, ReactNode>>(new Map());
-    const { scrollY } = useScroll()
+    const { scrollY, scrollYProgress } = useScroll()
     const [visibleIndex, setVisibleIndex] = useState(-1);
     
     const getHeros = ()=>{
@@ -50,48 +50,44 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
             ref.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
-  
+
     return (
         <section className={`p-rel ${styles.container}`} ref={container_ref} >
-            <p>{visibleIndex}</p>
+            <p>{visibleIndex}</p>            
             
             <div className={`flex p-rel ${styles.modal_top}`}>
                 { Array.from(heroImages.entries()).map(([index, child]) => {
                     return (<motion.button                             
                         key={`button-${index}`}
-                        onClick={()=>handleTopClick(index-1)}
-                        className={`button ${visibleIndex == index-1 && 'active'}`}
+                        onClick={()=>handleTopClick(index+1)}
+                        className={`button ${visibleIndex == index+1 && 'active'}`}
                         >{`Child ${index}`}</motion.button>
                     )})}
             </div>
-            <motion.div className={`${styles.modal}`}>                
 
+            { scrollY.get() > 10 && scrollYProgress.get() < 0.99 && (
+                <motion.div className={`${styles.modal}`}>
                 <AnimatePresence>
                     { Array.from(heroImages.entries()).map(([index, child]) => {
-                        if (index !== visibleIndex + 1) return null;
+                        if ( Math.abs(visibleIndex - index) > 1 ) return null;
                         return (
                             <motion.div key={`hero-${index}`}
                                 layout
                                 className={styles.hero_container}   
-                                initial={{ opacity: 0, scale: 0.8 }}                     
-                                animate={{ opacity: 1, scale: 1 }}                     
-                                exit={{ opacity: 0, scale: 0.8 }}
-                                transition={{ delay: 0.25, duration: 0.4, ease: easeOut }}          
+                                initial={{ opacity: 0, scale: 1.2, filter: 'blur(8px)' }}                     
+                                animate={{ opacity: 1,  scale: 1, filter: 'blur(0px)' }}                     
+                                exit={{ opacity: 0, scale: 0.8, filter: 'blur(18px)'}}
+                                transition={{ delay: 0.2, duration: 0.35, ease: easeOut }}          
                             >{child}</motion.div>
                     )}) }
-                </AnimatePresence>
-
-                <div className={`flex ${styles.modal_bottom}`}>
-                    XX
-                </div>
-                {/* </AnimatePresence> */}
-            </motion.div>
-
+                </AnimatePresence>                
+            </motion.div>)}
+           
             <div className={styles.content}>
                 { React.Children.map(children, (child, i) => {
                     const isHero = React.isValidElement(child) && child.type === TimelineChild;
                     return ( isHero ? null : (
-                        <div className={styles.content_container} ref={el => { if (el) setRef(el, i.toString()); }}>
+                        <div className={`bg-light-fade ${styles.content_container}`} ref={el => { if (el) setRef(el, i.toString()); }}>
                             {child}
                         </div>
                     ) )

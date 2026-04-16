@@ -81,6 +81,9 @@
 .bg-fade{
   background: linear-gradient(to right, var(--darkest), 80%, transparent);
 }
+.bg-light-fade{
+  background: linear-gradient(to right, rgba(255,255,255, 0.01), 80%, transparent);
+}
 .bg-conical-tl-dotted{
   background-size: cover;
   background: conic-gradient( from 45deg at 0% 0%, var(--darkest),  transparent),
