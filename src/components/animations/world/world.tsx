@@ -31,8 +31,8 @@ const World = () => {
               className={`${styles.container}`}            
               variants={variantsMap}
           >
-              <LoadImg src={'static/images/animations/world.svg'}
-                alt={'world'}                 
+              <img src={'static/images/animations/world.svg'}
+                alt={'world image'}                 
                 className={styles.image}
               />            
           </motion.div>
@@ -42,7 +42,8 @@ const World = () => {
                 variants={variantsPin}
                 className={`p-abs ${styles.pin}`}
               >
-                <LoadImg src={'static/images/animations/pin.svg'}                   
+                <img src={'static/images/animations/pin.svg'}
+                  alt={'pin image'}                  
                     className={`${styles.pin_image}`}
                 />
               </motion.div>

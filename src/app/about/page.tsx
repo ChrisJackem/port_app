@@ -29,13 +29,13 @@ const AboutPage = () => {
     >
         <PageBanner title='ABOUT'
             content={'A little bit about me and what I do.'} />
-
-       
                  
         <TimelineScroller>
             <div>
-                <h2>About this page</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, eius.</p>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
 
             <TimelineChild >
@@ -44,15 +44,30 @@ const AboutPage = () => {
                 </AnimContainer>
             </TimelineChild>
 
-            <div className={`page-center ${styles.content_container }`}>
-                <h2>From New England</h2>
-                <p>I was born in Connecticut in the early days of the internet.</p>
+            <div className={`ruler bg-light-fade ${styles.section_container}`}>
+                <h2>Born and Bred</h2>
+                <strong>In Connecticut, USA.</strong>                
+                <hr/>
+                <p><strong>I had the normal American childhood:</strong> Played sports, video games etc. but was more of a geek. I was also a very artistic kid, attending TAG after school programs and being active in the art scene. I even sold a few paintings at art exhibitions in my area.</p>
                 <br/>
-                <p>I was a very artistic kid, attending TAG after school programs and being active in the art scene. I even sold a few paintings at art exhibitions in my area.</p>
-                <br/>
-                <p>My other passions were technology, which exploded when I was coming of age. In High School, I attended trade school for 2 years to learn electrical engineering.</p>
+                <p>Even in the beginning, I tried to develop 3 key aspects of personality: I am extremely logical and artistic, with physical exertion rounding everything out.</p>
+                <div className={`flex ${styles.icon_container}`}>
+                    <div className={`${styles.icon_lg_card}`}>
+                        <img src={`static/images/icons/icon_lg_baseball.svg`} alt='baseball image'/>
+                    </div>
+                    <div  className={`${styles.icon_lg_card}`}>
+                        <img src={`static/images/icons/icon_lg_computer.svg`} alt='baseball image'/>
+                    </div>
+                    <div  className={`${styles.icon_lg_card}`}>
+                        <img src={`static/images/icons/icon_lg_paint.svg`} alt='baseball image'/>
+                    </div>
+                    <div style={{ width: '100%', textAlign: 'center',  fontStyle: 'oblique'}}>Body, left  brain, right brain</div>
+                </div>
+                
+                <p>In High school I attended a tech school and learned <i>Industrial Electronics</i> which introduced me to computers on a fundamental level. At this point the internet was for nerds and I was one of the first.</p>
             </div>  
 
+            <p className={styles.shout}>I have a passion for technology; it exploded as I was coming of age. </p>
            
             <div className={'page-center'} style={{ marginTop: '3rem'}}>
                 <h1>Title 2</h1>
@@ -63,7 +78,7 @@ const AboutPage = () => {
                 <KidSvg />
             </TimelineChild>
 
-            <div className={'page-center'} style={{ marginTop: '3rem'}}>
+            <div className={'page-center'} style={{ marginTop: '3rem' }}>
                 <h1>Title 3</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rem in eveniet. Pariatur veniam iste, accusamus molestias tenetur, provident nemo tempore esse neque atque, aliquid eum voluptatum consequatur! Laudantium illum repudiandae asperiores! Adipisci esse autem, laudantium possimus consequatur numquam, commodi minima corporis voluptatum debitis ducimus blanditiis libero minus amet rem totam molestiae quibusdam alias eaque. Suscipit, id laboriosam! Aliquid illo, eveniet fugit nemo quis cupiditate quaerat, mollitia optio unde quae delectus quo. Ipsa eaque consectetur odio dicta natus voluptatibus consequuntur, architecto, recusandae esse corrupti voluptatem deleniti dignissimos doloribus perspiciatis dolorum iste sed beatae. Alias repellat obcaecati voluptate a dolor. Dolore!</p>
             </div> 

@@ -152,6 +152,7 @@ a {
 .flex-child{ flex: 1 1 auto; }
 .flex-end{ justify-content: flex-end;}
 .flex-align-center{ align-items: center;}
+.flex-just-center{ justify-content: center;}
 .flex-space{ justify-content: space-around;}
 .flex-grow{ flex-grow: 1;}
 
@@ -181,7 +182,6 @@ a {
     height: 30px;
     width: 30px;
 }
-
 
 .fixed-modal{
   position: fixed;

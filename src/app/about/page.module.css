@@ -1,9 +1,56 @@
 /* About page */
 
 .section_container{    
-    
-    align-items: center;
-    font-size: large;
-    padding: 1.5rem;
+    font-size: large;   
+    padding: 4rem;
+    background-color: rgba(0,0,0, 0.08);
+}
+.section_container p{
+    line-height: 1.75rem;
+    font-size: 22px;
+}
+.section_container hr{
+    margin: 1rem 0 2rem 0;
+}
+.section_container h2{
+    color: var(--accent, yellow);
+    font-size: clamp(22px, 10vw, 56px);
+    letter-spacing: -1px;
+}
+
+.shout{
+    margin: 1rem 0;
+    font-size: 28px;
+    padding:  1rem 2rem;
+    font-weight: 500;
+    /* text-align: center; */
+    border-left: 2px solid var(--text, #000);
+}
+.icon_container{
+    margin: 1rem;
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: center;
+}
+.icon_lg_card{
+    flex: 0 1 160px;
+    background: var(--foreground);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--text);
+}
+.icon_lg_card > img{
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .section_container {
+        padding: 3rem 1rem 2rem 1rem;
+        font-size: medium;
+    }    
+    .shout {
+        font-size: 18px;
+        padding: 0.75rem 1rem;
+    }
 }
 

@@ -16,17 +16,17 @@
     background: linear-gradient(to right, rgba(255,255,255, 0.02), transparent);
 }
 .modal{
-    right: 1rem;
+    right: 8%;
     top: 0px;
     height: 100dvh;
-    width: 40%;    
+    width: 32%;    
     position: fixed;
     z-index: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    opacity: 0.35;
+    opacity: 0.23;
 }
 .modal > *{
 
@@ -66,8 +66,7 @@
     pointer-events:none;   
     width: 100%;
     height: auto;
-    z-index: -1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    z-index: -1;    
 }
 
 
@@ -85,9 +84,9 @@
         padding-right: 10%;
     }
     .list_nav{
-    padding: 0.25rem 1rem;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    border: 1px solid var(--midground, #ccc);
-}
+        padding: 0.25rem 1rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        border: 1px solid var(--midground, #ccc);
+    }
 }

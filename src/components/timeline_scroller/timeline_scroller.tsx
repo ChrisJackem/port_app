@@ -57,8 +57,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
 
     return (
         <section className={`p-rel ${styles.container}`} ref={container_ref} >
-            <p>{visibleIndex}</p>            
-            
+            {/* <p>{visibleIndex}</p> */}
             <div className={`p-rel ${styles.modal_nav}`}>
                 <ol type="I" className={`flex flex-column ${styles.ol_nav}`}>
                 <AnimatePresence>
@@ -108,11 +107,11 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                 </AnimatePresence>                
             </motion.div>
            
-            <div className={styles.content}>
+            <div className={`${styles.content}`}>
                 { React.Children.map(children, (child, i) => {
                     const isHero = React.isValidElement(child) && child.type === TimelineChild;
                     return ( isHero ? null : (
-                        <div className={`bg-light-fade ${styles.content_container}`} ref={el => { if (el) setRef(el, i.toString()); }}>
+                        <div ref={el => { if (el) setRef(el, i.toString()); }}>
                             {child}
                         </div>
                     ) )
