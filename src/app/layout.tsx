@@ -6,6 +6,7 @@ import styles from "./layout.module.css";
 import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
+import PageBannerPersist, { PageBannerProvider } from "@/components/page_banner/page_banner_persist";
 
 
 export const metadata: Metadata = {
@@ -29,8 +30,11 @@ export default function RootLayout({
         <main className={`${styles.main_container}`}>
           <NavBar/>
           
-          <div className={`${styles.child_container}`}>          
+          <div className={`${styles.child_container}`}>
+            <PageBannerProvider >
+              <PageBannerPersist />
               {children}            
+            </PageBannerProvider>
           </div>
         </main>
         <Footer />

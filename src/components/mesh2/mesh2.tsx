@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import React, { useRef, useEffect, useContext, useState } from 'react'
+import { useRef, useEffect, useContext } from 'react'
 import { useInView } from 'react-intersection-observer';
 import { useFrame } from '@react-three/fiber';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
@@ -18,12 +18,9 @@ const DodecahedronMesh = () => {
     });
 
     return (
-        <mesh 
-            ref={meshRef}
-            scale={5.5}
-        >
+        <mesh ref={meshRef} scale={5.5}>            
             <dodecahedronGeometry args={[1, 0]} />
-            <meshPhongMaterial color={THEMES[theme]['accent']} wireframe={true} />
+            <meshBasicMaterial color={THEMES[theme]['accent']} wireframe={true} />
         </mesh>
     );
 };
@@ -47,8 +44,8 @@ const Mesh2 = () => {
             >
                 { isInView && <>
                     <ambientLight intensity={Math.PI / 1.5} />
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.9} intensity={Math.PI * 100 } />
-                    <pointLight position={[-10, -10, -10]} decay={0.4} intensity={Math.PI } />
+                    {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0.9} intensity={Math.PI * 100 } />
+                    <pointLight position={[-10, -10, -10]} decay={0.4} intensity={Math.PI } /> */}
 
                     <DodecahedronMesh />
                 </> }

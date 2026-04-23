@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './page.css'
 //import WorkContainer from '@/components/work_container/work_container'
 import Scroller from '@/components/scroller/scroller'
@@ -11,8 +11,19 @@ import { PageVariants } from '../config/variants'
 import PageBanner from '@/components/page_banner/page_banner'
 import LetsBuild from '@/components/lets_build/lets_build'
 import WorkSlideShow from '@/components/work_slideshow/work_slideshow'
+import { usePageBanner } from '@/components/page_banner/page_banner_persist'
+
 
 const WorkPage = () => {
+
+const context = usePageBanner();
+    useEffect(()=>{
+        context.setState({
+            title: 'Work',
+            content: 'Some recent samples of my work'
+        })
+}, [])
+
   return (
     <motion.div id='work-main-container' 
         className="page-container gridded"
@@ -22,7 +33,7 @@ const WorkPage = () => {
         exit="exit"
     >
 
-        <PageBanner title='WORK' content='The following is some of my most recent personal projects.' />
+        {/* <PageBanner title='WORK' content='The following is some of my most recent personal projects.' /> */}
 
 
         <WorkSlideShow name={'flack'} images={[

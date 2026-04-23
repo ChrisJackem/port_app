@@ -14,6 +14,7 @@ const TypeHeader = ({ word }:{ word:string }) => {
         variants={TypeVariant.container}
         initial='initial'
         animate='animate'
+        key={word}
         transition={{ duration: 0, delayChildren: stagger(0.2, { startDelay: 0.2 }) }}        
     >
         <h1 className={`p-abs ${styles.reader_text}`}>{word}</h1>

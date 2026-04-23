@@ -1,10 +1,22 @@
-import React, { CSSProperties, ReactNode, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, easeIn, easeInOut, easeOut, motion, useMotionValue, useScroll, useTransform } from 'motion/react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import { AnimatePresence, easeIn, easeInOut, motion, useScroll, useAnimation } from 'motion/react'
 import styles from './timeline_scroller.module.css'
 import useRefs from '@/hooks/useRefs'
-import useTimeout from '@/hooks/useTimeout'
 import useDebounce from '@/hooks/useDebounce'
-import { KidSvg } from '../animations/kid/kid'
+
+
+export const FadeVariant = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 }
+}
+/** Spinning plane animation like from superman 3 */
+const crystalVariants = {
+    initial:{ opacity: 0, scale: 0.7, filter: 'blur(10px)', rotateY: 90, rotateX: -40, rotateZ: 20 },                  
+    animate:{ opacity: 1,  scale: 1.5, filter: 'blur(0px)' , rotateY: 0, rotateX: 0, rotateZ: 0 },                  
+    exit:{ opacity: 0, scale: 0.5, filter: 'blur(18px)', rotateY: 45, rotateX: 90, rotateZ: -20}
+}
+
 
 
 const TimelineScroller = ({children}: {children: ReactNode}) => {
@@ -72,18 +84,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                             className={`button ${visibleIndex == index+1 && 'active'} ${styles.list_nav}`} 
                             key={`list-${index}`}
                             role='button'
-                        >
-                            {/* <motion.button                             
-                                key={`button-${index}`}
-                                onClick={()=>handleTopClick(index+1)}
-                                initial={{ opacity: 0}}
-                                animate={{ opacity: 1}}
-                                exit={{ opacity: 0}}
-                                transition={{ delay: 0.2, duration: 0.3, ease:easeIn }}
-                                className={`button ${visibleIndex == index+1 && 'active'}`}
-                            >
-                                &nbsp;
-                            </motion.button> */}
+                        >                            
                         </motion.li>
                 )})}
                 </AnimatePresence>
@@ -95,12 +96,12 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                     { Array.from(heroImages.entries()).map(([index, child]) => {
                         if ( Math.abs(visibleIndex - index) > 1 || outOfBounds)  return null;
                         return (
-                            <motion.div key={`hero-${index}`}
+                            <motion.div
+                                key={`hero-${index}`}
                                 layout                               
-                                className={`${styles.hero_container}`}   
-                                initial={{ opacity: 0, scale: 0.7, filter: 'blur(10px)', rotateY: 90, rotateX: -40, rotateZ: 20 }}                     
-                                animate={{ opacity: 1,  scale: 1.5, filter: 'blur(0px)' , rotateY: 0, rotateX: 0, rotateZ: 0 }}                     
-                                exit={{ opacity: 0, scale: 0.5, filter: 'blur(18px)', rotateY: 45, rotateX: 90, rotateZ: -20}}
+                                className={`${styles.hero_container}`}
+                                variants={ crystalVariants }
+                                initial={'initial'} animate={'animate'} exit={'exit'}
                                 transition={{ delay: 0.2, duration: 1, ease:easeInOut }}          
                             >{child}</motion.div>
                     )}) }
@@ -111,9 +112,13 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                 { React.Children.map(children, (child, i) => {
                     const isHero = React.isValidElement(child) && child.type === TimelineChild;
                     return ( isHero ? null : (
-                        <div ref={el => { if (el) setRef(el, i.toString()); }}>
+                        <motion.div 
+                            ref={el => { if (el) setRef(el, i.toString()); }}
+                            variants={FadeVariant}
+                            initial={'initial'} animate={'animate'} exit={'exit'}
+                        >
                             {child}
-                        </div>
+                        </motion.div>
                     ) )
                 })}
             </div>

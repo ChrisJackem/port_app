@@ -11,11 +11,20 @@ import Link from 'next/link';
 import PageBanner from '@/components/page_banner/page_banner';
 import LetsBuild from '@/components/lets_build/lets_build';
 import TimelineScroller, { TimelineChild } from '@/components/timeline_scroller/timeline_scroller';
+import { usePageBanner } from '@/components/page_banner/page_banner_persist';
+import { useEffect } from 'react';
 
 
 /*********************************************************************************** About Page  */
 
 const AboutPage = () => {
+    const context = usePageBanner();
+    useEffect(()=>{
+        context.setState({
+            title: 'About',
+            content: 'A little about me'
+        })
+    }, [])
 
   return (
     <motion.div
@@ -27,8 +36,8 @@ const AboutPage = () => {
         
         className={"page-container gridded"}
     >
-        <PageBanner title='ABOUT'
-            content={'A little bit about me and what I do.'} />
+        {/* <PageBanner title='ABOUT'
+            content={'A little bit about me and what I do.'} /> */}
                  
         <TimelineScroller>
             <div>
@@ -45,12 +54,20 @@ const AboutPage = () => {
             </TimelineChild>
 
             <div className={`ruler bg-light-fade ${styles.section_container}`}>
+                
                 <h2>Born and Bred</h2>
                 <strong>In Connecticut, USA.</strong>                
+                
                 <hr/>
-                <p><strong>I had the normal American childhood:</strong> Played sports, video games etc. but was more of a geek. I was also a very artistic kid, attending TAG after school programs and being active in the art scene. I even sold a few paintings at art exhibitions in my area.</p>
+                
+                <p><strong>I had the normal American childhood:</strong> Played sports, skateboarded, video games etc. but was more of a geek. 
+                I was also a very artistic kid with an impressive output.
+                I never decided what I wanted to do so I attended tech school <strong>and</strong> art school.
+                </p>
+                
                 <br/>
-                <p>Even in the beginning, I tried to develop 3 key aspects of personality: I am extremely logical and artistic, with physical exertion rounding everything out.</p>
+
+                <p style={{ fontWeight: 600, fontSize: 'x-large'}}>There are 3 things I like to do: think, create, and sweat. If I am not sleeping I am usually doing one of those things.</p>                
                 <div className={`flex ${styles.icon_container}`}>
                     <div className={`${styles.icon_lg_card}`}>
                         <img src={`static/images/icons/icon_lg_baseball.svg`} alt='baseball image'/>
@@ -64,7 +81,12 @@ const AboutPage = () => {
                     <div style={{ width: '100%', textAlign: 'center',  fontStyle: 'oblique'}}>Body, left  brain, right brain</div>
                 </div>
                 
-                <p>In High school I attended a tech school and learned <i>Industrial Electronics</i> which introduced me to computers on a fundamental level. At this point the internet was for nerds and I was one of the first.</p>
+                <p>
+                In high school I was taking <i>Industrial Electronics</i> classes<br/>
+                destroying my shoulder on the hockey team<br/>
+                and had enough time to have a few art exhibitions at the end.
+                </p>
+                
             </div>  
 
             <p className={styles.shout}>I have a passion for technology; it exploded as I was coming of age. </p>
