@@ -1,31 +1,37 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, easeIn, easeInOut, motion, useScroll, useAnimation } from 'motion/react'
+import { AnimatePresence, easeIn, easeInOut, motion, useScroll, useAnimation, useInView } from 'motion/react'
 import styles from './timeline_scroller.module.css'
 import useRefs from '@/hooks/useRefs'
 import useDebounce from '@/hooks/useDebounce'
 
 
-export const FadeVariant = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 }
-}
 /** Spinning plane animation like from superman 3 */
 const crystalVariants = {
     initial:{ opacity: 0, scale: 0.7, filter: 'blur(10px)', rotateY: 90, rotateX: -40, rotateZ: 20 },                  
-    animate:{ opacity: 1,  scale: 1.5, filter: 'blur(0px)' , rotateY: 0, rotateX: 0, rotateZ: 0 },                  
+    animate:{ opacity: 1,  scale: 1.5, filter: 'blur(0px)' , rotateY: 0, rotateX: 0, rotateZ: 1 },                  
     exit:{ opacity: 0, scale: 0.5, filter: 'blur(18px)', rotateY: 45, rotateX: 90, rotateZ: -20}
 }
 
-
+export const TextVariant = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 }    
+}
 
 const TimelineScroller = ({children}: {children: ReactNode}) => {
-    const container_ref = useRef(null)
+    const controls = useAnimation();
+    const container_ref = useRef(null);
+    const isInView = useInView(container_ref);
     const {refsByKey, setRef} = useRefs();
     const [heroImages, setHeroImages] = useState<Map<number, ReactNode>>(new Map());
     const { scrollY, scrollYProgress } = useScroll()
     const [visibleIndex, setVisibleIndex] = useState(-1);
     const [outOfBounds, setOutOfBounds] = useState(true);
+
+    useEffect(() => {
+        if (isInView) {
+        controls.start("animate");
+        }
+    }, [controls, isInView]);
     
     const getHeros = ()=>{
         const heros = new Map();
@@ -68,7 +74,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <section className={`p-rel ${styles.container}`} ref={container_ref} >
+        <section className={`p-rel ${styles.container}`} ref={container_ref}>
             {/* <p>{visibleIndex}</p> */}
             <div className={`p-rel ${styles.modal_nav}`}>
                 <ol type="I" className={`flex flex-column ${styles.ol_nav}`}>
@@ -114,7 +120,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
                     return ( isHero ? null : (
                         <motion.div 
                             ref={el => { if (el) setRef(el, i.toString()); }}
-                            variants={FadeVariant}
+                            variants={TextVariant}
                             initial={'initial'} animate={'animate'} exit={'exit'}
                         >
                             {child}

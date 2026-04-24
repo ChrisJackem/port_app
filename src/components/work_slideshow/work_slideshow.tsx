@@ -5,6 +5,8 @@ import useParallax from '@/hooks/useParalax';
 import useLoadImg, {LoadImage, SlideImage} from '@/hooks/useLoadImg';
 import useInterval from '@/hooks/useInterval';
 import SlideControls from './work_slideshow_controls';
+import Loading from '@/app/loading';
+import LoadingComponent from '../loading_component/loading_component';
 
 export type SlideState = {
     progress: number;
@@ -125,9 +127,12 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
 
     return (
         <section className={styles.main_container} ref={container_ref}>
-            <motion.div className={styles.container} style={{ z: contY, opacity: contO }}>
-                
-                { slideState.current_image && (
+            <motion.div className={styles.container} style={{ z: contY, opacity: contO }}>                
+                { !slideState.current_image 
+                    ? ( <div style={{ minHeight: 200 }}>
+                            <LoadingComponent width={'100%'} height={'100%'} />
+                        </div>)
+                    : (
                     <motion.div                    
                         className={styles.image_container}                     
                         style={{ y: screenY, paddingTop: `${aspect_ratio * 100}%`, }}
@@ -177,16 +182,16 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                             </div>
                          )}
 
-                    </motion.div>) 
+                    </motion.div>
+                    )                    
                 }
 
                 <motion.div className={styles.child_container} style={{ y: textY }} >
                     {children}
-                <motion.div className={styles.cta} >
-                    <button className='button active'>Click</button>
-                    <button className='button'>Click</button>
-                </motion.div>
-
+                    <motion.div className={styles.cta} >
+                        <button className='button active'>Click</button>
+                        <button className='button'>Click</button>
+                    </motion.div>
                 </motion.div>
 
                 <div style={{ opacity: 0.3 }}></div>
