@@ -139,7 +139,7 @@ const WorkSlideShow = ({name, images, children}: { name: string, children: React
                     >
                         <AnimatePresence>
                             { slideState.current_image 
-                                ? (<motion.img                                
+                                ? (<motion.img         
                                     key={slideState.current_image.id}
                                     initial={{ opacity: 0, x: -20, scale: 1.18, zIndex: 99, filter: 'blur(8px)' }}
                                     animate={{ opacity: 1, x: 0, y: 0, scale: 1, zIndex: 1, filter: 'blur(0px)' }}

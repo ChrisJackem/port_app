@@ -19,8 +19,7 @@ import ScrollMeter from "@/components/scroll_meter/scroll_meter";
 import { useState, useEffect } from "react";
 import FlackPopup from "@/components/flack_popup/flack_popup";
 import LetsBuild from "@/components/lets_build/lets_build";
-import Modal from "@/components/modal/modal";
-
+import { useModal } from "@/components/modals/modal_context";
 
 /*********************************************************************************** Home Page  */
 
@@ -37,24 +36,8 @@ const MeshLoading = dynamic(
     { loading: ()=> <Mesh2 />} 
 )
 
-
-
 const HomePage = () => {
-  const [showPop, setShowPop] = useState(false);
-  const [dismissedPop, setDismissedPop] = useState(false);
-
-  useEffect( ()=> {
-    if (window.localStorage.getItem('dismissed')==='true'){
-      setDismissedPop(true)
-    }
-  }, [])
-
-  function handleDismiss(){
-    window.localStorage.setItem('dismissed', 'true');
-    setDismissedPop(true);
-    setShowPop(false);
-  }
-
+  const { modalName, setModalName } = useModal();
   return (
     <motion.div 
       id='home_container' 
@@ -65,28 +48,7 @@ const HomePage = () => {
       animate="enter"
       exit="exit"
     >
-
-      {/* <img
-          id={'home-sprite'}
-          className=''
-          src={'/static/images/hex.svg'}
-          alt={'hexagon decoration'}
-        /> */}
-
-      <Modal 
-        id={'Lets Talk'} 
-        isOpen={showPop && !dismissedPop}
-      >
-      <FlackPopup 
-        onDismiss={()=> setShowPop(false)} 
-        onDismissForever={handleDismiss}/>
-      </Modal>
-
-      <section
-        id="home-splash" 
-        className="page_double page-hero p-rel"
-        >
-        
+      <section id="home-splash" className="page_double page-hero p-rel" >        
         <div id="home_blurb" className="flex flex-align-center bg-fade">
           <div className="flex-column padded">
             <LineHeader text='What I do' />
@@ -97,8 +59,8 @@ const HomePage = () => {
             <br/>
             <div className="flex">
               <button aria-label="Gallery page" className='button active'>work</button>              
-              { !dismissedPop && 
-                <button aria-label="Gallery page" onClick={()=> setShowPop(true)} className='button'>Lets Talk</button> }
+              {/* { !dismissedPop && 
+                <button aria-label="Gallery page" onClick={()=> setShowPop(true)} className='button'>Lets Talk</button> } */}
             </div>
           </div>          
         </div>
@@ -108,10 +70,10 @@ const HomePage = () => {
           <ScrollMeter
             className={''}
             triggers={[              
-              { id: 0, start: 10, end: 20, color: 'var(--midground, #000)', callback: ()=>{setShowPop(false)}},
-              { id: 1, start: 20, end: 30, color: 'var(--text, yellow)', callback: ()=>{setShowPop(false)}},
-              { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)', callback: ()=>{setShowPop(true)}},
-              { id: 3, start: 81, end: 99, color: 'var(--accentB, yellow)', callback: ()=>{setShowPop(false)}}
+              { id: 0, start: 10, end: 20, color: 'var(--midground, #000)', callback: ()=>setModalName(null)},
+              { id: 1, start: 20, end: 30, color: 'var(--text, yellow)'},
+              { id: 2, start: 50, end: 80, color: 'var(--accent, yellow)', callback: ()=>setModalName('flack')},
+              { id: 3, start: 81, end: 99, color: 'var(--accentB, yellow)', callback: ()=>setModalName(null)}
             ]}          
           >            
           </ScrollMeter>
@@ -225,8 +187,6 @@ const HomePage = () => {
 
         <LetsBuild />
 
-        
-           
     </motion.div>
   );
 }

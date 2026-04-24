@@ -1,14 +1,32 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import styles from './flack_popup.module.css';
 import { LoadImg } from '../load_img/load_img';
 import LineHeader from '../line_header/line_header';
+import { useModal } from '../modals/modal_context';
 
-const FlackPopup = ({onDismiss, onDismissForever}: {onDismiss: () => void, onDismissForever: () => void}) => {
-  return (
-    <section className={`fixed-modal ${styles.container}`}>
-        <div className={`${styles.inner_container}`}>
+const FlackPopup = ({}) => {
+    const { modalName, setModalName } = useModal();
+    const [dismissed, setDismissed] = useState(false);
+    
+    // Handles localStorage 'dismissed' value
+    /* useEffect( ()=> {
+        if (window.localStorage.getItem('dismissed')==='true')
+            setDismissed(true)
+    }, []) */
+
+    function handleDismiss(forever:boolean=false){        
+        //if (forever) window.localStorage.setItem('dismissed', 'true');
+        setDismissed(true)
+    }
+    
+    if (modalName !== 'flack' || dismissed) return null;
+
+    return (
+    <section className={`fixed-modal ${styles.container}`} key={'flack-popup'}>
+        <div className={`modal ${styles.inner_container}`}>
             <div className={styles.image_container}>
-                <LoadImg
+                <img
                     className={styles.image}                    
                     src='/static/images/work/flack/flack_long.png'                
                     alt={'flack logo'}
@@ -17,7 +35,7 @@ const FlackPopup = ({onDismiss, onDismissForever}: {onDismiss: () => void, onDis
             <div className={styles.blurb}>
                 <br/>
                 <br/>
-                <LineHeader text='CONTACT' />
+                <LineHeader text='CONTACT ME' />
                 <h1 className='t-ital'>LET'S TALK</h1>
                 <hr/>
                 <p className='line-spaced'><strong>I made my own social media app</strong> and you can contact me there if you are interested. Its free and I don't track, spy or show ads.</p>
@@ -29,13 +47,13 @@ const FlackPopup = ({onDismiss, onDismissForever}: {onDismiss: () => void, onDis
                 <br/>                
                 <div className='flex'>
                     <button  className='button active'>Sign Up</button>
-                    <button onClick={onDismiss} className='button accentB'>Dismiss</button>
-                    <small onClick={onDismissForever}>Dismiss this popup forever</small>
+                    <button onClick={()=>handleDismiss()} className='button accentB'>Dismiss</button>
+                    <small onClick={()=>handleDismiss(true)}>Dismiss this popup forever</small>
                 </div>
             </div>
         </div>
     </section>
-  )
+    )
 }
 
 export default FlackPopup

@@ -7,7 +7,10 @@ import NavBar from "@/components/nav_bar/nav_bar";
 import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
 import PageBannerPersist, { PageBannerProvider } from "@/components/page_banner/page_banner_persist";
-
+import { ModalProvider } from "@/components/modals/modal_context";
+import ContactInfo from "@/components/contact_info/contact_info";
+import FlackPopup from "@/components/flack_popup/flack_popup";
+import { AnimatePresence } from "motion/react";
 
 export const metadata: Metadata = {
   title: "ChrisJackem.com",
@@ -26,18 +29,26 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="static/images/icons/favicon.svg"></link>
       </head>
       <body className={`t-txt ${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
+        
         <ThemeWrapper>
-        <main className={`${styles.main_container}`}>
-          <NavBar/>
-          
-          <div className={`${styles.child_container}`}>
-            <PageBannerProvider >
-              <PageBannerPersist />
-              {children}            
-            </PageBannerProvider>
-          </div>
-        </main>
-        <Footer />
+        <ModalProvider>          
+          <AnimatePresence>
+            <ContactInfo key={'00'}/>
+            <FlackPopup key={'11'}/>            
+          </AnimatePresence>
+
+          <main className={`${styles.main_container}`}>
+            <NavBar/>          
+            <div className={`${styles.child_container}`}>
+              <PageBannerProvider >
+                <PageBannerPersist />
+                {children}            
+              </PageBannerProvider>
+            </div>
+          </main>
+          <Footer />
+
+        </ModalProvider>
         </ThemeWrapper>
       </body>
     </html>

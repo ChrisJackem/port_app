@@ -7,10 +7,12 @@ import { StrokeLogo } from '../loading_component/loading_component';
 import PageButton from '../page_button/page_button';
 import './nav_bar.css';
 import LinkComponent from '../link_component/linkComponent';
+import { useModal } from '../modals/modal_context';
 
 const NavBar = () => {  
   const nav_main = useRef<HTMLElement | null>(null);
-  const [navHeight, setNavHeight] = useState(100)
+  const [navHeight, setNavHeight] = useState(100);
+  const { modalName, setModalName } = useModal();
   
   useEffect(()=>{
     if (!nav_main.current) return;
@@ -19,13 +21,11 @@ const NavBar = () => {
   }, [nav_main]);
 
   return (
-
       <nav id="nav-bar" ref={nav_main} className='flex'>
         
         <div className='logo_container flex'>
           <StrokeLogo infinite={false}/>
-          <small className={''}>chrisjackem.com</small>
-            
+          <small className={''}>chrisjackem.com</small>            
         </div>
         
         <ul className='flex nav-ul'>
@@ -34,9 +34,10 @@ const NavBar = () => {
           {/* <LinkComponent name='GALLERY' href='/gallery'/> */}
           <LinkComponent name='Work' href='/work'/>
         </ul>
-        <div>
-          
-        </div>
+        <button 
+          className={`button ${modalName == 'contact' ? '' : 'active'}`}
+          onClick={()=>setModalName('contact')}
+        >Hire Me</button>
       </nav>
       
 
