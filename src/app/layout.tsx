@@ -8,7 +8,7 @@ import Footer from "@/components/footer/footer";
 import ThemeWrapper from "@/components/theme_wrapper/theme_wrapper";
 import PageBannerPersist, { PageBannerProvider } from "@/components/page_banner/page_banner_persist";
 import { ModalProvider } from "@/components/modals/modal_context";
-import ContactInfo from "@/components/contact_info/contact_info";
+import ContactInfo from "@/components/contact_form/contact_form";
 import FlackPopup from "@/components/flack_popup/flack_popup";
 import { AnimatePresence } from "motion/react";
 
@@ -31,11 +31,9 @@ export default function RootLayout({
       <body className={`t-txt ${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
         
         <ThemeWrapper>
-        <ModalProvider>          
-          <AnimatePresence>
-            <ContactInfo key={'00'}/>
-            <FlackPopup key={'11'}/>            
-          </AnimatePresence>
+        <ModalProvider>
+            <ContactInfo/>
+            <FlackPopup/>
 
           <main className={`${styles.main_container}`}>
             <NavBar/>          
