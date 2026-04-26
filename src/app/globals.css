@@ -201,8 +201,9 @@ a {
   padding: 2rem;
   /* -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px); */
-  background-color: var(--midground, #ccc);
-  background: linear-gradient(to top right,var(--midground), 15%, var(--background));
+  background-color: var(--background, #ccc);
+  /* background: linear-gradient(to top right,var(--midground), 55%, var(--background)); */
+  background: linear-gradient(to top right, rgba(255,255,255, 0.13), transparent), var(--background);
 }
 
 .fixed-modal{

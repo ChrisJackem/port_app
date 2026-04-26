@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, FormEvent } from 'react'
+import React, { useState, FormEvent, useEffect, useRef, ChangeEvent } from 'react'
 import styles from './contact_form.module.css'
 import SvgBtn from '../svg_btns/svg_btns'
 import { AnimatePresence, easeOut, motion } from 'motion/react'
@@ -18,11 +18,46 @@ const validate = ( text:string, isEmail:boolean=false )=>{
     return ret
 }
 
+type FormInput = { 
+    value?: string;
+    isEmail?:boolean;
+    errors?: string[] 
+}
+
 const ContactForm = () => {
     const {modalName, setModalName} = useModal();
     const [message, setMessage] = useState<string>('');    
-    const [errors, setErrors] = useState<Map<string, string[]>>(new Map());      
-    const [userMessage, setUserMessage] = useState<Map<string, string[]> | undefined>();      
+    //const [errors, setErrors] = useState<Map<string, string[]>>(new Map());
+
+    const [userData, setUserData] = useState<Record<string, FormInput>>({});
+
+    const onChange = (e: FormEvent<HTMLInputElement | HTMLTextAreaElement> )=>{
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.value;
+        const isEmail = e.currentTarget.type == 'email'
+        setUserData( oldData => ({ ...oldData,
+            [name]:{ 
+                value: value,
+                isEmail: isEmail
+            }
+        }) );
+    }
+    const onBlur = (e: FormEvent<HTMLInputElement | HTMLTextAreaElement> )=>{
+        const name = e.currentTarget.name;
+        if (userData.hasOwnProperty(name)){
+            const val = userData[name]?.value ?? '';
+            const is_email = userData[name]?.isEmail ? true : false;
+            const errs = validate(val, is_email);
+            if (errs.length > 0){
+                setUserData( oldData => ({ ...oldData,
+                    [name]:{ 
+                        ...oldData[name],
+                        errors: errs
+                    }
+                }));
+            }
+        }
+    }
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -40,8 +75,8 @@ const ContactForm = () => {
 
         // Update state
         const hadErrors = newErrors.size > 0;
-        setMessage(hadErrors ? `There were some errors...`: `Sending...`);
-        setErrors(newErrors);
+        setMessage(hadErrors ? `Fix errors to proceed.`: `Sending...`);
+        //setErrors(newErrors);
         
         // If we are good, then fire request
         if (!hadErrors && false){
@@ -50,10 +85,8 @@ const ContactForm = () => {
                 const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     body: formData
-                });
-    
-                const data = await response.json();  
-    
+                });    
+                const data = await response.json();      
                 if (data.success) {
                     setMessage("Message Success.");                    
                     (event.target as HTMLFormElement).reset();
@@ -90,10 +123,13 @@ const ContactForm = () => {
                     <div className={`flex flex-column`} style={{ justifyContent: 'flex-end' }}>                    
                         <h1>Hire Me</h1>
                         <p>Send me a quick message and I will get back to you as soon as I can.</p>
-                        <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                            <FormInput name={'name'} type={'input'} errors={errors.get('name')}/>
-                            <FormInput name={'email'} type={'email'} errors={errors.get('email') }/>
-                            <FormInput name={'message'} type={'textarea'} errors={errors.get('message')}/>
+
+                        {/* <p>{JSON.stringify(userData)}</p> */}
+
+                        <motion.form className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
+                            <FormInput name={'name'} type={'input'} data={userData} onChange={onChange} onBlur={onBlur}/>
+                            <FormInput name={'email'} type={'email'} data={userData} onChange={onChange} onBlur={onBlur}/>
+                            <FormInput name={'message'} type={'textarea'} data={userData} onChange={onChange} onBlur={onBlur}/>
                             <p className={styles.message}>{message}</p>                            
                             <button className={`button active`} type="submit">Send Message</button>
                         </motion.form>
@@ -111,12 +147,16 @@ const ContactForm = () => {
     )
 }
 
-export const FormInput = ({ name, type='input', errors=undefined }:{ 
+export const FormInput = ({ name, type='input', data, errors=undefined, onChange, onBlur }:{ 
     name:string, 
-    type?:'input'|'textarea'|'email', 
-    errors?:string[] | undefined
+    data: Record<string, FormInput>,
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
+    onBlur: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
+    type?:'input'|'textarea'|'email',
+    errors?:string[] | undefined,
 }) => {
     const DynamicInput = type !== 'textarea' ? 'input' : 'textarea';
+    
     return (
         <div>
             <label htmlFor={`input-${name}`}>{name}:</label>
@@ -128,9 +168,12 @@ export const FormInput = ({ name, type='input', errors=undefined }:{
                 style={{ borderColor: errors?.length
                     ? 'var(--accentB, red)' 
                     : 'var(--midground)' 
-                }}                
+                }}
+                value={data[name]?.value || ''}
+                onChange={onChange}            
+                onBlur={onBlur}            
             ></DynamicInput>
-                { errors && (errors.map(
+                { data[name]?.errors && (data[name].errors.map(
                     (err, i)=>( <p key={`${name}-error-${i}`} className={styles.error}>{err}</p> )
                 ))}
         </div>
