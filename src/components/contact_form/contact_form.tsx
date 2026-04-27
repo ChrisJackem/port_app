@@ -126,10 +126,10 @@ const ContactForm = () => {
 
                         {/* <p>{JSON.stringify(userData)}</p> */}
 
-                        <motion.form className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                            <FormInput name={'name'} type={'input'} data={userData} onChange={onChange} onBlur={onBlur}/>
-                            <FormInput name={'email'} type={'email'} data={userData} onChange={onChange} onBlur={onBlur}/>
-                            <FormInput name={'message'} type={'textarea'} data={userData} onChange={onChange} onBlur={onBlur}/>
+                        <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
+                            <FormInput name={'name'} type={'input'} data={userData['name']} onChange={onChange} onBlur={onBlur}/>
+                            <FormInput name={'email'} type={'email'} data={userData['email']} onChange={onChange} onBlur={onBlur}/>
+                            <FormInput name={'message'} type={'textarea'} data={userData['message']} onChange={onChange} onBlur={onBlur}/>
                             <p className={styles.message}>{message}</p>                            
                             <button className={`button active`} type="submit">Send Message</button>
                         </motion.form>
@@ -147,13 +147,12 @@ const ContactForm = () => {
     )
 }
 
-export const FormInput = ({ name, type='input', data, errors=undefined, onChange, onBlur }:{ 
+export const FormInput = ({ name, type='input', data, onChange, onBlur }:{ 
     name:string, 
-    data: Record<string, FormInput>,
+    data: FormInput,
     onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
     onBlur: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
-    type?:'input'|'textarea'|'email',
-    errors?:string[] | undefined,
+    type?:'input'|'textarea'|'email'    
 }) => {
     const DynamicInput = type !== 'textarea' ? 'input' : 'textarea';
     
@@ -165,17 +164,26 @@ export const FormInput = ({ name, type='input', data, errors=undefined, onChange
                 type={type == 'email' ? 'email' : 'text'}
                 name={name}
                 spellCheck={"false"}
-                style={{ borderColor: errors?.length
+                style={{ borderColor: data?.errors?.length
                     ? 'var(--accentB, red)' 
                     : 'var(--midground)' 
                 }}
-                value={data[name]?.value || ''}
+                value={data?.value || ''}
                 onChange={onChange}            
                 onBlur={onBlur}            
             ></DynamicInput>
-                { data[name]?.errors && (data[name].errors.map(
-                    (err, i)=>( <p key={`${name}-error-${i}`} className={styles.error}>{err}</p> )
+            <AnimatePresence>
+                { data?.errors && (data.errors.map(
+                    (err, i)=>( <motion.p 
+                        key={`${name}-error-${i}`} 
+                        className={styles.error}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1,  y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ delay: i * 0.2}}
+                    >{err}</motion.p> )
                 ))}
+            </AnimatePresence>
         </div>
     )    
 }
