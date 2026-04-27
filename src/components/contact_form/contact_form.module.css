@@ -3,9 +3,31 @@
     top: 20px;
     right: 20px;
     z-index: 999999;
-    padding: 2.5rem;
+    padding: 5rem 2.5rem 3rem 2.5rem;
     gap: 1.5rem;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.container::after{
+    color: var(--background);
+    position: absolute;
+    top: -50px; left: -30px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    content: '//HIRE ME//';
+    white-space: nowrap;
+    font-size: 80px;
+    opacity: 0.2;
+    z-index: -1;
+    font-style: italic;
+    /* text-decoration:  underline dashed; */
+    font-family: var(--f-akira);
+    font-weight: 900;
+}
+
+
 .dismiss{
     position: absolute;
     top: 10px;
@@ -15,6 +37,8 @@
 }
 .form{
     /* padding: 1rem; */
+    max-width: 800px;
+    justify-content: center;
 }
 .form button{
     align-self: flex-start;
@@ -46,8 +70,21 @@
 }
 
 /* Psudo Images */
-.checked{
-
+.checked, .errored{
+    position: relative;
+}
+.checked::after, .errored::after{
+    position: absolute; top: 1.65rem; right: 0.15rem;
+    width: 22px;
+    height: 22px;
+    content: '';
+    background-size: contain;
+}
+.checked::after{
+    background-image: url('/static/images/form/bubble_check.svg');
+}
+.errored::after{
+    background-image: url('/static/images/form/bubble_error.svg');
 }
 
 .form input::placeholder, .form textarea::placeholder{
@@ -75,6 +112,24 @@
     transform-origin: top;
     margin: 0.25rem 0px;
     border-radius: 3px;
+}
+
+.top_strip{
+    position: absolute;
+    top: 4px; left: 0px;
+    align-items: center;
+    gap: 4px;
+    width: 80%;
+    padding: 0.25rem;
+    font-family: var(--f-akira);
+    font-weight: 900;
+    font-size: 12px;
+    border-bottom: 1px dotted var(--midground);
+    background: linear-gradient(to right, rgba(255,255,255, 0.2), 10%, transparent);
+}
+.top_strip img{
+    width: 50px;
+    height: auto;
 }
 
 .bubble{

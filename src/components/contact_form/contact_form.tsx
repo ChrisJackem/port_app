@@ -33,6 +33,7 @@ const ContactForm = () => {
     const [state, setState] = useState<'init'|'ready'|'sent'>('init');
     const [userData, setUserData] = useState<Record<string, FormInput>>({ 'name': {}, 'email': {isEmail: true}, 'message': {} });
 
+    // This will check userData every sec for a completed form and set the state accordingly
     const checkData = ()=>{ console.log("check")
         setState( s => {
             const vals = Object.values(userData)
@@ -147,6 +148,14 @@ const ContactForm = () => {
                     exit={{ opacity: 0, x: 100, scale: 0.9 }}
                     transition={{ duration: 0.2, ease: easeOut }}
                 >
+                     <div className={`flex ${styles.top_strip}`}>
+                        <img
+                            src={'/static/images/form/msg_letter.svg'}
+                            alt={'quick message icon'}
+                        />
+                        <p>QUICK MESSAGE</p>
+                    </div>
+
                     <img                        
                         fetchPriority="high"
                         alt='vector self portrait'
@@ -154,45 +163,49 @@ const ContactForm = () => {
                         height='220px'
                         src='static/images/portrait_02.svg'
                     />                    
-                    <div className={`flex flex-column`} style={{ justifyContent: 'flex-end' }}>                    
-                        <h1>Hire Me</h1>
-                        <p>Send me a quick message and I will get back to you as soon as I can.</p>
+                    <div className={`flex flex-column`} style={{ justifyContent: 'flex-end' }}> 
+                        <div>
+                            <h1 className={`t-ac t-it t-jumbo-md`}>HIRE ME</h1>
+                            <hr/>
+                            <p>Send me a quick message and I will get back to you as soon as I can.</p>
+                        </div>                   
+                            <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
                         <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                            
-                            <FormInput 
-                                name={'name'}
-                                data={userData['name']} 
-                                onChange={onChange} onBlur={onBlur}/>
-                            
-                            <FormInput 
-                                name={'email'} 
-                                type={'email'} 
-                                data={userData['email']}
-                                onChange={onChange} onBlur={onBlur}/>
+                               {/*  <legend>XXX</legend>         */}                    
+                                <FormInput 
+                                    name={'name'}
+                                    data={userData['name']} 
+                                    onChange={onChange} onBlur={onBlur}/>
+                                
+                                <FormInput 
+                                    name={'email'} 
+                                    type={'email'} 
+                                    data={userData['email']}
+                                    onChange={onChange} onBlur={onBlur}/>
 
-                            <FormInput 
-                                name={'message'} 
-                                type={'textarea'} 
-                                data={userData['message']} 
-                                onChange={onChange} onBlur={onBlur}/>
-                            
-                            <p className={styles.message}>{message}</p>
+                                <FormInput 
+                                    name={'message'} 
+                                    type={'textarea'} 
+                                    data={userData['message']} 
+                                    onChange={onChange} onBlur={onBlur}/>
+                                
+                                <p className={styles.message}>{message}</p>
 
-                            <div className={`flex flex-align-center`} style={{ justifyContent: 'flex-end' }}>
-                                { Object.entries(userData).map(([key, value], i) => (
-                                    <FormBubble key={key} index={i} data={value}/>
-                                )) }
-                                <motion.button
-                                    disabled={state !== 'ready'}
-                                    className={`button active`}
-                                    style={{ opacity: state==='ready' ? 1 : 0.25 }}
-                                    type="submit"
-                                >
-                                    Send Message
-                                </motion.button>
-                            </div>                         
-
+                                <div className={`flex flex-align-center`} style={{ justifyContent: 'flex-end' }}>
+                                    { Object.entries(userData).map(([key, value], i) => (
+                                        <FormBubble key={key} index={i} data={value}/>
+                                    )) }
+                                    <motion.button
+                                        disabled={state !== 'ready'}
+                                        className={`button active`}
+                                        style={{ opacity: state==='ready' ? 1 : 0.25 }}
+                                        type="submit"
+                                    >
+                                        Send Message
+                                    </motion.button>
+                                </div>                         
                         </motion.form>
+                            </fieldset>
                     </div>
                     <SvgBtn 
                         type={'x'} 
@@ -200,6 +213,7 @@ const ContactForm = () => {
                         color={'#fff'}
                         onClick={()=> setModalName(null) }
                     />
+                   
                 </motion.div> 
             )}  
         </AnimatePresence> 
@@ -250,9 +264,22 @@ export const FormInput = ({ name, type='input', data, onChange, onBlur }:{
     type?:'input'|'textarea'|'email'    
 }) => {
     const DynamicInput = type !== 'textarea' ? 'input' : 'textarea';
-    
+    const [classname, setClassname] = useState('');
+
+    const checkState = useDebounce( 300, ()=>{
+        setClassname( n => {
+            if (data.checked){
+                return styles.checked
+            }else if ( data.errors && data.errors.length > 0){
+                return styles.errored
+            }
+            return ''
+        })    
+    })
+    useEffect( checkState, [data]);
+
     return (
-        <div>
+        <div className={classname}>
             <label htmlFor={`input-${name}`}>{name}:</label>
             <DynamicInput                        
                 id={`input-${name}`} 
@@ -266,7 +293,7 @@ export const FormInput = ({ name, type='input', data, onChange, onBlur }:{
                 placeholder={`${name}*`}
                 value={data?.value || ''}
                 onChange={onChange}            
-                onBlur={onBlur}            
+                onBlur={onBlur}                   
             ></DynamicInput>
             <AnimatePresence>
                 { data?.errors && (data.errors.map(
