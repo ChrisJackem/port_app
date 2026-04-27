@@ -45,6 +45,17 @@
     border-color: var(--text, #000) !important;
 }
 
+/* Psudo Images */
+.checked{
+
+}
+
+.form input::placeholder, .form textarea::placeholder{
+    font-weight: 900;
+    font-style: oblique;
+    font-size: small;
+}
+
 .form textarea{
     resize: vertical;
     font-family: inherit;
@@ -64,4 +75,16 @@
     transform-origin: top;
     margin: 0.25rem 0px;
     border-radius: 3px;
+}
+
+.bubble{
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        flex-direction: column;
+        justify-content: center;
+    }
 }

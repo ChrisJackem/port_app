@@ -4,6 +4,7 @@ import styles from './contact_form.module.css'
 import SvgBtn from '../svg_btns/svg_btns'
 import { AnimatePresence, easeOut, motion } from 'motion/react'
 import { useModal } from '../modals/modal_context'
+import useDebounce from '@/hooks/useDebounce'
 
 const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -21,26 +22,52 @@ const validate = ( text:string, isEmail:boolean=false )=>{
 type FormInput = { 
     value?: string;
     isEmail?:boolean;
-    errors?: string[] 
+    errors?: string[];
+    checked?: boolean;
 }
 
 const ContactForm = () => {
+    
     const {modalName, setModalName} = useModal();
-    const [message, setMessage] = useState<string>('');    
-    //const [errors, setErrors] = useState<Map<string, string[]>>(new Map());
+    const [message, setMessage] = useState<string>('');
+    const [state, setState] = useState<'init'|'ready'|'sent'>('init');
+    const [userData, setUserData] = useState<Record<string, FormInput>>({ 'name': {}, 'email': {isEmail: true}, 'message': {} });
 
-    const [userData, setUserData] = useState<Record<string, FormInput>>({});
+    const checkData = ()=>{ console.log("check")
+        setState( s => {
+            const vals = Object.values(userData)
+            const checked = vals.filter( obj => obj.checked );
+            switch (s){
+                case 'init':
+                case 'ready':
+                    if (checked.length == vals.length){
+                        return 'ready'
+                    }else{
+                        return 'init'
+                    }
+                    case 'sent':                    
+                    break;
+                }
+                return s
+        });        
+    }; 
+    useEffect( useDebounce( 1000, checkData ), [userData]);
 
     const onChange = (e: FormEvent<HTMLInputElement | HTMLTextAreaElement> )=>{
         const name = e.currentTarget.name;
         const value = e.currentTarget.value;
         const isEmail = e.currentTarget.type == 'email'
         setUserData( oldData => ({ ...oldData,
-            [name]:{ 
+            [name]:{ ...oldData[name],
                 value: value,
-                isEmail: isEmail
+                errors: undefined,
+                checked: (value.length > 0 && validate(value, isEmail).length == 0)
             }
         }) );
+        // message check
+        if (message.length > 0){
+            setMessage(``);
+        }
     }
     const onBlur = (e: FormEvent<HTMLInputElement | HTMLTextAreaElement> )=>{
         const name = e.currentTarget.name;
@@ -52,6 +79,7 @@ const ContactForm = () => {
                 setUserData( oldData => ({ ...oldData,
                     [name]:{ 
                         ...oldData[name],
+                        checked: false,
                         errors: errs
                     }
                 }));
@@ -62,8 +90,13 @@ const ContactForm = () => {
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const formData = new FormData(event.target as HTMLFormElement);
-        const nameErrors:string[] = validate(formData.get('name')?.toString() || '');
+        if (state === 'ready'){
+            const formData = new FormData(event.target as HTMLFormElement);
+            setMessage(`Sending...`); 
+        }else{
+            setMessage(`Please fix errors to proceed.`); 
+        }
+        /* const nameErrors:string[] = validate(formData.get('name')?.toString() || '');
         const emailErrors:string[] = validate(formData.get('email')?.toString() || '', true);
         const messageErrors:string[] = validate(formData.get('message')?.toString() || '');
 
@@ -74,9 +107,12 @@ const ContactForm = () => {
         if (messageErrors.length) {newErrors.set('message', messageErrors);}
 
         // Update state
-        const hadErrors = newErrors.size > 0;
-        setMessage(hadErrors ? `Fix errors to proceed.`: `Sending...`);
-        //setErrors(newErrors);
+        const hadErrors = newErrors.size > 0; */
+
+
+
+
+        //setMessage(hadErrors ? `Fix errors to proceed.`: `Sending...`);       
         
         // If we are good, then fire request
         if (!hadErrors && false){
@@ -111,30 +147,53 @@ const ContactForm = () => {
                     exit={{ opacity: 0, x: 100, scale: 0.9 }}
                     transition={{ duration: 0.2, ease: easeOut }}
                 >
-                    <img
-                        style={{ marginLeft: 'auto'}}
+                    <img                        
                         fetchPriority="high"
                         alt='vector self portrait'
                         width='200px'
                         height='220px'
                         src='static/images/portrait_02.svg'
-                    />
-                    
+                    />                    
                     <div className={`flex flex-column`} style={{ justifyContent: 'flex-end' }}>                    
                         <h1>Hire Me</h1>
                         <p>Send me a quick message and I will get back to you as soon as I can.</p>
-
-                        {/* <p>{JSON.stringify(userData)}</p> */}
-
                         <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                            <FormInput name={'name'} type={'input'} data={userData['name']} onChange={onChange} onBlur={onBlur}/>
-                            <FormInput name={'email'} type={'email'} data={userData['email']} onChange={onChange} onBlur={onBlur}/>
-                            <FormInput name={'message'} type={'textarea'} data={userData['message']} onChange={onChange} onBlur={onBlur}/>
-                            <p className={styles.message}>{message}</p>                            
-                            <button className={`button active`} type="submit">Send Message</button>
+                            
+                            <FormInput 
+                                name={'name'}
+                                data={userData['name']} 
+                                onChange={onChange} onBlur={onBlur}/>
+                            
+                            <FormInput 
+                                name={'email'} 
+                                type={'email'} 
+                                data={userData['email']}
+                                onChange={onChange} onBlur={onBlur}/>
+
+                            <FormInput 
+                                name={'message'} 
+                                type={'textarea'} 
+                                data={userData['message']} 
+                                onChange={onChange} onBlur={onBlur}/>
+                            
+                            <p className={styles.message}>{message}</p>
+
+                            <div className={`flex flex-align-center`} style={{ justifyContent: 'flex-end' }}>
+                                { Object.entries(userData).map(([key, value], i) => (
+                                    <FormBubble key={key} index={i} data={value}/>
+                                )) }
+                                <motion.button
+                                    disabled={state !== 'ready'}
+                                    className={`button active`}
+                                    style={{ opacity: state==='ready' ? 1 : 0.25 }}
+                                    type="submit"
+                                >
+                                    Send Message
+                                </motion.button>
+                            </div>                         
+
                         </motion.form>
                     </div>
-
                     <SvgBtn 
                         type={'x'} 
                         className={styles.dismiss} 
@@ -144,6 +203,42 @@ const ContactForm = () => {
                 </motion.div> 
             )}  
         </AnimatePresence> 
+    )
+}
+
+const FormBubble = ({ index, data }:{
+    index: number,
+    data:FormInput
+}) =>{
+    const [url, setUrl] = useState('/static/images/form/bubble_hollow.svg');
+
+    useEffect(()=>{
+        if (data.errors?.length){
+            setUrl('/static/images/form/bubble_error.svg');
+        }else{
+            if (data.value && data.value.length > 2){
+                if (data.checked){
+                    setUrl('/static/images/form/bubble_check.svg');
+                }else{
+                    setUrl('/static/images/form/bubble_filled.svg');
+                }
+            }else{
+                setUrl('/static/images/form/bubble_hollow.svg');
+            }
+        }
+    }, [data]);
+
+    return (        
+        <motion.img
+            key={`icon-${index}-${url}`}
+            className={styles.bubble}
+            src={url}
+            alt={''}
+            initial={{ scale: 2.1 }}
+            animate={{  scale: 1 }}
+            exit={{  scale: 2.1 }}
+            transition={{ duration: 0.5, ease: easeOut }}
+        ></motion.img>        
     )
 }
 
@@ -168,6 +263,7 @@ export const FormInput = ({ name, type='input', data, onChange, onBlur }:{
                     ? 'var(--accentB, red)' 
                     : 'var(--midground)' 
                 }}
+                placeholder={`${name}*`}
                 value={data?.value || ''}
                 onChange={onChange}            
                 onBlur={onBlur}            
