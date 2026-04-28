@@ -170,6 +170,9 @@ const ContactForm = () => {
                             <small>Send me a quick message, <br/>I will get back to you as soon as I can.</small>
                         </div>                   
                         <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
+
+                        <p>{process.env.NEXT_PUBLIC_TEST || "XxX"}</p>
+
                         <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
                                {/*  <legend>XXX</legend>         */}                    
                                 <FormInput 
