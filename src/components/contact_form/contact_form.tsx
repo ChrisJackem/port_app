@@ -116,7 +116,7 @@ const ContactForm = () => {
         //setMessage(hadErrors ? `Fix errors to proceed.`: `Sending...`);       
         
         // If we are good, then fire request
-        if (!hadErrors && false){
+       /*  if (!hadErrors && false){
             try{
                 formData.append("access_key", process.env.NEXT_PUBLIC_CONTACT_FORM_KEY || "");    
                 const response = await fetch("https://api.web3forms.com/submit", {
@@ -134,7 +134,7 @@ const ContactForm = () => {
             }catch(E){
                 console.error(`Fetch Error:\n${E}`)
             }
-        }
+        } */
     };
 
     return ( 

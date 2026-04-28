@@ -60,7 +60,7 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
         }
         setOutOfBounds(_scrollY < 500 || scrollYProgress.get() > 0.9);        
     }
-    const debouncedScrollHandler = useDebounce(scrollHandler, 10)
+    const debouncedScrollHandler = useDebounce(10, scrollHandler)
     useEffect(()=>{
         window.addEventListener('scroll', debouncedScrollHandler );
         return ()=>{ window.removeEventListener('scroll', debouncedScrollHandler );}

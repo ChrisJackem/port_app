@@ -3,7 +3,6 @@ import './footer.css'
 import React, { useContext } from 'react'
 import { usePathname } from 'next/navigation';
 import { ThemeContext } from '../theme_wrapper/theme_wrapper';
-import ChipHeader from '../chip_header/chip_header'
 import { THEMES, ThemeType } from '@/app/config/theme';
 import { LoadImg } from '../load_img/load_img';
 import Link from 'next/link';

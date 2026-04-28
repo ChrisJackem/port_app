@@ -3,7 +3,6 @@
 import { useInView } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './work_container.module.css';
-import ChipHeader from '../chip_header/chip_header';
 import SlideShow from '../slide_show/slide_show';
 import LoadingComponent from '../loading_component/loading_component';
 import { fetchFile, STATUS } from '@/hooks/useImg';
