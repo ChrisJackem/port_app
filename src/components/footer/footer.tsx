@@ -23,6 +23,7 @@ const Footer = () => {
   if (status !== STATUS.LOADED || data === undefined) return <LoadingComponent />
   
   return (
+    
     <footer id='footer-container' className='psudo flex'>      
       <section id='footer-logo-container'>
           <StrokeLogo infinite={false}/>          

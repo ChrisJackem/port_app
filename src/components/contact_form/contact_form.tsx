@@ -168,7 +168,8 @@ const ContactForm = () => {
                             <h1 className={`t-ac t-it t-jumbo-md`}>HIRE ME</h1>
                             <hr/>
                             <small>Send me a quick message, <br/>I will get back to you as soon as I can.</small>
-                        </div>                   
+                        </div>  
+                                         
                         <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
 
                         <p>{process.env.NEXT_PUBLIC_TEST || "XxX"}</p>
@@ -215,8 +216,7 @@ const ContactForm = () => {
                         className={styles.dismiss} 
                         color={'#fff'}
                         onClick={()=> setModalName(null) }
-                    />
-                   
+                    />                   
                 </motion.div> 
             )}  
         </AnimatePresence> 
