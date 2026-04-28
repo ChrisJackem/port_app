@@ -13,10 +13,10 @@
 .container::after{
     color: var(--background);
     position: absolute;
-    top: -50px; left: -30px;
+    top: 0px; left: -30px;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    content: '//HIRE ME//';
+    content: '//HIRE ME//////////////';
     white-space: nowrap;
     font-size: 80px;
     opacity: 0.2;
@@ -38,6 +38,7 @@
 .form{
     /* padding: 1rem; */
     max-width: 800px;
+    min-width: 300px;
     justify-content: center;
 }
 .form button{
@@ -139,7 +140,10 @@
 
 @media screen and (max-width: 600px){
     .container{
-        flex-direction: column;
-        justify-content: center;
+        top: 0px;
+        right: 0px;
+        margin: 1rem;
+       /*  flex-direction: column; */
+        /* justify-content: center; */
     }
 }

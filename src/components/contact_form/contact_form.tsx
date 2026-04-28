@@ -167,9 +167,9 @@ const ContactForm = () => {
                         <div>
                             <h1 className={`t-ac t-it t-jumbo-md`}>HIRE ME</h1>
                             <hr/>
-                            <p>Send me a quick message and I will get back to you as soon as I can.</p>
+                            <small>Send me a quick message, <br/>I will get back to you as soon as I can.</small>
                         </div>                   
-                            <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
+                        <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
                         <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
                                {/*  <legend>XXX</legend>         */}                    
                                 <FormInput 
@@ -205,7 +205,7 @@ const ContactForm = () => {
                                     </motion.button>
                                 </div>                         
                         </motion.form>
-                            </fieldset>
+                        </fieldset>
                     </div>
                     <SvgBtn 
                         type={'x'} 
