@@ -148,34 +148,35 @@ const ContactForm = () => {
                     exit={{ opacity: 0, x: 100, scale: 0.9 }}
                     transition={{ duration: 0.2, ease: easeOut }}
                 >
-                     <div className={`flex ${styles.top_strip}`}>
-                        <img
+                    <div className={`flex ${styles.top_strip}`}>                        
+                       {/*  <img
                             src={'/static/images/form/msg_letter.svg'}
                             alt={'quick message icon'}
                         />
-                        <p>QUICK MESSAGE</p>
+                        <p>QUICK MESSAGE</p> */}
+                        <SvgBtn 
+                            type={'x'} 
+                            className={styles.dismiss} 
+                            color={'#fff'}
+                            onClick={()=>setModalName(null)}
+                        />  
                     </div>
+                        <div className={styles.image_container}>
+                            <img                        
+                                fetchPriority="high"
+                                alt='vector self portrait'                                
+                                src='static/images/portrait_02.svg'                                
+                            />
+                        </div>
 
-                    <img                        
-                        fetchPriority="high"
-                        alt='vector self portrait'
-                        width='200px'
-                        height='220px'
-                        src='static/images/portrait_02.svg'
-                    />                    
-                    <div className={`flex flex-column`} style={{ justifyContent: 'flex-end' }}> 
-                        <div>
+                        <div className={`${styles.container_inner}`}>                  
+                        <div className={`flex flex-column`} style={{ gap: '0.5rem', marginBottom: '2rem'}}>
                             <h1 className={`t-ac t-it t-jumbo-md`}>HIRE ME</h1>
                             <hr/>
-                            <small>Send me a quick message, <br/>I will get back to you as soon as I can.</small>
-                        </div>  
-                                         
-                        <fieldset disabled={state=='sent'} style={{ border: 'none'}}>
-
-                        <p>{process.env.NEXT_PUBLIC_TEST || "XxX"}</p>
-
+                            <p style={{ lineHeight: '1.2rem' }}>Send me a quick message, I will get back to you as soon as I can.</p>
+                        </div>
                         <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                               {/*  <legend>XXX</legend>         */}                    
+                            {/*  <legend>XXX</legend>         */}                    
                                 <FormInput 
                                     name={'name'}
                                     data={userData['name']} 
@@ -193,7 +194,7 @@ const ContactForm = () => {
                                     data={userData['message']} 
                                     onChange={onChange} onBlur={onBlur}/>
                                 
-                                <p className={styles.message}>{message}</p>
+                                <h3>{message}</h3>
 
                                 <div className={`flex flex-align-center`} style={{ justifyContent: 'flex-end' }}>
                                     { Object.entries(userData).map(([key, value], i) => (
@@ -209,14 +210,8 @@ const ContactForm = () => {
                                     </motion.button>
                                 </div>                         
                         </motion.form>
-                        </fieldset>
                     </div>
-                    <SvgBtn 
-                        type={'x'} 
-                        className={styles.dismiss} 
-                        color={'#fff'}
-                        onClick={()=> setModalName(null) }
-                    />                   
+                                                        
                 </motion.div> 
             )}  
         </AnimatePresence> 
@@ -293,7 +288,7 @@ export const FormInput = ({ name, type='input', data, onChange, onBlur }:{
                     ? 'var(--accentB, red)' 
                     : 'var(--midground)' 
                 }}
-                placeholder={`${name}*`}
+                placeholder={`/${name}*`}
                 value={data?.value || ''}
                 onChange={onChange}            
                 onBlur={onBlur}                   

@@ -191,18 +191,15 @@ a {
 }
 
 /*********************** Popups ***/
+html:has(.modal) {
+  overflow: hidden;
+}
 .modal{
   max-width: 1000px;
-  /* background: linear-gradient( to top, #000, var(--darkest, #fff) ) ; */
   filter: drop-shadow(0px 0px 25px var(--darkest, #000));
   border: 2px solid var(--midground, yellow);
   border-radius: 0.75rem;
-  display: flex;
-  padding: 2rem;
-  /* -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px); */
   background-color: var(--background, #ccc);
-  /* background: linear-gradient(to top right,var(--midground), 55%, var(--background)); */
   background: linear-gradient(to top right, rgba(255,255,255, 0.13), transparent), var(--background);
 }
 
