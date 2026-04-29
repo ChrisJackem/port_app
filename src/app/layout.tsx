@@ -11,6 +11,8 @@ import { ModalProvider } from "@/components/modals/modal_context";
 import ContactInfo from "@/components/contact_form/contact_form";
 import FlackPopup from "@/components/flack_popup/flack_popup";
 import { AnimatePresence } from "motion/react";
+import { HCaptchaProvider } from "@hcaptcha/react-hcaptcha/hooks";
+import ContactWrapped from "@/components/contact_form/contact_form";
 
 export const metadata: Metadata = {
   title: "ChrisJackem.com",
@@ -31,8 +33,8 @@ export default function RootLayout({
       <body className={`t-txt ${libreFranklin.className} ${blinker.variable} ${akira.variable}`}>
         
         <ThemeWrapper>
-        <ModalProvider>
-            <ContactInfo/>
+        <ModalProvider>            
+            <ContactWrapped/>           
             <FlackPopup/>
 
           <main className={`${styles.main_container}`}>

@@ -60,6 +60,11 @@
     margin-top: 1rem;
     justify-content: center;
 }
+.form iframe{
+    position: absolute;
+    top: 0px; left: 0px;
+    
+}
 .form button{
     align-self: flex-start;
 }

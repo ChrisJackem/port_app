@@ -5,8 +5,11 @@ import SvgBtn from '../svg_btns/svg_btns'
 import { AnimatePresence, easeOut, motion } from 'motion/react'
 import { useModal } from '../modals/modal_context'
 import useDebounce from '@/hooks/useDebounce'
+import HCaptcha from '@hcaptcha/react-hcaptcha'
+//import { HCaptchaProvider, useHCaptcha } from '@hcaptcha/react-hcaptcha/hooks'
 
 const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const PRODUCTION_PUBLIC_KEY = '66cc2485-f164-431d-b385-d6559a6be568'
 
 const validate = ( text:string, isEmail:boolean=false )=>{
     const ret:string[] = []
@@ -25,12 +28,24 @@ type FormInput = {
     errors?: string[];
     checked?: boolean;
 }
+/* const ContactWrapped = () => (
+    <HCaptchaProvider 
+        sitekey={`50b2fe65-b00b-4b9e-ad62-3ba471098be2`}
+        theme={'dark'}
+        size={'invisible'}
+    >
+        <ContactForm />
+    </HCaptchaProvider>
+) */
 
 const ContactForm = () => {    
     const {modalName, setModalName} = useModal();
     const [message, setMessage] = useState<string>('');
     const [state, setState] = useState<'init'|'ready'|'sent'>('init');
     const [userData, setUserData] = useState<Record<string, FormInput>>({ 'name': {}, 'email': {isEmail: true}, 'message': {} });
+    const captchaRef = useRef<HCaptcha | null>(null);
+    //const { ready, error, token, executeInstance } = useHCaptcha();
+
 
     // This will check userData every sec for a completed form and set the state accordingly
     const checkData = ()=>{
@@ -89,27 +104,28 @@ const ContactForm = () => {
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const formData = new FormData(event.target as HTMLFormElement);
-        // This should not happen anyway but
-        const has_errors = validate(formData.get('name')?.toString() || '')
-                .concat(validate(formData.get('email')?.toString() || '', true))
-                .concat(validate(formData.get('message')?.toString() || ''))
-                .length > 0;
-        if (has_errors || state !== 'ready'){
+        if ( state !== 'ready'){
             setMessage(`Please fix errors to proceed.`);
             return;
         }
         // Make Request
-        setMessage(`Sending...`);      
+        setMessage(`Verifying...`);      
         try{
-            const data = {success: true, message: "theMessage"};
+            //const captchaRes = await captchaRef.current?.execute();
+            const resp = await captchaRef.current?.execute({async: true});
+
+            setMessage(`Verified.`);
+            const formData = new FormData(event.target as HTMLFormElement);
+            //console.log([...formData]);
             
-            /* formData.append("access_key", process.env.NEXT_PUBLIC_CONTACT_FORM_KEY || "");    
+            
+            formData.append("access_key", process.env.NEXT_PUBLIC_CONTACT_FORM_KEY || PRODUCTION_PUBLIC_KEY);
+            setMessage(`Sending...`);  
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 body: formData
             });    
-            const data = await response.json();  */     
+            const data = await response.json();      
             if (data.success) {
                 setMessage("Message Success!");
                 setState('sent');                
@@ -123,7 +139,13 @@ const ContactForm = () => {
         }       
     };
 
+    const onCaptchaError = (arg:any)=>{
+        console.error('Error', arg)
+    }
+
+
     return ( 
+        
         <AnimatePresence>
             { modalName == 'contact' && (
                 <motion.div 
@@ -156,7 +178,16 @@ const ContactForm = () => {
                             <hr/>
                             <p style={{ lineHeight: '1.2rem' }}>Send me a quick message, I will get back to you as soon as I can.</p>
                         </div>
+                        
                         <motion.form layout className={`${styles.form}`} onSubmit={onSubmit} noValidate>
+                            <HCaptcha
+                                ref={captchaRef}
+                                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                                reCaptchaCompat={false}
+                                theme={'dark'}
+                                size={'invisible'}
+                                onError={onCaptchaError}                                
+                            />
                             <fieldset 
                                 disabled={ state === 'sent' } 
                                 className={`flex flex-column`} 
@@ -191,18 +222,19 @@ const ContactForm = () => {
                                         style={{ opacity: state==='ready' ? 1 : 0.25 }}
                                         type="submit"
                                     >
-                                        { state !== 'sent' 
-                                            ? 'Send Message'
-                                            : 'Sent'}
+                                        { state !== 'sent' ? 'Send Message' : 'Sent'}
                                     </motion.button>
-                                </div>                         
+                                </div>                      
                             </fieldset>
+                           
                         </motion.form>
+
                     </div>
                                                         
                 </motion.div> 
             )}  
-        </AnimatePresence> 
+        </AnimatePresence>
+
     )
 }
 
@@ -276,7 +308,7 @@ export const FormInput = ({ name, type='input', data, onChange, onBlur }:{
                     ? 'var(--accentB, red)' 
                     : 'var(--midground)' 
                 }}
-                placeholder={`/${name}*`}
+                placeholder={`${name}*`}
                 value={data?.value || ''}
                 onChange={onChange}            
                 onBlur={onBlur}                   

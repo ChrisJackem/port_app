@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hcaptcha/react-hcaptcha": "^2.0.2",
     "@react-three/fiber": "^9.5.0",
     "@types/three": "^0.183.1",
     "motion": "^12.23.12",
