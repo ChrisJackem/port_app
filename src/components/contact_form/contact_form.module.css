@@ -26,20 +26,12 @@
 }
 
 .top_strip{
-    grid-column: span 2;
-    align-items: center;
+    grid-column: span 2;    
     gap: 4px;
     width: 100%;
-    padding: 0.5rem;
-    font-family: var(--f-akira);
-    font-weight: 900;
-    font-size: 12px;
+    padding: 0.65rem;
     border-bottom: 1px dotted var(--midground);
     background: linear-gradient(to right, rgba(255,255,255, 0.2), 10%, transparent);
-}
-.top_strip img{
-    width: 50px;
-    height: auto;
 }
 .dismiss{
     height: 30px;
@@ -55,7 +47,8 @@
 
 .image_container{
     width: 100%;
-    padding: 2rem;    
+    padding: 3rem;
+    padding-right: 0px;
     text-align: center;
 }
 .image_container img{
@@ -139,8 +132,6 @@
     border-radius: 3px;
 }
 
-
-
 .bubble{
     width: 20px;
     height: 20px;
@@ -156,13 +147,12 @@
     }
     .container_inner{
         padding: 1.5rem;
+        font-size: 14px;
     }
     .image_container{
         float: left;
         width: 40%;
-    }
-    .image_container img{
-        transform: scale(1.2);
+        padding: 1rem;
     }
     .form{
         max-width:100%;

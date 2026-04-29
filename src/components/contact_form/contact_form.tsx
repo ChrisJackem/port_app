@@ -26,15 +26,14 @@ type FormInput = {
     checked?: boolean;
 }
 
-const ContactForm = () => {
-    
+const ContactForm = () => {    
     const {modalName, setModalName} = useModal();
     const [message, setMessage] = useState<string>('');
     const [state, setState] = useState<'init'|'ready'|'sent'>('init');
     const [userData, setUserData] = useState<Record<string, FormInput>>({ 'name': {}, 'email': {isEmail: true}, 'message': {} });
 
     // This will check userData every sec for a completed form and set the state accordingly
-    const checkData = ()=>{ console.log("check")
+    const checkData = ()=>{
         setState( s => {
             const vals = Object.values(userData)
             const checked = vals.filter( obj => obj.checked );
@@ -90,51 +89,38 @@ const ContactForm = () => {
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
-        if (state === 'ready'){
-            const formData = new FormData(event.target as HTMLFormElement);
-            setMessage(`Sending...`); 
-        }else{
-            setMessage(`Please fix errors to proceed.`); 
+        const formData = new FormData(event.target as HTMLFormElement);
+        // This should not happen anyway but
+        const has_errors = validate(formData.get('name')?.toString() || '')
+                .concat(validate(formData.get('email')?.toString() || '', true))
+                .concat(validate(formData.get('message')?.toString() || ''))
+                .length > 0;
+        if (has_errors || state !== 'ready'){
+            setMessage(`Please fix errors to proceed.`);
+            return;
         }
-        /* const nameErrors:string[] = validate(formData.get('name')?.toString() || '');
-        const emailErrors:string[] = validate(formData.get('email')?.toString() || '', true);
-        const messageErrors:string[] = validate(formData.get('message')?.toString() || '');
-
-        // Count errors 
-        const newErrors = new Map();
-        if (nameErrors.length) {newErrors.set('name', nameErrors); }
-        if (emailErrors.length) {newErrors.set('email', emailErrors);}
-        if (messageErrors.length) {newErrors.set('message', messageErrors);}
-
-        // Update state
-        const hadErrors = newErrors.size > 0; */
-
-
-
-
-        //setMessage(hadErrors ? `Fix errors to proceed.`: `Sending...`);       
-        
-        // If we are good, then fire request
-       /*  if (!hadErrors && false){
-            try{
-                formData.append("access_key", process.env.NEXT_PUBLIC_CONTACT_FORM_KEY || "");    
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });    
-                const data = await response.json();      
-                if (data.success) {
-                    setMessage("Message Success.");                    
-                    (event.target as HTMLFormElement).reset();
-                } else {
-                    console.error("Error", data);
-                    setMessage(data.message);
-                }
-            }catch(E){
-                console.error(`Fetch Error:\n${E}`)
+        // Make Request
+        setMessage(`Sending...`);      
+        try{
+            const data = {success: true, message: "theMessage"};
+            
+            /* formData.append("access_key", process.env.NEXT_PUBLIC_CONTACT_FORM_KEY || "");    
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });    
+            const data = await response.json();  */     
+            if (data.success) {
+                setMessage("Message Success!");
+                setState('sent');                
+                /* (event.target as HTMLFormElement).reset(); */
+            } else {
+                console.error("Error", data);
+                setMessage(data.message);
             }
-        } */
+        }catch(E){
+            console.error(`Fetch Error:\n${E}`)
+        }       
     };
 
     return ( 
@@ -148,12 +134,7 @@ const ContactForm = () => {
                     exit={{ opacity: 0, x: 100, scale: 0.9 }}
                     transition={{ duration: 0.2, ease: easeOut }}
                 >
-                    <div className={`flex ${styles.top_strip}`}>                        
-                       {/*  <img
-                            src={'/static/images/form/msg_letter.svg'}
-                            alt={'quick message icon'}
-                        />
-                        <p>QUICK MESSAGE</p> */}
+                    <div className={`flex ${styles.top_strip}`}>
                         <SvgBtn 
                             type={'x'} 
                             className={styles.dismiss} 
@@ -175,8 +156,12 @@ const ContactForm = () => {
                             <hr/>
                             <p style={{ lineHeight: '1.2rem' }}>Send me a quick message, I will get back to you as soon as I can.</p>
                         </div>
-                        <motion.form layout className={`flex flex-column ${styles.form}`} onSubmit={onSubmit} noValidate>
-                            {/*  <legend>XXX</legend>         */}                    
+                        <motion.form layout className={`${styles.form}`} onSubmit={onSubmit} noValidate>
+                            <fieldset 
+                                disabled={ state === 'sent' } 
+                                className={`flex flex-column`} 
+                                style={{ border: 'none'}}
+                            >                                     
                                 <FormInput 
                                     name={'name'}
                                     data={userData['name']} 
@@ -206,9 +191,12 @@ const ContactForm = () => {
                                         style={{ opacity: state==='ready' ? 1 : 0.25 }}
                                         type="submit"
                                     >
-                                        Send Message
+                                        { state !== 'sent' 
+                                            ? 'Send Message'
+                                            : 'Sent'}
                                     </motion.button>
                                 </div>                         
+                            </fieldset>
                         </motion.form>
                     </div>
                                                         
