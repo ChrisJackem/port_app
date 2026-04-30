@@ -132,8 +132,6 @@ const TimelineScroller = ({children}: {children: ReactNode}) => {
     )
 }
 
-type TimelineState = 'visible'|'over'|'under'
-
 export const TimelineChild = ({children}: {children: ReactNode}) => {
     return (<>{children}</>);
 }

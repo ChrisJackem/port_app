@@ -17,7 +17,7 @@
 
 
 } */
-#home-splash::after{
+/* #home-splash::after{
     position: absolute;
     top: 90%;
     left: 5px;
@@ -28,7 +28,7 @@
     writing-mode: vertical-rl;
     text-orientation: mixed;
     content: '/////////////';
-}
+} */
 #home-splash > div{
     min-height: 600px;    
     pointer-events: none;
