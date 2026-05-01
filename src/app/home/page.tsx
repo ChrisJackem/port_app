@@ -20,6 +20,7 @@ import { useState, useEffect } from "react";
 import FlackPopup from "@/components/flack_popup/flack_popup";
 import LetsBuild from "@/components/lets_build/lets_build";
 import { useModal } from "@/components/modals/modal_context";
+import Brain from "@/components/brain/brain";
 
 /*********************************************************************************** Home Page  */
 
@@ -149,6 +150,8 @@ const HomePage = () => {
           </Link> 
         </IconFrame>
       </section>
+
+      <Brain />
 
       <div className={`feature-header flex`}>        
           <SVG_GEAR />

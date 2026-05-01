@@ -1,0 +1,60 @@
+.container{
+   /*  aspect-ratio: 16/9; */
+    /* height: 300px; */
+    position: relative;
+    padding: 4rem;
+    justify-content: center;
+    align-content: center;
+    border-bottom: 2px solid var(--darkest, #ccc);
+    border-top: 1px solid var(--darkest, #ccc);
+    margin: 4rem 0px;
+    background-color: var(--darkest);
+}
+.container > div, .container > img{
+    z-index: 2;
+    max-width: 600px;
+}
+.container::before{
+    position: absolute; top: 0; left: 0;
+    opacity: 0.25;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 4px solid var(--midground, #ccc);
+    border-top: 4px solid var(--midground, #ccc);
+    content: '|||| X0598.89FA.X9F32';
+    font-size: 8px;
+
+    background:
+        linear-gradient(to bottom right, var(--darkest), transparent),
+        url('/static/images/brain_animation/static.gif');
+    background-blend-mode: luminosity;
+    background-repeat: repeat-x;
+    background-size: contain;
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED */
+    image-rendering: -moz-crisp-edges;          /* Firefox */
+    image-rendering: -o-crisp-edges;            /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021 */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+ */
+}
+.container img{
+    height: 200px;
+    width: auto;
+    float: left;    
+}
+
+.sticker_text{
+   /*  background-color: #000; */
+    padding: 0.25rem;
+    border-radius: 4px;
+    font-family: var(--f-akira);
+    font-size: 18px;
+}
+
+@media screen and (max-width: 900px) {
+    .container::before{
+        background-size: cover;
+    }
+}

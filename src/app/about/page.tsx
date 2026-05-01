@@ -38,6 +38,8 @@ const AboutPage = () => {
     >
         {/* <PageBanner title='ABOUT'
             content={'A little bit about me and what I do.'} /> */}
+
+        
                  
         <TimelineScroller>
             <div>
