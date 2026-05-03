@@ -26,14 +26,12 @@ const Brain = () => {
                 <feComposite operator="over" in="overlay" in2="underlay"/>
             </filter>
         </svg> */}
-        <svg 
-        /* style={{ display: 'none'}} */
-        >
+        <svg style={{ position: 'static', width: 1, height: 1, opacity: 0 }}>
             <defs>
             <filter id="simpleglitchfilter" colorInterpolationFilters="sRGB">
                 <feFlood floodColor="rgb(128, 0, 128" result="BASE_COLOR" />
                 <feFlood height="40" y="0" floodColor="rgb(255, 0, 128" transform="rotate(90deg)" result="X-TRANSFORM" >
-                    <animate attributeName="y" values="100%; -40px;" dur="2s" repeatCount="indefinite" begin="0" />
+                    <animate attributeName="y" values="350px; -40px;" dur="2s" repeatCount="indefinite" begin="0" />
                 </feFlood>                
                 <feMerge result="MERGE">
                     <feMergeNode in="BASE_COLOR" />
