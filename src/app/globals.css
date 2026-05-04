@@ -44,12 +44,12 @@
 button{
   cursor: pointer;
   outline: none;  
-  border: 1px solid var(--midground, #ccc);
   pointer-events: all;
-  border-radius: 4px;
 }
 
 .button{
+  border-radius: 4px;
+  border: 1px solid var(--midground, #ccc);
   position: relative;
   transition: all 200ms ease-out;
   padding: 0.5rem 2rem;

@@ -19,19 +19,18 @@
     position: absolute;
     font-family: var(--f-akira);    
     font-weight: 900;
-    opacity: 0.5;
+    opacity: 0.75;
     content: "//";
+    font-size: 40px;
 }
 
 .container::before{
     top: -0.75rem;
-    left: 1rem;
-    font-size: 30px;    
+    left: 1rem;   
 }
 .container::after{
     bottom: -1rem;
-    right: 1rem;
-    font-size: 50px;
+    right: 1rem;    
 }
 
 .container img{
@@ -46,7 +45,8 @@
     border-radius: 4px;
     font-family: var(--f-akira);
     font-size: 18px;
-    /* line-height: 1.7rem; */
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 900px) {

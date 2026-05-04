@@ -68,7 +68,7 @@ const HomePage = () => {
         
         <MeshLoading />
 
-          <ScrollMeter
+         {/*  <ScrollMeter
             className={''}
             triggers={[              
               { id: 0, start: 10, end: 20, color: 'var(--midground, #000)', callback: ()=>setModalName(null)},
@@ -77,7 +77,7 @@ const HomePage = () => {
               { id: 3, start: 81, end: 99, color: 'var(--accentB, yellow)', callback: ()=>setModalName(null)}
             ]}          
           >            
-          </ScrollMeter>
+          </ScrollMeter> */}
           
       </section>
 
@@ -115,39 +115,41 @@ const HomePage = () => {
       <LineHeaderHoriz text={"SKILLSET SYNOPSIS A"}/>
 
       <section className={'page_triple page-container p-rel skill-triple bg-dk-fade'}>
-        
+        <div className={`icons-cta`}>
+          <Link href='/work' aria-label="Work page link" className="icons-link">samples →</Link>
+        </div>
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>
-          <Link
+          {/* <Link
             aria-label="My GitHub profile"
             href={'https://github.com/ChrisJackem'} 
             target="_blank" rel="noopener noreferrer"
           >
             <button aria-label="Github external link" className='button active'>github</button>
-          </Link> 
+          </Link>  */}
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h2>APPLICATIONS</h2>
           <p>I make web-based full stack apps and games</p>            
-          <Link
+          {/* <Link
             href='/work' 
             aria-label="Work page"
           >
             <button aria-label={"Games page"} className='button active'>work</button>
-          </Link>
+          </Link> */}
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h2>DESIGN</h2>
           <p>I love to design and create and experienced in every medium</p>       
-          <Link 
+          {/* <Link 
             href='/gallery' 
             aria-label="Gallery page"
           >
             <button aria-label="Gallery page" className='button active'>gallery</button>            
-          </Link> 
+          </Link>  */}
         </IconFrame>
       </section>
 

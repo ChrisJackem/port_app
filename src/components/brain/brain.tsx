@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './brain.module.css'
+import Link from 'next/link'
 
 const Brain = () => {
   return (
@@ -30,7 +31,18 @@ const Brain = () => {
             <p className={styles.sticker_text}>
                 My approach to problem solving is unique and I have a strong tendancy twords <strong>DIY</strong>.
                 Other people's code is convenient, but I love the entire process.         
-            </p>            
+            </p>
+            <Link
+                aria-label="My GitHub profile"
+                href={'https://github.com/ChrisJackem'} 
+                target="_blank" rel="noopener noreferrer"
+                role='button'
+                className='button'
+                style={{ width: 'min-content' }}
+            >
+                github*               
+          </Link>
+          <small style={{ marginTop: '-0.65rem' }}>*external link</small>          
         </div>
     </div>
   )

@@ -10,25 +10,6 @@
 
 }
 
-/* #home-splash{
-
-}
-#home-splash > img{
-
-
-} */
-/* #home-splash::after{
-    position: absolute;
-    top: 90%;
-    left: 5px;
-    font-size: clamp(22px, 2vw, 42px);
-    font-weight: 900;
-    font-family: var(--f-akira), Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: var(--darkest, #000);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    content: '/////////////';
-} */
 #home-splash > div{
     min-height: 600px;    
     pointer-events: none;
@@ -62,6 +43,32 @@
 .skill-triple{
     padding: 3rem 4rem 2rem 4rem;
     margin-top: 0px !important;
+}
+
+.icons-cta{
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0px;     
+}
+
+.icons-link{
+    font-family: var(--f-akira);
+    padding: 0.25rem 1rem;
+    font-weight: 900;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    font-size: 24px;
+    text-align: center;
+    color: var(--background, yellow);
+    background-color: var(--midground);
+    transition: all 200ms ease-out;    
+}
+
+.icons-link:hover{    
+    color: var(--accent, yellow);
+    background-color: var(--background);
+    border: 1px solid var(--accent, yellow);
+    border-right: none;
 }
 
 .feature-header{    
