@@ -21,6 +21,7 @@ import FlackPopup from "@/components/flack_popup/flack_popup";
 import LetsBuild from "@/components/lets_build/lets_build";
 import { useModal } from "@/components/modals/modal_context";
 import Brain from "@/components/brain/brain";
+import ThreeDScroller from "@/components/ThreeDScroller/three_d_scroller";
 
 /*********************************************************************************** Home Page  */
 
@@ -159,6 +160,13 @@ const HomePage = () => {
           <SVG_GEAR />
           <h1>WEBSITE FEATURES</h1>
       </div>
+
+      <ThreeDScroller images={[
+        'static/images/gallery/peg_03.png',
+        'static/images/gallery/gain_01.png',
+        'static/images/gallery/deal.png',
+        'static/images/gallery/burger2.png'
+      ]} />
 
       <section className="page-center">
         <AttentionSection 

@@ -193,7 +193,26 @@ a {
 /*********************** Popups ***/
 html:has(.modal) {
   overflow: hidden;
+  /* replace scrollbar */
+  padding-right: 8px;
+  background-color: var(--background);
 }
+html:has(.modal)::after{
+  color: var(--accent);
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  right: 1px;
+  content: "⇣";
+  opacity: 0.5;
+}
+@media screen and (max-width: 700px) {
+  html:has(.modal) {
+    padding-right: 0px;
+  }
+}
+
+
 .modal{
   max-width: 1000px;
   filter: drop-shadow(0px 0px 25px var(--darkest, #000));
