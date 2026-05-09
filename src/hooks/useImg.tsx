@@ -82,7 +82,7 @@ const useImg = (url: string ) => {
  */
 export const useImgs = ( urls: string[] ) => {
     const [status, setStatus] = useState<string>(STATUS.INIT);
-    const [data, setData] = useState<Map<string, string> | undefined>();  
+    const [data, setData] = useState<Map<string, string>>(new Map());  
     useEffect(()=>{
         if ( urls === undefined ) return;
         setStatus(STATUS.LOADING);
