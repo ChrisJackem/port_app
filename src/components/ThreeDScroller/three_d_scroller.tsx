@@ -76,7 +76,10 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
           <motion.img
             src={state.clicked_image}
             alt={`Hero Image`}
-            style={{ mask: `url(#MASK_IN)` }}            
+            style={{ mask: `url(#MASK_IN)` }}
+            initial={{ scale: 2 }}           
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, ease: easeOut }}  
           />
           <p>Some sgit</p>
           <button className={`button`}
