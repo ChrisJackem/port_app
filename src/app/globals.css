@@ -237,3 +237,4 @@ html:has(.modal)::after{
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
 }
+

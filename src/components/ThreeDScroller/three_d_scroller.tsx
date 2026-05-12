@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useScroll, useMotionTemplate, useTransform, motion, useInView, easeOut, easeInOut } from 'framer-motion'
 import styles from './three_d_scroller.module.css'
 import { STATUS, useImgs } from '@/hooks/useImg';
+import LineHeader from '../line_header/line_header';
+import { getFileSizeFromBase64, getFileTypeFromBase64 } from '../util/base64utils';
 
 type ModeString = 'init'|'scroll'|'userScroll'|'stop';
 
@@ -15,7 +17,13 @@ type StateType = {
 
 const ThreeDScroller = ({images}: {images:string[]}) => {
   const containerRef = useRef(null)
-  const inView = useInView(containerRef);  
+  const inView = useInView(containerRef);
+
+  const [loadedImages, setLoadedImages] = useState<string[]>();
+  const [viewing, setViewing] = useState<number>(-1);
+  const [clicked, setClicked] = useState<number>(-1);
+
+
   const [status, data] = useImgs(images);
   const [state, setState] = useState<StateType>({
     mode: 'init',
@@ -28,25 +36,12 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
     setState( s => ({...s, mode: nextMode}) );
   }, [inView]);
 
-  const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
-   setState( (s) => {
-    //const newMode = s.mode==='scroll' ? 'stop' : 'scroll';
-    const img = (e.target as HTMLImageElement).getAttribute('src');    
-    return{ 
-      ...s,
-      clicked_image: img,
-      mode: 'stop'
+  useEffect(()=>{
+    if (status===STATUS.LOADED && data instanceof Map){
+      setLoadedImages(Array.from( data.values() ))
     }
-   });
-  }
-
-  const handleHover = (over:boolean)=>{
-    /* setState( s => {
-    const newMode = over ? 'stop' : 'scroll';
-    return{ ...s, mode: newMode }
-   }); */
-  }
-
+  }, [data, status])
+  
   const handleDismissModal = ()=>{
     setState(s => ({...s, 
       clicked_image: null,
@@ -54,13 +49,26 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
     }))
   }
   
-  return (
-    <div ref={containerRef} className={`${styles.container}`} >
-      
-      { state.clicked_image && (<>
 
+
+  const handleImageClick = (idx:number) => {
+    setClicked(idx);
+    const image = loadedImages===undefined ? null : loadedImages[idx] || null;
+    setState( (s) => {    
+    return{ ...s,
+      clicked_image: image,
+      mode: 'stop'
+    }
+    });
+  }
+
+
+
+  return (
+    <div ref={containerRef} className={`${styles.container}`} >      
+      { state.clicked_image && (<>
         <svg style={{ position: 'fixed', height: '900px', width: '1600px', zIndex:'-1', opacity: 0 }}>
-        <defs>
+        <defs>          
           <mask id="MASK_IN" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
             <image
               xlinkHref={`/static/images/gif_mask/gif_mask_wide.gif?a="${Math.random()}"`}              
@@ -77,30 +85,39 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
             src={state.clicked_image}
             alt={`Hero Image`}
             style={{ mask: `url(#MASK_IN)` }}
-            initial={{ scale: 2 }}           
+            /* initial={{ scale: 2 }}           
             animate={{ scale: 1 }}
-            transition={{ duration: 0.5, ease: easeOut }}  
+            transition={{ duration: 0.5, ease: easeOut }}   */
           />
-          <p>Some sgit</p>
-          <button className={`button`}
-            style={{ position: 'absolute', top: 0, right: 0, zIndex: 999999}}
+          <div 
+            className={`padded-md`}
+            style={{ position: "absolute", top: 0, left: 0}}
+          >
+            <p><strong>NAME:</strong> {state.clicked_image}</p>
+            <p><strong>TYPE:</strong> {getFileTypeFromBase64(state.clicked_image)}</p>
+            <p><strong>SIZE:</strong> {getFileSizeFromBase64(state.clicked_image)}</p>
+          </div>
+          <button className={``}
+            style={{ 
+              position: 'absolute', 
+              top: 0, 
+              right: 0, 
+              zIndex: 999999,
+              padding: '1rem'}}
             onClick={handleDismissModal}
           >X</button>
         </div>
       </>)}
-        { status===STATUS.LOADED && data instanceof Map
-          ? (
-              <div className={`${styles.strip_container} `}
-                onMouseEnter={()=>handleHover(true)}
-                onMouseLeave={()=>handleHover(false)}
-              >
+
+        { loadedImages
+          ? ( <div className={`${styles.strip_container}`}>
                   <div className={`${styles.strip}`}>
                       <motion.div className={`flex flex-column ${styles.strip_inner} ${state.mode==='scroll' ? styles.scroll : ''}`} >
-                          {Array.from(data.values()).map((img, idx) => (
-                            <ImageScroll key={idx} src={img} click={handleImageClick}/>                      
+                          {loadedImages.map((img, idx) => (
+                            <ImageScroll key={idx} idx={idx} onInView={setViewing} src={img} />                      
                           ))}
-                          {Array.from(data.values()).map((img, idx) => (
-                            <ImageScroll key={`${idx}_dupe`} src={img} click={handleImageClick}/>
+                          {loadedImages.map((img, idx) => (
+                            <ImageScroll key={`${idx}_dupe`} idx={idx} onInView={setViewing} src={img}/>
                           ))}
                       </motion.div>
                   </div>
@@ -111,30 +128,45 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
           )
         }
 
-        <div className={`flex flex-align-center`}>
-          <div>
-            <h1 className='t-jumbo t-ital'>DESIGN</h1>
-            <p>Click to expand images</p>
+        <div className={`flex flex-column flex-just-center`} style={{ padding: '2rem', fontSize: 'medium'}}>
+          <div> 
+            <LineHeader text={'QUICK SAMPLE'}/>
+            <h1 className='t-jumbo t-ital'>DESIGN</h1>            
+            <p className={'bg-flipped t-bld'} style={{ padding: '0.05rem 1rem'}}>Click a thumbnail for detail</p>
           </div>
+          
+        <div className={`flex padded-md`}>
+          {loadedImages && ( loadedImages.map((img, idx) => (
+              <img
+                key={idx}
+                role='button'
+                onClick={()=>handleImageClick(idx)}
+                alt={`Horizontal Button #${idx}`}
+                src={img}
+                className={`${viewing===idx && styles.active} ${styles.hor_strip_image}`}                    
+              />                                 
+            ))                
+          )}
         </div>
-        <div className={`flex flex-column flex-just-center padded-md`}>
-          <button className='button'>Click</button>
-          <button className='button active'>Click</button>
-          <button className='button'>Click</button>
-          <button className='button'>Click</button>
         </div>
+
+
     </div>
   )
 }
 
-const ImageScroll = ({src, click}:{ src:string, click: (e: React.MouseEvent<HTMLImageElement>) => void} )=>{
+/* The left scrolling images */
+const ImageScroll = ({src, idx, onInView }:{ src:string, idx:number, onInView: Function })=>{
   const containerRef = useRef(null);
-  const  inView  = useInView(containerRef);
+  const inView  = useInView(containerRef, {amount: 0.25});
+  
+  useEffect(()=>{
+    if (inView) onInView(idx)
+  }, [inView]);
+
   return (
-    <div ref={containerRef} className={styles.image_container}>
-      {/* <p style={{ color: 'white' }}>{inView ? 'YES' : 'NO'}</p> */}
+    <div ref={containerRef} className={styles.image_container} >
       <img
-        onClick={click}
         alt={''}
         src={src}
         className={styles.strip_image}
@@ -142,7 +174,5 @@ const ImageScroll = ({src, click}:{ src:string, click: (e: React.MouseEvent<HTML
     </div>
   )
 }
-
-
 
 export default ThreeDScroller
