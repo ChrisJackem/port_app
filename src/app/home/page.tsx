@@ -121,43 +121,24 @@ const HomePage = () => {
         </div>
         <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
-          <p>Self taught with decades of programming experience</p>
-          {/* <Link
-            aria-label="My GitHub profile"
-            href={'https://github.com/ChrisJackem'} 
-            target="_blank" rel="noopener noreferrer"
-          >
-            <button aria-label="Github external link" className='button active'>github</button>
-          </Link>  */}
+          <p>Self taught with decades of programming experience</p>          
         </IconFrame>        
 
         <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
           <h2>APPLICATIONS</h2>
-          <p>I make web-based full stack apps and games</p>            
-          {/* <Link
-            href='/work' 
-            aria-label="Work page"
-          >
-            <button aria-label={"Games page"} className='button active'>work</button>
-          </Link> */}
+          <p>I make web-based full stack apps and games</p>
         </IconFrame>
 
         <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
           <h2>DESIGN</h2>
-          <p>I love to design and create and experienced in every medium</p>       
-          {/* <Link 
-            href='/gallery' 
-            aria-label="Gallery page"
-          >
-            <button aria-label="Gallery page" className='button active'>gallery</button>            
-          </Link>  */}
+          <p>I love to design and create and experienced in every medium</p> 
         </IconFrame>
       </section>
 
       <Brain />
 
       <div className={`feature-header flex`}>        
-          <SVG_GEAR />
+          <LoadImg src={'/static/images/gear.svg'} alt={'Gear Image'}/>
           <h1>WEBSITE FEATURES</h1>
       </div>
 

@@ -12,7 +12,7 @@ type StateType = {
   progress:number; 
   speed:number; 
   delta?:number;
-  clicked_image?:string|null;
+  clicked_image?:number|null;
 }
 
 const ThreeDScroller = ({images}: {images:string[]}) => {
@@ -26,6 +26,7 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
 
   const [status, data] = useImgs(images);
   const [state, setState] = useState<StateType>({
+    clicked_image: null,
     mode: 'init',
     progress: 0, 
     speed: 0.03 
@@ -49,24 +50,20 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
     }))
   }
   
-
-
   const handleImageClick = (idx:number) => {
     setClicked(idx);
     const image = loadedImages===undefined ? null : loadedImages[idx] || null;
     setState( (s) => {    
     return{ ...s,
-      clicked_image: image,
+      clicked_image: idx,
       mode: 'stop'
     }
     });
   }
 
-
-
   return (
     <div ref={containerRef} className={`${styles.container}`} >      
-      { state.clicked_image && (<>
+      { state.clicked_image !== null && loadedImages && (<>
         <svg style={{ position: 'fixed', height: '900px', width: '1600px', zIndex:'-1', opacity: 0 }}>
         <defs>          
           <mask id="MASK_IN" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
@@ -82,7 +79,7 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
 
         <div className={`flex ${styles.image_modal}`}>
           <motion.img
-            src={state.clicked_image}
+            src={loadedImages[state.clicked_image ?? 0]}
             alt={`Hero Image`}
             style={{ mask: `url(#MASK_IN)` }}
             /* initial={{ scale: 2 }}           
@@ -90,12 +87,14 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
             transition={{ duration: 0.5, ease: easeOut }}   */
           />
           <div 
-            className={`padded-md`}
-            style={{ position: "absolute", top: 0, left: 0}}
+            className={`padded-md flex flex-column`}
+            style={{ position: "absolute", top: 0, left: 0, gap: '0.4rem'}}
           >
-            <p><strong>NAME:</strong> {state.clicked_image}</p>
-            <p><strong>TYPE:</strong> {getFileTypeFromBase64(state.clicked_image)}</p>
-            <p><strong>SIZE:</strong> {getFileSizeFromBase64(state.clicked_image)}</p>
+            { state.clicked_image !== null && ( <>
+                <p><strong>NAME:</strong> {images[state.clicked_image]?.split('/').pop()}</p>
+                <p><strong>TYPE:</strong> {getFileTypeFromBase64(loadedImages[state.clicked_image])}</p>
+                <p><strong>SIZE:</strong> {getFileSizeFromBase64(loadedImages[state.clicked_image])}</p>
+            </>)}
           </div>
           <button className={``}
             style={{ 
@@ -129,27 +128,28 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
         }
 
         <div className={`flex flex-column flex-just-center`} style={{ padding: '2rem', fontSize: 'medium'}}>
+          
           <div> 
             <LineHeader text={'QUICK SAMPLE'}/>
             <h1 className='t-jumbo t-ital'>DESIGN</h1>            
             <p className={'bg-flipped t-bld'} style={{ padding: '0.05rem 1rem'}}>Click a thumbnail for detail</p>
           </div>
           
-        <div className={`flex padded-md`}>
-          {loadedImages && ( loadedImages.map((img, idx) => (
-              <img
-                key={idx}
-                role='button'
-                onClick={()=>handleImageClick(idx)}
-                alt={`Horizontal Button #${idx}`}
-                src={img}
-                className={`${viewing===idx && styles.active} ${styles.hor_strip_image}`}                    
-              />                                 
-            ))                
-          )}
-        </div>
-        </div>
+          <div className={`flex padded-md`}>
+            {loadedImages && ( loadedImages.map((img, idx) => (
+                <img
+                  key={idx}
+                  role='button'
+                  onClick={()=>handleImageClick(idx)}
+                  alt={`Horizontal Button #${idx}`}
+                  src={img}
+                  className={`${viewing===idx && styles.active} ${styles.hor_strip_image}`}                    
+                />                                 
+              ))                
+            )}
+          </div>
 
+        </div>
 
     </div>
   )

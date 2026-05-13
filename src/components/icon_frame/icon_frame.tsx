@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { ReactNode } from 'react';
+import React, { memo, ReactNode } from 'react';
 import styles from './icon_frame.module.css'
 import useImg, {STATUS} from '@/hooks/useImg';
 import LoadingComponent from '../loading_component/loading_component';
@@ -9,7 +9,7 @@ import LoadingComponent from '../loading_component/loading_component';
  * @param alt the alt of the icon image 
  * @param children
  */
-export const IconFrame = ({ url, alt, children }: { 
+export const IconFrame = memo(({ url, alt, children }: { 
     url: string; 
     alt: string; 
     children: ReactNode;
@@ -31,4 +31,4 @@ export const IconFrame = ({ url, alt, children }: {
             }            
         </div>
     )
-}
+})

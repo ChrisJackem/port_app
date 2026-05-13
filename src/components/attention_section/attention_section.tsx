@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import styles from './attention_section.module.css';
 import { LoadImg } from '../load_img/load_img';
 import { motion, useInView } from 'motion/react';

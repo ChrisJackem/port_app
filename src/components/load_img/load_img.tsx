@@ -27,28 +27,33 @@ export const LoadImg = ({ src, className, alt, style, height, width }:{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
     }
 
-    switch(status){        
-        
-        case STATUS.FAILED:
-        default:
-            console.error(`LoadImage error: (${src})\nstatus:${status}`);
-
-        case STATUS.INIT:
-        case STATUS.LOADING: return ( 
-            <div style={placeholder_style}>
-                <LoadingComponent/>
-            </div>
-        );
-
-        case STATUS.LOADED: return(
-            <img
-                src={typeof data === 'string' ? data : ''}
-                alt={alt || 'Loaded Image'}
-                className={className}
-                style={style ?? undefined}
-                width={width ?? undefined}
-                height={height ?? undefined}
-            />
-        )
+    const getRender = ()=>{
+        switch(status){
+            case STATUS.FAILED:
+            default:
+                console.error(`LoadImage error: (${src})\nstatus:${status}`);
+            case STATUS.INIT:
+            case STATUS.LOADING: return ( 
+                <div style={placeholder_style}>
+                    <LoadingComponent/>
+                </div>
+            );
+            case STATUS.LOADED: return(
+                <img
+                    src={typeof data === 'string' ? data : ''}
+                    alt={alt || 'Loaded Image'}
+                    className={className}
+                    style={style ?? undefined}
+                    width={width ?? undefined}
+                    height={height ?? undefined}
+                />
+            )
+        }
     }
+
+
+    return (
+        <>{getRender()}</>
+    )
+    
 }

@@ -41,13 +41,13 @@
     }
 
 .skill-triple{
-    padding: 3rem 4rem 2rem 4rem;
+    padding: 5rem 4rem 3rem 4rem;
     margin-top: 0px !important;
 }
 
 .icons-cta{
     position: absolute;
-    bottom: -1.5rem;
+    top: 0.5rem;
     right: 0px;     
 }
 
@@ -80,7 +80,7 @@
     font-size: 20px;    
     margin: 20px 0px 0px 0px;
 }
-    .feature-header svg{    
+    .feature-header img{    
         height: 50px; width: 50px;
     }
 
