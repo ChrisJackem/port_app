@@ -24,9 +24,7 @@ const LoadingComponent = ({ dark_mode=true, height=undefined, width=undefined }:
 export const StrokeLogo = ({dark_mode=true, infinite=true} :{infinite?:boolean, dark_mode?:boolean}) => {
   const pen_style = infinite ? styles.pen : styles.penOnce ;
   const color = dark_mode ? 'var(--darkest, #000)' : 'var(--foreground, #FFF)';
-  const path = "M69,206.5v-125l75,100v100H6.5V6.5h137.5v174";
-
-    
+  const path = "M69,206.5v-125l75,100v100H6.5V6.5h137.5v174";  
 
   return (
     <div>

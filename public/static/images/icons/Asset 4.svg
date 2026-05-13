@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="100" height="100" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="d" x1="75.31" y1="48.27" x2="75.31" y2="90.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <filter id="e" data-name="drop-shadow-1" x="51" y="42" width="49" height="55" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="f" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".3"/>
+      <feComposite in2="f" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="g" x1="52.05" y1="35.48" x2="52.05" y2="82.76" xlink:href="#d"/>
+    <filter id="h" data-name="drop-shadow-2" x="28" y="29" width="48" height="60" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="i" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".3"/>
+      <feComposite in2="i" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="j" x1="32.48" y1="9.69" x2="32.48" y2="67.22" xlink:href="#d"/>
+    <filter id="k" data-name="drop-shadow-3" x="1" y="3" width="63" height="71" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="l" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity=".3"/>
+      <feComposite in2="l" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="c" data-name="Layer 1">
+    <g>
+      <rect width="100" height="100" fill="#ca2528" opacity="0"/>
+      <polygon points="57.18 90.5 76.54 90.5 93.43 69.21 76.54 48.27 57.18 48.27 74.07 69.21 57.18 90.5" fill="url(#d)" filter="url(#e)"/>
+      <polygon points="34.32 82.76 46.14 82.76 69.78 35.48 57.96 35.48 34.32 82.76" fill="url(#g)" filter="url(#h)"/>
+      <polygon points="57.18 9.69 30.8 9.69 7.79 38.68 30.8 67.22 57.18 67.22 34.16 38.68 57.18 9.69" fill="url(#j)" filter="url(#k)"/>
+    </g>
+  </g>
+</svg>

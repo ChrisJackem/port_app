@@ -116,20 +116,22 @@ const HomePage = () => {
       <LineHeaderHoriz text={"SKILLSET SYNOPSIS A"}/>
 
       <section className={'page_triple page-container p-rel skill-triple bg-dk-fade'}>
+        
         <div className={`icons-cta`}>
           <Link href='/work' aria-label="Work page link" className="icons-link">samples →</Link>
         </div>
-        <IconFrame url="static/images/icons/icon_code.svg" alt="code icon">
+        
+        <IconFrame url="static/images/icons/code.svg" alt="code icon">
           <h2>PROGRAMMING</h2>
           <p>Self taught with decades of programming experience</p>          
         </IconFrame>        
 
-        <IconFrame url="static/images/icons/icon_game.svg" alt="parenthasis icon">
+        <IconFrame url="static/images/icons/app.svg" alt="parenthasis icon">
           <h2>APPLICATIONS</h2>
           <p>I make web-based full stack apps and games</p>
         </IconFrame>
 
-        <IconFrame url="static/images/icons/icon_web_1.svg" alt="web icon">
+        <IconFrame url="static/images/icons/design.svg" alt="web icon">
           <h2>DESIGN</h2>
           <p>I love to design and create and experienced in every medium</p> 
         </IconFrame>

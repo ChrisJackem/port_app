@@ -1,7 +1,10 @@
 
 /********************** Position */
 .p-rel{ position: relative; }
-.p-abs{ position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
+.p-abs{ position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;}
+.p-abs-right{ position: absolute !important; top: 0px; right: 0px; }
+
+.z-top{  z-index: 99999; }
 
 /********************** Text */
 .t-right{ text-align: right;}
@@ -180,7 +183,7 @@
 }
 
 .page-center{
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0px auto;
 }
 

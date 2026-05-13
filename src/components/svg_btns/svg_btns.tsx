@@ -22,7 +22,7 @@ const SvgBtn = memo(({ color, type, className = '', onClick=()=>{}, disabled = f
     }
     return (
         <button
-            className={`un-border p-rel ${className} ${stylesCss?.btn ?? ''}`}
+            className={`un-border p-rel min-btn ${className} ${stylesCss?.btn ?? ''}`}
             onClick={onClick}            
             style={{ opacity: disabled ? 0.5 : 1 }}
             aria-label={`${type} button`}

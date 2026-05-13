@@ -30,7 +30,7 @@ const Brain = () => {
             <h3 className={`t-jumbo-md t-it t-ac`}>THUNK DIFFERENTLY</h3>
             <p className={styles.sticker_text}>
                 My approach to problem solving is unique and I have a strong tendancy twords <strong>DIY</strong>.
-                Other people's code is convenient, but I love the entire process.         
+                Other people's code is convenient, but I love that it is mine.         
             </p>
             <Link
                 aria-label="My GitHub profile"

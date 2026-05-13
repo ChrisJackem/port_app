@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="108" height="100" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 108 100">
+  <defs>
+    <linearGradient id="d" x1="4" y1="50" x2="104" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <linearGradient id="e" x1="61.09" y1="51.38" x2="101.64" y2="51.38" xlink:href="#d"/>
+    <filter id="f" data-name="drop-shadow-1" x="55" y="21" width="53" height="60" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="g" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="g" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="h" x1="25.26" y1="51.38" x2="82.74" y2="51.38" xlink:href="#d"/>
+    <filter id="i" data-name="drop-shadow-2" x="19" y="21" width="70" height="60" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="j" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="j" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="k" x1="6.36" y1="51.38" x2="46.91" y2="51.38" xlink:href="#d"/>
+    <filter id="l" data-name="drop-shadow-3" x="0" y="21" width="53" height="60" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="m" stdDeviation="2"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="m" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="c" data-name="Layer 1">
+    <g>
+      <rect x="4" width="100" height="100" fill="url(#d)" opacity="0"/>
+      <polygon points="61.09 75 82.74 75 101.64 51.19 82.74 27.77 61.09 27.77 79.98 51.19 61.09 75" fill="url(#e)" filter="url(#f)"/>
+      <polygon points="82.74 27.77 61.09 27.77 25.26 75 46.91 75 82.74 27.77" fill="url(#h)" filter="url(#i)"/>
+      <polygon points="46.91 27.77 25.26 27.77 6.36 51.57 25.26 75 46.91 75 28.02 51.57 46.91 27.77" fill="url(#k)" filter="url(#l)"/>
+    </g>
+  </g>
+</svg>

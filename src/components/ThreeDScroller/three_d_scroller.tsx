@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useScroll, useMotionTemplate, useTransform, motion, useInView, easeOut, easeInOut } from 'framer-motion'
+import { useScroll, useMotionTemplate, useTransform, motion, useInView, easeOut, easeInOut, AnimatePresence } from 'framer-motion'
 import styles from './three_d_scroller.module.css'
 import { STATUS, useImgs } from '@/hooks/useImg';
 import LineHeader from '../line_header/line_header';
 import { getFileSizeFromBase64, getFileTypeFromBase64 } from '../util/base64utils';
+import SvgBtn from '../svg_btns/svg_btns';
 
-type ModeString = 'init'|'scroll'|'userScroll'|'stop';
+type ModeString = 'scroll'|'stop';
 
 type StateType = {
   mode: ModeString;
@@ -27,14 +28,17 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
   const [status, data] = useImgs(images);
   const [state, setState] = useState<StateType>({
     clicked_image: null,
-    mode: 'init',
+    mode: 'scroll',
     progress: 0, 
     speed: 0.03 
   });
  
   useEffect(()=>{
-    const nextMode = inView ? 'scroll' : 'stop';
-    setState( s => ({...s, mode: nextMode}) );
+    
+    setState( s => {
+      const nextMode = (inView && s.clicked_image===null) ? 'scroll' : 'stop';
+      return {...s, mode: nextMode}
+    } );
   }, [inView]);
 
   useEffect(()=>{
@@ -62,7 +66,9 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
   }
 
   return (
-    <div ref={containerRef} className={`${styles.container}`} >      
+    <div ref={containerRef} className={`${styles.container}`} >
+
+      <AnimatePresence>
       { state.clicked_image !== null && loadedImages && (<>
         <svg style={{ position: 'fixed', height: '900px', width: '1600px', zIndex:'-1', opacity: 0 }}>
         <defs>          
@@ -77,36 +83,37 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
         </defs>
       </svg>
 
-        <div className={`flex ${styles.image_modal}`}>
+        <motion.div className={`flex p-abs z-top ${styles.image_modal}`}
+            initial={{ opacity: 0 }}           
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .2, ease: easeOut }} 
+        >
           <motion.img
             src={loadedImages[state.clicked_image ?? 0]}
             alt={`Hero Image`}
             style={{ mask: `url(#MASK_IN)` }}
-            /* initial={{ scale: 2 }}           
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, ease: easeOut }}   */
+            initial={{ y: 30, filter: 'grayscale(100%)' }}           
+            animate={{ y: 0, filter: 'grayscale(0%)'}}
+            transition={{ duration: 1 }}  
           />
           <div 
-            className={`padded-md flex flex-column`}
-            style={{ position: "absolute", top: 0, left: 0, gap: '0.4rem'}}
-          >
-            { state.clicked_image !== null && ( <>
+            className={`padded-md flex flex-column p-abs gap-sm`}>
+            { state.clicked_image !== undefined && ( <>
                 <p><strong>NAME:</strong> {images[state.clicked_image]?.split('/').pop()}</p>
                 <p><strong>TYPE:</strong> {getFileTypeFromBase64(loadedImages[state.clicked_image])}</p>
                 <p><strong>SIZE:</strong> {getFileSizeFromBase64(loadedImages[state.clicked_image])}</p>
             </>)}
           </div>
-          <button className={``}
-            style={{ 
-              position: 'absolute', 
-              top: 0, 
-              right: 0, 
-              zIndex: 999999,
-              padding: '1rem'}}
+          <SvgBtn 
+            type={'x'}
+            color={'var(--accent'}
             onClick={handleDismissModal}
-          >X</button>
-        </div>
+            className={`p-abs-right md-btn`}
+          />
+        </motion.div>
       </>)}
+      </AnimatePresence>
 
         { loadedImages
           ? ( <div className={`${styles.strip_container}`}>
@@ -132,10 +139,10 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
           <div> 
             <LineHeader text={'QUICK SAMPLE'}/>
             <h1 className='t-jumbo t-ital'>DESIGN</h1>            
-            <p className={'bg-flipped t-bld'} style={{ padding: '0.05rem 1rem'}}>Click a thumbnail for detail</p>
+            <p className={'t-bld'}>Click a thumbnail for detail</p>
           </div>
           
-          <div className={`flex padded-md`}>
+          <div className={`flex `}>
             {loadedImages && ( loadedImages.map((img, idx) => (
                 <img
                   key={idx}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="100" height="100" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="d" x1="50" y1="18.91" x2="50" y2="42.95" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#999"/>
+    </linearGradient>
+    <filter id="e" data-name="drop-shadow-1" x="19.03" y="13.03" width="62" height="35" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="f" stdDeviation="1.66"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="f" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="g" y1="34.66" y2="81.09" xlink:href="#d"/>
+    <filter id="h" data-name="drop-shadow-2" x="19.03" y="29.03" width="62" height="58" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="i" stdDeviation="1.66"/>
+      <feFlood flood-color="#000" flood-opacity="1"/>
+      <feComposite in2="i" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="c" data-name="Layer 1">
+    <g>
+      <rect width="100" height="100" fill="#ca2528" opacity="0"/>
+      <polygon points="24.09 42.95 24.09 29.28 75.91 18.91 75.91 32.59 24.09 42.95" fill="url(#d)" filter="url(#e)"/>
+      <polygon points="24.09 45.03 75.91 34.66 75.91 70.72 24.09 81.09 24.09 45.03" fill="url(#g)" filter="url(#h)"/>
+    </g>
+  </g>
+</svg>

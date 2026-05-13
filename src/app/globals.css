@@ -38,6 +38,8 @@
 
 .line-spaced{ line-height: 1.25rem;}
 
+
+
 /**************************************/
 /**************************** Buttons */
 /**************************************/
@@ -62,6 +64,16 @@ button{
   /* border-radius: 999px; */
   /* border: 1px solid var(--background, #000); */
 
+}
+
+.min-btn{
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.md-btn{
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .button.dark{
@@ -150,6 +162,8 @@ a {
   display: flex;
   gap: 1rem;
 }
+.gap-sm{ gap: 0.25rem; }
+.gap-md{ gap: 0.5rem; }
 .flex{ flex-wrap: wrap; }
 .flex-column, .flex-column-left{ flex-direction: column; }
 .flex-column-left{ 
