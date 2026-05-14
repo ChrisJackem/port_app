@@ -13,6 +13,7 @@ import LetsBuild from '@/components/lets_build/lets_build';
 import TimelineScroller, { TimelineChild } from '@/components/timeline_scroller/timeline_scroller';
 import { usePageBanner } from '@/components/page_banner/page_banner_persist';
 import { useEffect } from 'react';
+import ThreeDScroller from '@/components/ThreeDScroller/three_d_scroller';
 
 
 /*********************************************************************************** About Page  */
@@ -166,7 +167,19 @@ const AboutPage = () => {
             </div>
         </section> */}
 
+        <ThreeDScroller 
+            title={'MEMES'}
+            images={[
+                'static/images/gallery/hope.png',
+                'static/images/gallery/ratch.png',
+                'static/images/gallery/something.png',
+                'static/images/gallery/neverEndingWar.png'
+        ]} />
+
+
+
         <LetsBuild />
+
     </motion.div>
   )
 }

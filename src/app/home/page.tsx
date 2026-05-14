@@ -144,11 +144,13 @@ const HomePage = () => {
           <h1>WEBSITE FEATURES</h1>
       </div>
 
-      <ThreeDScroller images={[
+      <ThreeDScroller 
+      title={'DESIGN.1'}
+      images={[
+        'static/images/gallery/burger2.png',
         'static/images/gallery/peg_03.png',
         'static/images/gallery/gain_01.png',
-        'static/images/gallery/deal.png',
-        'static/images/gallery/burger2.png'
+        'static/images/gallery/deal.png'
       ]} />
 
       <section className="page-center">

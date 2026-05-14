@@ -16,15 +16,12 @@ type StateType = {
   clicked_image?:number|null;
 }
 
-const ThreeDScroller = ({images}: {images:string[]}) => {
+const ThreeDScroller = ({images, title}: {images:string[], title:string}) => {
   const containerRef = useRef(null)
   const inView = useInView(containerRef);
-
   const [loadedImages, setLoadedImages] = useState<string[]>();
   const [viewing, setViewing] = useState<number>(-1);
   const [clicked, setClicked] = useState<number>(-1);
-
-
   const [status, data] = useImgs(images);
   const [state, setState] = useState<StateType>({
     clicked_image: null,
@@ -33,20 +30,22 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
     speed: 0.03 
   });
  
-  useEffect(()=>{
-    
+  // Set scroll mode from inView
+  useEffect(()=>{    
     setState( s => {
       const nextMode = (inView && s.clicked_image===null) ? 'scroll' : 'stop';
       return {...s, mode: nextMode}
     } );
   }, [inView]);
 
+  // Loads images into the state (base64[])
   useEffect(()=>{
     if (status===STATUS.LOADED && data instanceof Map){
       setLoadedImages(Array.from( data.values() ))
     }
   }, [data, status])
   
+  // Dismiss active image
   const handleDismissModal = ()=>{
     setState(s => ({...s, 
       clicked_image: null,
@@ -54,6 +53,7 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
     }))
   }
   
+  // Set active image
   const handleImageClick = (idx:number) => {
     setClicked(idx);
     const image = loadedImages===undefined ? null : loadedImages[idx] || null;
@@ -89,6 +89,10 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
             exit={{ opacity: 0 }}
             transition={{ duration: .2, ease: easeOut }} 
         >
+
+          {/* <p className={`p-abs ${styles.base_text}`}
+          >{loadedImages[state.clicked_image ?? 0].substring(100)}</p> */}
+
           <motion.img
             src={loadedImages[state.clicked_image ?? 0]}
             alt={`Hero Image`}
@@ -97,20 +101,22 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
             animate={{ y: 0, filter: 'grayscale(0%)'}}
             transition={{ duration: 1 }}  
           />
-          <div 
-            className={`padded-md flex flex-column p-abs gap-sm`}>
+
+          <div className={`padded-md flex flex-column p-abs gap-sm`}>
             { state.clicked_image !== undefined && ( <>
                 <p><strong>NAME:</strong> {images[state.clicked_image]?.split('/').pop()}</p>
                 <p><strong>TYPE:</strong> {getFileTypeFromBase64(loadedImages[state.clicked_image])}</p>
                 <p><strong>SIZE:</strong> {getFileSizeFromBase64(loadedImages[state.clicked_image])}</p>
             </>)}
           </div>
+
           <SvgBtn 
             type={'x'}
-            color={'var(--accent'}
+            color={'var(--darkest'}
             onClick={handleDismissModal}
-            className={`p-abs-right md-btn`}
+            className={`p-abs-right md-btn ${styles.dismiss}`}
           />
+
         </motion.div>
       </>)}
       </AnimatePresence>
@@ -134,28 +140,26 @@ const ThreeDScroller = ({images}: {images:string[]}) => {
           )
         }
 
-        <div className={`flex flex-column flex-just-center`} style={{ padding: '2rem', fontSize: 'medium'}}>
-          
+        <div className={`flex ${styles.text_container}`}>          
           <div> 
             <LineHeader text={'QUICK SAMPLE'}/>
-            <h1 className='t-jumbo t-ital'>DESIGN</h1>            
+            <h1 className={`${styles.big_letters}`}>{title}</h1>
             <p className={'t-bld'}>Click a thumbnail for detail</p>
           </div>
-          
-          <div className={`flex `}>
-            {loadedImages && ( loadedImages.map((img, idx) => (
-                <img
-                  key={idx}
-                  role='button'
-                  onClick={()=>handleImageClick(idx)}
-                  alt={`Horizontal Button #${idx}`}
-                  src={img}
-                  className={`${viewing===idx && styles.active} ${styles.hor_strip_image}`}                    
-                />                                 
-              ))                
-            )}
-          </div>
+        </div>
 
+        <div className={`flex ${styles.thumb_container}`}>
+          {loadedImages && ( loadedImages.map((img, idx) => (
+              <img
+                key={idx}
+                role='button'
+                onClick={()=>handleImageClick(idx)}
+                alt={`Horizontal Button #${idx}`}
+                src={img}
+                className={`${viewing===idx && styles.active} ${styles.hor_strip_image}`}                    
+              />                                 
+            ))                
+          )}
         </div>
 
     </div>

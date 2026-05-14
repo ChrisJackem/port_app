@@ -12,6 +12,7 @@ import PageBanner from '@/components/page_banner/page_banner'
 import LetsBuild from '@/components/lets_build/lets_build'
 import WorkSlideShow from '@/components/work_slideshow/work_slideshow'
 import { usePageBanner } from '@/components/page_banner/page_banner_persist'
+import ThreeDScroller from '@/components/ThreeDScroller/three_d_scroller'
 
 
 const WorkPage = () => {
@@ -75,6 +76,15 @@ const context = usePageBanner();
                 </div>
         </WorkSlideShow>
 
+        <ThreeDScroller 
+            title={'DESIGN.1'}
+            images={[
+                'static/images/gallery/burger2.png',
+                'static/images/gallery/peg_03.png',
+                'static/images/gallery/gain_01.png',
+                'static/images/gallery/deal.png'
+        ]} />
+
         <WorkSlideShow  name={'Noter'} images={[
             {   src: 'static/images/work/noter/noter_logo.png', alt: 'logo image' },
             {   src: 'static/images/work/noter/noter_context.png', alt:  'right click image', text: 'Easy Right Click Menu' },
@@ -102,6 +112,7 @@ const context = usePageBanner();
                     </ul>
                 </div>
         </WorkSlideShow>
+
 
         <WorkSlideShow  name={'test2'} images={[
             {   src: 'static/images/work/flack/flack_logo.png',
@@ -132,9 +143,18 @@ const context = usePageBanner();
 
 
 
+
+        <ThreeDScroller 
+        title={'DESIGN.2'}
+        images={[
+            'static/images/gallery/nosferatu.gif',
+            'static/images/gallery/violence.png',
+            'static/images/gallery/gain_01.png',
+            'static/images/gallery/nosferatu.gif',
+            'static/images/gallery/something.png',
+        ]} />
+
         <LetsBuild />
-
-
     {/*<div id='work-work-container' className='flex flex-column'>
 
          <Scroller>
@@ -373,7 +393,10 @@ const context = usePageBanner();
         
 
     </div>*/}
-        
+    
+
+     
+      
     </motion.div>
   )
 }
