@@ -33,17 +33,15 @@ const context = usePageBanner();
         animate="enter"
         exit="exit"
     >
-
         {/* <PageBanner title='WORK' content='The following is some of my most recent personal projects.' /> */}
-
 
         <WorkSlideShow name={'flack'} images={[
             {    src: 'static/images/work/flack/flack_logo.png',
                 text: 'Test text to check',
                 alt: 'alt text' },
-           /*  {   src: 'static/images/work/flack/flack_dashboard.png',
+            {   src: 'static/images/work/flack/flack_dashboard.png',
                 text: "A different kind of social media",
-                alt: 'alt text' }, */
+                alt: 'alt text' },
             {   src: 'static/images/work/flack/flack_logo.png',
                 alt: 'alt text' }
            

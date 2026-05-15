@@ -51,11 +51,11 @@
     fill: transparent;
   }
   75%{
-    fill: var(--accent, #CCC);
+    fill: var(--background, #CCC);
   }
 
   100% {
     stroke-dashoffset: 0;
-    fill: var(--accent, #CCC);
+    fill: var(--background, #CCC);
   }
 }

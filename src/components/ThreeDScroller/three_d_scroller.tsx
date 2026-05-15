@@ -5,6 +5,7 @@ import { STATUS, useImgs } from '@/hooks/useImg';
 import LineHeader from '../line_header/line_header';
 import { getFileSizeFromBase64, getFileTypeFromBase64 } from '../util/base64utils';
 import SvgBtn from '../svg_btns/svg_btns';
+import LoadingComponent from '../loading_component/loading_component';
 
 type ModeString = 'scroll'|'stop';
 
@@ -22,7 +23,7 @@ const ThreeDScroller = ({images, title}: {images:string[], title:string}) => {
   const [loadedImages, setLoadedImages] = useState<string[]>();
   const [viewing, setViewing] = useState<number>(-1);
   const [clicked, setClicked] = useState<number>(-1);
-  const [status, data] = useImgs(images);
+  const [status, data] = useImgs(images);// ** load imgs hook
   const [state, setState] = useState<StateType>({
     clicked_image: null,
     mode: 'scroll',
@@ -73,8 +74,8 @@ const ThreeDScroller = ({images, title}: {images:string[], title:string}) => {
         <svg style={{ position: 'fixed', height: '900px', width: '1600px', zIndex:'-1', opacity: 0 }}>
         <defs>          
           <mask id="MASK_IN" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-            <image
-              xlinkHref={`/static/images/gif_mask/gif_mask_wide.gif?a="${Math.random()}"`}              
+            <image             
+              xlinkHref={`/static/images/gif_mask/gif_mask_wide.gif?a="${Math.random()}"`}
               className='crisp-gif'
               height="100%"
               width="100%"
@@ -89,10 +90,7 @@ const ThreeDScroller = ({images, title}: {images:string[], title:string}) => {
             exit={{ opacity: 0 }}
             transition={{ duration: .2, ease: easeOut }} 
         >
-
-          {/* <p className={`p-abs ${styles.base_text}`}
-          >{loadedImages[state.clicked_image ?? 0].substring(100)}</p> */}
-
+          
           <motion.img
             src={loadedImages[state.clicked_image ?? 0]}
             alt={`Hero Image`}
@@ -136,7 +134,7 @@ const ThreeDScroller = ({images, title}: {images:string[], title:string}) => {
               </div>
           )
           : (
-            <p>Loading...</p>
+            <LoadingComponent />
           )
         }
 

@@ -1,5 +1,5 @@
 
-#nav-bar{        
+.nav_bar{        
     padding: 1rem;
     z-index: 99;
     background: var(--darkest);
@@ -16,11 +16,15 @@
     transform: scale(0.8);
     
 }
-    .small-txt{
-        font-weight: 500;
-        font-size: 0.8rem;
+    .small_txt{
+        position: relative;
+        z-index: 0;
+        color: var(--accent, yellow);
+        font-family: var(--f-akira);
+        font-weight: bolder;
+        font-size: 14px;
         letter-spacing: 2px;
-        animation: logoFade 800ms ease-out 2100ms forwards;        
+        animation: logoFade 800ms ease-out 1500ms forwards;        
         opacity: 0;
     }
     @keyframes logoFade {
@@ -28,14 +32,17 @@
         to{ opacity: 1; }
     }
 
+.hire_btn{
+    margin-left: auto;
+}
 
-.nav-ul{
+.nav_ul{
     list-style-type: none;
     /* margin-left: auto; */
     gap: 1rem;
     align-self: center;
 }
-.nav-ul a{
+.nav_ul a{
     font-size: 20px;
     padding: 0.15rem 0.25rem;
 }
@@ -44,22 +51,19 @@
     transform: scale(1.05);
 }
 
-@media screen and (max-width: 600px) {    
-    #nav-bar{
+@media screen and (max-width: 600px) {
+    .small_txt{
+        font-size: 16px;        
+    }
+    .nav-bar{
         padding: 1rem;
         /* justify-content: center; */
         gap: 1rem;       
     }
-    .nav-ul{
+    .nav_ul{
         justify-content: center;
         gap: 0.5rem;
     }
-    .link{
-        font-size: 26px;
-        text-align: center;
-        padding: 15px 25px;
-    }
-    .nav-ul a{
-        font-size: 14px;
-    }
+    /* s */
+    
 }

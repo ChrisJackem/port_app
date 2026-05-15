@@ -160,7 +160,7 @@ const HomePage = () => {
           icon_url={IMG_TYPES.CACHE}
         >
           <h4>CUSTOM IMAGE CACHE</h4>          
-          <p>This site uses a <strong>custom image cache system</strong> for faster loading. As more images are loaded you will see this widget fill up. Can you find all the images?</p>
+          <p>This site uses a <strong>custom image cache system</strong> for faster loading. As more images are loaded this widget will fill up. Can you find all the images?</p>
           <br/><br/>
           <CacheReaderLoading />
         </AttentionSection>

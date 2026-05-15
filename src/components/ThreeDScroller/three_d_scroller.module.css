@@ -89,8 +89,7 @@
     padding: 2rem;
     font-size: medium;
     flex-wrap: wrap;
-    height:  40dvh;
-    
+      
 }
 
 .text_container{
@@ -147,5 +146,6 @@
     .thumb_container{
         flex-direction: row;
         padding: 0.25rem;
+       
     }
 }

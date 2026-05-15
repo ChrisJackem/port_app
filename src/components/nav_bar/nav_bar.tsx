@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PathButton from '../path_button/pathButton';
 import { StrokeLogo } from '../loading_component/loading_component';
 import PageButton from '../page_button/page_button';
-import './nav_bar.css';
+import styles from './nav_bar.module.css';
 import LinkComponent from '../link_component/linkComponent';
 import { useModal } from '../modals/modal_context';
 
@@ -21,39 +21,27 @@ const NavBar = () => {
   }, [nav_main]);
 
   return (
-      <nav id="nav-bar" ref={nav_main} className='flex'>
+      <nav id="nav-bar" ref={nav_main} className={`flex ${styles.nav_bar}`}>
         
-        <div className='logo_container flex'>
+        <div className={`flex ${styles.logo_container}`}>
           <StrokeLogo infinite={false}/>
-          <small className={''}>chrisjackem.com</small>            
+          <small className={`${styles.small_txt}`}>CHRISJACKEM.COM</small>            
         </div>
         
-        <ul className='flex nav-ul'>
+        <ul className={`flex ${styles.nav_ul}`}>
           <LinkComponent name='Home' href='/home'/>
           <LinkComponent name='About' href='/about'/>
           {/* <LinkComponent name='GALLERY' href='/gallery'/> */}
           <LinkComponent name='Work' href='/work'/>
         </ul>
+
         <button 
           className={`button ${modalName == 'contact' ? '' : 'active'}`}
           onClick={()=>setModalName('contact')}
         >Hire Me</button>
-      </nav>
-      
 
+      </nav>
   );
 }
 
 export default NavBar
-
-/* export function NavLink({ name, href }: {name: string, href: string}){
-  const pathName = usePathname();
-  const isActive:string = pathName === href ? 'active' : ''
-  return (
-    <li>
-      <Link href={href}>
-        <PageButton active={pathName === href} className={`${isActive}`}>{name}</PageButton>
-      </Link>
-    </li>
-  );
-} */
